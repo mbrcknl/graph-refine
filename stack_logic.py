@@ -614,7 +614,7 @@ def adjust_ret_ptr (ptr):
 			syntax.mk_var('r10', syntax.word64T)},
 		    must_subst = False)
 	else:
-		return logic.var_subst (ptr, {('r0_input', syntax.word32T):
+		return logic.var_subst (ptr, {('ret_addr_input', syntax.word32T):
 			syntax.mk_var ('r0', syntax.word32T)}, must_subst = False)
 
 def get_loop_virtual_stack_analysis (p, tag):
@@ -1183,7 +1183,7 @@ def get_asm_calling_convention_inner (num_c_args, num_c_rets, const_mem):
 		r0 = arg_regs[0]
 		sp = mk_var ('r13', word32T)
 		st = mk_var ('stack', builtinTs['Mem'])
-		r0_input = mk_var ('r0_input', word32T)
+		r0_input = mk_var ('ret_addr_input', word32T)
 		#assert False
 	elif syntax.arch == 'rv64':
 		arg_regs = mk_var_list(['r10', 'r11', 'r12', 'r13', 'r14',
