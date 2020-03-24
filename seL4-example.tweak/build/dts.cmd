@@ -1,0 +1,1 @@
+regen /home/yshen/work/verificatin/graph-refine/seL4-example.tweak/build/kernel.dtb /home/yshen/work/verificatin/seL4/tools/dts/spike.dts

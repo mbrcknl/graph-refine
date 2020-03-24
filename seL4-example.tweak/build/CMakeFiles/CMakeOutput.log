@@ -1,0 +1,92 @@
+The target system is: Generic -  - seL4CPU
+The host system is: Linux - 5.3.0-40-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /opt/riscv/bin/riscv64-unknown-linux-gnu-gcc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/yshen/work/verificatin/graph-refine/seL4-example.tweak/build/CMakeFiles/3.13.4/CompilerIdC/a.out"
+
+Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+riscv64-unknown-linux-gnu-gcc (GCC) 8.3.0
+Copyright (C) 2018 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/yshen/work/verificatin/graph-refine/seL4-example.tweak/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/ninja" "cmTC_9089b"
+[1/2] Building C object CMakeFiles/cmTC_9089b.dir/testCCompiler.c.obj
+[2/2] Linking C static library libcmTC_9089b.a
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/yshen/work/verificatin/graph-refine/seL4-example.tweak/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/ninja" "cmTC_74a81"
+[1/2] Building C object CMakeFiles/cmTC_74a81.dir/CMakeCCompilerABI.c.obj
+[2/2] Linking C static library libcmTC_74a81.a
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(riscv64-unknown-linux-gnu-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/yshen/work/verificatin/graph-refine/seL4-example.tweak/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/ninja" "cmTC_74a81"]
+  ignore line: [[1/2] Building C object CMakeFiles/cmTC_74a81.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [[2/2] Linking C static library libcmTC_74a81.a]
+  ignore line: []
+  implicit libs: []
+  implicit dirs: []
+  implicit fwks: []
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /home/yshen/work/verificatin/graph-refine/seL4-example.tweak/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/ninja" "cmTC_162db"
+[1/2] Building C object CMakeFiles/cmTC_162db.dir/feature_tests.c.obj
+[2/2] Linking C static library libcmTC_162db.a
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:1c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /home/yshen/work/verificatin/graph-refine/seL4-example.tweak/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/ninja" "cmTC_d981c"
+[1/2] Building C object CMakeFiles/cmTC_d981c.dir/feature_tests.c.obj
+[2/2] Linking C static library libcmTC_d981c.a
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /home/yshen/work/verificatin/graph-refine/seL4-example.tweak/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/ninja" "cmTC_2f111"
+[1/2] Building C object CMakeFiles/cmTC_2f111.dir/feature_tests.c.obj
+[2/2] Linking C static library libcmTC_2f111.a
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:0c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:0c_variadic_macros

@@ -1,0 +1,1 @@
+regen /home/yshen/work/verificatin/graph-refine/seL4-example.tweak/build/gen_headers/plat/machine/devices_gen.h /home/yshen/work/verificatin/graph-refine/seL4-example.tweak/build/kernel.dtb;/home/yshen/work/verificatin/seL4/tools/hardware.yml;/home/yshen/work/verificatin/seL4/tools/hardware_schema.yml;/home/yshen/work/verificatin/seL4/tools/hardware_gen.py
