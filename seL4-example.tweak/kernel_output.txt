@@ -64,12 +64,12 @@ No signature info for section: __ctzsi2
 No signature info for section: __clzdi2
 No signature info for section: __ctzdi2
 ======================================================================
-  Total: 270 functions, 14110 RISC-V instructions
+  Total: 270 functions, 14007 RISC-V instructions
   Longest function: create_initial_thread (818 instructions)
-  0 deps: 101 functions (avail_p_regs, ndks_boot, rootserver, ...)
+  0 deps: 102 functions (create_untypeds_for_region, ...)
   1 deps: 77 functions (str_to_long, memset, ...)
   2 deps: 40 functions (performPageTableInvocationUnmap, ...)
-  3 deps: 21 functions (c_handle_syscall, ...)
+  3 deps: 20 functions (c_handle_syscall, ...)
   4 deps: 8 functions (invokeUntyped_Retype, decodeSetIPCBuffer, ...)
   5 deps: 9 functions (invokeTCB_ThreadControl, handleRecv, ...)
   6 deps: 4 functions (decodeUntypedInvocation, decodeSetSpace, ...)
@@ -83,7 +83,25 @@ No signature info for section: __ctzdi2
   23 deps: 1 functions (init_kernel)
 ======================================================================
 
-Section avail_p_regs (1 of 270)
+Section create_untypeds_for_region (1 of 270)
+=============================================
+
+Deriving specifications
+-----------------------
+
+Section `create_untypeds_for_region` consists of 0 instructions.
+
+Proving inst theorems
+---------------------
+
+0 inst theorems describe instructions.
+
+Evaluating graph
+----------------
+
+The graph for `create_untypeds_for_region` has 0 nodes.
+
+Section avail_p_regs (2 of 270)
 ===============================
 
 Deriving specifications
@@ -101,7 +119,7 @@ Evaluating graph
 
 The graph for `avail_p_regs` has 0 nodes.
 
-Section ndks_boot (2 of 270)
+Section ndks_boot (3 of 270)
 ============================
 
 Deriving specifications
@@ -119,7 +137,7 @@ Evaluating graph
 
 The graph for `ndks_boot` has 0 nodes.
 
-Section rootserver (3 of 270)
+Section rootserver (4 of 270)
 =============================
 
 Deriving specifications
@@ -137,7 +155,7 @@ Evaluating graph
 
 The graph for `rootserver` has 0 nodes.
 
-Section rootserver_mem (4 of 270)
+Section rootserver_mem (5 of 270)
 =================================
 
 Deriving specifications
@@ -155,7 +173,7 @@ Evaluating graph
 
 The graph for `rootserver_mem` has 0 nodes.
 
-Section avail_reg (5 of 270)
+Section avail_reg (6 of 270)
 ============================
 
 Deriving specifications
@@ -173,7 +191,7 @@ Evaluating graph
 
 The graph for `avail_reg` has 0 nodes.
 
-Section res_reg (6 of 270)
+Section res_reg (7 of 270)
 ==========================
 
 Deriving specifications
@@ -191,7 +209,7 @@ Evaluating graph
 
 The graph for `res_reg` has 0 nodes.
 
-Section fastpath_restore (7 of 270)
+Section fastpath_restore (8 of 270)
 ===================================
 
 Deriving specifications
@@ -209,7 +227,7 @@ Evaluating graph
 
 The graph for `fastpath_restore` has 0 nodes.
 
-Section restore_user_context (8 of 270)
+Section restore_user_context (9 of 270)
 =======================================
 
 Deriving specifications
@@ -227,8 +245,8 @@ Evaluating graph
 
 The graph for `restore_user_context` has 0 nodes.
 
-Section slowpath (9 of 270)
-===========================
+Section slowpath (10 of 270)
+============================
 
 Deriving specifications
 -----------------------
@@ -245,7 +263,7 @@ Evaluating graph
 
 The graph for `slowpath` has 0 nodes.
 
-Section fastpath_call (10 of 270)
+Section fastpath_call (11 of 270)
 =================================
 
 Deriving specifications
@@ -263,7 +281,7 @@ Evaluating graph
 
 The graph for `fastpath_call` has 0 nodes.
 
-Section fastpath_reply_recv (11 of 270)
+Section fastpath_reply_recv (12 of 270)
 =======================================
 
 Deriving specifications
@@ -281,7 +299,7 @@ Evaluating graph
 
 The graph for `fastpath_reply_recv` has 0 nodes.
 
-Section __ctzdi2 (12 of 270)
+Section __ctzdi2 (13 of 270)
 ============================
 
 Deriving specifications
@@ -331,7 +349,7 @@ Evaluating graph
 
 The graph for `__ctzdi2` has 21 nodes.
 
-Section __clzdi2 (13 of 270)
+Section __clzdi2 (14 of 270)
 ============================
 
 Deriving specifications
@@ -372,7 +390,7 @@ Evaluating graph
 
 The graph for `__clzdi2` has 19 nodes.
 
-Section __ctzsi2 (14 of 270)
+Section __ctzsi2 (15 of 270)
 ============================
 
 Deriving specifications
@@ -417,7 +435,7 @@ Evaluating graph
 
 The graph for `__ctzsi2` has 20 nodes.
 
-Section __clzsi2 (15 of 270)
+Section __clzsi2 (16 of 270)
 ============================
 
 Deriving specifications
@@ -460,7 +478,7 @@ Evaluating graph
 
 The graph for `__clzsi2` has 20 nodes.
 
-Section char_to_long (16 of 270)
+Section char_to_long (17 of 270)
 ================================
 
 Deriving specifications
@@ -510,7 +528,7 @@ Evaluating graph
 
 The graph for `char_to_long` has 30 nodes.
 
-Section strncmp (17 of 270)
+Section strncmp (18 of 270)
 ===========================
 
 Deriving specifications
@@ -573,7 +591,7 @@ Evaluating graph
 
 The graph for `strncmp` has 46 nodes.
 
-Section memcpy (18 of 270)
+Section memcpy (19 of 270)
 ==========================
 
 Deriving specifications
@@ -610,7 +628,7 @@ Evaluating graph
 
 The graph for `memcpy` has 16 nodes.
 
-Section memzero (19 of 270)
+Section memzero (20 of 270)
 ===========================
 
 Deriving specifications
@@ -645,7 +663,7 @@ Evaluating graph
 
 The graph for `memzero` has 13 nodes.
 
-Section strlcat (20 of 270)
+Section strlcat (21 of 270)
 ===========================
 
 Deriving specifications
@@ -719,7 +737,7 @@ Evaluating graph
 
 The graph for `strlcat` has 60 nodes.
 
-Section strlcpy (21 of 270)
+Section strlcpy (22 of 270)
 ===========================
 
 Deriving specifications
@@ -770,7 +788,7 @@ Evaluating graph
 
 The graph for `strlcpy` has 35 nodes.
 
-Section strnlen (22 of 270)
+Section strnlen (23 of 270)
 ===========================
 
 Deriving specifications
@@ -814,7 +832,7 @@ Evaluating graph
 
 The graph for `strnlen` has 26 nodes.
 
-Section copyMRs (23 of 270)
+Section copyMRs (24 of 270)
 ===========================
 
 Deriving specifications
@@ -895,7 +913,7 @@ Evaluating graph
 
 The graph for `copyMRs` has 72 nodes.
 
-Section setExtraBadge (24 of 270)
+Section setExtraBadge (25 of 270)
 =================================
 
 Deriving specifications
@@ -925,7 +943,7 @@ Evaluating graph
 
 The graph for `setExtraBadge` has 7 nodes.
 
-Section getExtraCPtr (25 of 270)
+Section getExtraCPtr (26 of 270)
 ================================
 
 Deriving specifications
@@ -955,7 +973,7 @@ Evaluating graph
 
 The graph for `getExtraCPtr` has 7 nodes.
 
-Section tcbEPDequeue (26 of 270)
+Section tcbEPDequeue (27 of 270)
 ================================
 
 Deriving specifications
@@ -1004,7 +1022,7 @@ Evaluating graph
 
 The graph for `tcbEPDequeue` has 33 nodes.
 
-Section tcbEPAppend (27 of 270)
+Section tcbEPAppend (28 of 270)
 ===============================
 
 Deriving specifications
@@ -1043,7 +1061,7 @@ Evaluating graph
 
 The graph for `tcbEPAppend` has 18 nodes.
 
-Section tcbSchedDequeue (28 of 270)
+Section tcbSchedDequeue (29 of 270)
 ===================================
 
 Deriving specifications
@@ -1140,7 +1158,7 @@ Evaluating graph
 
 The graph for `tcbSchedDequeue` has 92 nodes.
 
-Section tcbSchedAppend (29 of 270)
+Section tcbSchedAppend (30 of 270)
 ==================================
 
 Deriving specifications
@@ -1219,7 +1237,7 @@ Evaluating graph
 
 The graph for `tcbSchedAppend` has 68 nodes.
 
-Section decodeIRQControlInvocation (30 of 270)
+Section decodeIRQControlInvocation (31 of 270)
 ==============================================
 
 Deriving specifications
@@ -1286,7 +1304,7 @@ Evaluating graph
 
 The graph for `decodeIRQControlInvocation` has 57 nodes.
 
-Section tcbSchedEnqueue (31 of 270)
+Section tcbSchedEnqueue (32 of 270)
 ===================================
 
 Deriving specifications
@@ -1360,7 +1378,7 @@ Evaluating graph
 
 The graph for `tcbSchedEnqueue` has 68 nodes.
 
-Section updateCapData (32 of 270)
+Section updateCapData (33 of 270)
 =================================
 
 Deriving specifications
@@ -1452,7 +1470,7 @@ Evaluating graph
 
 The graph for `updateCapData` has 91 nodes.
 
-Section hasCancelSendRights (33 of 270)
+Section hasCancelSendRights (34 of 270)
 =======================================
 
 Deriving specifications
@@ -1502,7 +1520,7 @@ Evaluating graph
 
 The graph for `hasCancelSendRights` has 25 nodes.
 
-Section bindNotification (34 of 270)
+Section bindNotification (35 of 270)
 ====================================
 
 Deriving specifications
@@ -1537,7 +1555,7 @@ Evaluating graph
 
 The graph for `bindNotification` has 14 nodes.
 
-Section unbindNotification (35 of 270)
+Section unbindNotification (36 of 270)
 ======================================
 
 Deriving specifications
@@ -1571,7 +1589,7 @@ Evaluating graph
 
 The graph for `unbindNotification` has 15 nodes.
 
-Section unbindMaybeNotification (36 of 270)
+Section unbindMaybeNotification (37 of 270)
 ===========================================
 
 Deriving specifications
@@ -1614,7 +1632,7 @@ Evaluating graph
 
 The graph for `unbindMaybeNotification` has 23 nodes.
 
-Section isIRQActive (37 of 270)
+Section isIRQActive (38 of 270)
 ===============================
 
 Deriving specifications
@@ -1649,7 +1667,7 @@ Evaluating graph
 
 The graph for `isIRQActive` has 11 nodes.
 
-Section invokeIRQHandler_AckIRQ (38 of 270)
+Section invokeIRQHandler_AckIRQ (39 of 270)
 ===========================================
 
 Deriving specifications
@@ -1675,7 +1693,7 @@ Evaluating graph
 
 The graph for `invokeIRQHandler_AckIRQ` has 2 nodes.
 
-Section replyFromKernel_success_empty (39 of 270)
+Section replyFromKernel_success_empty (40 of 270)
 =================================================
 
 Deriving specifications
@@ -1703,7 +1721,7 @@ Evaluating graph
 
 The graph for `replyFromKernel_success_empty` has 6 nodes.
 
-Section loadCapTransfer (40 of 270)
+Section loadCapTransfer (41 of 270)
 ===================================
 
 Deriving specifications
@@ -1736,7 +1754,7 @@ Evaluating graph
 
 The graph for `loadCapTransfer` has 14 nodes.
 
-Section ensureEmptySlot (41 of 270)
+Section ensureEmptySlot (42 of 270)
 ===================================
 
 Deriving specifications
@@ -1771,7 +1789,7 @@ Evaluating graph
 
 The graph for `ensureEmptySlot` has 14 nodes.
 
-Section setupReplyMaster (42 of 270)
+Section setupReplyMaster (43 of 270)
 ====================================
 
 Deriving specifications
@@ -1810,7 +1828,7 @@ Evaluating graph
 
 The graph for `setupReplyMaster` has 21 nodes.
 
-Section insertNewCap (43 of 270)
+Section insertNewCap (44 of 270)
 ================================
 
 Deriving specifications
@@ -1880,7 +1898,7 @@ Evaluating graph
 
 The graph for `insertNewCap` has 64 nodes.
 
-Section cteSwap (44 of 270)
+Section cteSwap (45 of 270)
 ===========================
 
 Deriving specifications
@@ -1974,7 +1992,7 @@ Evaluating graph
 
 The graph for `cteSwap` has 98 nodes.
 
-Section cteMove (45 of 270)
+Section cteMove (46 of 270)
 ===========================
 
 Deriving specifications
@@ -2039,7 +2057,7 @@ Evaluating graph
 
 The graph for `cteMove` has 59 nodes.
 
-Section cteInsert (46 of 270)
+Section cteInsert (47 of 270)
 =============================
 
 Deriving specifications
@@ -2185,7 +2203,7 @@ Evaluating graph
 
 The graph for `cteInsert` has 153 nodes.
 
-Section preemptionPoint (47 of 270)
+Section preemptionPoint (48 of 270)
 ===================================
 
 Deriving specifications
@@ -2232,7 +2250,7 @@ Evaluating graph
 
 The graph for `preemptionPoint` has 28 nodes.
 
-Section setMCPriority (48 of 270)
+Section setMCPriority (49 of 270)
 =================================
 
 Deriving specifications
@@ -2259,7 +2277,7 @@ Evaluating graph
 
 The graph for `setMCPriority` has 4 nodes.
 
-Section doNBRecvFailedTransfer (49 of 270)
+Section doNBRecvFailedTransfer (50 of 270)
 ==========================================
 
 Deriving specifications
@@ -2286,7 +2304,7 @@ Evaluating graph
 
 The graph for `doNBRecvFailedTransfer` has 4 nodes.
 
-Section resolveAddressBits (50 of 270)
+Section resolveAddressBits (51 of 270)
 ======================================
 
 Deriving specifications
@@ -2421,7 +2439,7 @@ Evaluating graph
 
 The graph for `resolveAddressBits` has 142 nodes.
 
-Section Arch_performTransfer (51 of 270)
+Section Arch_performTransfer (52 of 270)
 ========================================
 
 Deriving specifications
@@ -2448,7 +2466,7 @@ Evaluating graph
 
 The graph for `Arch_performTransfer` has 3 nodes.
 
-Section Arch_decodeTransfer (52 of 270)
+Section Arch_decodeTransfer (53 of 270)
 =======================================
 
 Deriving specifications
@@ -2475,7 +2493,7 @@ Evaluating graph
 
 The graph for `Arch_decodeTransfer` has 3 nodes.
 
-Section Arch_isFrameType (53 of 270)
+Section Arch_isFrameType (54 of 270)
 ====================================
 
 Deriving specifications
@@ -2503,7 +2521,7 @@ Evaluating graph
 
 The graph for `Arch_isFrameType` has 4 nodes.
 
-Section Arch_prepareThreadDelete (54 of 270)
+Section Arch_prepareThreadDelete (55 of 270)
 ============================================
 
 Deriving specifications
@@ -2529,7 +2547,7 @@ Evaluating graph
 
 The graph for `Arch_prepareThreadDelete` has 2 nodes.
 
-Section Arch_getObjectSize (55 of 270)
+Section Arch_getObjectSize (56 of 270)
 ======================================
 
 Deriving specifications
@@ -2578,7 +2596,7 @@ Evaluating graph
 
 The graph for `Arch_getObjectSize` has 30 nodes.
 
-Section Arch_updateCapData (56 of 270)
+Section Arch_updateCapData (57 of 270)
 ======================================
 
 Deriving specifications
@@ -2609,7 +2627,7 @@ Evaluating graph
 
 The graph for `Arch_updateCapData` has 6 nodes.
 
-Section Arch_decodeIRQControlInvocation (57 of 270)
+Section Arch_decodeIRQControlInvocation (58 of 270)
 ===================================================
 
 Deriving specifications
@@ -2656,7 +2674,7 @@ Evaluating graph
 
 The graph for `Arch_decodeIRQControlInvocation` has 30 nodes.
 
-Section Arch_checkIRQ (58 of 270)
+Section Arch_checkIRQ (59 of 270)
 =================================
 
 Deriving specifications
@@ -2690,7 +2708,7 @@ Evaluating graph
 
 The graph for `Arch_checkIRQ` has 13 nodes.
 
-Section handleSpuriousIRQ (59 of 270)
+Section handleSpuriousIRQ (60 of 270)
 =====================================
 
 Deriving specifications
@@ -2716,7 +2734,7 @@ Evaluating graph
 
 The graph for `handleSpuriousIRQ` has 2 nodes.
 
-Section plat_cleanInvalidateL2Range (60 of 270)
+Section plat_cleanInvalidateL2Range (61 of 270)
 ===============================================
 
 Deriving specifications
@@ -2742,7 +2760,7 @@ Evaluating graph
 
 The graph for `plat_cleanInvalidateL2Range` has 2 nodes.
 
-Section plat_invalidateL2Range (61 of 270)
+Section plat_invalidateL2Range (62 of 270)
 ==========================================
 
 Deriving specifications
@@ -2768,7 +2786,7 @@ Evaluating graph
 
 The graph for `plat_invalidateL2Range` has 2 nodes.
 
-Section plat_cleanL2Range (62 of 270)
+Section plat_cleanL2Range (63 of 270)
 =====================================
 
 Deriving specifications
@@ -2794,7 +2812,7 @@ Evaluating graph
 
 The graph for `plat_cleanL2Range` has 2 nodes.
 
-Section ackInterrupt (63 of 270)
+Section ackInterrupt (64 of 270)
 ================================
 
 Deriving specifications
@@ -2823,7 +2841,7 @@ Evaluating graph
 
 The graph for `ackInterrupt` has 5 nodes.
 
-Section maskInterrupt (64 of 270)
+Section maskInterrupt (65 of 270)
 =================================
 
 Deriving specifications
@@ -2864,7 +2882,7 @@ Evaluating graph
 
 The graph for `maskInterrupt` has 18 nodes.
 
-Section isIRQPending (65 of 270)
+Section isIRQPending (66 of 270)
 ================================
 
 Deriving specifications
@@ -2894,7 +2912,7 @@ Evaluating graph
 
 The graph for `isIRQPending` has 5 nodes.
 
-Section getActiveIRQ (66 of 270)
+Section getActiveIRQ (67 of 270)
 ================================
 
 Deriving specifications
@@ -2938,7 +2956,7 @@ Evaluating graph
 
 The graph for `getActiveIRQ` has 22 nodes.
 
-Section setNextPC (67 of 270)
+Section setNextPC (68 of 270)
 =============================
 
 Deriving specifications
@@ -2965,7 +2983,7 @@ Evaluating graph
 
 The graph for `setNextPC` has 4 nodes.
 
-Section getRestartPC (68 of 270)
+Section getRestartPC (69 of 270)
 ================================
 
 Deriving specifications
@@ -2992,7 +3010,7 @@ Evaluating graph
 
 The graph for `getRestartPC` has 4 nodes.
 
-Section performPageInvocationMapPTE (69 of 270)
+Section performPageInvocationMapPTE (70 of 270)
 ===============================================
 
 Deriving specifications
@@ -3029,7 +3047,7 @@ Evaluating graph
 
 The graph for `performPageInvocationMapPTE` has 17 nodes.
 
-Section performPageTableInvocationMap (70 of 270)
+Section performPageTableInvocationMap (71 of 270)
 =================================================
 
 Deriving specifications
@@ -3066,7 +3084,7 @@ Evaluating graph
 
 The graph for `performPageTableInvocationMap` has 17 nodes.
 
-Section maskVMRights (71 of 270)
+Section maskVMRights (72 of 270)
 ================================
 
 Deriving specifications
@@ -3127,7 +3145,7 @@ Evaluating graph
 
 The graph for `maskVMRights` has 46 nodes.
 
-Section checkValidIPCBuffer (72 of 270)
+Section checkValidIPCBuffer (73 of 270)
 =======================================
 
 Deriving specifications
@@ -3180,7 +3198,7 @@ Evaluating graph
 
 The graph for `checkValidIPCBuffer` has 35 nodes.
 
-Section isValidVTableRoot (73 of 270)
+Section isValidVTableRoot (74 of 270)
 =====================================
 
 Deriving specifications
@@ -3215,7 +3233,7 @@ Evaluating graph
 
 The graph for `isValidVTableRoot` has 12 nodes.
 
-Section lookupPTSlot (74 of 270)
+Section lookupPTSlot (75 of 270)
 ================================
 
 Deriving specifications
@@ -3273,7 +3291,7 @@ Evaluating graph
 
 The graph for `lookupPTSlot` has 36 nodes.
 
-Section copyGlobalMappings (75 of 270)
+Section copyGlobalMappings (76 of 270)
 ======================================
 
 Deriving specifications
@@ -3313,7 +3331,7 @@ Evaluating graph
 
 The graph for `copyGlobalMappings` has 18 nodes.
 
-Section Arch_postModifyRegisters (76 of 270)
+Section Arch_postModifyRegisters (77 of 270)
 ============================================
 
 Deriving specifications
@@ -3339,7 +3357,7 @@ Evaluating graph
 
 The graph for `Arch_postModifyRegisters` has 2 nodes.
 
-Section Arch_activateIdleThread (77 of 270)
+Section Arch_activateIdleThread (78 of 270)
 ===========================================
 
 Deriving specifications
@@ -3365,7 +3383,7 @@ Evaluating graph
 
 The graph for `Arch_activateIdleThread` has 2 nodes.
 
-Section halt (78 of 270)
+Section halt (79 of 270)
 ========================
 
 Deriving specifications
@@ -3397,7 +3415,7 @@ Evaluating graph
 
 The graph for `halt` has 6 nodes.
 
-Section findVSpaceForASID (79 of 270)
+Section findVSpaceForASID (80 of 270)
 =====================================
 
 Deriving specifications
@@ -3460,7 +3478,7 @@ Evaluating graph
 
 The graph for `findVSpaceForASID` has 54 nodes.
 
-Section pte_next (80 of 270)
+Section pte_next (81 of 270)
 ============================
 
 Deriving specifications
@@ -3498,7 +3516,7 @@ Evaluating graph
 
 The graph for `pte_next` has 14 nodes.
 
-Section idle_thread (81 of 270)
+Section idle_thread (82 of 270)
 ===============================
 
 Deriving specifications
@@ -3527,7 +3545,7 @@ Evaluating graph
 
 The graph for `idle_thread` has 3 nodes.
 
-Section bi_finalise (82 of 270)
+Section bi_finalise (83 of 270)
 ===============================
 
 Deriving specifications
@@ -3560,7 +3578,7 @@ Evaluating graph
 
 The graph for `bi_finalise` has 14 nodes.
 
-Section init_core_state (83 of 270)
+Section init_core_state (84 of 270)
 ===================================
 
 Deriving specifications
@@ -3593,7 +3611,7 @@ Evaluating graph
 
 The graph for `init_core_state` has 12 nodes.
 
-Section create_it_asid_pool (84 of 270)
+Section create_it_asid_pool (85 of 270)
 =======================================
 
 Deriving specifications
@@ -3894,7 +3912,7 @@ Evaluating graph
 
 The graph for `create_it_asid_pool` has 338 nodes.
 
-Section provide_cap (85 of 270)
+Section provide_cap (86 of 270)
 ===============================
 
 Deriving specifications
@@ -4064,7 +4082,7 @@ Evaluating graph
 
 The graph for `provide_cap` has 176 nodes.
 
-Section create_domain_cap (86 of 270)
+Section create_domain_cap (87 of 270)
 =====================================
 
 Deriving specifications
@@ -4212,7 +4230,7 @@ Evaluating graph
 
 The graph for `create_domain_cap` has 143 nodes.
 
-Section create_root_cnode (87 of 270)
+Section create_root_cnode (88 of 270)
 =====================================
 
 Deriving specifications
@@ -4258,7 +4276,7 @@ Evaluating graph
 
 The graph for `create_root_cnode` has 27 nodes.
 
-Section write_slot (88 of 270)
+Section write_slot (89 of 270)
 ==============================
 
 Deriving specifications
@@ -4291,7 +4309,7 @@ Evaluating graph
 
 The graph for `write_slot` has 13 nodes.
 
-Section initIRQController (89 of 270)
+Section initIRQController (90 of 270)
 =====================================
 
 Deriving specifications
@@ -4317,7 +4335,7 @@ Evaluating graph
 
 The graph for `initIRQController` has 2 nodes.
 
-Section initLocalIRQController (90 of 270)
+Section initLocalIRQController (91 of 270)
 ==========================================
 
 Deriving specifications
@@ -4347,7 +4365,7 @@ Evaluating graph
 
 The graph for `initLocalIRQController` has 5 nodes.
 
-Section initL2Cache (91 of 270)
+Section initL2Cache (92 of 270)
 ===============================
 
 Deriving specifications
@@ -4373,7 +4391,7 @@ Evaluating graph
 
 The graph for `initL2Cache` has 2 nodes.
 
-Section initTimer (92 of 270)
+Section initTimer (93 of 270)
 =============================
 
 Deriving specifications
@@ -4412,7 +4430,7 @@ Evaluating graph
 
 The graph for `initTimer` has 12 nodes.
 
-Section map_kernel_devices (93 of 270)
+Section map_kernel_devices (94 of 270)
 ======================================
 
 Deriving specifications
@@ -4438,7 +4456,7 @@ Evaluating graph
 
 The graph for `map_kernel_devices` has 2 nodes.
 
-Section get_avail_p_regs (94 of 270)
+Section get_avail_p_regs (95 of 270)
 ====================================
 
 Deriving specifications
@@ -4466,7 +4484,7 @@ Evaluating graph
 
 The graph for `get_avail_p_regs` has 4 nodes.
 
-Section get_num_avail_p_regs (95 of 270)
+Section get_num_avail_p_regs (96 of 270)
 ========================================
 
 Deriving specifications
@@ -4493,7 +4511,7 @@ Evaluating graph
 
 The graph for `get_num_avail_p_regs` has 3 nodes.
 
-Section write_it_asid_pool (96 of 270)
+Section write_it_asid_pool (97 of 270)
 ======================================
 
 Deriving specifications
@@ -4755,7 +4773,7 @@ Evaluating graph
 
 The graph for `write_it_asid_pool` has 273 nodes.
 
-Section activate_kernel_vspace (97 of 270)
+Section activate_kernel_vspace (98 of 270)
 ==========================================
 
 Deriving specifications
@@ -4798,7 +4816,7 @@ Evaluating graph
 
 The graph for `activate_kernel_vspace` has 17 nodes.
 
-Section arch_get_n_paging (98 of 270)
+Section arch_get_n_paging (99 of 270)
 =====================================
 
 Deriving specifications
@@ -4842,8 +4860,8 @@ Evaluating graph
 
 The graph for `arch_get_n_paging` has 20 nodes.
 
-Section create_unmapped_it_frame_cap (99 of 270)
-================================================
+Section create_unmapped_it_frame_cap (100 of 270)
+=================================================
 
 Deriving specifications
 -----------------------
@@ -4877,7 +4895,7 @@ Evaluating graph
 
 The graph for `create_unmapped_it_frame_cap` has 10 nodes.
 
-Section Arch_configureIdleThread (100 of 270)
+Section Arch_configureIdleThread (101 of 270)
 =============================================
 
 Deriving specifications
@@ -4911,7 +4929,7 @@ Evaluating graph
 
 The graph for `Arch_configureIdleThread` has 13 nodes.
 
-Section merge_regions (101 of 270)
+Section merge_regions (102 of 270)
 ==================================
 
 Deriving specifications
@@ -4979,7 +4997,7 @@ Evaluating graph
 
 The graph for `merge_regions` has 58 nodes.
 
-Section str_to_long (102 of 270)
+Section str_to_long (103 of 270)
 ================================
 
 Deriving specifications
@@ -5059,7 +5077,7 @@ Evaluating graph
 
 The graph for `str_to_long` has 72 nodes.
 
-Section memset (103 of 270)
+Section memset (104 of 270)
 ===========================
 
 Deriving specifications
@@ -5109,7 +5127,7 @@ Evaluating graph
 
 The graph for `memset` has 35 nodes.
 
-Section Arch_decodeInvocation (104 of 270)
+Section Arch_decodeInvocation (105 of 270)
 ==========================================
 
 Deriving specifications
@@ -5150,7 +5168,7 @@ Evaluating graph
 
 The graph for `Arch_decodeInvocation` has 25 nodes.
 
-Section setMRs_syscall_error (105 of 270)
+Section setMRs_syscall_error (106 of 270)
 =========================================
 
 Deriving specifications
@@ -5275,7 +5293,7 @@ Evaluating graph
 
 The graph for `setMRs_syscall_error` has 135 nodes.
 
-Section invokeTCB_Resume (106 of 270)
+Section invokeTCB_Resume (107 of 270)
 =====================================
 
 Deriving specifications
@@ -5307,7 +5325,7 @@ Evaluating graph
 
 The graph for `invokeTCB_Resume` has 11 nodes.
 
-Section invokeTCB_Suspend (107 of 270)
+Section invokeTCB_Suspend (108 of 270)
 ======================================
 
 Deriving specifications
@@ -5339,7 +5357,7 @@ Evaluating graph
 
 The graph for `invokeTCB_Suspend` has 11 nodes.
 
-Section performInvocation_Endpoint (108 of 270)
+Section performInvocation_Endpoint (109 of 270)
 ===============================================
 
 Deriving specifications
@@ -5383,7 +5401,7 @@ Evaluating graph
 
 The graph for `performInvocation_Endpoint` has 23 nodes.
 
-Section performInvocation_Reply (109 of 270)
+Section performInvocation_Reply (110 of 270)
 ============================================
 
 Deriving specifications
@@ -5421,7 +5439,7 @@ Evaluating graph
 
 The graph for `performInvocation_Reply` has 18 nodes.
 
-Section lookupExtraCaps (110 of 270)
+Section lookupExtraCaps (111 of 270)
 ====================================
 
 Deriving specifications
@@ -5508,7 +5526,7 @@ Evaluating graph
 
 The graph for `lookupExtraCaps` has 91 nodes.
 
-Section deleteCallerCap (111 of 270)
+Section deleteCallerCap (112 of 270)
 ====================================
 
 Deriving specifications
@@ -5541,7 +5559,7 @@ Evaluating graph
 
 The graph for `deleteCallerCap` has 12 nodes.
 
-Section performInvocation_Notification (112 of 270)
+Section performInvocation_Notification (113 of 270)
 ===================================================
 
 Deriving specifications
@@ -5573,7 +5591,7 @@ Evaluating graph
 
 The graph for `performInvocation_Notification` has 11 nodes.
 
-Section deletingIRQHandler (113 of 270)
+Section deletingIRQHandler (114 of 270)
 =======================================
 
 Deriving specifications
@@ -5610,7 +5628,7 @@ Evaluating graph
 
 The graph for `deletingIRQHandler` has 16 nodes.
 
-Section invokeIRQHandler_ClearIRQHandler (114 of 270)
+Section invokeIRQHandler_ClearIRQHandler (115 of 270)
 =====================================================
 
 Deriving specifications
@@ -5647,7 +5665,7 @@ Evaluating graph
 
 The graph for `invokeIRQHandler_ClearIRQHandler` has 16 nodes.
 
-Section invokeCNodeRevoke (115 of 270)
+Section invokeCNodeRevoke (116 of 270)
 ======================================
 
 Deriving specifications
@@ -5678,7 +5696,7 @@ Evaluating graph
 
 The graph for `invokeCNodeRevoke` has 10 nodes.
 
-Section invokeCNodeDelete (116 of 270)
+Section invokeCNodeDelete (117 of 270)
 ======================================
 
 Deriving specifications
@@ -5710,7 +5728,7 @@ Evaluating graph
 
 The graph for `invokeCNodeDelete` has 11 nodes.
 
-Section invokeCNodeCancelBadgedSends (117 of 270)
+Section invokeCNodeCancelBadgedSends (118 of 270)
 =================================================
 
 Deriving specifications
@@ -5754,7 +5772,7 @@ Evaluating graph
 
 The graph for `invokeCNodeCancelBadgedSends` has 26 nodes.
 
-Section scheduleChooseNewThread (118 of 270)
+Section scheduleChooseNewThread (119 of 270)
 ============================================
 
 Deriving specifications
@@ -5818,7 +5836,7 @@ Evaluating graph
 
 The graph for `scheduleChooseNewThread` has 55 nodes.
 
-Section receiveSignal (119 of 270)
+Section receiveSignal (120 of 270)
 ==================================
 
 Deriving specifications
@@ -5940,7 +5958,7 @@ Evaluating graph
 
 The graph for `receiveSignal` has 135 nodes.
 
-Section handleDoubleFault (120 of 270)
+Section handleDoubleFault (121 of 270)
 ======================================
 
 Deriving specifications
@@ -5972,7 +5990,7 @@ Evaluating graph
 
 The graph for `handleDoubleFault` has 11 nodes.
 
-Section setThreadState (121 of 270)
+Section setThreadState (122 of 270)
 ===================================
 
 Deriving specifications
@@ -6008,7 +6026,7 @@ Evaluating graph
 
 The graph for `setThreadState` has 17 nodes.
 
-Section scheduleTCB (122 of 270)
+Section scheduleTCB (123 of 270)
 ================================
 
 Deriving specifications
@@ -6056,7 +6074,7 @@ Evaluating graph
 
 The graph for `scheduleTCB` has 34 nodes.
 
-Section rescheduleRequired (123 of 270)
+Section rescheduleRequired (124 of 270)
 =======================================
 
 Deriving specifications
@@ -6100,7 +6118,7 @@ Evaluating graph
 
 The graph for `rescheduleRequired` has 28 nodes.
 
-Section slotCapLongRunningDelete (124 of 270)
+Section slotCapLongRunningDelete (125 of 270)
 =============================================
 
 Deriving specifications
@@ -6154,7 +6172,7 @@ Evaluating graph
 
 The graph for `slotCapLongRunningDelete` has 40 nodes.
 
-Section isFinalCapability (125 of 270)
+Section isFinalCapability (126 of 270)
 ======================================
 
 Deriving specifications
@@ -6221,7 +6239,7 @@ Evaluating graph
 
 The graph for `isFinalCapability` has 65 nodes.
 
-Section ensureNoChildren (126 of 270)
+Section ensureNoChildren (127 of 270)
 =====================================
 
 Deriving specifications
@@ -6275,7 +6293,7 @@ Evaluating graph
 
 The graph for `ensureNoChildren` has 39 nodes.
 
-Section isMDBParentOf (127 of 270)
+Section isMDBParentOf (128 of 270)
 ==================================
 
 Deriving specifications
@@ -6357,7 +6375,7 @@ Evaluating graph
 
 The graph for `isMDBParentOf` has 87 nodes.
 
-Section completeSignal (128 of 270)
+Section completeSignal (129 of 270)
 ===================================
 
 Deriving specifications
@@ -6398,7 +6416,7 @@ Evaluating graph
 
 The graph for `completeSignal` has 26 nodes.
 
-Section emptySlot (129 of 270)
+Section emptySlot (130 of 270)
 ==============================
 
 Deriving specifications
@@ -6483,7 +6501,7 @@ Evaluating graph
 
 The graph for `emptySlot` has 86 nodes.
 
-Section deletedIRQHandler (130 of 270)
+Section deletedIRQHandler (131 of 270)
 ======================================
 
 Deriving specifications
@@ -6516,7 +6534,7 @@ Evaluating graph
 
 The graph for `deletedIRQHandler` has 12 nodes.
 
-Section setIRQState (131 of 270)
+Section setIRQState (132 of 270)
 ================================
 
 Deriving specifications
@@ -6555,7 +6573,7 @@ Evaluating graph
 
 The graph for `setIRQState` has 19 nodes.
 
-Section capSwapForDelete (132 of 270)
+Section capSwapForDelete (133 of 270)
 =====================================
 
 Deriving specifications
@@ -6596,7 +6614,7 @@ Evaluating graph
 
 The graph for `capSwapForDelete` has 26 nodes.
 
-Section invokeCNodeMove (133 of 270)
+Section invokeCNodeMove (134 of 270)
 ====================================
 
 Deriving specifications
@@ -6628,7 +6646,7 @@ Evaluating graph
 
 The graph for `invokeCNodeMove` has 11 nodes.
 
-Section invokeCNodeInsert (134 of 270)
+Section invokeCNodeInsert (135 of 270)
 ======================================
 
 Deriving specifications
@@ -6660,7 +6678,7 @@ Evaluating graph
 
 The graph for `invokeCNodeInsert` has 11 nodes.
 
-Section switchToIdleThread (135 of 270)
+Section switchToIdleThread (136 of 270)
 =======================================
 
 Deriving specifications
@@ -6696,7 +6714,7 @@ Evaluating graph
 
 The graph for `switchToIdleThread` has 17 nodes.
 
-Section doFaultTransfer (136 of 270)
+Section doFaultTransfer (137 of 270)
 ====================================
 
 Deriving specifications
@@ -6748,7 +6766,7 @@ Evaluating graph
 
 The graph for `doFaultTransfer` has 39 nodes.
 
-Section lookupPivotSlot (137 of 270)
+Section lookupPivotSlot (138 of 270)
 ====================================
 
 Deriving specifications
@@ -6786,7 +6804,7 @@ Evaluating graph
 
 The graph for `lookupPivotSlot` has 16 nodes.
 
-Section lookupTargetSlot (138 of 270)
+Section lookupTargetSlot (139 of 270)
 =====================================
 
 Deriving specifications
@@ -6824,7 +6842,7 @@ Evaluating graph
 
 The graph for `lookupTargetSlot` has 16 nodes.
 
-Section lookupSourceSlot (139 of 270)
+Section lookupSourceSlot (140 of 270)
 =====================================
 
 Deriving specifications
@@ -6862,7 +6880,7 @@ Evaluating graph
 
 The graph for `lookupSourceSlot` has 16 nodes.
 
-Section lookupSlotForCNodeOp (140 of 270)
+Section lookupSlotForCNodeOp (141 of 270)
 =========================================
 
 Deriving specifications
@@ -6972,7 +6990,7 @@ Evaluating graph
 
 The graph for `lookupSlotForCNodeOp` has 125 nodes.
 
-Section lookupCapAndSlot (141 of 270)
+Section lookupCapAndSlot (142 of 270)
 =====================================
 
 Deriving specifications
@@ -7025,7 +7043,7 @@ Evaluating graph
 
 The graph for `lookupCapAndSlot` has 46 nodes.
 
-Section lookupCap (142 of 270)
+Section lookupCap (143 of 270)
 ==============================
 
 Deriving specifications
@@ -7077,7 +7095,7 @@ Evaluating graph
 
 The graph for `lookupCap` has 44 nodes.
 
-Section lookupSlot (143 of 270)
+Section lookupSlot (144 of 270)
 ===============================
 
 Deriving specifications
@@ -7118,7 +7136,7 @@ Evaluating graph
 
 The graph for `lookupSlot` has 22 nodes.
 
-Section Arch_createObject (144 of 270)
+Section Arch_createObject (145 of 270)
 ======================================
 
 Deriving specifications
@@ -7210,7 +7228,7 @@ Evaluating graph
 
 The graph for `Arch_createObject` has 85 nodes.
 
-Section Arch_sameObjectAs (145 of 270)
+Section Arch_sameObjectAs (146 of 270)
 ======================================
 
 Deriving specifications
@@ -7304,7 +7322,7 @@ Evaluating graph
 
 The graph for `Arch_sameObjectAs` has 90 nodes.
 
-Section Arch_sameRegionAs (146 of 270)
+Section Arch_sameRegionAs (147 of 270)
 ======================================
 
 Deriving specifications
@@ -7485,7 +7503,7 @@ Evaluating graph
 
 The graph for `Arch_sameRegionAs` has 184 nodes.
 
-Section Arch_maskCapRights (147 of 270)
+Section Arch_maskCapRights (148 of 270)
 =======================================
 
 Deriving specifications
@@ -7544,7 +7562,7 @@ Evaluating graph
 
 The graph for `Arch_maskCapRights` has 48 nodes.
 
-Section Arch_deriveCap (148 of 270)
+Section Arch_deriveCap (149 of 270)
 ===================================
 
 Deriving specifications
@@ -7616,7 +7634,7 @@ Evaluating graph
 
 The graph for `Arch_deriveCap` has 67 nodes.
 
-Section performPageInvocationUnmap (149 of 270)
+Section performPageInvocationUnmap (150 of 270)
 ===============================================
 
 Deriving specifications
@@ -7685,7 +7703,7 @@ Evaluating graph
 
 The graph for `performPageInvocationUnmap` has 58 nodes.
 
-Section deleteASID (150 of 270)
+Section deleteASID (151 of 270)
 ===============================
 
 Deriving specifications
@@ -7738,7 +7756,7 @@ Evaluating graph
 
 The graph for `deleteASID` has 38 nodes.
 
-Section deleteASIDPool (151 of 270)
+Section deleteASIDPool (152 of 270)
 ===================================
 
 Deriving specifications
@@ -7785,7 +7803,7 @@ Evaluating graph
 
 The graph for `deleteASIDPool` has 31 nodes.
 
-Section Arch_switchToIdleThread (152 of 270)
+Section Arch_switchToIdleThread (153 of 270)
 ============================================
 
 Deriving specifications
@@ -7819,7 +7837,7 @@ Evaluating graph
 
 The graph for `Arch_switchToIdleThread` has 14 nodes.
 
-Section Arch_switchToThread (153 of 270)
+Section Arch_switchToThread (154 of 270)
 ========================================
 
 Deriving specifications
@@ -7850,7 +7868,7 @@ Evaluating graph
 
 The graph for `Arch_switchToThread` has 10 nodes.
 
-Section setVMRoot (154 of 270)
+Section setVMRoot (155 of 270)
 ==============================
 
 Deriving specifications
@@ -7965,7 +7983,7 @@ Evaluating graph
 
 The graph for `setVMRoot` has 103 nodes.
 
-Section unmapPageTable (155 of 270)
+Section unmapPageTable (156 of 270)
 ===================================
 
 Deriving specifications
@@ -8064,7 +8082,7 @@ Evaluating graph
 
 The graph for `unmapPageTable` has 94 nodes.
 
-Section handleVMFault (156 of 270)
+Section handleVMFault (157 of 270)
 ==================================
 
 Deriving specifications
@@ -8127,7 +8145,7 @@ Evaluating graph
 
 The graph for `handleVMFault` has 49 nodes.
 
-Section lookupIPCBuffer (157 of 270)
+Section lookupIPCBuffer (158 of 270)
 ====================================
 
 Deriving specifications
@@ -8215,7 +8233,7 @@ Evaluating graph
 
 The graph for `lookupIPCBuffer` has 82 nodes.
 
-Section Arch_setMRs_fault (158 of 270)
+Section Arch_setMRs_fault (159 of 270)
 ======================================
 
 Deriving specifications
@@ -8259,7 +8277,7 @@ Evaluating graph
 
 The graph for `Arch_setMRs_fault` has 31 nodes.
 
-Section Arch_handleFaultReply (159 of 270)
+Section Arch_handleFaultReply (160 of 270)
 ==========================================
 
 Deriving specifications
@@ -8292,7 +8310,7 @@ Evaluating graph
 
 The graph for `Arch_handleFaultReply` has 12 nodes.
 
-Section interrupt (160 of 270)
+Section interrupt (161 of 270)
 ==============================
 
 Deriving specifications
@@ -8320,7 +8338,7 @@ Evaluating graph
 
 The graph for `interrupt` has 4 nodes.
 
-Section exception (161 of 270)
+Section exception (162 of 270)
 ==============================
 
 Deriving specifications
@@ -8347,7 +8365,7 @@ Evaluating graph
 
 The graph for `exception` has 4 nodes.
 
-Section syscall (162 of 270)
+Section syscall (163 of 270)
 ============================
 
 Deriving specifications
@@ -8376,7 +8394,7 @@ Evaluating graph
 
 The graph for `syscall` has 5 nodes.
 
-Section maybe_alloc_extra_bi (163 of 270)
+Section maybe_alloc_extra_bi (164 of 270)
 =========================================
 
 Deriving specifications
@@ -8419,7 +8437,7 @@ Evaluating graph
 
 The graph for `maybe_alloc_extra_bi` has 27 nodes.
 
-Section alloc_rootserver_obj (164 of 270)
+Section alloc_rootserver_obj (165 of 270)
 =========================================
 
 Deriving specifications
@@ -8460,7 +8478,7 @@ Evaluating graph
 
 The graph for `alloc_rootserver_obj` has 24 nodes.
 
-Section create_idle_thread (165 of 270)
+Section create_idle_thread (166 of 270)
 =======================================
 
 Deriving specifications
@@ -8496,7 +8514,7 @@ Evaluating graph
 
 The graph for `create_idle_thread` has 16 nodes.
 
-Section configureIdleThread (166 of 270)
+Section configureIdleThread (167 of 270)
 ========================================
 
 Deriving specifications
@@ -8536,7 +8554,7 @@ Evaluating graph
 
 The graph for `configureIdleThread` has 22 nodes.
 
-Section create_kernel_untypeds (167 of 270)
+Section create_kernel_untypeds (168 of 270)
 ===========================================
 
 Deriving specifications
@@ -8602,7 +8620,7 @@ Evaluating graph
 
 The graph for `create_kernel_untypeds` has 63 nodes.
 
-Section create_device_untypeds (168 of 270)
+Section create_device_untypeds (169 of 270)
 ===========================================
 
 Deriving specifications
@@ -8697,7 +8715,7 @@ Evaluating graph
 
 The graph for `create_device_untypeds` has 103 nodes.
 
-Section calculate_extra_bi_size_bits (169 of 270)
+Section calculate_extra_bi_size_bits (170 of 270)
 =================================================
 
 Deriving specifications
@@ -8747,7 +8765,7 @@ Evaluating graph
 
 The graph for `calculate_extra_bi_size_bits` has 34 nodes.
 
-Section create_bi_frame_cap (170 of 270)
+Section create_bi_frame_cap (171 of 270)
 ========================================
 
 Deriving specifications
@@ -8913,7 +8931,7 @@ Evaluating graph
 
 The graph for `create_bi_frame_cap` has 173 nodes.
 
-Section insert_region (171 of 270)
+Section insert_region (172 of 270)
 ==================================
 
 Deriving specifications
@@ -8987,7 +9005,7 @@ Evaluating graph
 
 The graph for `insert_region` has 69 nodes.
 
-Section reserve_region (172 of 270)
+Section reserve_region (173 of 270)
 ===================================
 
 Deriving specifications
@@ -9122,7 +9140,7 @@ Evaluating graph
 
 The graph for `reserve_region` has 148 nodes.
 
-Section create_mapped_it_frame_cap (173 of 270)
+Section create_mapped_it_frame_cap (174 of 270)
 ===============================================
 
 Deriving specifications
@@ -9176,7 +9194,7 @@ Evaluating graph
 
 The graph for `create_mapped_it_frame_cap` has 36 nodes.
 
-Section map_it_frame_cap (174 of 270)
+Section map_it_frame_cap (175 of 270)
 =====================================
 
 Deriving specifications
@@ -9465,7 +9483,7 @@ Evaluating graph
 
 The graph for `map_it_frame_cap` has 308 nodes.
 
-Section map_it_pt_cap (175 of 270)
+Section map_it_pt_cap (176 of 270)
 ==================================
 
 Deriving specifications
@@ -9724,7 +9742,7 @@ Evaluating graph
 
 The graph for `map_it_pt_cap` has 276 nodes.
 
-Section map_kernel_window (176 of 270)
+Section map_kernel_window (177 of 270)
 ======================================
 
 Deriving specifications
@@ -9819,7 +9837,7 @@ Evaluating graph
 
 The graph for `map_kernel_window` has 97 nodes.
 
-Section map_kernel_frame (177 of 270)
+Section map_kernel_frame (178 of 270)
 =====================================
 
 Deriving specifications
@@ -9862,7 +9880,7 @@ Evaluating graph
 
 The graph for `map_kernel_frame` has 25 nodes.
 
-Section _start (178 of 270)
+Section _start (179 of 270)
 ===========================
 
 Deriving specifications
@@ -9901,7 +9919,7 @@ Evaluating graph
 
 The graph for `_start` has 14 nodes.
 
-Section performPageTableInvocationUnmap (179 of 270)
+Section performPageTableInvocationUnmap (180 of 270)
 ====================================================
 
 Deriving specifications
@@ -9973,7 +9991,7 @@ Evaluating graph
 
 The graph for `performPageTableInvocationUnmap` has 62 nodes.
 
-Section replyFromKernel_error (180 of 270)
+Section replyFromKernel_error (181 of 270)
 ==========================================
 
 Deriving specifications
@@ -10020,7 +10038,7 @@ Evaluating graph
 
 The graph for `replyFromKernel_error` has 32 nodes.
 
-Section decodeUnbindNotification (181 of 270)
+Section decodeUnbindNotification (182 of 270)
 =============================================
 
 Deriving specifications
@@ -10078,7 +10096,7 @@ Evaluating graph
 
 The graph for `decodeUnbindNotification` has 47 nodes.
 
-Section decodeBindNotification (182 of 270)
+Section decodeBindNotification (183 of 270)
 ===========================================
 
 Deriving specifications
@@ -10188,7 +10206,7 @@ Evaluating graph
 
 The graph for `decodeBindNotification` has 116 nodes.
 
-Section invokeTCB_NotificationControl (183 of 270)
+Section invokeTCB_NotificationControl (184 of 270)
 ==================================================
 
 Deriving specifications
@@ -10224,7 +10242,7 @@ Evaluating graph
 
 The graph for `invokeTCB_NotificationControl` has 17 nodes.
 
-Section decodeWriteRegisters (184 of 270)
+Section decodeWriteRegisters (185 of 270)
 =========================================
 
 Deriving specifications
@@ -10310,7 +10328,7 @@ Evaluating graph
 
 The graph for `decodeWriteRegisters` has 87 nodes.
 
-Section invokeTCB_WriteRegisters (185 of 270)
+Section invokeTCB_WriteRegisters (186 of 270)
 =============================================
 
 Deriving specifications
@@ -10443,7 +10461,7 @@ Evaluating graph
 
 The graph for `invokeTCB_WriteRegisters` has 141 nodes.
 
-Section decodeReadRegisters (186 of 270)
+Section decodeReadRegisters (187 of 270)
 ========================================
 
 Deriving specifications
@@ -10535,7 +10553,7 @@ Evaluating graph
 
 The graph for `decodeReadRegisters` has 95 nodes.
 
-Section decodeCopyRegisters (187 of 270)
+Section decodeCopyRegisters (188 of 270)
 ========================================
 
 Deriving specifications
@@ -10625,7 +10643,7 @@ Evaluating graph
 
 The graph for `decodeCopyRegisters` has 89 nodes.
 
-Section decodeSetSchedParams (188 of 270)
+Section decodeSetSchedParams (189 of 270)
 =========================================
 
 Deriving specifications
@@ -10749,7 +10767,7 @@ Evaluating graph
 
 The graph for `decodeSetSchedParams` has 140 nodes.
 
-Section decodeSetMCPriority (189 of 270)
+Section decodeSetMCPriority (190 of 270)
 ========================================
 
 Deriving specifications
@@ -10857,7 +10875,7 @@ Evaluating graph
 
 The graph for `decodeSetMCPriority` has 118 nodes.
 
-Section decodeSetPriority (190 of 270)
+Section decodeSetPriority (191 of 270)
 ======================================
 
 Deriving specifications
@@ -10965,7 +10983,7 @@ Evaluating graph
 
 The graph for `decodeSetPriority` has 118 nodes.
 
-Section decodeDomainInvocation (191 of 270)
+Section decodeDomainInvocation (192 of 270)
 ===========================================
 
 Deriving specifications
@@ -11061,7 +11079,7 @@ Evaluating graph
 
 The graph for `decodeDomainInvocation` has 99 nodes.
 
-Section handleFault (192 of 270)
+Section handleFault (193 of 270)
 ================================
 
 Deriving specifications
@@ -11101,7 +11119,7 @@ Evaluating graph
 
 The graph for `handleFault` has 23 nodes.
 
-Section sendFaultIPC (193 of 270)
+Section sendFaultIPC (194 of 270)
 =================================
 
 Deriving specifications
@@ -11215,7 +11233,7 @@ Evaluating graph
 
 The graph for `sendFaultIPC` has 128 nodes.
 
-Section handleReply (194 of 270)
+Section handleReply (195 of 270)
 ================================
 
 Deriving specifications
@@ -11267,7 +11285,7 @@ Evaluating graph
 
 The graph for `handleReply` has 39 nodes.
 
-Section setupCallerCap (195 of 270)
+Section setupCallerCap (196 of 270)
 ===================================
 
 Deriving specifications
@@ -11319,7 +11337,7 @@ Evaluating graph
 
 The graph for `setupCallerCap` has 38 nodes.
 
-Section c_handle_interrupt (196 of 270)
+Section c_handle_interrupt (197 of 270)
 =======================================
 
 Deriving specifications
@@ -11348,7 +11366,7 @@ Evaluating graph
 
 The graph for `c_handle_interrupt` has 7 nodes.
 
-Section invokeIRQHandler_SetIRQHandler (197 of 270)
+Section invokeIRQHandler_SetIRQHandler (198 of 270)
 ===================================================
 
 Deriving specifications
@@ -11398,7 +11416,7 @@ Evaluating graph
 
 The graph for `invokeIRQHandler_SetIRQHandler` has 38 nodes.
 
-Section cancelSignal (198 of 270)
+Section cancelSignal (199 of 270)
 =================================
 
 Deriving specifications
@@ -11474,7 +11492,7 @@ Evaluating graph
 
 The graph for `cancelSignal` has 70 nodes.
 
-Section switchToThread (199 of 270)
+Section switchToThread (200 of 270)
 ===================================
 
 Deriving specifications
@@ -11512,7 +11530,7 @@ Evaluating graph
 
 The graph for `switchToThread` has 21 nodes.
 
-Section timerTick (200 of 270)
+Section timerTick (201 of 270)
 ==============================
 
 Deriving specifications
@@ -11569,7 +11587,7 @@ Evaluating graph
 
 The graph for `timerTick` has 48 nodes.
 
-Section possibleSwitchTo (201 of 270)
+Section possibleSwitchTo (202 of 270)
 =====================================
 
 Deriving specifications
@@ -11621,7 +11639,7 @@ Evaluating graph
 
 The graph for `possibleSwitchTo` has 41 nodes.
 
-Section activateThread (202 of 270)
+Section activateThread (203 of 270)
 ===================================
 
 Deriving specifications
@@ -11670,7 +11688,7 @@ Evaluating graph
 
 The graph for `activateThread` has 36 nodes.
 
-Section createObject (203 of 270)
+Section createObject (204 of 270)
 =================================
 
 Deriving specifications
@@ -11776,7 +11794,7 @@ Evaluating graph
 
 The graph for `createObject` has 107 nodes.
 
-Section maskCapRights (204 of 270)
+Section maskCapRights (205 of 270)
 ==================================
 
 Deriving specifications
@@ -11905,7 +11923,7 @@ Evaluating graph
 
 The graph for `maskCapRights` has 127 nodes.
 
-Section sameObjectAs (205 of 270)
+Section sameObjectAs (206 of 270)
 =================================
 
 Deriving specifications
@@ -11971,7 +11989,7 @@ Evaluating graph
 
 The graph for `sameObjectAs` has 63 nodes.
 
-Section deriveCap (206 of 270)
+Section deriveCap (207 of 270)
 ==============================
 
 Deriving specifications
@@ -12058,7 +12076,7 @@ Evaluating graph
 
 The graph for `deriveCap` has 87 nodes.
 
-Section sameRegionAs (207 of 270)
+Section sameRegionAs (208 of 270)
 =================================
 
 Deriving specifications
@@ -12527,7 +12545,7 @@ Evaluating graph
 
 The graph for `sameRegionAs` has 514 nodes.
 
-Section getObjectSize (208 of 270)
+Section getObjectSize (209 of 270)
 ==================================
 
 Deriving specifications
@@ -12582,7 +12600,7 @@ Evaluating graph
 
 The graph for `getObjectSize` has 39 nodes.
 
-Section invokeIRQControl (209 of 270)
+Section invokeIRQControl (210 of 270)
 =====================================
 
 Deriving specifications
@@ -12632,7 +12650,7 @@ Evaluating graph
 
 The graph for `invokeIRQControl` has 36 nodes.
 
-Section getReceiveSlots (210 of 270)
+Section getReceiveSlots (211 of 270)
 ====================================
 
 Deriving specifications
@@ -12700,7 +12718,7 @@ Evaluating graph
 
 The graph for `getReceiveSlots` has 66 nodes.
 
-Section invokeCNodeRotate (211 of 270)
+Section invokeCNodeRotate (212 of 270)
 ======================================
 
 Deriving specifications
@@ -12758,7 +12776,7 @@ Evaluating graph
 
 The graph for `invokeCNodeRotate` has 53 nodes.
 
-Section invokeCNodeSaveCaller (212 of 270)
+Section invokeCNodeSaveCaller (213 of 270)
 ==========================================
 
 Deriving specifications
@@ -12813,7 +12831,7 @@ Evaluating graph
 
 The graph for `invokeCNodeSaveCaller` has 44 nodes.
 
-Section handleFaultReply (213 of 270)
+Section handleFaultReply (214 of 270)
 =====================================
 
 Deriving specifications
@@ -12990,7 +13008,7 @@ Evaluating graph
 
 The graph for `handleFaultReply` has 207 nodes.
 
-Section setMRs_fault (214 of 270)
+Section setMRs_fault (215 of 270)
 =================================
 
 Deriving specifications
@@ -13147,7 +13165,7 @@ Evaluating graph
 
 The graph for `setMRs_fault` has 192 nodes.
 
-Section trap_entry (215 of 270)
+Section trap_entry (216 of 270)
 ===============================
 
 Deriving specifications
@@ -13234,7 +13252,7 @@ Evaluating graph
 
 The graph for `trap_entry` has 85 nodes.
 
-Section populate_bi_frame (216 of 270)
+Section populate_bi_frame (217 of 270)
 ======================================
 
 Deriving specifications
@@ -13318,7 +13336,7 @@ Evaluating graph
 
 The graph for `populate_bi_frame` has 92 nodes.
 
-Section create_ipcbuf_frame_cap (217 of 270)
+Section create_ipcbuf_frame_cap (218 of 270)
 ============================================
 
 Deriving specifications
@@ -13495,7 +13513,7 @@ Evaluating graph
 
 The graph for `create_ipcbuf_frame_cap` has 193 nodes.
 
-Section create_frames_of_region (218 of 270)
+Section create_frames_of_region (219 of 270)
 ============================================
 
 Deriving specifications
@@ -13609,7 +13627,7 @@ Evaluating graph
 
 The graph for `create_frames_of_region` has 138 nodes.
 
-Section c_handle_syscall (219 of 270)
+Section c_handle_syscall (220 of 270)
 =====================================
 
 Deriving specifications
@@ -13646,7 +13664,7 @@ Evaluating graph
 
 The graph for `c_handle_syscall` has 18 nodes.
 
-Section invokeTCB_ReadRegisters (220 of 270)
+Section invokeTCB_ReadRegisters (221 of 270)
 ============================================
 
 Deriving specifications
@@ -13795,7 +13813,7 @@ Evaluating graph
 
 The graph for `invokeTCB_ReadRegisters` has 174 nodes.
 
-Section invokeTCB_CopyRegisters (221 of 270)
+Section invokeTCB_CopyRegisters (222 of 270)
 ============================================
 
 Deriving specifications
@@ -13890,7 +13908,7 @@ Evaluating graph
 
 The graph for `invokeTCB_CopyRegisters` has 102 nodes.
 
-Section c_handle_exception (222 of 270)
+Section c_handle_exception (223 of 270)
 =======================================
 
 Deriving specifications
@@ -13936,7 +13954,7 @@ Evaluating graph
 
 The graph for `c_handle_exception` has 27 nodes.
 
-Section handleUserLevelFault (223 of 270)
+Section handleUserLevelFault (224 of 270)
 =========================================
 
 Deriving specifications
@@ -13984,7 +14002,7 @@ Evaluating graph
 
 The graph for `handleUserLevelFault` has 32 nodes.
 
-Section handleUnknownSyscall (224 of 270)
+Section handleUnknownSyscall (225 of 270)
 =========================================
 
 Deriving specifications
@@ -14026,7 +14044,7 @@ Evaluating graph
 
 The graph for `handleUnknownSyscall` has 26 nodes.
 
-Section doIPCTransfer (225 of 270)
+Section doIPCTransfer (226 of 270)
 ==================================
 
 Deriving specifications
@@ -14098,7 +14116,7 @@ Evaluating graph
 
 The graph for `doIPCTransfer` has 68 nodes.
 
-Section decodeIRQHandlerInvocation (226 of 270)
+Section decodeIRQHandlerInvocation (227 of 270)
 ===============================================
 
 Deriving specifications
@@ -14202,7 +14220,7 @@ Evaluating graph
 
 The graph for `decodeIRQHandlerInvocation` has 112 nodes.
 
-Section cteDeleteOne (227 of 270)
+Section cteDeleteOne (228 of 270)
 =================================
 
 Deriving specifications
@@ -14252,7 +14270,7 @@ Evaluating graph
 
 The graph for `cteDeleteOne` has 37 nodes.
 
-Section cteRevoke (228 of 270)
+Section cteRevoke (229 of 270)
 ==============================
 
 Deriving specifications
@@ -14337,7 +14355,7 @@ Evaluating graph
 
 The graph for `cteRevoke` has 87 nodes.
 
-Section suspend (229 of 270)
+Section suspend (230 of 270)
 ============================
 
 Deriving specifications
@@ -14384,7 +14402,7 @@ Evaluating graph
 
 The graph for `suspend` has 34 nodes.
 
-Section setPriority (230 of 270)
+Section setPriority (231 of 270)
 ================================
 
 Deriving specifications
@@ -14438,7 +14456,7 @@ Evaluating graph
 
 The graph for `setPriority` has 44 nodes.
 
-Section setDomain (231 of 270)
+Section setDomain (232 of 270)
 ==============================
 
 Deriving specifications
@@ -14492,7 +14510,7 @@ Evaluating graph
 
 The graph for `setDomain` has 44 nodes.
 
-Section chooseThread (232 of 270)
+Section chooseThread (233 of 270)
 =================================
 
 Deriving specifications
@@ -14563,7 +14581,7 @@ Evaluating graph
 
 The graph for `chooseThread` has 62 nodes.
 
-Section cancelAllSignals (233 of 270)
+Section cancelAllSignals (234 of 270)
 =====================================
 
 Deriving specifications
@@ -14635,7 +14653,7 @@ Evaluating graph
 
 The graph for `cancelAllSignals` has 67 nodes.
 
-Section cancelAllIPC (234 of 270)
+Section cancelAllIPC (235 of 270)
 =================================
 
 Deriving specifications
@@ -14688,7 +14706,7 @@ Evaluating graph
 
 The graph for `cancelAllIPC` has 45 nodes.
 
-Section createNewObjects (235 of 270)
+Section createNewObjects (236 of 270)
 =====================================
 
 Deriving specifications
@@ -14767,7 +14785,7 @@ Evaluating graph
 
 The graph for `createNewObjects` has 83 nodes.
 
-Section unmapPage (236 of 270)
+Section unmapPage (237 of 270)
 ==============================
 
 Deriving specifications
@@ -14861,7 +14879,7 @@ Evaluating graph
 
 The graph for `unmapPage` has 95 nodes.
 
-Section create_rootserver_objects (237 of 270)
+Section create_rootserver_objects (238 of 270)
 ==============================================
 
 Deriving specifications
@@ -14975,142 +14993,6 @@ Evaluating graph
 ----------------
 
 The graph for `create_rootserver_objects` has 137 nodes.
-
-Section create_untypeds_for_region (238 of 270)
-===============================================
-
-Deriving specifications
------------------------
-
-Section `create_untypeds_for_region` consists of 103 instructions.
-
-
-Stack analysis
----------------
-
-38 stack accesses found. Annotated code for `create_untypeds_for_region`:
-
-    0x840015a8      0x0    addi sp,sp,-192
-    0x840015aa      0x2    sd ra,184(sp)         ; stack access
-    0x840015ac      0x4    sd s0,176(sp)         ; stack access
-    0x840015ae      0x6    sd s1,168(sp)         ; stack access
-    0x840015b0      0x8    sd s2,160(sp)         ; stack access
-    0x840015b2      0xa    sd s3,152(sp)         ; stack access
-    0x840015b4      0xc    sd s4,144(sp)         ; stack access
-    0x840015b6      0xe    sd s5,136(sp)         ; stack access
-    0x840015b8     0x10    sd s6,128(sp)         ; stack access
-    0x840015ba     0x12    sd s7,120(sp)         ; stack access
-    0x840015bc     0x14    sd s8,112(sp)         ; stack access
-    0x840015be     0x16    sd s9,104(sp)         ; stack access
-    0x840015c0     0x18    sd s10,96(sp)         ; stack access
-    0x840015c2     0x1a    sd s11,88(sp)         ; stack access
-    0x840015c4     0x1c    sd a0,32(sp)          ; stack access
-    0x840015c6     0x1e    sd a1,40(sp)          ; stack access
-    0x840015c8     0x20    beq a4,a3,ffffffff840016b6 <create_untypeds_for_region+0x10e>
-    0x840015cc     0x24    mv s10,a2
-    0x840015ce     0x26    mv s8,a5
-    0x840015d0     0x28    mv s1,a3
-    0x840015d2     0x2a    mv s3,a4
-    0x840015d4     0x2c    slli s9,a2,0x6
-    0x840015d8     0x30    andi s9,s9,64
-    0x840015dc     0x34    li s6,63
-    0x840015e0     0x38    li s5,38
-    0x840015e4     0x3c    auipc s7,0x1
-    0x840015e8     0x40    addi s7,s7,1460 # ffffffff84002b98 <ndks_boot>
-    0x840015ec     0x44    li s4,1
-    0x840015ee     0x46    slli s11,s4,0x26
-    0x840015f2     0x4a    li a5,-1
-    0x840015f4     0x4c    srli a5,a5,0x19
-    0x840015f6     0x4e    sd a5,0(sp)           ; stack access
-    0x840015f8     0x50    slli a5,s4,0x3c
-    0x840015fc     0x54    sd a5,8(sp)           ; stack access
-    0x840015fe     0x56    j ffffffff84001624 <create_untypeds_for_region+0x7c>
-    0x84001600     0x58    mv s0,s5
-    0x84001602     0x5a    ld a5,32(sp)          ; stack access
-    0x84001604     0x5c    sd a5,48(sp)          ; stack access
-    0x84001606     0x5e    ld a5,40(sp)          ; stack access
-    0x84001608     0x60    sd a5,56(sp)          ; stack access
-    0x8400160a     0x62    ld a5,576(s7)
-    0x8400160e     0x66    sub a5,a5,s8
-    0x84001612     0x6a    li a4,49
-    0x84001616     0x6e    bgeu a4,a5,ffffffff84001652 <create_untypeds_for_region+0xaa>
-    0x8400161a     0x72    sll s0,s4,s0
-    0x8400161e     0x76    add s1,s1,s0
-    0x84001620     0x78    beq s3,s1,ffffffff84001696 <create_untypeds_for_region+0xee>
-    0x84001624     0x7c    sub a0,s3,s1
-    0x84001628     0x80    jal ra,ffffffff840170b6 <__clzdi2>
-    0x8400162c     0x84    sext.w a0,a0
-    0x8400162e     0x86    sub s2,s6,a0
-    0x84001632     0x8a    mv s0,s2
-    0x84001634     0x8c    beqz s1,ffffffff84001640 <create_untypeds_for_region+0x98>
-    0x84001636     0x8e    mv a0,s1
-    0x84001638     0x90    jal ra,ffffffff840170d4 <__ctzdi2>
-    0x8400163c     0x94    sext.w s0,a0
-    0x84001640     0x98    bgeu s2,s0,ffffffff84001646 <create_untypeds_for_region+0x9e>
-    0x84001644     0x9c    mv s0,s2
-    0x84001646     0x9e    bltu s5,s0,ffffffff84001600 <create_untypeds_for_region+0x58>
-    0x8400164a     0xa2    li a5,3
-    0x8400164c     0xa4    bgeu a5,s0,ffffffff8400161a <create_untypeds_for_region+0x72>
-    0x84001650     0xa8    j ffffffff84001602 <create_untypeds_for_region+0x5a>
-    0x84001652     0xaa    slli a5,a5,0x4
-    0x84001654     0xac    ld a4,568(s7)
-    0x84001658     0xb0    add a5,a5,a4
-    0x8400165a     0xb2    sd zero,176(a5)
-    0x8400165e     0xb6    add a4,s1,s11
-    0x84001662     0xba    sd a4,168(a5)
-    0x84001664     0xbc    sb s0,176(a5)
-    0x84001668     0xc0    sb s10,177(a5)
-    0x8400166c     0xc4    ld a5,0(sp)           ; stack access
-    0x8400166e     0xc6    and a2,s1,a5
-    0x84001672     0xca    addiw a5,s0,-4
-    0x84001676     0xce    sll a5,s4,a5
-    0x8400167a     0xd2    slli a5,a5,0x19
-    0x8400167c     0xd4    andi a3,s0,63
-    0x84001680     0xd8    or a3,a3,s9
-    0x84001684     0xdc    ld a4,8(sp)           ; stack access
-    0x84001686     0xde    or a2,a2,a4
-    0x84001688     0xe0    or a3,a3,a5
-    0x8400168a     0xe2    ld a0,48(sp)          ; stack access
-    0x8400168c     0xe4    ld a1,56(sp)          ; stack access
-    0x8400168e     0xe6    jal ra,ffffffff84000e36 <provide_cap>
-    0x84001692     0xea    bnez a0,ffffffff8400161a <create_untypeds_for_region+0x72>
-    0x84001694     0xec    j ffffffff84001698 <create_untypeds_for_region+0xf0>
-    0x84001696     0xee    li a0,1
-    0x84001698     0xf0    ld ra,184(sp)         ; stack access
-    0x8400169a     0xf2    ld s0,176(sp)         ; stack access
-    0x8400169c     0xf4    ld s1,168(sp)         ; stack access
-    0x8400169e     0xf6    ld s2,160(sp)         ; stack access
-    0x840016a0     0xf8    ld s3,152(sp)         ; stack access
-    0x840016a2     0xfa    ld s4,144(sp)         ; stack access
-    0x840016a4     0xfc    ld s5,136(sp)         ; stack access
-    0x840016a6     0xfe    ld s6,128(sp)         ; stack access
-    0x840016a8    0x100    ld s7,120(sp)         ; stack access
-    0x840016aa    0x102    ld s8,112(sp)         ; stack access
-    0x840016ac    0x104    ld s9,104(sp)         ; stack access
-    0x840016ae    0x106    ld s10,96(sp)         ; stack access
-    0x840016b0    0x108    ld s11,88(sp)         ; stack access
-    0x840016b2    0x10a    addi sp,sp,192
-    0x840016b4    0x10c    ret
-    0x840016b6    0x10e    li a0,1
-    0x840016b8    0x110    j ffffffff84001698 <create_untypeds_for_region+0xf0>
-
-Proving inst theorems
----------------------
-
-<<HOL message: inventing new type variable names: 'a>>
-<<HOL message: inventing new type variable names: 'a>>
-<<HOL message: inventing new type variable names: 'a>>
-<<HOL message: inventing new type variable names: 'a>>
-<<HOL message: inventing new type variable names: 'a>>
-<<HOL message: inventing new type variable names: 'a>>
-<<HOL message: inventing new type variable names: 'a>>
-<<HOL message: inventing new type variable names: 'a>>
-103 inst theorems describe instructions.
-
-Evaluating graph
-----------------
-
-The graph for `create_untypeds_for_region` has 167 nodes.
 
 Section create_it_address_space (239 of 270)
 ============================================
