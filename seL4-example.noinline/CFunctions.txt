@@ -3086,7 +3086,7 @@ Function Kernel_C.getObjectSize 6 t___unsigned_long#v Word 64 userObjSize___unsi
 2 Cond 1 Err Op False Bool 0
 3 Basic 1 0
 4 Basic 3 1 ret__unsigned_long#v Word 64 Var rv#space#ret__unsigned_long#v Word 64
-5 Call 4 Kernel_C.Arch_getObjectSize 1 Var t___unsigned_long#v Word 64 1 rv#space#ret__unsigned_long#v Word 64
+5 Call 4 Kernel_C.Arch_getObjectSize 5 Var t___unsigned_long#v Word 64 Var Mem Mem Var HTD HTD Var PMS PMS Var GhostAssertions WordArray 50 64 1 rv#space#ret__unsigned_long#v Word 64
 6 Basic 1 1 ret__unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 10 Word 32
 7 Basic 1 1 ret__unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 4 Word 32
 8 Basic 1 1 ret__unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 5 Word 32
@@ -6086,18 +6086,21 @@ Function Kernel_C.switchToThread_fp 7 thread___ptr_to_struct_tcb_C#v Word 64 vro
 8 Cond 7 Err Op And Bool 2 Op SignedLess Bool 2 Num 0 Word 32 Num 1 Word 32 Op SignedLessEquals Bool 2 Num 0 Word 32 Num 0 Word 32
 EntryPoint 8
 
-Function Kernel_C.Arch_getObjectSize 1 t___unsigned_long#v Word 64 1 ret__unsigned_long#v Word 64
+Function Kernel_C.Arch_getObjectSize 5 t___unsigned_long#v Word 64 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64 1 ret__unsigned_long#v Word 64
 1 Basic Ret 0
 2 Cond 1 Err Op False Bool 0
 3 Basic 1 1 ret__unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 12 Word 32
 4 Basic 1 1 ret__unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 21 Word 32
 5 Basic 1 1 ret__unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 30 Word 32
 6 Basic 1 1 ret__unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 0 Word 32
-7 Cond 6 2 Op True Bool 0
-8 Cond 5 7 Op Or Bool 2 Op Equals Bool 2 Var t___unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 5 Word 32 Op False Bool 0
-9 Cond 4 8 Op Or Bool 2 Op Equals Bool 2 Var t___unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 7 Word 32 Op False Bool 0
-10 Cond 3 9 Op Or Bool 2 Op Equals Bool 2 Var t___unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 8 Word 32 Op Or Bool 2 Op Equals Bool 2 Var t___unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 6 Word 32 Op False Bool 0
-EntryPoint 10
+7 Cond 6 Err Op False Bool 0
+8 Call 7 Kernel_C.halt 4 Var Mem Mem Var HTD HTD Var PMS PMS Var GhostAssertions WordArray 50 64 0
+9 Cond 8 Err Op False Bool 0
+10 Cond 9 2 Op True Bool 0
+11 Cond 5 10 Op Or Bool 2 Op Equals Bool 2 Var t___unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 5 Word 32 Op False Bool 0
+12 Cond 4 11 Op Or Bool 2 Op Equals Bool 2 Var t___unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 7 Word 32 Op False Bool 0
+13 Cond 3 12 Op Or Bool 2 Op Equals Bool 2 Var t___unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 8 Word 32 Op Or Bool 2 Op Equals Bool 2 Var t___unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 6 Word 32 Op False Bool 0
+EntryPoint 13
 
 Function Kernel_C.Arch_maskCapRights 3 cap_rights_mask___struct_seL4_CapRights_C#v.words_C.0 Word 64 cap___struct_cap_C#v.words_C.0 Word 64 cap___struct_cap_C#v.words_C.1 Word 64 2 ret__struct_cap_C#v.words_C.0 Word 64 ret__struct_cap_C#v.words_C.1 Word 64
 1 Basic Ret 0

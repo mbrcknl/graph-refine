@@ -161,6 +161,14 @@ report.txt: StackBounds.txt ${GRAPH_REFINE_INPUTS}
 
 default: report.txt
 
+ASMFunctions_checked.txt: ASMFunctions.txt
+	python check_addr.py ASMFunctions.txt kernel.elf.txt ASMFunctions_checked.txt
+
+riscv: ASMFunctions.txt CFunctions.txt kernel.elf.rodata kernel.elf.symtab ASMFunctions_checked.txt
+
+.PHONY: riscv
+
+
 .PHONY: .FORCE
 .FORCE:
 

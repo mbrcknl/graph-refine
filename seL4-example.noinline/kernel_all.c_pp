@@ -13356,7 +13356,7 @@ word_t Arch_getObjectSize(word_t t)
 
 
     default:
-//        fail("Invalid object type");
+        halt();
         return 0;
     }
 }
