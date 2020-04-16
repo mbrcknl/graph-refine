@@ -1,0 +1,259 @@
+ffffffff840100da l     F .text	0000000000000024 pte_next Y
+ffffffff840100fe l     F .text	0000000000000060 findVSpaceForASID Y
+ffffffff84000026 l     F .boot	0000000000000070 merge_regions F complex_loop
+ffffffff8401015e l     F .text	0000000000000092 fastpath_restore N/A
+ffffffff84011848 l     F .text	0000000000000080 emptySlot Y 0.39
+ffffffff840128e4 l     F .text	0000000000000074 scheduleChooseNewThread Y
+ffffffff84013e74 l     F .text	0000000000000042 handleReply Y 0.20
+ffffffff840143fa l     F .text	000000000000017a handleRecv Y 0.97 ? L
+ffffffff8401678c l     F .text	0000000000000130 handleInvocation Y 0.95 F Exception
+ffffffff84002382 l     F .boot	000000000000002e alloc_rootserver_obj Y 0.14
+ffffffff840023b0 l     F .boot	000000000000002e maybe_alloc_extra_bi Y
+ffffffff84015224 g     F .text	0000000000000098 decodeWriteRegisters Y 0.41 ? L
+ffffffff84016f08 g     F .text	000000000000001e c_handle_syscall ?
+ffffffff840114fe g     F .text	000000000000005a cteMove Y 0.32
+ffffffff8400281e g     F .boot	0000000000000368 init_kernel Y 2.19 F satp_inline issue
+ffffffff84011fa6 g     F .text	0000000000000058 isFinalCapability Y
+ffffffff840117bc g     F .text	000000000000001a isIRQActive Y
+ffffffff84013aea g     F .text	0000000000000016 deleteCallerCap Y
+ffffffff84010bf8 g     F .text	0000000000000048 Arch_maskCapRights Y
+ffffffff84010b06 g     F .text	000000000000001e maskInterrupt Y 0.07 N inline
+ffffffff84013b00 g     F .text	0000000000000094 lookupExtraCaps Y
+ffffffff8401422a g     F .text	000000000000002a performInvocation_Endpoint Y
+ffffffff84012292 g     F .text	000000000000007a createNewObjects Y
+ffffffff840108e2 g     F .text	000000000000000e Arch_switchToThread Y
+ffffffff84010b84 g     F .text	000000000000006a Arch_deriveCap Y 0.26
+ffffffff84015850 g     F .text	00000000000008de decodeRISCVMMUInvocation Y 5.34
+ffffffff84012866 g     F .text	000000000000007e chooseThread Y 0.31 F
+ffffffff84014642 g     F .text	0000000000000156 invokeTCB_ThreadControl Y
+ffffffff84000982 g     F .boot	000000000000000a initLocalIRQController Y
+ffffffff84000966 g     F .boot	0000000000000002 map_kernel_devices Y
+ffffffff8400158c g     F .boot	000000000000001c init_core_state Y
+ffffffff840016ba g     F .boot	0000000000000098 create_device_untypeds Y
+ffffffff84000fa6 g     F .boot	000000000000025a create_it_address_space F underspecified
+ffffffff8401273a g     F .text	0000000000000054 timerTick Y
+ffffffff8401078e g     F .text	0000000000000092 unmapPage Y 0.44 F sfence.vma inline
+ffffffff840125ba g     F .text	0000000000000048 possibleSwitchTo Y
+ffffffff84014632 g     F .text	0000000000000010 invokeTCB_Resume Y
+ffffffff84011ffe g     F .text	000000000000003a slotCapLongRunningDelete Y
+ffffffff84013c02 g     F .text	0000000000000198 doNormalTransfer Y 1.17 F Exception 
+ffffffff840117ba g     F .text	0000000000000002 invokeIRQHandler_AckIRQ Y
+ffffffff840104d4 g     F .text	000000000000015c handleFaultReply Y
+ffffffff84010a5e g     F .text	0000000000000066 performPageInvocationUnmap Y
+ffffffff84012a8e g     F .text	0000000000000048 setDomain Y
+ffffffff840131a6 g     F .text	0000000000000084 cteRevoke ? L
+ffffffff84011e8c g     F .text	0000000000000040 ensureNoChildren Y
+ffffffff84010630 g     F .text	0000000000000052 lookupPTSlot Y
+ffffffff8401163e g     F .text	0000000000000048 invokeCNodeRotate Y
+ffffffff84002144 g     F .boot	0000000000000020 create_idle_thread Y
+ffffffff84012406 g     F .text	000000000000001c setThreadState Y
+ffffffff840123ce g     F .text	0000000000000038 scheduleTCB Y
+ffffffff8400095c g     F .boot	000000000000000a get_avail_p_regs Y
+ffffffff84011308 g     F .text	000000000000001a lookupPivotSlot Y
+ffffffff84016f5c g     F .text	0000000000000018 memcpy Y
+ffffffff8401098e g     F .text	0000000000000016 isValidVTableRoot Y
+ffffffff8401388c g     F .text	00000000000000fc sendSignal Y
+ffffffff8400019e g     F .boot	0000000000000016 create_unmapped_it_frame_cap Y
+ffffffff840121d4 g     F .text	00000000000000be createObject Y
+ffffffff840024c8 g     F .boot	0000000000000356 init_freemem Y 2.15 F L
+ffffffff84012844 g     F .text	0000000000000022 switchToThread Y
+ffffffff840155d0 g     F .text	00000000000000fe setMRs_syscall_error Y
+ffffffff8401370e g     F .text	000000000000003c invokeIRQHandler_SetIRQHandler Y
+ffffffff84012b3c g     F .text	0000000000000036 tcbEPDequeue Y
+ffffffff84013238 g     F .text	00000000000004a2 decodeCNodeInvocation Y 3.10 F
+ffffffff84012038 g     F .text	0000000000000092 updateCapData Y 0.39 F loop
+ffffffff84011322 g     F .text	000000000000003c doFaultTransfer Y
+ffffffff840114ee g     F .text	0000000000000010 invokeCNodeInsert Y
+ffffffff84014574 g     F .text	00000000000000ae decodeDomainInvocation Y
+ffffffff840153a4 g     F .text	0000000000000052 decodeUnbindNotification Y
+ffffffff8400098c g     F .boot	0000000000000002 initIRQController Y
+ffffffff84013a80 g     F .text	0000000000000010 performInvocation_Notification Y
+ffffffff84010f66 g     F .text	0000000000000032 Arch_getObjectSize Y
+ffffffff84014046 g     F .text	00000000000000ea sendFaultIPC Y 0.65 F L
+ffffffff8401102e g     F .text	0000000000000008 Arch_isFrameType Y
+ffffffff84012dd8 g     F .text	0000000000000038 suspend Y
+ffffffff84010a48 g     F .text	0000000000000016 performPageInvocationMapPTE Y
+ffffffff84011f4e g     F .text	0000000000000058 sameObjectAs Y
+ffffffff840117fe g     F .text	0000000000000038 invokeIRQControl Y
+ffffffff8401239a g     F .text	0000000000000034 rescheduleRequired Y
+ffffffff84011e14 g     F .text	0000000000000078 isMDBParentOf Y
+ffffffff84012c5e g     F .text	0000000000000028 invokeCNodeCancelBadgedSends Y 0.14
+ffffffff840017ca g     F .boot	000000000000094c create_initial_thread Y ? 6.05
+ffffffff8401179c g     F .text	0000000000000014 loadCapTransfer Y 0.07
+ffffffff840168bc g     F .text	00000000000000b8 handleSyscall F
+ffffffff840109ec g     F .text	0000000000000046 maskVMRights Y
+ffffffff8401193a g     F .text	0000000000000048 getObjectSize Y
+ffffffff84012958 g     F .text	0000000000000136 schedule Y
+ffffffff84013b94 g     F .text	000000000000006e copyMRs Y
+ffffffff84000096 g     F .boot	0000000000000020 Arch_configureIdleThread Y
+ffffffff840136da g     F .text	0000000000000034 cteDeleteOne Y 0.16 F
+ffffffff840157d0 g     F .text	0000000000000012 memzero Y 0.07
+ffffffff840141c0 g     F .text	0000000000000036 handleVMFaultEvent Y 0.12 F
+ffffffff84010ac4 g     F .text	0000000000000006 getRestartPC Y 0.03
+ffffffff84015706 g     F .text	0000000000000026 strnlen Y 0.09
+ffffffff84013a52 g     F .text	0000000000000022 handleInterruptEntry Y 0.06 F
+ffffffff840113c2 g     F .text	000000000000012c cteInsert Y 0.72  F
+ffffffff84010682 g     F .text	0000000000000062 handleVMFault Y 0.27
+ffffffff840102e4 g     F .text	0000000000000136 setMRs_fault Y
+ffffffff84011982 g     F .text	0000000000000032 hasCancelSendRights Y 0.14
+ffffffff84011922 g     F .text	0000000000000018 bindNotification Y 0.07
+ffffffff84011728 g     F .text	0000000000000016 ensureEmptySlot Y 0.08
+ffffffff8401138a g     F .text	0000000000000038 preemptionPoint Y 0.06
+ffffffff84014622 g     F .text	0000000000000010 invokeTCB_Suspend Y 0.04
+ffffffff8401230c g     F .text	000000000000008e tcbSchedEnqueue Y 0.48
+ffffffff84016c1a g     F .text	00000000000002ee fastpath_reply_recv
+ffffffff840157e2 g     F .text	000000000000006e performPageTableInvocationUnmap Y 0.30
+ffffffff840118e8 g     F .text	0000000000000026 unbindMaybeNotification Y 0.13
+ffffffff8401506c g     F .text	00000000000000a8 decodeReadRegisters Y
+ffffffff84001752 g     F .boot	000000000000005e create_kernel_untypeds Y
+ffffffff84001200 g     F .boot	00000000000000d6 create_frames_of_region Y 0.56
+ffffffff84014aee g     F .text	00000000000000ea decodeSetSchedParams Y 0.71
+ffffffff840118c8 g     F .text	0000000000000020 completeSignal Y 0.12
+ffffffff84012432 g     F .text	000000000000003e activateThread Y
+ffffffff840119b4 g     F .text	0000000000000460 sameRegionAs Y
+ffffffff8401278e g     F .text	00000000000000b6 tcbSchedDequeue Y
+ffffffff84010b2e g     F .text	0000000000000002 plat_cleanL2Range
+ffffffff840015a8 g     F .boot	0000000000000112 create_untypeds_for_region F complex loops Y
+ffffffff84013a9c g     F .text	000000000000000c setExtraBadge Y 0.04
+ffffffff840017b0 g     F .boot	000000000000001a bi_finalise Y
+ffffffff8401706c g     F .text	0000000000000028 __clzsi2
+ffffffff840000e4 g     F .boot	00000000000000ba map_kernel_window Y 0.44
+ffffffff840000b6 g     F .boot	000000000000002e map_kernel_frame Y
+ffffffff84012b72 g     F .text	00000000000000ec cancelBadgedSends Y 0.52 F
+ffffffff84011190 g     F .text	000000000000003a lookupCap Y 0.23
+ffffffff84010ebe g     F .text	00000000000000a8 Arch_sameObjectAs Y 0.49 F
+ffffffff84012422 g     F .text	0000000000000010 handleDoubleFault Y
+ffffffff840124d6 g     F .text	00000000000000e4 receiveSignal Y
+ffffffff840153f6 g     F .text	00000000000001da decodeTCBInvocation F
+ffffffff8400068c g     F .boot	000000000000028c map_it_frame_cap Y 1.67 F
+ffffffff8401190e g     F .text	0000000000000014 unbindNotification Y 0.06
+ffffffff840102b2 g     F .text	0000000000000032 Arch_setMRs_fault Y 0.13
+ffffffff84000e36 g     F .boot	0000000000000170 provide_cap Y 1.04
+ffffffff84012640 g     F .text	000000000000006c cancelAllSignals Y 0.30
+ffffffff8401572c g     F .text	000000000000003e strlcpy Y
+ffffffff84016f74 g     F .text	0000000000000044 strncmp Y
+ffffffff840111ca g     F .text	000000000000003e lookupCapAndSlot Y 0.16
+ffffffff84012fcc g     F .text	00000000000001ca cteDelete F
+ffffffff8401612e g     F .text	0000000000000024 Arch_decodeInvocation Y 0.10
+ffffffff84011384 g     F .text	0000000000000006 setMCPriority Y 0.03
+ffffffff84011036 g     F .text	0000000000000004 Arch_decodeTransfer Y
+ffffffff8401041a g     F .text	0000000000000002 Arch_activateIdleThread Y
+ffffffff84000958 g     F .boot	0000000000000004 get_num_avail_p_regs Y 0.01
+ffffffff84000b22 g     F .boot	0000000000000012 write_slot Y 0.06
+ffffffff84010aca g     F .text	0000000000000006 setNextPC Y 0.00
+ffffffff840106e4 g     F .text	00000000000000aa unmapPageTable Y 0.48 F sfence_vma
+ffffffff84015114 g     F .text	0000000000000110 invokeTCB_WriteRegisters Y
+ffffffff840152d4 g     F .text	00000000000000d0 decodeBindNotification Y 0.61
+ffffffff84013ed6 g     F .text	0000000000000170 sendIPC Y 0.94 F
+ffffffff84011208 g     F .text	00000000000000cc lookupSlotForCNodeOp Y 0.52
+ffffffff8401103a g     F .text	0000000000000004 Arch_performTransfer Y 0.01
+ffffffff840022d8 g     F .boot	00000000000000aa populate_bi_frame Y
+ffffffff84012b1e g     F .text	000000000000001e tcbEPAppend Y
+ffffffff840170d6 g     F .text	0000000000000022 __ctzdi2
+ffffffff84014bd8 g     F .text	00000000000000b8 decodeSetIPCBuffer Y 0.58
+ffffffff84014c90 g     F .text	000000000000017e decodeSetSpace Y 1.14 F
+ffffffff84014150 g     F .text	0000000000000030 handleUnknownSyscall Y 0.14 F sat
+ffffffff84010bee g     F .text	000000000000000a Arch_updateCapData Y
+ffffffff84010820 g     F .text	00000000000000c2 setVMRoot Y 0.54
+ffffffff84016f26 g     F .text	0000000000000036 memset Y
+ffffffff84010c40 g     F .text	0000000000000110 Arch_finaliseCap Y 0.78 F
+ffffffff84000968 g     F .boot	0000000000000018 initTimer F underspecifed
+ffffffff84010d50 g     F .text	000000000000016e Arch_sameRegionAs Y 0.94
+ffffffff840141f6 g     F .text	0000000000000034 c_handle_exception F
+ffffffff8401576a g     F .text	0000000000000066 strlcat Y
+ffffffff8400098e g     F .boot	0000000000000120 reserve_region Y
+ffffffff84000450 g     F .boot	000000000000023c map_it_pt_cap Y 1.53 F
+ffffffff8401698c g     F .text	000000000000028e fastpath_call ?
+ffffffff84012c86 g     F .text	0000000000000070 cancelSignal Y 0.30
+ffffffff840012d6 g     F .boot	00000000000002b6 create_it_asid_pool Y
+ffffffff8401374a g     F .text	000000000000001e invokeIRQHandler_ClearIRQHandler Y 0.08
+ffffffff84010b24 g     F .text	000000000000000a ackInterrupt Y
+ffffffff84013d9a g     F .text	0000000000000066 doIPCTransfer Y 0.32 ?
+ffffffff84012470 g     F .text	0000000000000066 decodeIRQControlInvocation Y 0.30 F
+ffffffff84016fb8 g     F .text	0000000000000040 char_to_long Y 0.14
+ffffffff840102a0 g     F .text	0000000000000012 Arch_handleFaultReply Y 0.04
+ffffffff840112d4 g     F .text	000000000000001a lookupSourceSlot Y
+ffffffff84010444 g     F .text	0000000000000090 lookupIPCBuffer Y 0.44
+ffffffff84014798 g     F .text	00000000000001ce decodeTCBConfigure ?
+ffffffff840100d4 g     F .text	0000000000000006 idle_thread Y ?
+ffffffff8401041e g     F .text	0000000000000026 copyGlobalMappings Y
+ffffffff84002116 g     F .boot	000000000000002e configureIdleThread Y 0.04
+ffffffff8401322a g     F .text	000000000000000e invokeCNodeRevoke Y 0.03
+ffffffff84016152 g     F .text	0000000000000112 invokeUntyped_Retype Y 0.85 F crrs_sip
+ffffffff8401102c g     F .text	0000000000000002 Arch_prepareThreadDelete Y
+ffffffff84013aa8 g     F .text	0000000000000042 setupCallerCap Y 0.10
+ffffffff84016542 g     F .text	000000000000024a decodeInvocation F
+ffffffff8401135e g     F .text	0000000000000006 doNBRecvFailedTransfer Y
+ffffffff84010f98 g     F .text	0000000000000094 Arch_createObject Y 0.48
+ffffffff84010908 g     F .text	0000000000000040 deleteASIDPool Y 0.16
+ffffffff84011836 g     F .text	0000000000000012 deletedIRQHandler Y 0.04
+ffffffff840117d6 g     F .text	0000000000000028 setIRQState Y
+ffffffff84013a74 g     F .text	000000000000000c c_handle_interrupt F
+ffffffff84010a32 g     F .text	0000000000000016 performPageTableInvocationMap Y 0.06 F
+ffffffff8401173e g     F .text	000000000000005e getReceiveSlots Y
+ffffffff840001b4 g     F .boot	000000000000002e arch_get_n_paging Y 0.16
+ffffffff84000b34 g     F .boot	000000000000003c create_root_cnode Y
+ffffffff84000aae g     F .boot	0000000000000074 insert_region Y 0.41
+ffffffff8401116e g     F .text	0000000000000022 lookupSlot Y
+ffffffff840101f0 g     F .text	00000000000000a4 restore_user_context F UF
+ffffffff84013e00 g     F .text	0000000000000074 doReplyTransfer Y 0.36 ?
+ffffffff84000208 g     F .boot	0000000000000248 write_it_asid_pool Y
+ffffffff84014130 g     F .text	0000000000000020 handleFault Y 0.10
+ffffffff84013768 g     F .text	00000000000000c6 decodeIRQHandlerInvocation Y 0.49 F
+ffffffff84010948 g     F .text	0000000000000046 deleteASID Y 0.19 F
+ffffffff84014e0e g     F .text	00000000000000ac invokeTCB_CopyRegisters Y
+ffffffff8401170a g     F .text	000000000000001e setupReplyMaster Y 0.07
+ffffffff84014eba g     F .text	00000000000000a0 decodeCopyRegisters ?
+ffffffff840109a4 g     F .text	0000000000000048 checkValidIPCBuffer Y 0.24
+ffffffff84010b36 g     F .text	0000000000000016 Arch_checkIRQ Y 0.04
+ffffffff84000dfc g     F .boot	000000000000003a calculate_extra_bi_size_bits Y
+ffffffff8401103e g     F .text	0000000000000130 resolveAddressBits Y 0.74 F
+ffffffff84012e10 g     F .text	00000000000001bc finaliseCap Y 1.14
+ffffffff84010b34 g     F .text	0000000000000002 handleSpuriousIRQ Y 0.01
+ffffffff84000918 g     F .boot	0000000000000040 create_mapped_it_frame_cap Y 0.20
+ffffffff840115b0 g     F .text	000000000000008e cteSwap Y
+ffffffff84017094 g     F .text	0000000000000024 __ctzsi2
+ffffffff84013eb6 g     F .text	0000000000000020 performInvocation_Reply Y 0.10
+ffffffff84010294 g     F .text	000000000000000c halt S
+ffffffff84014966 g     F .text	00000000000000c4 decodeSetPriority Y
+ffffffff8401382e g     F .text	000000000000001e deletingIRQHandler Y 0.08
+ffffffff84011568 g     F .text	0000000000000048 invokeCNodeSaveCaller Y
+ffffffff840001e2 g     F .boot	0000000000000026 activate_kernel_vspace Y 0.07 F
+ffffffff84014254 g     F .text	00000000000001a6 receiveIPC Y 1.1 F
+ffffffff84000980 g     F .boot	0000000000000002 initL2Cache Y 0.01
+ffffffff84011ecc g     F .text	0000000000000082 deriveCap Y
+ffffffff840116aa g     F .text	0000000000000060 insertNewCap Y
+ffffffff84012ad6 g     F .text	0000000000000048 setPriority Y 0.18
+ffffffff8401384c g     F .text	0000000000000040 restart Y 0.20
+ffffffff840126ac g     F .text	000000000000008e tcbSchedAppend Y 0.48
+ffffffff8401041c g     F .text	0000000000000002 Arch_postModifyRegisters Y
+ffffffff84000b70 g     F .boot	0000000000000130 create_domain_cap Y 0.78
+ffffffff84002164 g     F .boot	0000000000000174 create_ipcbuf_frame_cap Y 1.02 F sfence.vma
+ffffffff84016ff8 g     F .text	0000000000000074 str_to_long Y 0.37
+ffffffff84014f5a g     F .text	0000000000000112 invokeTCB_ReadRegisters Y 0.78 F loop
+ffffffff84013988 g     F .text	00000000000000ca handleInterrupt Y 0.50 F rdtime
+ffffffff840156ce g     F .text	0000000000000038 replyFromKernel_error Y
+ffffffff84011558 g     F .text	0000000000000010 invokeCNodeMove Y 0.06
+ffffffff840108f0 g     F .text	0000000000000018 Arch_switchToIdleThread Y
+ffffffff84012cf6 g     F .text	00000000000000e2 cancelIPC Y
+ffffffff84010b32 g     F .text	0000000000000002 plat_cleanInvalidateL2Range Y 0.00
+ffffffff84012602 g     F .text	000000000000003e cancelAllIPC Y
+ffffffff84013196 g     F .text	0000000000000010 invokeCNodeDelete Y
+ffffffff84016974 g     F .text	0000000000000018 slowpath
+ffffffff840170b8 g     F .text	000000000000001e __clzdi2
+ffffffff84014180 g     F .text	0000000000000040 handleUserLevelFault Y 0.19 F satp
+ffffffff84000ca0 g     F .boot	000000000000015c create_bi_frame_cap Y
+ffffffff84010b30 g     F .text	0000000000000002 plat_invalidateL2Range Y 0
+ffffffff84013a90 g     F .text	000000000000000c getExtraCPtr Y
+ffffffff840112ee g     F .text	000000000000001a lookupTargetSlot Y 0.07
+ffffffff84014a2a g     F .text	00000000000000c4 decodeSetMCPriority Y 0.58
+ffffffff840023de g     F .boot	00000000000000ea create_rootserver_objects Y 0.52
+ffffffff84011364 g     F .text	0000000000000020 switchToIdleThread Y 0.08
+ffffffff84010b4c g     F .text	0000000000000038 Arch_decodeIRQControlInvocation Y
+ffffffff84011686 g     F .text	0000000000000024 capSwapForDelete Y 0.08
+ffffffff84010ad0 g     F .text	000000000000002c getActiveIRQ Y 0.13
+ffffffff84010afc g     F .text	000000000000000a isIRQPending Y 0.04
+ffffffff840117b0 g     F .text	000000000000000a replyFromKernel_success_empty Y
+ffffffff84016264 g     F .text	00000000000002de decodeUntypedInvocation Y 1.97
+ffffffff840152bc g     F .text	0000000000000018 invokeTCB_NotificationControl Y 0.06
+ffffffff840120ca g     F .text	000000000000010a maskCapRights Y 0.70

@@ -1,0 +1,6 @@
+FunctionHash 6170259731717480193
+StackBound instruction'csrrs_a5_sie_a5_84010B1E Num 0 Word 64
+StackBound deletedIRQHandler Num 32 Word 64
+StackBound setIRQState Num 16 Word 64
+StackBound maskInterrupt Num 0 Word 64
+StackBound instruction'csrrc_a5_sie_a5_84010B14 Num 0 Word 64

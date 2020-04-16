@@ -1,0 +1,38 @@
+Function char_to_long 44 ret Word 64 r0 Word 64 r1 Word 64 r2 Word 64 r3 Word 64 r4 Word 64 r5 Word 64 r6 Word 64 r7 Word 64 r8 Word 64 r9 Word 64 r10 Word 64 r11 Word 64 r12 Word 64 r13 Word 64 r14 Word 64 r15 Word 64 r16 Word 64 r17 Word 64 r18 Word 64 r19 Word 64 r20 Word 64 r21 Word 64 r22 Word 64 r23 Word 64 r24 Word 64 r25 Word 64 r26 Word 64 r27 Word 64 r28 Word 64 r29 Word 64 r30 Word 64 r31 Word 64 mode Word 64 n Bool z Bool c Bool v Bool mem Mem dom Dom stack Mem dom_stack Dom clock Word 64 ret_addr_input Word 64 43 r0 Word 64 r1 Word 64 r2 Word 64 r3 Word 64 r4 Word 64 r5 Word 64 r6 Word 64 r7 Word 64 r8 Word 64 r9 Word 64 r10 Word 64 r11 Word 64 r12 Word 64 r13 Word 64 r14 Word 64 r15 Word 64 r16 Word 64 r17 Word 64 r18 Word 64 r19 Word 64 r20 Word 64 r21 Word 64 r22 Word 64 r23 Word 64 r24 Word 64 r25 Word 64 r26 Word 64 r27 Word 64 r28 Word 64 r29 Word 64 r30 Word 64 r31 Word 64 mode Word 64 n Bool z Bool c Bool v Bool mem Mem dom Dom stack Mem dom_stack Dom clock Word 64 ret_addr_input Word 64
+0x8401702E Basic 0x84017032 1 r15 Word 64 Op WordCastSigned Word 64 1 Op WordCast Word 32 1 Op Plus Word 64 2 Var r10 Word 64 Num 18446744073709551568 Word 64
+#0x8401702E Basic 0x84017068 1 r15 Word 64 Op WordCastSigned Word 64 1 Op WordCast Word 32 1 Op Plus Word 64 2 Var r10 Word 64 Num 20 Word 64
+#0x8401702E Basic Ret 0 
+#0x8401702E Basic 0x84017032 1 r2 Word 64 Num 16 Word 64
+0x84017032 Basic 0x84017036 1 r15 Word 64 Op BWAnd Word 64 2 Num 255 Word 64 Var r15 Word 64
+0x84017036 Basic 0x84017038 1 r14 Word 64 Num 9 Word 64
+0x84017038 Cond 0x1 0x3 Op Not Bool 1 Op Less Bool 2 Var r14 Word 64 Var r15 Word 64
+0x1 Basic 0x8401705E 0
+0x3 Basic 0x8401703C 0 
+0x8401703C Basic 0x84017040 1 r15 Word 64 Op WordCastSigned Word 64 1 Op WordCast Word 32 1 Op Plus Word 64 2 Var r10 Word 64 Num 18446744073709551551 Word 64
+0x84017040 Basic 0x84017044 1 r15 Word 64 Op BWAnd Word 64 2 Num 255 Word 64 Var r15 Word 64
+0x84017044 Basic 0x84017046 1 r14 Word 64 Num 5 Word 64
+0x84017046 Cond 0x5 0x7 Op Not Bool 1 Op Less Bool 2 Var r14 Word 64 Var r15 Word 64
+0x5 Basic 0x84017064 0
+0x7 Basic 0x8401704A 0 
+0x8401704A Basic 0x8401704E 1 r15 Word 64 Op WordCastSigned Word 64 1 Op WordCast Word 32 1 Op Plus Word 64 2 Var r10 Word 64 Num 18446744073709551519 Word 64
+0x8401704E Basic 0x84017052 1 r15 Word 64 Op BWAnd Word 64 2 Num 255 Word 64 Var r15 Word 64
+0x84017052 Basic 0x84017054 1 r14 Word 64 Num 5 Word 64
+0x84017054 Cond 0x9 0xB Op Less Bool 2 Var r14 Word 64 Var r15 Word 64
+0x9 Basic 0x8401706A 0
+0xB Basic 0x84017058 0 
+0x84017058 Basic 0x8401705C 1 r10 Word 64 Op WordCastSigned Word 64 1 Op WordCast Word 32 1 Op Plus Word 64 2 Var r10 Word 64 Num 18446744073709551529 Word 64
+0x8401705C Cond 0xD Err Op And Bool 2 Op Equals Bool 2 Op BWAnd Word 64 2 Num 18446744073709551614 Word 64 Var r1 Word 64 Var ret Word 64 Op Equals Bool 2 Op BWAnd Word 64 2 Op BWAnd Word 64 2 Num 18446744073709551614 Word 64 Var r2 Word 64 Num 1 Word 64 Num 0 Word 64
+#0xD Basic Ret 0 
+0xD Basic 0x8401705E 1 r22 Word 64 Num 4 Word 64
+0x8401705E Basic 0x84017062 1 r10 Word 64 Op WordCastSigned Word 64 1 Op WordCast Word 32 1 Op Plus Word 64 2 Var r10 Word 64 Num 18446744073709551568 Word 64
+0x84017062 Cond 0xF Err Op And Bool 2 Op Equals Bool 2 Op BWAnd Word 64 2 Num 18446744073709551614 Word 64 Var r1 Word 64 Var ret Word 64 Op Equals Bool 2 Op BWAnd Word 64 2 Op BWAnd Word 64 2 Num 18446744073709551614 Word 64 Var r1 Word 64 Num 1 Word 64 Num 0 Word 64
+0xF Basic Ret 0 
+0x84017064 Basic 0x84017068 1 r10 Word 64 Op WordCastSigned Word 64 1 Op WordCast Word 32 1 Op Plus Word 64 2 Var r10 Word 64 Num 18446744073709551561 Word 64
+0x84017068 Cond 0x11 Err Op And Bool 2 Op Equals Bool 2 Op BWAnd Word 64 2 Num 18446744073709551614 Word 64 Var r1 Word 64 Var ret Word 64 Op Equals Bool 2 Op BWAnd Word 64 2 Op BWAnd Word 64 2 Num 18446744073709551614 Word 64 Var r1 Word 64 Num 1 Word 64 Num 0 Word 64
+0x11 Basic Ret 0 
+0x8401706A Basic 0x8401706C 1 r10 Word 64 Num 18446744073709551615 Word 64
+0x8401706C Cond 0x13 Err Op And Bool 2 Op Equals Bool 2 Op BWAnd Word 64 2 Num 18446744073709551614 Word 64 Var r1 Word 64 Var ret Word 64 Op Equals Bool 2 Op BWAnd Word 64 2 Op BWAnd Word 64 2 Num 18446744073709551614 Word 64 Var r1 Word 64 Num 1 Word 64 Num 0 Word 64
+0x13 Basic Ret 0 
+EntryPoint 0x8401702E
+#EntryPoint 0x84017031
+

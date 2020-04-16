@@ -1,0 +1,245 @@
+Struct Kernel_C.finaliseSlot_ret_C 32 8
+StructField status_C Word 64 0
+StructField success_C Word 64 8
+StructField cleanupInfo_C Struct Kernel_C.cap_C 16
+Struct Kernel_C.resolve_ret_C 24 8
+StructField frameBase_C Word 64 0
+StructField frameSize_C Word 32 8
+StructField valid_C Word 64 16
+Struct Kernel_C.AnonStruct1' 72 8
+StructField cnode_C Word 64 0
+StructField vspace_C Word 64 8
+StructField asid_pool_C Word 64 16
+StructField ipc_buf_C Word 64 24
+StructField boot_info_C Word 64 32
+StructField extra_bi_C Word 64 40
+StructField tcb_C Word 64 48
+StructField paging_C Struct Kernel_C.region_C 56
+Struct Kernel_C.create_frames_of_region_ret_C 24 8
+StructField region_C Struct Kernel_C.seL4_SlotRegion_C 0
+StructField success_C Word 64 16
+Struct Kernel_C.ndks_boot_C 592 8
+StructField reserved_C Array Struct Kernel_C.p_region_C 19 0
+StructField resv_count_C Word 64 304
+StructField freemem_C Array Struct Kernel_C.region_C 16 312
+StructField bi_frame_C Word 64 568
+StructField slot_pos_cur_C Word 64 576
+StructField slot_pos_max_C Word 64 584
+Struct Kernel_C.seL4_BootInfoHeader_C 16 8
+StructField id_C Word 64 0
+StructField len_C Word 64 8
+Struct Kernel_C.seL4_BootInfo_C 968 8
+StructField extraLen_C Word 64 0
+StructField nodeID_C Word 64 8
+StructField numNodes_C Word 64 16
+StructField numIOPTLevels_C Word 64 24
+StructField ipcBuffer_C Word 64 32
+StructField empty_C Struct Kernel_C.seL4_SlotRegion_C 40
+StructField sharedFrames_C Struct Kernel_C.seL4_SlotRegion_C 56
+StructField userImageFrames_C Struct Kernel_C.seL4_SlotRegion_C 72
+StructField userImagePaging_C Struct Kernel_C.seL4_SlotRegion_C 88
+StructField ioSpaceCaps_C Struct Kernel_C.seL4_SlotRegion_C 104
+StructField extraBIPages_C Struct Kernel_C.seL4_SlotRegion_C 120
+StructField initThreadCNodeSizeBits_C Word 64 136
+StructField initThreadDomain_C Word 64 144
+StructField untyped_C Struct Kernel_C.seL4_SlotRegion_C 152
+StructField untypedList_C Array Struct Kernel_C.seL4_UntypedDesc_C 50 168
+Struct Kernel_C.seL4_UntypedDesc_C 16 8
+StructField paddr_C Word 64 0
+StructField sizeBits_C Word 8 8
+StructField isDevice_C Word 8 9
+StructField padding_C Array Word 8 6 10
+Struct Kernel_C.seL4_SlotRegion_C 16 8
+StructField start_C Word 64 0
+StructField end_C Word 64 8
+Struct Kernel_C.resolveAddressBits_ret_C 24 8
+StructField status_C Word 64 0
+StructField slot_C Word 64 8
+StructField bitsRemaining_C Word 64 16
+Struct Kernel_C.lookupSlot_ret_C 16 8
+StructField status_C Word 64 0
+StructField slot_C Word 64 8
+Struct Kernel_C.lookupSlot_raw_ret_C 16 8
+StructField status_C Word 64 0
+StructField slot_C Word 64 8
+Struct Kernel_C.lookupCapAndSlot_ret_C 32 8
+StructField status_C Word 64 0
+StructField cap_C Struct Kernel_C.cap_C 8
+StructField slot_C Word 64 24
+Struct Kernel_C.lookupCap_ret_C 24 8
+StructField status_C Word 64 0
+StructField cap_C Struct Kernel_C.cap_C 8
+Struct Kernel_C.finaliseCap_ret_C 32 8
+StructField remainder_C Struct Kernel_C.cap_C 0
+StructField cleanupInfo_C Struct Kernel_C.cap_C 16
+Struct Kernel_C.deriveCap_ret_C 24 8
+StructField status_C Word 64 0
+StructField cap_C Struct Kernel_C.cap_C 8
+Struct Kernel_C.findVSpaceForASID_ret_C 16 8
+StructField status_C Word 64 0
+StructField vspace_root_C Word 64 8
+Struct Kernel_C.lookupPTSlot_ret_C 16 8
+StructField ptSlot_C Word 64 0
+StructField ptBitsLeft_C Word 64 8
+Struct Kernel_C.tcb_queue_C 16 8
+StructField head_C Word 64 0
+StructField end_C Word 64 8
+Struct Kernel_C.slot_range_C 24 8
+StructField cnode_C Word 64 0
+StructField offset_C Word 64 8
+StructField length_C Word 64 16
+Struct Kernel_C.syscall_error_C 56 8
+StructField invalidArgumentNumber_C Word 64 0
+StructField invalidCapNumber_C Word 64 8
+StructField rangeErrorMin_C Word 64 16
+StructField rangeErrorMax_C Word 64 24
+StructField memoryLeft_C Word 64 32
+StructField failedLookupWasSource_C Word 64 40
+StructField type_C Word 64 48
+Struct Kernel_C.extra_caps_C 24 8
+StructField excaprefs_C Array Word 64 3 0
+Struct Kernel_C.pte_range_C 16 8
+StructField base_C Word 64 0
+StructField length_C Word 64 8
+Struct Kernel_C.pde_range_C 16 8
+StructField base_C Word 64 0
+StructField length_C Word 64 8
+Struct Kernel_C.tcb_C 424 8
+StructField tcbArch_C Struct Kernel_C.arch_tcb_C 0
+StructField tcbState_C Struct Kernel_C.thread_state_C 280
+StructField tcbBoundNotification_C Word 64 304
+StructField tcbFault_C Struct Kernel_C.seL4_Fault_C 312
+StructField tcbLookupFailure_C Struct Kernel_C.lookup_fault_C 328
+StructField tcbDomain_C Word 64 344
+StructField tcbMCP_C Word 64 352
+StructField tcbPriority_C Word 64 360
+StructField tcbTimeSlice_C Word 64 368
+StructField tcbFaultHandler_C Word 64 376
+StructField tcbIPCBuffer_C Word 64 384
+StructField tcbSchedNext_C Word 64 392
+StructField tcbSchedPrev_C Word 64 400
+StructField tcbEPNext_C Word 64 408
+StructField tcbEPPrev_C Word 64 416
+Struct Kernel_C.user_data_device_C 4096 8
+StructField words_C Array Word 64 512 0
+Struct Kernel_C.user_data_C 4096 8
+StructField words_C Array Word 64 512 0
+Struct Kernel_C.arch_tcb_C 280 8
+StructField tcbContext_C Struct Kernel_C.user_context_C 0
+Struct Kernel_C.asid_pool_C 4096 8
+StructField array_C Array Word 64 512 0
+Struct Kernel_C.user_context_C 280 8
+StructField registers_C Array Word 64 35 0
+Struct Kernel_C.cte_C 32 8
+StructField cap_C Struct Kernel_C.cap_C 0
+StructField cteMDBNode_C Struct Kernel_C.mdb_node_C 16
+Struct Kernel_C.dschedule_C 16 8
+StructField domain_C Word 64 0
+StructField length_C Word 64 8
+Struct Kernel_C.seL4_Fault_C 16 8
+StructField words_C Array Word 64 2 0
+Struct Kernel_C.lookup_fault_C 16 8
+StructField words_C Array Word 64 2 0
+Struct Kernel_C.cap_C 16 8
+StructField words_C Array Word 64 2 0
+Struct Kernel_C.vm_attributes_C 8 8
+StructField words_C Array Word 64 1 0
+Struct Kernel_C.thread_state_C 24 8
+StructField words_C Array Word 64 3 0
+Struct Kernel_C.satp_C 8 8
+StructField words_C Array Word 64 1 0
+Struct Kernel_C.pte_C 8 8
+StructField words_C Array Word 64 1 0
+Struct Kernel_C.notification_C 32 8
+StructField words_C Array Word 64 4 0
+Struct Kernel_C.mdb_node_C 16 8
+StructField words_C Array Word 64 2 0
+Struct Kernel_C.endpoint_C 16 8
+StructField words_C Array Word 64 2 0
+Struct Kernel_C.cap_transfer_C 24 8
+StructField ctReceiveRoot_C Word 64 0
+StructField ctReceiveIndex_C Word 64 8
+StructField ctReceiveDepth_C Word 64 16
+Struct Kernel_C.seL4_IPCBuffer__C 1024 8
+StructField tag_C Struct Kernel_C.seL4_MessageInfo_C 0
+StructField msg_C Array Word 64 120 8
+StructField userData_C Word 64 968
+StructField caps_or_badges_C Array Word 64 3 976
+StructField receiveCNode_C Word 64 1000
+StructField receiveIndex_C Word 64 1008
+StructField receiveDepth_C Word 64 1016
+Struct Kernel_C.seL4_MessageInfo_C 8 8
+StructField words_C Array Word 64 1 0
+Struct Kernel_C.seL4_CapRights_C 8 8
+StructField words_C Array Word 64 1 0
+Struct Kernel_C.seL4_CNode_CapData_C 8 8
+StructField words_C Array Word 64 1 0
+Struct Kernel_C.v_region_C 16 8
+StructField start_C Word 64 0
+StructField end_C Word 64 8
+Struct Kernel_C.p_region_C 16 8
+StructField start_C Word 64 0
+StructField end_C Word 64 8
+Struct Kernel_C.region_C 16 8
+StructField start_C Word 64 0
+StructField end_C Word 64 8
+Struct Kernel_C.kernel_frame_C 24 8
+StructField paddr_C Word 64 0
+StructField pptr_C Word 64 8
+StructField userAvailable_C Word 32 16
+
+Function Kernel_C.maskInterrupt 6 disable___unsigned_long#v Word 64 irq___unsigned#v Word 32 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64 4 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64
+1 Basic Ret 0
+2 Call 1 Kernel_C.clear_sie_mask 5 Op ShiftLeft Word 64 2 Num 1 Word 64 Op WordCast Word 64 1 Num 5 Word 32 Var Mem Mem Var HTD HTD Var PMS PMS Var GhostAssertions WordArray 50 64 4 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64
+3 Cond 2 Err Op And Bool 2 Op SignedLessEquals Bool 2 Num 0 Word 32 Num 5 Word 32 Op SignedLess Bool 2 Num 5 Word 32 Num 64 Word 32
+4 Call 1 Kernel_C.set_sie_mask 5 Op ShiftLeft Word 64 2 Num 1 Word 64 Op WordCast Word 64 1 Num 5 Word 32 Var Mem Mem Var HTD HTD Var PMS PMS Var GhostAssertions WordArray 50 64 4 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64
+5 Cond 4 Err Op And Bool 2 Op SignedLessEquals Bool 2 Num 0 Word 32 Num 5 Word 32 Op SignedLess Bool 2 Num 5 Word 32 Num 64 Word 32
+6 Cond 3 5 Op Not Bool 1 Op Equals Bool 2 Var disable___unsigned_long#v Word 64 Num 0 Word 64
+7 Call 1 Kernel_C.plic_mask_irq 2 Var disable___unsigned_long#v Word 64 Var irq___unsigned#v Word 32 0
+8 Cond 6 7 Op Equals Bool 2 Var irq___unsigned#v Word 32 Op WordCastSigned Word 32 1 Num 1 Word 32
+EntryPoint 8
+
+
+Function Kernel_C.plic_mask_irq 2 disable___unsigned_long#v Word 64 irq___unsigned#v Word 32 0
+1 Basic Ret 0
+EntryPoint 1
+
+
+Function Kernel_C.clear_sie_mask 5 mask_low___unsigned_long#v Word 64 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64 4 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64
+1 Basic Ret 0
+2 Call 1 asm_instruction'csrrc_%0,_sie,_%1 3 Var mask_low___unsigned_long#v Word 64 Var Mem Mem Var PMS PMS 3 temp___unsigned_long#v Word 64 Mem Mem PMS PMS
+EntryPoint 2
+
+
+Function Kernel_C.set_sie_mask 5 mask_high___unsigned_long#v Word 64 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64 4 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64
+1 Basic Ret 0
+2 Call 1 asm_instruction'csrrs_%0,_sie,_%1 3 Var mask_high___unsigned_long#v Word 64 Var Mem Mem Var PMS PMS 3 temp___unsigned_long#v Word 64 Mem Mem PMS PMS
+EntryPoint 2
+
+Function Kernel_C.deletedIRQHandler 5 irq___unsigned#v Word 32 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64 4 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64
+1 Basic Ret 0
+2 Call 1 Kernel_C.setIRQState 6 Op WordCastSigned Word 64 1 Num 0 Word 32 Var irq___unsigned#v Word 32 Var Mem Mem Var HTD HTD Var PMS PMS Var GhostAssertions WordArray 50 64 4 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64
+EntryPoint 2
+
+Function Kernel_C.setIRQState 6 irqState___unsigned_long#v Word 64 irq___unsigned#v Word 32 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64 4 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64
+1 Basic Ret 0
+2 Call 1 Kernel_C.maskInterrupt 6 Op WordCastSigned Word 64 1 Op IfThenElse Word 32 3 Op Equals Bool 2 Var irqState___unsigned_long#v Word 64 Op WordCastSigned Word 64 1 Num 0 Word 32 Num 1 Word 32 Num 0 Word 32 Var irq___unsigned#v Word 32 Var Mem Mem Var HTD HTD Var PMS PMS Var GhostAssertions WordArray 50 64 4 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64
+3 Basic 2 1 Mem Mem Op MemUpdate Mem 3 Var Mem Mem Op Plus Word 64 2 Symbol intStateIRQTable Word 64 Op Times Word 64 2 Num 8 Word 64 Op WordCast Word 64 1 Var irq___unsigned#v Word 32 Var irqState___unsigned_long#v Word 64
+4 Cond 3 Err Op PGlobalValid Bool 3 Var HTD HTD Type Array Word 64 2 Symbol intStateIRQTable Word 64
+5 Cond 4 Err Op Less Bool 2 Var irq___unsigned#v Word 32 Op WordCastSigned Word 32 1 Num 2 Word 32
+EntryPoint 5
+
+Function asm_instruction'wfi 2 Mem Mem PMS PMS 2 Mem Mem PMS PMS
+Function asm_instruction'ecall 6 arg1 Word 64 arg2 Word 64 arg3 Word 64 arg4 Word 64 Mem Mem PMS PMS 3 ret1 Word 64 Mem Mem PMS PMS
+Function asm_instruction'rdtime_%0 2 Mem Mem PMS PMS 3 ret1 Word 64 Mem Mem PMS PMS
+Function asm_instruction'sfence.vma 2 Mem Mem PMS PMS 2 Mem Mem PMS PMS
+Function asm_instruction'csrr_%0,_sip 2 Mem Mem PMS PMS 3 ret1 Word 64 Mem Mem PMS PMS
+Function asm_instruction'csrr_%0,_sepc 2 Mem Mem PMS PMS 3 ret1 Word 64 Mem Mem PMS PMS
+Function asm_instruction'csrw_satp,_%0 3 arg1 Word 64 Mem Mem PMS PMS 2 Mem Mem PMS PMS
+Function asm_instruction'csrw_stvec,_%0 3 arg1 Word 64 Mem Mem PMS PMS 2 Mem Mem PMS PMS
+Function asm_instruction'csrr_%0,_scause 2 Mem Mem PMS PMS 3 ret1 Word 64 Mem Mem PMS PMS
+Function asm_instruction'csrr_%0,_sstatus 2 Mem Mem PMS PMS 3 ret1 Word 64 Mem Mem PMS PMS
+Function asm_instruction'csrr_%0,_sbadaddr 2 Mem Mem PMS PMS 3 ret1 Word 64 Mem Mem PMS PMS
+Function asm_instruction'csrrc_%0,_sie,_%1 3 arg1 Word 64 Mem Mem PMS PMS 3 ret1 Word 64 Mem Mem PMS PMS
+Function asm_instruction'csrrs_%0,_sie,_%1 3 arg1 Word 64 Mem Mem PMS PMS 3 ret1 Word 64 Mem Mem PMS PMS
+Function asm_instruction'sfence.vma_x0,_%0 3 arg1 Word 64 Mem Mem PMS PMS 2 Mem Mem PMS PMS
