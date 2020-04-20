@@ -31,8 +31,9 @@ OBJDUMP?=${TOOLPREFIX}objdump
 
 # derived configuration
 
-TOOLPREFIX?=$(shell bash ${GREF_ROOT}/seL4-example/get_tool_prefix.sh)
-$(if ${TOOLPREFIX},,$(error failed to pick a toolset))
+TOOLPREFIX?=riscv64-linux-gnu-
+#TOOLPREFIX?=$(shell bash ${GREF_ROOT}/seL4-example/get_tool_prefix.sh)
+#$(if ${TOOLPREFIX},,$(error failed to pick a toolset))
 
 CSPEC_BUILD_PREFIX=build/${L4V_ARCH}
 CSPEC_BUILD_PATH=${CSPEC_PATH}/${CSPEC_BUILD_PREFIX}
