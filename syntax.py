@@ -253,9 +253,9 @@ and FloatingPointCast (FP to FP) represent the variants of to_fp in the SMTLIB2
 standard.
 """
 
-arch = 'armv7'
+arch = 'rv64'
 
-is_64bit = False  # type: bool
+is_64bit = True  # type: bool
 
 
 class Type:
