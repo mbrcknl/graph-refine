@@ -19,6 +19,8 @@ SOURCE_ROOT?=../../seL4
 L4V_ROOT?=../../l4v
 #L4V_ARCH?=ARM
 L4V_ARCH?=RISCV64
+export L4V_ARCH
+
 PARSERPATH?=${L4V_ROOT}/tools/c-parser/standalone-parser
 CSPEC_PATH?=${L4V_ROOT}/spec/cspec/c
 L4V_SPEC_PATH?=${L4V_ROOT}/spec
