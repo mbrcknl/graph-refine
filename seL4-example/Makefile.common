@@ -161,6 +161,10 @@ report.txt: StackBounds.txt ${GRAPH_REFINE_INPUTS}
 	${GRAPH_REFINE} . trace-to:partial-$@ all
 	mv partial-$@ $@
 
+coverage.txt: StackBounds.txt ${GRAPH_REFINE_INPUTS}
+	${GRAPH_REFINE} . trace-to:partial-$@ coverage
+	mv partial-$@ $@
+
 default: report.txt
 
 .PHONY: .FORCE
