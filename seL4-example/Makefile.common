@@ -21,19 +21,20 @@ L4V_ROOT?=../../l4v
 L4V_ARCH?=RISCV64
 PARSERPATH?=${L4V_ROOT}/tools/c-parser/standalone-parser
 CSPEC_PATH?=${L4V_ROOT}/spec/cspec/c
+L4V_SPEC_PATH?=${L4V_ROOT}/spec
 
 HOL4_ROOT?=../../HOL4
 DECOMP_DIR?=${HOL4_ROOT}/examples/machine-code/graph
 
 GREF_ROOT?=..
 
-OBJDUMP?=${TOOLPREFIX}objdump
-
 # derived configuration
 
 TOOLPREFIX?=riscv64-linux-gnu-
 #TOOLPREFIX?=$(shell bash ${GREF_ROOT}/seL4-example/get_tool_prefix.sh)
 #$(if ${TOOLPREFIX},,$(error failed to pick a toolset))
+
+OBJDUMP?=${TOOLPREFIX}objdump
 
 CSPEC_BUILD_PREFIX=build/${L4V_ARCH}
 CSPEC_BUILD_PATH=${CSPEC_PATH}/${CSPEC_BUILD_PREFIX}
@@ -65,7 +66,7 @@ KERNEL_DEPS = $(shell find ${SOURCE_ROOT} -type f)
 
 ${CSPEC_BUILD_PATH}/kernel_all.c_pp: ${KERNEL_DEPS} ${CONFIG_DOMAIN_SCHEDULE}
 	# have the l4v build system build its kernel source
-	cd ${CSPEC_PATH} && L4V_ARCH=${L4V_ARCH} make c-kernel-source
+	cd ${L4V_SPEC_PATH} && L4V_ARCH=${L4V_ARCH} make c-kernel
 
 kernel_all.c_pp: build/.cmake_done
 	cd build && ninja kernel_all_pp_wrapper
