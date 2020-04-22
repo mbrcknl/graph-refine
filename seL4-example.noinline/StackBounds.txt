@@ -286,3 +286,5 @@ StackBound init_kernel Num 336 Word 64
 StackBound map_kernel_devices Num 0 Word 64
 StackBound lookupIPCBuffer Num 16 Word 64
 StackBound performPageTableInvocationMap Num 16 Word 64
+StackBound finaliseSlot Num 512 Word 64
+StackBound idle_thread Num 16 Word 64
