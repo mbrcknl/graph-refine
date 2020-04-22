@@ -123,17 +123,20 @@ def check_call():
     while i < len(out_lines):
         l = out_lines[i]
         f = l.split()
+
         if len(f) == 0:
             i = i + 1
             continue
+
         addr = f[0].strip()
         op = f[1].strip()
+        print 'op %s' % op
         if op == "Call":
             call_ret_addr = f[14]
             print 'call ret %s' % call_ret_addr
-            if f[4] == 'Var' and f[5] == 'ret':
-                f[4] = 'Num'
-                f[5] = call_ret_addr
+            if f[5] == 'Var' and f[6] == 'ret' and (not call_ret_addr == 'r1'):
+                f[5] = 'Num'
+                f[6] = call_ret_addr
 
             j = 0
             while j < len(f):
@@ -142,9 +145,10 @@ def check_call():
                     break
                 j = j + 1
 
-            out_lines[i]  = ' '.join(f) + '\n'
+            out_lines[i] = ' '.join(f) + '\n'
             print 'Old Call %s' % l
             print "New Call %s" % out_lines[i]
+
         i = i + 1
 
 def main(argv):
