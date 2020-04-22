@@ -110,6 +110,43 @@ def check_cond_map():
             out_lines.append(l)
             i = i + 1
 
+
+def check_call():
+    '''
+    This function does two things for a "Call":
+    1 Replace the "Var ret Word 64" with "Num 0xreturnaddr Word 64"
+    2 Replace the "Var r0 Word 64" with "Var r10 Word 64" for the last
+      input parameter
+    '''
+    global out_lines
+    i = 0
+    while i < len(out_lines):
+        l = out_lines[i]
+        f = l.split()
+        if len(f) == 0:
+            i = i + 1
+            continue
+        addr = f[0].strip()
+        op = f[1].strip()
+        if op == "Call":
+            call_ret_addr = f[14]
+            print 'call ret %s' % call_ret_addr
+            if f[4] == 'Var' and f[5] == 'ret':
+                f[4] = 'Num'
+                f[5] = call_ret_addr
+
+            j = 0
+            while j < len(f):
+                if f[j] == 'clock' and f[j + 4] == 'r0':
+                    f[j + 4] = 'r10'
+                    break
+                j = j + 1
+
+            out_lines[i]  = ' '.join(f) + '\n'
+            print 'Old Call %s' % l
+            print "New Call %s" % out_lines[i]
+        i = i + 1
+
 def main(argv):
     if len(argv) != 3:
         print "Usage: ASM_filename elf_dump_file output_file"
@@ -134,6 +171,7 @@ def main(argv):
     f.close()
     build_branch_map()
     check_cond_map()
+    check_call()
 
     out_fn = argv[2]
     f = open(out_fn, 'w')
