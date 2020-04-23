@@ -151,6 +151,41 @@ def check_call():
 
         i = i + 1
 
+
+def check_ptr():
+   '''
+    OK, the pointers are restricted to 32-bit in the
+    decompiler. We need to add 0xffffffff to the
+    pointers if necessary
+   '''
+
+   global out_lines
+   i = 0
+   while i < len(out_lines):
+       l = out_lines[i]
+       f = l.split()
+       if len(f) < 8:
+           i = i + 1
+           continue
+
+       addr = f[0].strip()
+       op = f[1].strip()
+
+       if op == 'Basic' and f[7] == 'Num':
+           num = int(f[8], 10)
+           addr_num = int(addr, 16)
+           print 'num %s addr_num %s' % (hex(num), hex(addr_num))
+           if (addr_num & 0xfff) == (num & 0xfff):
+               num = num + 0xffffffff00000000
+               f[8] = str(num)
+               out_lines[i] = ' '.join(f) + '\n'
+               print "Old ptr %s " % l
+               print "New ptr %s " % out_lines[i]
+
+       i = i + 1
+
+
+
 def main(argv):
     if len(argv) != 3:
         print "Usage: ASM_filename elf_dump_file output_file"
@@ -176,7 +211,7 @@ def main(argv):
     build_branch_map()
     check_cond_map()
     check_call()
-
+    check_ptr()
     out_fn = argv[2]
     f = open(out_fn, 'w')
     for l in out_lines:
