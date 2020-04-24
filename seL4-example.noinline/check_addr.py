@@ -46,6 +46,10 @@ def check_cond_map():
     i = 0
     while i < len(asm_lines):
         l = asm_lines[i]
+        out_lines.append(l)
+        i = i + 1
+        continue
+
         print l
         f = l.split()
         if len(f) < 4:
