@@ -1,0 +1,2 @@
+arch_get_n_paging
+handleFault
