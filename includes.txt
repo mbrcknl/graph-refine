@@ -99,3 +99,12 @@ updateCapData
 map_kernel_window
 cancelIPC
 sendSignal
+activateThread 
+cteRevoke
+deleteASID
+lookupPivotSlot
+lookupTargetSlot
+lookupSourceSlot  
+performPageInvocationMapPTE
+performPageTableInvocationMap
+setDomain
