@@ -15,7 +15,6 @@ Arch_setMRs_fault
 Arch_switchToIdleThread
 Arch_switchToThread
 Arch_updateCapData
-ackInterrupt
 alloc_rootserver_obj
 arch_get_n_paging
 bi_finalise
