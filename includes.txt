@@ -15,7 +15,6 @@ Arch_setMRs_fault
 Arch_switchToIdleThread
 Arch_switchToThread
 Arch_updateCapData
-InvokeIRQHandler_AckIRQ
 ackInterrupt
 alloc_rootserver_obj
 arch_get_n_paging
@@ -44,7 +43,6 @@ getRestartPC
 handleDoubleFault
 handleFault
 handleReply
-handleSpuriousIRQ
 hasCancelSendRights
 idle_thread
 initIRQController
