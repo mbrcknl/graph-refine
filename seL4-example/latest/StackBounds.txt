@@ -241,7 +241,7 @@ StackBound decodeCNodeInvocation Num 448 Word 64
 StackBound cancelIPC Num 320 Word 64
 StackBound instruction'sfence.vma_84010796 Num 0 Word 64
 StackBound hasCancelSendRights Num 16 Word 64
-StackBound deleteASID Num 16 Word 64
+StackBound deleteASID Num 80 Word 64
 StackBound sameRegionAs Num 96 Word 64
 StackBound receiveSignal Num 80 Word 64
 StackBound suspend Num 336 Word 64
