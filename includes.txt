@@ -68,7 +68,6 @@ initLocalIRQController
 strlcpy
 char_to_long
 deleteASIDPool
-Arch_setMRs_fault
 Arch_getObjectSize
 scheduleTCB
 checkValidIPCBuffer
