@@ -285,3 +285,4 @@ StackBound init_kernel Num 0 Word 64
 StackBound map_kernel_devices Num 64 Word 64
 StackBound lookupIPCBuffer Num 0 Word 64
 StackBound performPageTableInvocationMap Num 16 Word 64
+StackBound setMCPriority Num 0 Word 64
