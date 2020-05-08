@@ -108,3 +108,4 @@ lookupSourceSlot
 performPageInvocationMapPTE
 performPageTableInvocationMap
 setDomain
+cancelSignal
