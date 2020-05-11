@@ -117,3 +117,7 @@ invokeCNodeRotate
 performPageTableInvocationUnmap
 tcbEPDequeue
 timerTick
+cancelAllSignals
+create_kernel_untypeds
+doIPCTransfer 
+invokeIRQHandler_AckIRQ
