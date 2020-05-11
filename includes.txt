@@ -109,3 +109,11 @@ performPageInvocationMapPTE
 performPageTableInvocationMap
 setDomain
 cancelSignal
+doFaultTransfer
+doReplyTransfer
+handleInterruptEntry
+handleVMFaultEvent
+invokeCNodeRotate
+performPageTableInvocationUnmap
+tcbEPDequeue
+timerTick
