@@ -121,3 +121,16 @@ cancelAllSignals
 create_kernel_untypeds
 doIPCTransfer 
 invokeIRQHandler_AckIRQ
+Arch_sameRegionAs
+cteInsert
+emptySlot
+get_avail_p_regs
+get_num_avail_p_regs
+setPriority
+unmapPage
+unmapPageTable
+lookupExtraCaps
+cancelAllIPC
+insertNewCap
+invokeCNodeInsert
+invokeCNodeSaveCaller
