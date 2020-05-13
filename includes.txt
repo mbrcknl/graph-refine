@@ -134,3 +134,9 @@ cancelAllIPC
 insertNewCap
 invokeCNodeInsert
 invokeCNodeSaveCaller
+halt
+initTimer
+slowpath
+Arch_finaliseCap
+create_rootserver_objects
+restart
