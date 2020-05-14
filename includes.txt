@@ -140,3 +140,7 @@ slowpath
 Arch_finaliseCap
 create_rootserver_objects
 restart
+maybe_alloc_extra_bi
+tcbSchedDequeue
+sendIPC
+lookupCap
