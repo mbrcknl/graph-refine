@@ -1894,8 +1894,8 @@ ffffffff84001318:	1007b073          	csrc	sstatus,a5
 ffffffff8400131c:	ff5fe0ef          	jal	ra,ffffffff84000310 <initIRQController>
 ffffffff84001320:	00000797          	auipc	a5,0x0
 ffffffff84001324:	20078793          	addi	a5,a5,512 # ffffffff84001520 <ndks_boot>
-ffffffff84001328:	f8100713          	li	a4,-127
-ffffffff8400132c:	077e                	slli	a4,a4,0x1f
+ffffffff84001328:	ff021737          	lui	a4,0xff021
+ffffffff8400132c:	073a                	slli	a4,a4,0xe
 ffffffff8400132e:	3ae7bc23          	sd	a4,952(a5)
 ffffffff84001332:	0002d717          	auipc	a4,0x2d
 ffffffff84001336:	cce70713          	addi	a4,a4,-818 # ffffffff8402e000 <ki_end>

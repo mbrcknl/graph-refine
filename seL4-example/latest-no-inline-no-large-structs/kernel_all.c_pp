@@ -2,14 +2,14 @@
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "kernel_all_copy.c"
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/faults.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/faults.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/config.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/config.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -27,7 +27,7 @@
 
 # 1 "gen_config/kernel/gen_config.h" 1
 # 5 "autoconf/autoconf.h" 2
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/include/config.h" 2
+# 13 "/home/zoltan/Documents/BINVER-exp/seL4/include/config.h" 2
 
 
 /* size of the initial thread's root CNode (2^x slots, x >= 4) */
@@ -36,7 +36,7 @@
 
 
 /* number of timer ticks until a thread is preempted  */
-# 37 "/home/zoltan/Documents/BINVER-nil/seL4/include/config.h"
+# 37 "/home/zoltan/Documents/BINVER-exp/seL4/include/config.h"
 /* the number of scheduler domains */
 
 
@@ -97,8 +97,8 @@
 
 
 /* Alias CONFIG_MAX_NUM_NODES > 1 to ENABLE_SMP_SUPPORT */
-# 8 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/faults.c" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/types.h" 1
+# 8 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/faults.c" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -107,7 +107,7 @@
 
        
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/basic_types.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/basic_types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -116,7 +116,7 @@
 
        
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/stdint.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/stdint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -125,7 +125,7 @@
 
        
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/64/mode/stdint.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/64/mode/stdint.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -133,7 +133,7 @@
  */
 
        
-# 10 "/home/zoltan/Documents/BINVER-nil/seL4/include/stdint.h" 2
+# 10 "/home/zoltan/Documents/BINVER-exp/seL4/include/stdint.h" 2
 
 typedef unsigned char uint8_t;
 typedef unsigned short uint16_t;
@@ -144,8 +144,8 @@ typedef signed char int8_t;
 typedef signed short int16_t;
 typedef signed int int32_t;
 typedef signed long long int64_t;
-# 10 "/home/zoltan/Documents/BINVER-nil/seL4/include/basic_types.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/types.h" 1
+# 10 "/home/zoltan/Documents/BINVER-exp/seL4/include/basic_types.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/types.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -157,7 +157,7 @@ typedef signed long long int64_t;
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/assert.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/assert.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -167,7 +167,7 @@ typedef signed long long int64_t;
        
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/util.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/util.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -175,9 +175,9 @@ typedef signed long long int64_t;
  */
 
        
-# 20 "/home/zoltan/Documents/BINVER-nil/seL4/include/util.h"
+# 20 "/home/zoltan/Documents/BINVER-exp/seL4/include/util.h"
 /* time constants */
-# 55 "/home/zoltan/Documents/BINVER-nil/seL4/include/util.h"
+# 55 "/home/zoltan/Documents/BINVER-exp/seL4/include/util.h"
 /** MODIFIES: */
 void __builtin_unreachable(void);
 
@@ -297,17 +297,17 @@ __attribute__((__const__)) popcountl(unsigned long mask)
 
 
 /* Can be used to insert padding to the next L1 cache line boundary */
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/include/assert.h" 2
-# 41 "/home/zoltan/Documents/BINVER-nil/seL4/include/assert.h"
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/include/assert.h" 2
+# 41 "/home/zoltan/Documents/BINVER-exp/seL4/include/assert.h"
 /* Create an assert that will trigger a compile error if it fails. */
 
 
 
 /* Sometimes compile asserts contain expressions that the C parser cannot
  * handle. For such expressions unverified_compile_assert should be used. */
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/types.h" 2
+# 13 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/types.h" 2
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/64/mode/types.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/64/mode/types.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -321,7 +321,7 @@ __attribute__((__const__)) popcountl(unsigned long mask)
 
 
 typedef int __assert_failed_long_is_64bits[(sizeof(unsigned long) == 8) ? 1 : -1];
-# 15 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/types.h" 2
+# 15 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/types.h" 2
 
 typedef unsigned long word_t;
 typedef signed long sword_t;
@@ -350,7 +350,7 @@ typedef struct kernel_frame {
     pptr_t pptr;
     int userAvailable;
 } kernel_frame_t;
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/include/basic_types.h" 2
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/include/basic_types.h" 2
 
 enum _bool {
     false = 0,
@@ -379,8 +379,8 @@ typedef struct v_region {
 /* equivalent to a word_t except that we tell the compiler that we may alias with
  * any other type (similar to a char pointer) */
 typedef word_t __attribute__((__may_alias__)) word_t_may_alias;
-# 10 "/home/zoltan/Documents/BINVER-nil/seL4/include/types.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/compound_types.h" 1
+# 10 "/home/zoltan/Documents/BINVER-exp/seL4/include/types.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/compound_types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -390,7 +390,7 @@ typedef word_t __attribute__((__may_alias__)) word_t_may_alias;
        
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/types.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/types.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -402,7 +402,7 @@ typedef word_t __attribute__((__may_alias__)) word_t_may_alias;
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/graph-refine/seL4-example/build/generated/sel4/shared_types_gen.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/graph-refine/seL4-example/build/generated/sel4/shared_types_gen.h" 1
 
 
 
@@ -580,8 +580,8 @@ seL4_MessageInfo_set_length(seL4_MessageInfo_t seL4_MessageInfo, uint64_t v64) {
     seL4_MessageInfo.words[0] |= (v64 << 0) & 0x7full;
     return seL4_MessageInfo;
 }
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/types.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/api/types.h" 1
+# 13 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/types.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/api/types.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -595,7 +595,7 @@ seL4_MessageInfo_set_length(seL4_MessageInfo_t seL4_MessageInfo, uint64_t v64) {
        
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/objecttype.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/objecttype.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -620,8 +620,8 @@ __attribute__((deprecated("use seL4_NotificationObject"))) static const seL4_Obj
     seL4_NotificationObject;
 
 typedef seL4_Word api_object_t;
-# 15 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/api/types.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/sel4_arch_include/riscv64/sel4/sel4_arch/objecttype.h" 1
+# 15 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/api/types.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/sel4_arch_include/riscv64/sel4/sel4_arch/objecttype.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -633,7 +633,7 @@ typedef seL4_Word api_object_t;
 
 
 # 1 "autoconf/autoconf.h" 1
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/sel4_arch_include/riscv64/sel4/sel4_arch/objecttype.h" 2
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/sel4_arch_include/riscv64/sel4/sel4_arch/objecttype.h" 2
 
 
 typedef enum _mode_object {
@@ -643,8 +643,8 @@ typedef enum _mode_object {
 
     seL4_ModeObjectTypeCount
 } seL4_ModeObjectType;
-# 16 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/api/types.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/arch_include/riscv/sel4/arch/objecttype.h" 1
+# 16 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/api/types.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/arch_include/riscv/sel4/arch/objecttype.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -656,7 +656,7 @@ typedef enum _mode_object {
 
 
 # 1 "autoconf/autoconf.h" 1
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/arch_include/riscv/sel4/arch/objecttype.h" 2
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/arch_include/riscv/sel4/arch/objecttype.h" 2
 
 
 typedef enum _object {
@@ -667,7 +667,7 @@ typedef enum _object {
 } seL4_ArchObjectType;
 
 typedef seL4_Word object_t;
-# 17 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/api/types.h" 2
+# 17 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/api/types.h" 2
 
 
 
@@ -679,9 +679,9 @@ enum asidConstants {
 
 
 typedef word_t asid_t;
-# 14 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/types.h" 2
+# 14 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/types.h" 2
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/macros.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/macros.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -691,15 +691,15 @@ typedef word_t asid_t;
        
 
 # 1 "autoconf/autoconf.h" 1
-# 10 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/macros.h" 2
+# 10 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/macros.h" 2
 
 /*
  * Some compilers attempt to pack enums into the smallest possible type.
  * For ABI compatibility with the kernel, we need to ensure they remain
  * the same size as a 'long'.
  */
-# 16 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/types.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/constants.h" 1
+# 16 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/types.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/constants.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -710,8 +710,8 @@ typedef word_t asid_t;
 
 
 # 1 "autoconf/autoconf.h" 1
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/constants.h" 2
-# 46 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/constants.h"
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/constants.h" 2
+# 46 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/constants.h"
 enum priorityConstants {
     seL4_InvalidPrio = -1,
     seL4_MinPrio = 0,
@@ -741,8 +741,8 @@ typedef enum {
     seL4_GuardMismatch,
     _enum_pad_seL4_LookupFailureType = (1ULL << ((sizeof(long)*8) - 1)) - 1,
 } seL4_LookupFailureType;
-# 17 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/types.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/shared_types.h" 1
+# 17 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/types.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/shared_types.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -774,8 +774,8 @@ enum {
     seL4_CapFault_GuardMismatch_BitsFound,
     _enum_pad_seL4_CapFault_Msg = (1ULL << ((sizeof(long)*8) - 1)) - 1,
 } seL4_CapFault_Msg;
-# 18 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/types.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/machine/io.h" 1
+# 18 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/types.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/machine/io.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -783,9 +783,9 @@ enum {
  */
 
        
-# 35 "/home/zoltan/Documents/BINVER-nil/seL4/include/machine/io.h"
+# 35 "/home/zoltan/Documents/BINVER-exp/seL4/include/machine/io.h"
 /* printf will NOT result in output */
-# 19 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/types.h" 2
+# 19 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/types.h" 2
 
 /* seL4_CapRights_t defined in mode/api/shared_types.bf */
 
@@ -859,8 +859,8 @@ static inline word_t __attribute__((__const__)) wordFromMessageInfo(seL4_Message
 {
     return mi.words[0];
 }
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/include/compound_types.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/structures.h" 1
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/include/compound_types.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/structures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -872,7 +872,7 @@ static inline word_t __attribute__((__const__)) wordFromMessageInfo(seL4_Message
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/graph-refine/seL4-example/build/generated/arch/object/structures_gen.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/graph-refine/seL4-example/build/generated/arch/object/structures_gen.h" 1
 
 
 
@@ -2914,10 +2914,10 @@ seL4_Fault_VMFault_get_instructionFault(seL4_Fault_t seL4_Fault) {
     }
     return ret;
 }
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/structures.h" 2
+# 13 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/structures.h" 2
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/arch_include/riscv/sel4/arch/constants.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/arch_include/riscv/sel4/arch/constants.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -2925,8 +2925,8 @@ seL4_Fault_VMFault_get_instructionFault(seL4_Fault_t seL4_Fault) {
  */
 
        
-# 16 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/structures.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/sel4_arch_include/riscv64/sel4/sel4_arch/constants.h" 1
+# 16 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/structures.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/sel4_arch_include/riscv64/sel4/sel4_arch/constants.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -2938,14 +2938,14 @@ seL4_Fault_VMFault_get_instructionFault(seL4_Fault_t seL4_Fault) {
 
 
 # 1 "autoconf/autoconf.h" 1
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/sel4_arch_include/riscv64/sel4/sel4_arch/constants.h" 2
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/sel4_arch_include/riscv64/sel4/sel4_arch/constants.h" 2
 
 
 
 /* log 2 bits in a word */
-# 33 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/sel4_arch_include/riscv64/sel4/sel4_arch/constants.h"
+# 33 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/sel4_arch_include/riscv64/sel4/sel4_arch/constants.h"
 /* Sv39/Sv48 pages/ptes sizes */
-# 48 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/sel4_arch_include/riscv64/sel4/sel4_arch/constants.h"
+# 48 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/sel4_arch_include/riscv64/sel4/sel4_arch/constants.h"
 /* Untyped size limits */
 
 
@@ -2981,10 +2981,10 @@ enum {
     seL4_UserException_Code,
     seL4_UserException_Length,
 } seL4_UserException_Msg;
-# 129 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/sel4_arch_include/riscv64/sel4/sel4_arch/constants.h"
+# 129 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/sel4_arch_include/riscv64/sel4/sel4_arch/constants.h"
 /* First address in the virtual address space that is not accessible to user level */
-# 17 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/structures.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/benchmark/benchmark_utilisation_.h" 1
+# 17 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/structures.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/benchmark/benchmark_utilisation_.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -2992,7 +2992,7 @@ enum {
  */
 
        
-# 18 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/structures.h" 2
+# 18 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/structures.h" 2
 
 enum irq_state {
     IRQInactive = 0,
@@ -3029,7 +3029,7 @@ enum notification_state {
     NtfnState_Active = 2
 };
 typedef word_t notification_state_t;
-# 68 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/structures.h"
+# 68 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/structures.h"
 // We would like the actual 'tcb' region (the portion that contains the tcb_t) of the tcb
 // to be as large as possible, but it still needs to be aligned. As the TCB object contains
 // two sub objects the largest we can make either sub object whilst preserving size alignment
@@ -3046,7 +3046,7 @@ typedef word_t notification_state_t;
 
 
 /* Generate a cte_t pointer from a tcb_t pointer */
-# 99 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/structures.h"
+# 99 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/structures.h"
 static inline cap_t __attribute__((__const__)) Zombie_new(word_t number, word_t type, word_t ptr)
 {
     word_t mask;
@@ -3121,7 +3121,7 @@ enum tcb_cnode_index {
 
     /* VSpace root */
     tcbVTable = 1,
-# 184 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/structures.h"
+# 184 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/structures.h"
     /* Reply cap slot */
     tcbReply = 2,
 
@@ -3135,7 +3135,7 @@ enum tcb_cnode_index {
 };
 typedef word_t tcb_cnode_index_t;
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/object/structures.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/object/structures.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -3144,8 +3144,8 @@ typedef word_t tcb_cnode_index_t;
  */
 
        
-# 17 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/object/structures.h"
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine/hardware.h" 1
+# 17 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/object/structures.h"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/machine/hardware.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -3157,7 +3157,7 @@ typedef word_t tcb_cnode_index_t;
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/64/mode/hardware.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/64/mode/hardware.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -3165,7 +3165,6 @@ typedef word_t tcb_cnode_index_t;
  */
 
        
-
 
 
 
@@ -3177,7 +3176,7 @@ typedef word_t tcb_cnode_index_t;
  * 'regular' kernel window, which contains mappings to physical memory, a small (1GiB) higher
  * kernel image window that we use for running the actual kernel from and a top 1GiB window for
  * kernel device mappings. This means that between PPTR_BASE and
- * KERNEL_BASE there are 254 entries remaining, which represents how much physical memory
+ * KERNEL_ELF_BASE there are 254 entries remaining, which represents how much physical memory
  * can be used.
  *
  * Almost all of the top 256 kernel entries will contain 1GiB page mappings. The only 2 entries
@@ -3192,15 +3191,15 @@ typedef word_t tcb_cnode_index_t;
  *                   |        Kernel Devices       |
  *                -> +-------------------KDEV_BASE-+ 2^64 - 1GiB
  *                |  |         Kernel ELF          |
- *            ----|  +-------------KERNEL_ELF_BASE-+ --+ 2^64 - 2GiB + (PADDR_LOAD % 1GiB)
+ *            ----|  +-------------KERNEL_ELF_BASE-+ --+ 2^64 - 2GiB + (KERNEL_ELF_PADDR_BASE % 1GiB)
  *            |   |  |                             |
- *            |   -> +-----------------KERNEL_BASE-+ --+ 2^64 - 2GiB
+ *            |   -> +-----------------------------+ --+ 2^64 - 2GiB = (KERNEL_ELF_BASE % 1GiB)
  * Shared 1GiB|      |                             |   |
  * table entry|      |           PSpace            |   |
  *            |      |  (direct kernel mappings)   |   +----+
  *            ------>|                             |   |    |
  *                   |                             |   |    |
- *                   +-------------------PPTR_BASE-+ --+ 2^64 - 2^c
+ *                   +-------------------PPTR_BASE-+ --+ 2^64 - 2^b
  *                   |                             |        |         +-------------------------+
  *                   |                             |        |         |                         |
  *                   |                             |        |         |                         |
@@ -3208,18 +3207,18 @@ typedef word_t tcb_cnode_index_t;
  *                   |                             |        |         |           not           |
  *                   |                             |        |         |         kernel          |
  *                   |                             |        |         |       addressable       |
- *                   +-----------------------------+  2^c   |         |                         |
+ *                   +--------------------USER_TOP-+  2^c   |         |                         |
  *                   |                             |        |         |                         |
  *                   |                             |        |         |                         |
  *                   |                             |        |      +- --------------------------+  PADDR_TOP =
- *                   |                             |        |      |  |                         |    KERNEL_BASE - PPTR_BASE
+ *                   |                             |        |      |  |                         |    PPTR_TOP - PPTR_BASE
  *                   |                             |        |      |  |                         |
  *                   |                             |        |      |  |                         |
  *                   |            User             |        |      |  |                         |
  *                   |                             |        |      |  |                         |
- *                   |                             |        +------+  +-------------------------+  PADDR_HIGH_TOP =
- *                   |                             |     kernel    |  |        Kernel ELF       |    (KDEV_BASE - KERNEL_ELF_BASE + PADDR_LOAD)
- *                   |                             |   addressable |  +-------------------------+  PADDR_LOAD
+ *                   |                             |        +------+  +-------------------------+  KDEV_BASE - KERNEL_ELF_BASE + PADDR_LOAD
+ *                   |                             |     kernel    |  |        Kernel ELF       |
+ *                   |                             |   addressable |  +-------------------------+  KERNEL_ELF_PADDR_BASE
  *                   |                             |               |  |                         |
  *                   |                             |               |  |                         |
  *                   +-----------------------------+  0            +- +-------------------------+  0 PADDR_BASE
@@ -3230,23 +3229,37 @@ typedef word_t tcb_cnode_index_t;
  *  c = one less than number of bits the page tables can translate
  *    = sign extension bit for canonical addresses
  *    (= 47 on x64, 38 on RISCV64 sv39, 47 on RISCV64 sv48)
- *
+ *  b = The number of bits used by kernel mapping.
+ *    = 38 (half of the 1 level page table) on RISCV64 sc39
+ *    = 39 (entire second level page table) on aarch64 / X64 / sv48
  */
 
-/* The main kernel window will start at the 0 physical address so that it can contain
- * any potential memory that may exist */
+/* last accessible virtual address in user space */
 
+
+/* The first physical address to map into the kernel's physical memory
+ * window */
+
+
+/* The base address in virtual memory to use for the 1:1 physical memory
+ * mapping */
+
+
+/* Top of the physical memory window */
+
+
+/* The physical memory address to use for mapping the kernel ELF */
 /* This represents the physical address that the kernel image will be linked to. This needs to
  * be on a 1gb boundary as we currently require being able to creating a mapping to this address
  * as the largest frame size */
 
-/* This is the base of the kernel window, which is directly mapped to PADDR_BASE */
 
-/* This is the mapping of the kernel (mapped above the kernel window currently) */
+/* The base address in virtual memory to use for the kernel ELF mapping */
 
 
-/* Start of kernel device mapping region in highest 1GiB of memory. */
-# 98 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/64/mode/hardware.h"
+/* The base address in virtual memory to use for the kernel device
+ * mapping region. These are mapped in the kernel page table. */
+# 115 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/64/mode/hardware.h"
 static inline uint64_t riscv_read_time(void)
 {
     uint64_t n;
@@ -3255,11 +3268,11 @@ static inline uint64_t riscv_read_time(void)
         : "=r"(n));
     return n;
 }
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine/hardware.h" 2
+# 13 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/machine/hardware.h" 2
 
 /* Privileged CSR definitions */
-# 31 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine/hardware.h"
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/linker.h" 1
+# 31 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/machine/hardware.h"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/linker.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -3269,7 +3282,7 @@ static inline uint64_t riscv_read_time(void)
        
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/linker.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/linker.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -3278,7 +3291,7 @@ static inline uint64_t riscv_read_time(void)
  */
 
        
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/include/linker.h" 2
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/include/linker.h" 2
 
 /* code that is only used during kernel bootstrapping */
 
@@ -3300,7 +3313,7 @@ static inline uint64_t riscv_read_time(void)
 
 
 /* bss data that is permitted to be used in the restricted SKIM address space */
-# 32 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine/hardware.h" 2
+# 32 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/machine/hardware.h" 2
 
 
 
@@ -3309,20 +3322,10 @@ static inline uint64_t riscv_read_time(void)
 
 
 
-/* The highest valid physical address that can be indexed in the kernel window */
-
-/* A contiguous region of physical address space at PADDR_LOAD is mapped
- * to KERNEL_ELF_BASE, and the size of this region is KDEV_BASE-KERNEL_ELF_BASE.
- * PADDR_HIGH_TOP is the end of this physical address region. */
 
 
-/* Translates from a physical address and a value in the kernel image */
 
 
-/* Convert our values into general values expected by the common code */
-
-/* This is the top of the kernel window, not including the kernel image */
-# 61 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine/hardware.h"
 /* MMU RISC-V related definitions. See RISC-V manual priv-1.10 */
 
 /* Extract the n-level PT index from a virtual address. This works for any
@@ -3402,8 +3405,8 @@ static inline void arch_clean_invalidate_caches(void)
 {
     /* RISC-V doesn't have an architecture defined way of flushing caches */
 }
-# 18 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/object/structures.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine/registerset.h" 1
+# 18 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/object/structures.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/machine/registerset.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -3412,7 +3415,7 @@ static inline void arch_clean_invalidate_caches(void)
  */
 
        
-# 18 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine/registerset.h"
+# 18 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/machine/registerset.h"
 enum _register {
 
     ra = 0, LR = 0,
@@ -3486,7 +3489,7 @@ enum messageSizes {
 extern const register_t msgRegisters[] __attribute__((externally_visible));
 extern const register_t frameRegisters[] __attribute__((externally_visible));
 extern const register_t gpRegisters[] __attribute__((externally_visible));
-# 111 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine/registerset.h"
+# 111 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/machine/registerset.h"
 struct user_context {
     word_t registers[n_contextRegisters];
 
@@ -3505,8 +3508,8 @@ static inline word_t __attribute__((__const__)) sanitiseRegister(register_t reg,
 {
     return v;
 }
-# 19 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/object/structures.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/64/mode/object/structures.h" 1
+# 19 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/object/structures.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/64/mode/object/structures.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -3515,7 +3518,7 @@ static inline word_t __attribute__((__const__)) sanitiseRegister(register_t reg,
  */
 
        
-# 20 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/object/structures.h" 2
+# 20 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/object/structures.h" 2
 
 
 
@@ -3524,7 +3527,7 @@ struct asid_pool {
 };
 
 typedef struct asid_pool asid_pool_t;
-# 36 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/object/structures.h"
+# 36 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/object/structures.h"
 typedef struct arch_tcb {
     user_context_t tcbContext;
 } arch_tcb_t;
@@ -3542,7 +3545,7 @@ typedef pte_t vspace_root_t;
  * that's a workaround in the time being.
  */
 typedef pte_t pde_t;
-# 67 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/object/structures.h"
+# 67 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/object/structures.h"
 static inline bool_t __attribute__((__const__)) cap_get_archCapIsPhysical(cap_t cap)
 {
     cap_tag_t ctag;
@@ -3626,7 +3629,7 @@ static inline bool_t __attribute__((__const__)) Arch_isCapRevocable(cap_t derive
 {
     return false;
 }
-# 198 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/structures.h" 2
+# 198 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/structures.h" 2
 
 struct user_data {
     word_t words[(1ul << (12)) / sizeof(word_t)];
@@ -3688,7 +3691,7 @@ struct tcb {
 
     /* Priority, 1 byte (padded to 1 word) */
     prio_t tcbPriority;
-# 268 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/structures.h"
+# 268 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/structures.h"
     /* Timeslice remaining, 1 word */
     word_t tcbTimeSlice;
 
@@ -3710,10 +3713,10 @@ struct tcb {
     /* Preivous and next pointers for endpoint and notification queues, 2 words */
     struct tcb *tcbEPNext;
     struct tcb *tcbEPPrev;
-# 307 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/structures.h"
+# 307 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/structures.h"
 };
 typedef struct tcb tcb_t;
-# 377 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/structures.h"
+# 377 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/structures.h"
 /* Ensure object sizes are sane */
 typedef int __assert_failed_cte_size_sane[(sizeof(cte_t) <= (1ul << (5))) ? 1 : -1];
 typedef int __assert_failed_tcb_cte_size_sane[((4 + 5) <= (10 - 1)) ? 1 : -1];
@@ -3940,7 +3943,7 @@ static inline bool_t __attribute__((__const__)) isCapRevocable(cap_t derivedCap,
         return false;
     }
 }
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/include/compound_types.h" 2
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/include/compound_types.h" 2
 
 
 struct pde_range {
@@ -3961,9 +3964,9 @@ struct extra_caps {
     cte_ptr_t excaprefs[((1ul<<(seL4_MsgExtraCapBits))-1)];
 };
 typedef struct extra_caps extra_caps_t;
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/include/types.h" 2
-# 9 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/faults.c" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/faults.h" 1
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/include/types.h" 2
+# 9 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/faults.c" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/faults.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -3980,8 +3983,8 @@ word_t Arch_setMRs_fault(tcb_t *sender, tcb_t *receiver, word_t *receiveIPCBuffe
 
 bool_t handleFaultReply(tcb_t *receiver, tcb_t *sender);
 bool_t Arch_handleFaultReply(tcb_t *receiver, tcb_t *sender, word_t faultType);
-# 10 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/faults.c" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/syscall.h" 1
+# 10 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/faults.c" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/syscall.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -3991,7 +3994,7 @@ bool_t Arch_handleFaultReply(tcb_t *receiver, tcb_t *sender, word_t faultType);
        
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/machine.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/machine.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4000,7 +4003,7 @@ bool_t Arch_handleFaultReply(tcb_t *receiver, tcb_t *sender, word_t faultType);
 
        
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/plat/default/plat/machine.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/plat/default/plat/machine.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -4027,7 +4030,7 @@ static const kernel_frame_t __attribute__((__section__(".boot.rodata"))) kernel_
     /* /soc/interrupt-controller@c000000 */
     {
         0xc000000,
-        (0xFFFFFFFFC0000000lu + 0x0),
+        (0xFFFFFFFFC0000000ul + 0x0),
         false, /* userAvailable */
     },
 };
@@ -4036,7 +4039,7 @@ static const kernel_frame_t __attribute__((__section__(".boot.rodata"))) kernel_
 static const p_region_t __attribute__((__section__(".boot.rodata"))) avail_p_regs[] = {
     { 0x80200000, 0x280000000 }, /* /memory@80000000 */
 };
-# 8 "/home/zoltan/Documents/BINVER-nil/seL4/include/plat/default/plat/machine.h" 2
+# 8 "/home/zoltan/Documents/BINVER-exp/seL4/include/plat/default/plat/machine.h" 2
 # 1 "gen_headers/plat/platform_gen.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
@@ -4049,7 +4052,7 @@ static const p_region_t __attribute__((__section__(".boot.rodata"))) avail_p_reg
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/machine/interrupt.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/machine/interrupt.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -4201,7 +4204,7 @@ enum irqNumbers {
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/drivers/irq/hifive.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/drivers/irq/hifive.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -4223,8 +4226,8 @@ enum irqNumbers {
 /*
  * This file is autogenerated by kernel/tools/hardware_gen.py.
  */
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/include/drivers/irq/hifive.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/model/smp.h" 1
+# 13 "/home/zoltan/Documents/BINVER-exp/seL4/include/drivers/irq/hifive.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/model/smp.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -4234,7 +4237,7 @@ enum irqNumbers {
        
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/model/smp.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/model/smp.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -4245,7 +4248,7 @@ enum irqNumbers {
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/model/statedata.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/model/statedata.h" 1
 /*
  * Copyright 2020, DornerWorks
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
@@ -4259,7 +4262,7 @@ enum irqNumbers {
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/model/statedata.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/model/statedata.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -4271,7 +4274,7 @@ enum irqNumbers {
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/tcb.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/tcb.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4281,7 +4284,7 @@ enum irqNumbers {
        
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/failures.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/failures.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4291,7 +4294,7 @@ enum irqNumbers {
        
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/errors.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/errors.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -4319,7 +4322,7 @@ typedef enum {
      */
     seL4_NumErrors
 } seL4_Error;
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/failures.h" 2
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/failures.h" 2
 
 /* These datatypes differ markedly from haskell, due to the
  * different implementation of the various fault monads */
@@ -4347,14 +4350,14 @@ struct syscall_error {
     syscall_error_type_t type;
 };
 typedef struct syscall_error syscall_error_t;
-# 47 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/failures.h"
+# 47 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/failures.h"
 extern lookup_fault_t current_lookup_fault;
 extern seL4_Fault_t current_fault;
 extern syscall_error_t current_syscall_error;
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/tcb.h" 2
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/tcb.h" 2
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/machine/registerset.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/machine/registerset.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4392,8 +4395,8 @@ static inline word_t __attribute__((__pure__)) getRegister(tcb_t *thread, regist
 {
     return thread->tcbArch.tcbContext.registers[reg];
 }
-# 14 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/tcb.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/cnode.h" 1
+# 14 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/tcb.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/cnode.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4434,7 +4437,7 @@ cap_transfer_t __attribute__((__pure__)) loadCapTransfer(word_t *buffer);
 
 exception_t invokeCNodeSaveCaller(cte_t *destSlot);
 void setupReplyMaster(tcb_t *thread);
-# 15 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/tcb.h" 2
+# 15 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/tcb.h" 2
 
 
 
@@ -4467,7 +4470,7 @@ static inline unsigned int setMR(tcb_t *receiver, word_t *receiveIPCBuffer,
 void tcbSchedEnqueue(tcb_t *tcb);
 void tcbSchedAppend(tcb_t *tcb);
 void tcbSchedDequeue(tcb_t *tcb);
-# 117 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/tcb.h"
+# 117 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/tcb.h"
 tcb_queue_t tcbEPAppend(tcb_t *tcb, tcb_queue_t queue);
 tcb_queue_t tcbEPDequeue(tcb_t *tcb, tcb_queue_t queue);
 
@@ -4499,7 +4502,7 @@ exception_t decodeSetSpace(cap_t cap, word_t length,
 exception_t decodeDomainInvocation(word_t invLabel, word_t length, word_t *buffer);
 exception_t decodeBindNotification(cap_t cap);
 exception_t decodeUnbindNotification(cap_t cap);
-# 168 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/tcb.h"
+# 168 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/tcb.h"
 enum thread_control_flag {
     thread_control_update_priority = 0x1,
     thread_control_update_ipc_buffer = 0x2,
@@ -4517,7 +4520,7 @@ typedef word_t thread_control_flag_t;
 
 exception_t invokeTCB_Suspend(tcb_t *thread);
 exception_t invokeTCB_Resume(tcb_t *thread);
-# 200 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/tcb.h"
+# 200 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/tcb.h"
 exception_t invokeTCB_ThreadControl(tcb_t *target, cte_t *slot, cptr_t faultep,
                                     prio_t mcp, prio_t priority, cap_t cRoot_newCap,
                                     cte_t *cRoot_srcSlot, cap_t vRoot_newCap,
@@ -4543,10 +4546,10 @@ word_t setMRs_syscall_error(tcb_t *thread, word_t *receiveIPCBuffer);
 word_t __attribute__((__const__)) Arch_decodeTransfer(word_t flags);
 exception_t __attribute__((__const__)) Arch_performTransfer(word_t arch, tcb_t *tcb_src,
                                        tcb_t *tcb_dest);
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/include/model/statedata.h" 2
-# 38 "/home/zoltan/Documents/BINVER-nil/seL4/include/model/statedata.h"
+# 13 "/home/zoltan/Documents/BINVER-exp/seL4/include/model/statedata.h" 2
+# 38 "/home/zoltan/Documents/BINVER-exp/seL4/include/model/statedata.h"
 /* UP states are declared as VISIBLE so that they are accessible in assembly */
-# 58 "/home/zoltan/Documents/BINVER-nil/seL4/include/model/statedata.h"
+# 58 "/home/zoltan/Documents/BINVER-exp/seL4/include/model/statedata.h"
 
 extern tcb_queue_t ksReadyQueues[(16 * 256)] __attribute__((externally_visible));
 extern word_t ksReadyQueuesL1Bitmap[16] __attribute__((externally_visible));
@@ -4554,7 +4557,7 @@ extern word_t ksReadyQueuesL2Bitmap[16][((256 + (1ul << (6)) - 1) / (1ul << (6))
 extern tcb_t *ksCurThread __attribute__((externally_visible));
 extern tcb_t *ksIdleThread __attribute__((externally_visible));
 extern tcb_t *ksSchedulerAction __attribute__((externally_visible));
-# 84 "/home/zoltan/Documents/BINVER-nil/seL4/include/model/statedata.h"
+# 84 "/home/zoltan/Documents/BINVER-exp/seL4/include/model/statedata.h"
 ;
 
 extern word_t ksNumCPUs;
@@ -4580,7 +4583,7 @@ extern word_t ksDomainTime;
 extern word_t tlbLockCount __attribute__((externally_visible));
 
 extern char ksIdleThreadTCB[1][(1ul << (10))];
-# 15 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/model/statedata.h" 2
+# 15 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/model/statedata.h" 2
 
 
 
@@ -4600,9 +4603,9 @@ extern pte_t kernel_root_pageTable[(1ul << (9))] __attribute__((externally_visib
  * page entry to avoid PMP exception. */
 
 extern pte_t kernel_image_level2_pt[(1ul << (9))];
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/include/model/smp.h" 2
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/model/smp.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/stack.h" 1
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/include/model/smp.h" 2
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/model/smp.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/stack.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -4613,7 +4616,7 @@ extern pte_t kernel_image_level2_pt[(1ul << (9))];
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/64/mode/kernel/stack.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/64/mode/kernel/stack.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -4621,7 +4624,7 @@ extern pte_t kernel_image_level2_pt[(1ul << (9))];
  */
 
        
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/stack.h" 2
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/stack.h" 2
 
 /* These are the stacks used in kernel, shared between architectures/modes.
  * CONFIG_KERNEL_STACK_BITS is defined in kernel/Kconfig. The physical/offset
@@ -4629,18 +4632,18 @@ extern pte_t kernel_image_level2_pt[(1ul << (9))];
  * defined for each arch/mode in <mode/kernel/stack.h>
  */
 extern char kernel_stack_alloc[1][(1ul << (12))];
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/model/smp.h" 2
-# 14 "/home/zoltan/Documents/BINVER-nil/seL4/include/drivers/irq/hifive.h" 2
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/model/smp.h" 2
+# 14 "/home/zoltan/Documents/BINVER-exp/seL4/include/drivers/irq/hifive.h" 2
 
 /* The memory map is based on the PLIC section in
  * https://static.dev.sifive.com/U54-MC-RVCoreIP.pdf
  */
-# 40 "/home/zoltan/Documents/BINVER-nil/seL4/include/drivers/irq/hifive.h"
+# 40 "/home/zoltan/Documents/BINVER-exp/seL4/include/drivers/irq/hifive.h"
 /* SiFive U54-MC has 5 cores, and the first core does not
  * have supervisor mode. Therefore, we need to compensate
  * for the addresses.
  */
-# 56 "/home/zoltan/Documents/BINVER-nil/seL4/include/drivers/irq/hifive.h"
+# 56 "/home/zoltan/Documents/BINVER-exp/seL4/include/drivers/irq/hifive.h"
 static inline void write_sie(word_t value)
 {
     __asm__ volatile("csrw sie,  %0" :: "r"(value));
@@ -4684,7 +4687,7 @@ static inline word_t plic_claim_offset(word_t hart_id, word_t context_id)
 
 static inline bool_t plic_pending_interrupt(word_t interrupt)
 {
-    word_t addr = ((0xFFFFFFFFC0000000lu + 0x0) + 0x0C000000) + 0x1000 + (interrupt / 32) * 4;
+    word_t addr = ((0xFFFFFFFFC0000000ul + 0x0) + 0x0C000000) + 0x1000 + (interrupt / 32) * 4;
     word_t bit = interrupt % 32;
     if (readl(addr) & (1ul << (bit))) {
         return true;
@@ -4706,14 +4709,14 @@ static inline irq_t plic_get_claim(void)
 {
     /* Read the claim register for our HART interrupt context */
     word_t hart_id = get_hart_id();
-    return readl(((0xFFFFFFFFC0000000lu + 0x0) + 0x0C000000) + plic_claim_offset(hart_id, 1));
+    return readl(((0xFFFFFFFFC0000000ul + 0x0) + 0x0C000000) + plic_claim_offset(hart_id, 1));
 }
 
 static inline void plic_complete_claim(irq_t irq)
 {
     /* Complete the IRQ claim by writing back to the claim register. */
     word_t hart_id = get_hart_id();
-    writel(irq, ((0xFFFFFFFFC0000000lu + 0x0) + 0x0C000000) + plic_claim_offset(hart_id, 1));
+    writel(irq, ((0xFFFFFFFFC0000000ul + 0x0) + 0x0C000000) + plic_claim_offset(hart_id, 1));
 }
 
 static inline void plic_mask_irq(bool_t disable, irq_t irq)
@@ -4723,7 +4726,7 @@ static inline void plic_mask_irq(bool_t disable, irq_t irq)
     uint32_t bit = 0;
 
     word_t hart_id = get_hart_id();
-    addr = ((0xFFFFFFFFC0000000lu + 0x0) + 0x0C000000) + plic_enable_offset(hart_id, 1) + (irq / 32) * 4;
+    addr = ((0xFFFFFFFFC0000000ul + 0x0) + 0x0C000000) + plic_enable_offset(hart_id, 1) + (irq / 32) * 4;
     bit = irq % 32;
 
     val = readl(addr);
@@ -4746,7 +4749,7 @@ static inline void plic_init_hart(void)
     }
 
     /* Set threshold to zero */
-    writel(0, (((0xFFFFFFFFC0000000lu + 0x0) + 0x0C000000) + plic_thres_offset(hart_id, 1)));
+    writel(0, (((0xFFFFFFFFC0000000ul + 0x0) + 0x0C000000) + plic_thres_offset(hart_id, 1)));
 }
 
 static inline void plic_init_controller(void)
@@ -4755,14 +4758,14 @@ static inline void plic_init_controller(void)
     for (int i = 1; i <= 53; i++) {
         /* Clear all pending bits */
         if (plic_pending_interrupt(i)) {
-            readl(((0xFFFFFFFFC0000000lu + 0x0) + 0x0C000000) + plic_claim_offset((1), 1));
-            writel(i, ((0xFFFFFFFFC0000000lu + 0x0) + 0x0C000000) + plic_claim_offset((1), 1));
+            readl(((0xFFFFFFFFC0000000ul + 0x0) + 0x0C000000) + plic_claim_offset((1), 1));
+            writel(i, ((0xFFFFFFFFC0000000ul + 0x0) + 0x0C000000) + plic_claim_offset((1), 1));
         }
     }
 
     /* Set the priorities of all interrupts to 1 */
     for (int i = 1; i <= PLIC_MAX_IRQ + 1; i++) {
-        writel(2, ((0xFFFFFFFFC0000000lu + 0x0) + 0x0C000000) + 0x0 + 0x4 * i);
+        writel(2, ((0xFFFFFFFFC0000000ul + 0x0) + 0x0C000000) + 0x0 + 0x4 * i);
     }
 
 }
@@ -4776,11 +4779,95 @@ static inline void plic_irq_set_trigger(irq_t irq, bool_t edge_triggered)
 {
 }
 # 47 "gen_headers/plat/platform_gen.h" 2
-# 8 "/home/zoltan/Documents/BINVER-nil/seL4/include/plat/default/plat/machine.h" 2
-# 10 "/home/zoltan/Documents/BINVER-nil/seL4/include/machine.h" 2
+# 8 "/home/zoltan/Documents/BINVER-exp/seL4/include/plat/default/plat/machine.h" 2
+# 10 "/home/zoltan/Documents/BINVER-exp/seL4/include/machine.h" 2
+
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/hardware.h" 1
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * SPDX-License-Identifier: GPL-2.0-only
+ */
+       
+
+/* Each architecture defines a set of constants in #defines. These
+ * constants describe the memory regions of the kernel's portion of the
+ * address space including the physical memory window, the kernel ELF
+ * region, and the device region.
+ *
+ *  - USER_TOP: The first address after the end of user memory
+ *
+ *  - PADDR_BASE: The first physical address mapped in the kernel's
+ *    physical memory window.
+ *  - PPTR_BASE: The first virtual address of the kernel's physical
+ *    memory window.
+ *  - PPTR_TOP: The first virtual address after the end of the kernel's
+ *    physical memory window.
+ *
+ *  - KERNEL_ELF_PADDR_BASE: The first physical address used to map the
+ *    initial kernel image. The kernel ELF is mapped contiguously
+ *    starting at this address.
+ *  - KERNEL_ELF_BASE: The first virtual address used to map the initial
+ *    kernel image.
+ *
+ *  - KDEV_BASE: The first virtual address used to map devices.
+ */
+
+/* The offset from a physical address to a virtual address in the
+ * physical memory window. */
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/64/mode/machine.h" 1
+/* The last address in the physical memory region mapped into the
+ * physical memory window */
+
+
+/* The kernel base offset is a way to translate the kernel image segment
+ * from virtual to physical. This translation must be a single offset
+ * for for the entire segment (i.e. the kernel image must be contiguous
+ * both virtually and physically) */
+
+
+
+
+/* This symbol is generated by the linker and marks the last valid
+ * address in the kernel's virtual region */
+extern char ki_end[];
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/include/machine.h" 2
+
+/* When translating a physical address into an address accessible to the
+ * kernel via virtual addressing we always use the mapping of the memory
+ * into the physical memory window, even if the mapping originally
+ * referred to a kernel virtual address. */
+static inline void *__attribute__((__const__)) ptrFromPAddr(paddr_t paddr)
+{
+    return (void *)(paddr + (0xFFFFFFC000000000ul - 0x0ul));
+}
+
+/* When obtaining a physical address from a reference to any object in
+ * the physical mapping window, this function must be used. */
+static inline paddr_t __attribute__((__const__)) addrFromPPtr(void *pptr)
+{
+    return (paddr_t)pptr - (0xFFFFFFC000000000ul - 0x0ul);
+}
+
+static inline region_t __attribute__((__const__)) paddr_to_pptr_reg(p_region_t p_reg)
+{
+    return (region_t) {
+        p_reg.start + (0xFFFFFFC000000000ul - 0x0ul), p_reg.end + (0xFFFFFFC000000000ul - 0x0ul)
+    };
+}
+
+static inline p_region_t __attribute__((__const__)) pptr_to_paddr_reg(region_t reg)
+{
+    return (p_region_t) {
+        reg.start - (0xFFFFFFC000000000ul - 0x0ul), reg.end - (0xFFFFFFC000000000ul - 0x0ul)
+    };
+}
+
+
+
+
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/64/mode/machine.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -4790,44 +4877,11 @@ static inline void plic_irq_set_trigger(irq_t irq, bool_t edge_triggered)
        
 
 /* Place holder for 64-bit machine header */
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/include/machine.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/plat/default/plat/machine/hardware.h" 1
-/*
- * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
- *
- * SPDX-License-Identifier: GPL-2.0-only
- */
-
-       
-# 14 "/home/zoltan/Documents/BINVER-nil/seL4/include/machine.h" 2
-
-static inline void *__attribute__((__const__)) ptrFromPAddr(paddr_t paddr)
-{
-    return (void *)(paddr + (0xFFFFFFC000000000lu - 0x0lu));
-}
-
-static inline paddr_t __attribute__((__const__)) addrFromPPtr(void *pptr)
-{
-    return (paddr_t)pptr - (0xFFFFFFC000000000lu - 0x0lu);
-}
-
-static inline region_t __attribute__((__const__)) paddr_to_pptr_reg(p_region_t p_reg)
-{
-    return (region_t) {
-        p_reg.start + (0xFFFFFFC000000000lu - 0x0lu), p_reg.end + (0xFFFFFFC000000000lu - 0x0lu)
-    };
-}
-
-static inline p_region_t __attribute__((__const__)) pptr_to_paddr_reg(region_t reg)
-{
-    return (p_region_t) {
-        reg.start - (0xFFFFFFC000000000lu - 0x0lu), reg.end - (0xFFFFFFC000000000lu - 0x0lu)
-    };
-}
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/syscall.h" 2
+# 46 "/home/zoltan/Documents/BINVER-exp/seL4/include/machine.h" 2
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/syscall.h" 2
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/vspace.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/vspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4836,7 +4890,7 @@ static inline p_region_t __attribute__((__const__)) pptr_to_paddr_reg(region_t r
        
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/kernel/vspace.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/kernel/vspace.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -4899,8 +4953,8 @@ exception_t performPageInvocationMapPTE(cap_t cap, cte_t *ctSlot,
                                         pte_t pte, pte_t *base);
 exception_t performPageInvocationUnmap(cap_t cap, cte_t *ctSlot);
 void setVMRoot(tcb_t *tcb);
-# 10 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/vspace.h" 2
-# 14 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/syscall.h" 2
+# 10 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/vspace.h" 2
+# 14 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/syscall.h" 2
 # 1 "gen_headers/arch/api/syscall.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
@@ -4929,15 +4983,15 @@ enum syscall {
 typedef word_t syscall_t;
 
 /* System call names */
-# 15 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/syscall.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/debug.h" 1
+# 15 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/syscall.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/debug.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 16 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/syscall.h" 2
-# 32 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/syscall.h"
+# 16 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/syscall.h" 2
+# 32 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/syscall.h"
 exception_t handleSyscall(syscall_t syscall);
 exception_t handleInterruptEntry(void);
 exception_t handleUnknownSyscall(word_t w);
@@ -4955,8 +5009,8 @@ static inline word_t __attribute__((__pure__)) getSyscallArg(word_t i, word_t *i
 }
 
 extern extra_caps_t current_extra_caps;
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/faults.c" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/thread.h" 1
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/faults.c" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/thread.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -4968,7 +5022,7 @@ extern extra_caps_t current_extra_caps;
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/machine.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -4983,7 +5037,7 @@ extern extra_caps_t current_extra_caps;
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/sbi.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/sbi.h" 1
 /* SPDX-License-Identifier: BSD-3-Clause */
 
 /* Copyright (c) 2010-2017, The Regents of the University of California
@@ -5017,7 +5071,7 @@ extern extra_caps_t current_extra_caps;
  */
 
        
-# 48 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/sbi.h"
+# 48 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/sbi.h"
 static inline register_t sbi_call(register_t cmd,
                                   register_t arg_0,
                                   register_t arg_1,
@@ -5093,8 +5147,8 @@ static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
 {
     sbi_call(7, (register_t)hart_mask, 0, 0);
 }
-# 16 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine.h" 2
-# 97 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine.h"
+# 16 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/machine.h" 2
+# 97 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/machine.h"
 static inline void sfence(void)
 {
     __asm__ volatile("sfence.vma" ::: "memory");
@@ -5174,7 +5228,7 @@ static inline void clear_sie_mask(word_t mask_low)
     word_t temp;
     __asm__ volatile("csrrc %0, sie, %1" : "=r"(temp) : "rK"(mask_low));
 }
-# 200 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine.h"
+# 200 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/machine.h"
 static inline void setVSpaceRoot(paddr_t addr, asid_t asid)
 {
     satp_t satp = satp_new(8, /* mode */
@@ -5209,7 +5263,7 @@ void initL2Cache(void);
 void initLocalIRQController(void);
 void initIRQController(void);
 void setIRQTrigger(irq_t irq, bool_t trigger);
-# 247 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine.h"
+# 247 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/machine.h"
 void plat_cleanL2Range(paddr_t start, paddr_t end);
 
 void plat_invalidateL2Range(paddr_t start, paddr_t end);
@@ -5220,13 +5274,13 @@ static inline void *__attribute__((__const__)) paddr_to_kpptr(paddr_t paddr)
 {
     ;
     ;
-    return (void *)(paddr + (0xFFFFFFFF84000000ul - (0x80000000 + 0x4000000ul)));
+    return (void *)(paddr + ((0xFFFFFFFF80000000ul + ((0x80000000 + 0x4000000ul) & ((1ul << (30))-1ul))) - (0x80000000 + 0x4000000ul)));
 }
 
 static inline paddr_t __attribute__((__const__)) kpptr_to_paddr(void *pptr)
 {
     ;
-    return (paddr_t)pptr - (0xFFFFFFFF84000000ul - (0x80000000 + 0x4000000ul));
+    return (paddr_t)pptr - ((0xFFFFFFFF80000000ul + ((0x80000000 + 0x4000000ul) & ((1ul << (30))-1ul))) - (0x80000000 + 0x4000000ul));
 }
 
 /* Update the value of the actual regsiter to hold the expected value */
@@ -5235,7 +5289,7 @@ static inline void Arch_setTLSRegister(word_t tls_base)
     /* The register is always reloaded upon return from kernel. */
     setRegister(ksCurThread, TLS_BASE, tls_base);
 }
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/thread.h" 2
+# 13 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/thread.h" 2
 
 
 
@@ -5334,7 +5388,7 @@ static inline bool_t __attribute__((__pure__)) isStopped(const tcb_t *thread)
         return false;
     }
 }
-# 168 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/thread.h"
+# 168 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/thread.h"
 void configureIdleThread(tcb_t *tcb);
 void activateThread(void);
 void suspend(tcb_t *target);
@@ -5378,8 +5432,8 @@ static inline void updateRestartPC(tcb_t *tcb)
 {
     setRegister(tcb, FaultIP, getRegister(tcb, NextIP));
 }
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/faults.c" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/kernel/thread.h" 1
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/faults.c" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/kernel/thread.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -5389,7 +5443,7 @@ static inline void updateRestartPC(tcb_t *tcb)
 
        
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/object.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/object.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5399,7 +5453,7 @@ static inline void updateRestartPC(tcb_t *tcb)
        
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/objecttype.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/objecttype.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5412,8 +5466,16 @@ static inline void updateRestartPC(tcb_t *tcb)
 
 
 
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/plat/default/plat/machine/hardware.h" 1
+/*
+ * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
+ *
+ * SPDX-License-Identifier: GPL-2.0-only
+ */
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/cap.h" 1
+       
+# 14 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/objecttype.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/cap.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -5435,8 +5497,8 @@ struct finaliseCap_ret {
     cap_t cleanupInfo;
 };
 typedef struct finaliseCap_ret finaliseCap_ret_t;
-# 15 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/objecttype.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/object/objecttype.h" 1
+# 15 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/objecttype.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/object/objecttype.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5468,8 +5530,8 @@ bool_t Arch_isFrameType(word_t type);
 static inline void Arch_postCapDeletion(cap_t cap)
 {
 }
-# 16 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/objecttype.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/interrupt.h" 1
+# 16 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/objecttype.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/interrupt.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5481,7 +5543,7 @@ static inline void Arch_postCapDeletion(cap_t cap)
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/object/interrupt.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/object/interrupt.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5504,8 +5566,8 @@ static inline void handleReservedIRQ(irq_t irq)
 exception_t Arch_decodeIRQControlInvocation(word_t invLabel, word_t length,
                                             cte_t *srcSlot, word_t *buffer);
 exception_t Arch_checkIRQ(word_t irq_w);
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/interrupt.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/plat/default/plat/machine.h" 1
+# 13 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/interrupt.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/plat/default/plat/machine.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -5522,15 +5584,15 @@ exception_t Arch_checkIRQ(word_t irq_w);
 /*
  * This file is autogenerated by kernel/tools/hardware_gen.py.
  */
-# 8 "/home/zoltan/Documents/BINVER-nil/seL4/include/plat/default/plat/machine.h" 2
+# 8 "/home/zoltan/Documents/BINVER-exp/seL4/include/plat/default/plat/machine.h" 2
 # 1 "gen_headers/plat/platform_gen.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 8 "/home/zoltan/Documents/BINVER-nil/seL4/include/plat/default/plat/machine.h" 2
-# 14 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/interrupt.h" 2
+# 8 "/home/zoltan/Documents/BINVER-exp/seL4/include/plat/default/plat/machine.h" 2
+# 14 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/interrupt.h" 2
 
 exception_t decodeIRQControlInvocation(word_t invLabel, word_t length,
                                        cte_t *srcSlot, word_t *buffer);
@@ -5544,7 +5606,7 @@ void deletedIRQHandler(irq_t irq);
 void handleInterrupt(irq_t irq);
 bool_t isIRQActive(irq_t irq);
 void setIRQState(irq_state_t irqState, irq_t irq);
-# 17 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/objecttype.h" 2
+# 17 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/objecttype.h" 2
 
 deriveCap_ret_t deriveCap(cte_t *slot, cap_t cap);
 finaliseCap_ret_t finaliseCap(cap_t cap, bool_t final, bool_t exposed);
@@ -5557,7 +5619,7 @@ cap_t createObject(object_t t, void *regionBase, word_t, bool_t deviceMemory);
 void createNewObjects(object_t t, cte_t *parent,
                       cte_t *destCNode, word_t destOffset, word_t destLength,
                       void *regionBase, word_t userSize, bool_t deviceMemory);
-# 41 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/objecttype.h"
+# 41 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/objecttype.h"
 exception_t decodeInvocation(word_t invLabel, word_t length,
                              cptr_t capIndex, cte_t *slot, cap_t cap,
                              bool_t block, bool_t call, word_t *buffer);
@@ -5579,8 +5641,8 @@ static inline void postCapDeletion(cap_t cap)
         Arch_postCapDeletion(cap);
     }
 }
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/include/object.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/notification.h" 1
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/include/object.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/notification.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5600,9 +5662,9 @@ void completeSignal(notification_t *ntfnPtr, tcb_t *tcb);
 void unbindMaybeNotification(notification_t *ntfnPtr);
 void unbindNotification(tcb_t *tcb);
 void bindNotification(tcb_t *tcb, notification_t *ntfnPtr);
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/include/object.h" 2
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/include/object.h" 2
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/endpoint.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/endpoint.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5623,7 +5685,7 @@ static inline tcb_queue_t __attribute__((__pure__)) ep_ptr_get_queue(endpoint_t 
 
     return queue;
 }
-# 29 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/endpoint.h"
+# 29 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/endpoint.h"
 void sendIPC(bool_t blocking, bool_t do_call, word_t badge,
              bool_t canGrant, bool_t canGrantReply, tcb_t *thread,
              endpoint_t *epptr);
@@ -5634,12 +5696,12 @@ void cancelAllIPC(endpoint_t *epptr);
 void cancelBadgedSends(endpoint_t *epptr, word_t badge);
 void replyFromKernel_error(tcb_t *thread);
 void replyFromKernel_success_empty(tcb_t *thread);
-# 14 "/home/zoltan/Documents/BINVER-nil/seL4/include/object.h" 2
+# 14 "/home/zoltan/Documents/BINVER-exp/seL4/include/object.h" 2
 
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/untyped.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/untyped.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5647,7 +5709,7 @@ void replyFromKernel_success_empty(tcb_t *thread);
  */
 
        
-# 16 "/home/zoltan/Documents/BINVER-nil/seL4/include/object/untyped.h"
+# 16 "/home/zoltan/Documents/BINVER-exp/seL4/include/object/untyped.h"
 /* It is assumed that every untyped is within seL4_MinUntypedBits and seL4_MaxUntypedBits
  * (inclusive). This means that every untyped stored as seL4_MinUntypedBits
  * subtracted from its size before it is stored in capBlockSize, and
@@ -5669,8 +5731,8 @@ exception_t invokeUntyped_Retype(cte_t *srcSlot, bool_t reset,
                                  void *retypeBase, object_t newType, word_t userSize,
                                  cte_t *destCNode, word_t destOffset, word_t destLength,
                                  bool_t deviceMemory);
-# 19 "/home/zoltan/Documents/BINVER-nil/seL4/include/object.h" 2
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/kernel/thread.h" 2
+# 19 "/home/zoltan/Documents/BINVER-exp/seL4/include/object.h" 2
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/kernel/thread.h" 2
 
 void Arch_switchToThread(tcb_t *tcb);
 void Arch_switchToIdleThread(void);
@@ -5681,8 +5743,8 @@ static inline bool_t __attribute__((__const__)) Arch_getSanitiseRegisterInfo(tcb
 {
     return 0;
 }
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/faults.c" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/machine/debug.h" 1
+# 13 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/faults.c" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/machine/debug.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -5690,7 +5752,7 @@ static inline bool_t __attribute__((__const__)) Arch_getSanitiseRegisterInfo(tcb
  */
 
        
-# 14 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/faults.c" 2
+# 14 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/faults.c" 2
 
 
 
@@ -5810,7 +5872,7 @@ bool_t handleFaultReply(tcb_t *receiver, tcb_t *sender)
     case seL4_Fault_UserException:
         copyMRsFaultReply(sender, receiver, MessageID_Exception, (((length)<(n_exceptionMessage))?(length):(n_exceptionMessage)));
         return (label == 0);
-# 186 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/faults.c"
+# 186 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/faults.c"
     default:
         return Arch_handleFaultReply(receiver, sender, seL4_Fault_get_seL4_FaultType(fault));
     }
@@ -5844,13 +5906,13 @@ word_t setMRs_fault(tcb_t *sender, tcb_t *receiver, word_t *receiveIPCBuffer)
         return setMR(receiver, receiveIPCBuffer, n_exceptionMessage + 1u,
                      seL4_Fault_UserException_get_code(sender->tcbFault));
     }
-# 256 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/faults.c"
+# 256 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/faults.c"
     default:
         return Arch_setMRs_fault(sender, receiver, receiveIPCBuffer,
                                  seL4_Fault_get_seL4_FaultType(sender->tcbFault));
     }
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/syscall.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/syscall.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5858,7 +5920,7 @@ word_t setMRs_fault(tcb_t *sender, tcb_t *receiver, word_t *receiveIPCBuffer)
  */
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/benchmark/benchmark.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/benchmark/benchmark.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5867,7 +5929,7 @@ word_t setMRs_fault(tcb_t *sender, tcb_t *receiver, word_t *receiveIPCBuffer)
 
        
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/benchmark.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/benchmark.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -5876,11 +5938,11 @@ word_t setMRs_fault(tcb_t *sender, tcb_t *receiver, word_t *receiveIPCBuffer)
  */
 
        
-# 10 "/home/zoltan/Documents/BINVER-nil/seL4/include/benchmark/benchmark.h" 2
+# 10 "/home/zoltan/Documents/BINVER-exp/seL4/include/benchmark/benchmark.h" 2
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/benchmark_tracepoints_types.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/benchmark_tracepoints_types.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -5891,11 +5953,11 @@ word_t setMRs_fault(tcb_t *sender, tcb_t *receiver, word_t *receiveIPCBuffer)
 
 
 # 1 "autoconf/autoconf.h" 1
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/benchmark_tracepoints_types.h" 2
-# 14 "/home/zoltan/Documents/BINVER-nil/seL4/include/benchmark/benchmark.h" 2
-# 9 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/syscall.c" 2
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/benchmark_tracepoints_types.h" 2
+# 14 "/home/zoltan/Documents/BINVER-exp/seL4/include/benchmark/benchmark.h" 2
+# 9 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/syscall.c" 2
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/benchmark/benchmark_track.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/benchmark/benchmark_track.h" 1
 /*
  * Copyright 2016, General Dynamics C4 Systems
  *
@@ -5906,7 +5968,7 @@ word_t setMRs_fault(tcb_t *sender, tcb_t *receiver, word_t *receiveIPCBuffer)
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/benchmark_track_types.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/benchmark_track_types.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -5919,11 +5981,11 @@ word_t setMRs_fault(tcb_t *sender, tcb_t *receiver, word_t *receiveIPCBuffer)
 
 
 # 1 "autoconf/autoconf.h" 1
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/benchmark_track_types.h" 2
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/include/benchmark/benchmark_track.h" 2
+# 13 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/benchmark_track_types.h" 2
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/include/benchmark/benchmark_track.h" 2
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/cspace.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/cspace.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -5984,9 +6046,9 @@ lookupSlot_ret_t lookupPivotSlot(cap_t root, cptr_t capptr,
 resolveAddressBits_ret_t resolveAddressBits(cap_t nodeCap,
                                             cptr_t capptr,
                                             word_t n_bits);
-# 15 "/home/zoltan/Documents/BINVER-nil/seL4/include/benchmark/benchmark_track.h" 2
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/syscall.c" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/benchmark/benchmark_utilisation.h" 1
+# 15 "/home/zoltan/Documents/BINVER-exp/seL4/include/benchmark/benchmark_track.h" 2
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/syscall.c" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/benchmark/benchmark_utilisation.h" 1
 /*
  * Copyright 2016, General Dynamics C4 Systems
  *
@@ -5997,7 +6059,7 @@ resolveAddressBits_ret_t resolveAddressBits(cap_t nodeCap,
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/benchmark_utilisation_types.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/benchmark_utilisation_types.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -6008,14 +6070,14 @@ resolveAddressBits_ret_t resolveAddressBits(cap_t nodeCap,
 
 
 # 1 "autoconf/autoconf.h" 1
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/benchmark_utilisation_types.h" 2
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/include/benchmark/benchmark_utilisation.h" 2
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/syscall.c" 2
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/benchmark_utilisation_types.h" 2
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/include/benchmark/benchmark_utilisation.h" 2
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/syscall.c" 2
 
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/faulthandler.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/faulthandler.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6023,19 +6085,19 @@ resolveAddressBits_ret_t resolveAddressBits(cap_t nodeCap,
  */
 
        
-# 21 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/faulthandler.h"
+# 21 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/faulthandler.h"
 exception_t sendFaultIPC(tcb_t *tptr);
 void handleDoubleFault(tcb_t *tptr, seL4_Fault_t ex1);
 
 void handleFault(tcb_t *tptr);
-# 17 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/syscall.c" 2
+# 17 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/syscall.c" 2
 
 
 
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/string.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/string.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6049,8 +6111,8 @@ void handleFault(tcb_t *tptr);
 word_t strnlen(const char *s, word_t maxlen);
 word_t strlcpy(char *dest, const char *src, word_t size);
 word_t strlcat(char *dest, const char *src, word_t size);
-# 24 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/syscall.c" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/traps.h" 1
+# 24 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/syscall.c" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/traps.h" 1
 /*
  * Copyright 2016, General Dynamics C4 Systems
  *
@@ -6061,7 +6123,7 @@ word_t strlcat(char *dest, const char *src, word_t size);
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/kernel/traps.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/kernel/traps.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -6096,8 +6158,8 @@ void restore_user_context(void)
 __attribute__((externally_visible)) __attribute__((__noreturn__));
 
 void handle_exception(void);
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/traps.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/smp/lock.h" 1
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/traps.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/smp/lock.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -6111,7 +6173,7 @@ void handle_exception(void);
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/smp/ipi.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/smp/ipi.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -6122,7 +6184,7 @@ void handle_exception(void);
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/plat/default/plat/machine.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/plat/default/plat/machine.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -6139,16 +6201,16 @@ void handle_exception(void);
 /*
  * This file is autogenerated by kernel/tools/hardware_gen.py.
  */
-# 8 "/home/zoltan/Documents/BINVER-nil/seL4/include/plat/default/plat/machine.h" 2
+# 8 "/home/zoltan/Documents/BINVER-exp/seL4/include/plat/default/plat/machine.h" 2
 # 1 "gen_headers/plat/platform_gen.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 8 "/home/zoltan/Documents/BINVER-nil/seL4/include/plat/default/plat/machine.h" 2
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/include/smp/ipi.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/smp/ipi.h" 1
+# 8 "/home/zoltan/Documents/BINVER-exp/seL4/include/plat/default/plat/machine.h" 2
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/include/smp/ipi.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/smp/ipi.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -6156,9 +6218,9 @@ void handle_exception(void);
  */
 
        
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/include/smp/ipi.h" 2
-# 15 "/home/zoltan/Documents/BINVER-nil/seL4/include/smp/lock.h" 2
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/traps.h" 2
+# 13 "/home/zoltan/Documents/BINVER-exp/seL4/include/smp/ipi.h" 2
+# 15 "/home/zoltan/Documents/BINVER-exp/seL4/include/smp/lock.h" 2
+# 13 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/traps.h" 2
 
 /* This C function should be the first thing called from C after entry from
  * assembly. It provides a single place to do any entry work that is not
@@ -6182,7 +6244,7 @@ static inline void c_exit_hook(void)
 
     arch_c_exit_hook();
 }
-# 25 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/syscall.c" 2
+# 25 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/syscall.c" 2
 
 
 
@@ -6228,9 +6290,9 @@ exception_t handleInterruptEntry(void)
 
 exception_t handleUnknownSyscall(word_t w)
 {
-# 257 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/syscall.c"
+# 257 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/syscall.c"
     { { current_fault = seL4_Fault_UnknownSyscall_new(w); handleFault(ksCurThread); } }
-# 274 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/syscall.c"
+# 274 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/syscall.c"
     schedule();
     activateThread();
 
@@ -6252,7 +6314,7 @@ exception_t handleUserLevelFault(word_t w_a, word_t w_b)
 exception_t handleVMFaultEvent(vm_fault_type_t vm_faultType)
 {
     { { exception_t status = handleVMFault(ksCurThread, vm_faultType); if (status != EXCEPTION_NONE) { handleFault(ksCurThread); } } }
-# 303 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/syscall.c"
+# 303 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/syscall.c"
     schedule();
     activateThread();
 
@@ -6342,7 +6404,7 @@ static exception_t handleInvocation(bool_t isCall, bool_t isBlocking)
 
     return EXCEPTION_NONE;
 }
-# 416 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/syscall.c"
+# 416 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/syscall.c"
 static void handleReply(void)
 {
     cte_t *callerSlot;
@@ -6407,7 +6469,7 @@ static void handleRecv(bool_t isBlocking)
             handleFault(ksCurThread);
             break;
         }
-# 494 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/syscall.c"
+# 494 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/syscall.c"
         deleteCallerCap(ksCurThread);
         receiveIPC(ksCurThread, lu_ret.cap, isBlocking);
 
@@ -6436,7 +6498,7 @@ static void handleRecv(bool_t isBlocking)
         break;
     }
 }
-# 551 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/syscall.c"
+# 551 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/syscall.c"
 static void handleYield(void)
 {
 
@@ -6456,26 +6518,26 @@ exception_t handleSyscall(syscall_t syscall)
     exception_t ret;
     irq_t irq;
     { { switch (syscall) { case SysSend: ret = handleInvocation(false, true); if (__builtin_expect(!!(ret != EXCEPTION_NONE), 0)) { irq = getActiveIRQ(); if ((irq) != (irqInvalid)) { ; handleInterrupt(irq); Arch_finaliseInterrupt(); } } break; case SysNBSend: ret = handleInvocation(false, false); if (__builtin_expect(!!(ret != EXCEPTION_NONE), 0)) { irq = getActiveIRQ(); if ((irq) != (irqInvalid)) { ; handleInterrupt(irq); Arch_finaliseInterrupt(); } } break; case SysCall: ret = handleInvocation(true, true); if (__builtin_expect(!!(ret != EXCEPTION_NONE), 0)) { irq = getActiveIRQ(); if ((irq) != (irqInvalid)) { ; handleInterrupt(irq); Arch_finaliseInterrupt(); } } break; case SysRecv: handleRecv(true); break; case SysReply: handleReply(); break; case SysReplyRecv: handleReply(); handleRecv(true); break; case SysNBRecv: handleRecv(false); break; case SysYield: handleYield(); break; default: halt(); } } }
-# 683 "/home/zoltan/Documents/BINVER-nil/seL4/src/api/syscall.c"
+# 683 "/home/zoltan/Documents/BINVER-exp/seL4/src/api/syscall.c"
     schedule();
     activateThread();
 
     return EXCEPTION_NONE;
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/api/benchmark.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/api/benchmark.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/api/faults.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/api/faults.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 20 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/api/faults.c"
+# 20 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/api/faults.c"
 bool_t Arch_handleFaultReply(tcb_t *receiver, tcb_t *sender, word_t faultType)
 {
     switch (faultType) {
@@ -6503,7 +6565,7 @@ word_t Arch_setMRs_fault(tcb_t *sender, tcb_t *receiver, word_t *receiveIPCBuffe
         halt();
     }
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/c_traps.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/c_traps.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -6513,7 +6575,7 @@ word_t Arch_setMRs_fault(tcb_t *sender, tcb_t *receiver, word_t *receiveIPCBuffe
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/fastpath/fastpath.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/fastpath/fastpath.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -6522,8 +6584,8 @@ word_t Arch_setMRs_fault(tcb_t *sender, tcb_t *receiver, word_t *receiveIPCBuffe
  */
 
        
-# 18 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/fastpath/fastpath.h"
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/machine/fpu.h" 1
+# 18 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/fastpath/fastpath.h"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/machine/fpu.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -6535,7 +6597,7 @@ word_t Arch_setMRs_fault(tcb_t *sender, tcb_t *receiver, word_t *receiveIPCBuffe
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine/fpu.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/machine/fpu.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -6547,7 +6609,7 @@ word_t Arch_setMRs_fault(tcb_t *sender, tcb_t *receiver, word_t *receiveIPCBuffe
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/smp/ipi_inline.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/smp/ipi_inline.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -6555,14 +6617,14 @@ word_t Arch_setMRs_fault(tcb_t *sender, tcb_t *receiver, word_t *receiveIPCBuffe
  */
 
        
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine/fpu.h" 2
+# 13 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/machine/fpu.h" 2
 
 static inline void set_fs_off(void)
 {
     __asm__ volatile("csrc sstatus, %0" :: "rK"(0x00006000));
 }
-# 13 "/home/zoltan/Documents/BINVER-nil/seL4/include/machine/fpu.h" 2
-# 19 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/fastpath/fastpath.h" 2
+# 13 "/home/zoltan/Documents/BINVER-exp/seL4/include/machine/fpu.h" 2
+# 19 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/fastpath/fastpath.h" 2
 
 void slowpath(syscall_t syscall)
 __attribute__((__noreturn__));
@@ -6642,7 +6704,7 @@ static inline int fastpath_reply_cap_check(cap_t cap)
 static inline void __attribute__((__noreturn__)) __attribute__((always_inline)) fastpath_restore(word_t badge, word_t msgInfo, tcb_t *cur_thread)
 {
     do {} while (0);
-# 106 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/fastpath/fastpath.h"
+# 106 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/fastpath/fastpath.h"
     c_exit_hook();
 
 
@@ -6710,15 +6772,15 @@ static inline void __attribute__((__noreturn__)) __attribute__((always_inline)) 
 
     __builtin_unreachable();
 }
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/c_traps.c" 2
-# 21 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/c_traps.c"
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/c_traps.c" 2
+# 21 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/c_traps.c"
 /** DONT_TRANSLATE */
 void __attribute__((externally_visible)) __attribute__((__noreturn__)) restore_user_context(void)
 {
     word_t cur_thread_reg = (word_t) ksCurThread->tcbArch.tcbContext.registers;
     c_exit_hook();
     do {} while (0);
-# 41 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/c_traps.c"
+# 41 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/c_traps.c"
     __asm__ volatile(
         "mv t0, %[cur_thread]       \n"
         "ld" " ra, (0*%[REGSIZE])(t0)  \n"
@@ -6806,7 +6868,7 @@ void __attribute__((externally_visible)) __attribute__((__noreturn__)) c_handle_
         handleVMFaultEvent(scause);
         break;
     default:
-# 136 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/c_traps.c"
+# 136 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/c_traps.c"
         handleUserLevelFault(scause, 0);
         break;
     }
@@ -6851,7 +6913,7 @@ void __attribute__((externally_visible)) __attribute__((__noreturn__)) c_handle_
     slowpath(syscall);
     __builtin_unreachable();
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/idle.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/idle.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -6880,7 +6942,7 @@ void __attribute__((externally_visible)) halt(void)
 
     __builtin_unreachable();
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/kernel/boot.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/kernel/boot.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -6889,7 +6951,7 @@ void __attribute__((externally_visible)) halt(void)
  */
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/boot.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/boot.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6897,7 +6959,7 @@ void __attribute__((externally_visible)) halt(void)
  */
 
        
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/bootinfo.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/bootinfo.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -6908,7 +6970,7 @@ void __attribute__((externally_visible)) halt(void)
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/bootinfo_types.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/bootinfo_types.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -6919,7 +6981,7 @@ void __attribute__((externally_visible)) halt(void)
 
 
 # 1 "autoconf/autoconf.h" 1
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/libsel4/include/sel4/bootinfo_types.h" 2
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/libsel4/include/sel4/bootinfo_types.h" 2
 
 
 /* caps with fixed slot positions in the root CNode */
@@ -6999,7 +7061,7 @@ typedef struct seL4_BootInfoHeader {
 
 /* Bootinfo identifiers share a global namespace, even if they are arch or platform specific
  * and are enumerated here */
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/include/bootinfo.h" 2
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/include/bootinfo.h" 2
 
 
 
@@ -7008,8 +7070,8 @@ typedef struct seL4_BootInfoHeader {
 
 /* adjust constants in config.h if this assert fails */
 typedef int __assert_failed_bi_size[(sizeof(seL4_BootInfo) <= (1ul << (12))) ? 1 : -1];
-# 9 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/boot.h" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/bootinfo.h" 1
+# 9 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/boot.h" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/bootinfo.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -7025,8 +7087,8 @@ typedef int __assert_failed_bi_size[(sizeof(seL4_BootInfo) <= (1ul << (12))) ? 1
  * - 1 for each mode-reserved region. (MODE_RESERVED)
  * - 1 each for kernel, dtb, and user image. (3)
  */
-# 10 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/boot.h" 2
-# 21 "/home/zoltan/Documents/BINVER-nil/seL4/include/kernel/boot.h"
+# 10 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/boot.h" 2
+# 21 "/home/zoltan/Documents/BINVER-exp/seL4/include/kernel/boot.h"
 /*
  * Resolve naming differences between the abstract specifications
  * of the bootstrapping phase and the runtime phase of the kernel.
@@ -7160,12 +7222,12 @@ word_t arch_get_n_paging(v_region_t it_veg);
 /* Create pptrs for all root server objects, starting at pptr, to cover the
  * virtual memory region v_reg, and any extra boot info. */
 void create_rootserver_objects(pptr_t start, v_region_t v_reg, word_t extra_bi_size_bits);
-# 10 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/kernel/boot.c" 2
+# 10 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/kernel/boot.c" 2
 
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/kernel/boot.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/kernel/boot.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -7193,7 +7255,7 @@ void init_kernel(
 
 
 );
-# 15 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/kernel/boot.c" 2
+# 15 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/kernel/boot.c" 2
 
 
 
@@ -7259,7 +7321,7 @@ __attribute__((__section__(".boot.text"))) static void arch_init_freemem(region_
 {
     // This looks a bit awkward as our symbols are a reference in the kernel image window, but
     // we want to do all allocations in terms of the main kernel window, so we do some translation
-    res_reg[0].start = (pptr_t)ptrFromPAddr(kpptr_to_paddr((void *)0xFFFFFFFF80000000lu));
+    res_reg[0].start = (pptr_t)ptrFromPAddr(kpptr_to_paddr((void *)(0xFFFFFFFF80000000ul + ((0x80000000 + 0x4000000ul) & ((1ul << (30))-1ul)))));
     res_reg[0].end = (pptr_t)ptrFromPAddr(kpptr_to_paddr((void *)ki_end));
     res_reg[1].start = ui_reg.start;
     res_reg[1].end = ui_reg.end;
@@ -7290,7 +7352,7 @@ __attribute__((__section__(".boot.text"))) static void init_irqs(cap_t root_cnod
 extern char trap_entry[1];
 
 /* This and only this function initialises the CPU. It does NOT initialise any kernel state. */
-# 121 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/kernel/boot.c"
+# 121 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/kernel/boot.c"
 __attribute__((__section__(".boot.text"))) static void init_cpu(void)
 {
 
@@ -7316,7 +7378,7 @@ __attribute__((__section__(".boot.text"))) static void init_plat(void)
 {
     initIRQController();
 }
-# 175 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/kernel/boot.c"
+# 175 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/kernel/boot.c"
 /* Main kernel initialisation function. */
 
 static __attribute__((__section__(".boot.text"))) bool_t try_init_kernel(
@@ -7331,7 +7393,7 @@ static __attribute__((__section__(".boot.text"))) bool_t try_init_kernel(
     cap_t it_ap_cap;
     cap_t ipcbuf_cap;
     p_region_t boot_mem_reuse_p_reg = ((p_region_t) {
-        kpptr_to_paddr((void *)0xFFFFFFFF84000000ul), kpptr_to_paddr(ki_boot_end)
+        kpptr_to_paddr((void *)(0xFFFFFFFF80000000ul + ((0x80000000 + 0x4000000ul) & ((1ul << (30))-1ul)))), kpptr_to_paddr(ki_boot_end)
     });
     region_t boot_mem_reuse_reg = paddr_to_pptr_reg(boot_mem_reuse_p_reg);
     region_t ui_reg = paddr_to_pptr_reg((p_region_t) {
@@ -7485,7 +7547,7 @@ __attribute__((__section__(".boot.text"))) __attribute__((externally_visible)) v
 
 )
 {
-# 356 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/kernel/boot.c"
+# 356 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/kernel/boot.c"
     bool_t result = try_init_kernel(ui_p_reg_start,
                                     ui_p_reg_end,
                                     pv_offset,
@@ -7503,14 +7565,14 @@ __attribute__((__section__(".boot.text"))) __attribute__((externally_visible)) v
     schedule();
     activateThread();
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/kernel/thread.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/kernel/thread.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 16 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/kernel/thread.c"
+# 16 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/kernel/thread.c"
 extern char kernel_stack_alloc[1][(1ul << (12))];
 
 void Arch_switchToThread(tcb_t *tcb)
@@ -7524,7 +7586,7 @@ __attribute__((__section__(".boot.text"))) void Arch_configureIdleThread(tcb_t *
 
     /* Enable interrupts and keep working in supervisor mode */
     setRegister(tcb, SSTATUS, (word_t) 0x00000100 | 0x00000020);
-# 37 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/kernel/thread.c"
+# 37 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/kernel/thread.c"
     setRegister(tcb, SP, (word_t)kernel_stack_alloc + (1ul << (12)));
 
 }
@@ -7546,7 +7608,7 @@ void Arch_postModifyRegisters(tcb_t *tptr)
 {
     /* Nothing to do */
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/kernel/vspace.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/kernel/vspace.c"
 /*
  * Copyright 2020, DornerWorks
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
@@ -7554,8 +7616,8 @@ void Arch_postModifyRegisters(tcb_t *tptr)
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 18 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/kernel/vspace.c"
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/model/preemption.h" 1
+# 18 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/kernel/vspace.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/model/preemption.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -7567,7 +7629,7 @@ void Arch_postModifyRegisters(tcb_t *tptr)
 
 
 exception_t preemptionPoint(void);
-# 19 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/kernel/vspace.c" 2
+# 19 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/kernel/vspace.c" 2
 
 
 
@@ -7685,7 +7747,7 @@ enum arch_invocation_label {
     RISCVIRQIssueIRQHandlerTrigger,
     nArchInvocationLabels
 };
-# 23 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/kernel/vspace.c" 2
+# 23 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/kernel/vspace.c" 2
 
 
 
@@ -7758,15 +7820,16 @@ __attribute__((__section__(".boot.text"))) void map_kernel_frame(paddr_t paddr, 
 
 __attribute__((__section__(".boot.text"))) __attribute__((externally_visible)) void map_kernel_window(void)
 {
-    /* mapping of kernelBase (virtual address) to kernel's physBase  */
+    /* mapping of KERNEL_ELF_BASE (virtual address) to kernel's
+     * KERNEL_ELF_PHYS_BASE  */
     ;
 
     /* kernel window starts at PPTR_BASE */
-    word_t pptr = 0xFFFFFFC000000000lu;
+    word_t pptr = 0xFFFFFFC000000000ul;
 
     /* first we map in memory from PADDR_BASE */
-    word_t paddr = 0x0lu;
-    while (pptr < 0xFFFFFFFF80000000lu) {
+    word_t paddr = 0x0ul;
+    while (pptr < 0xFFFFFFFF80000000ul) {
         ;
         ;
 
@@ -7788,11 +7851,11 @@ __attribute__((__section__(".boot.text"))) __attribute__((externally_visible)) v
     /* The kernel image are mapped twice, locating the two indexes in the
      * root page table, pointing them to the same second level page table.
      */
-    kernel_root_pageTable[((((0x80000000 + 0x4000000ul) + (0xFFFFFFC000000000lu - 0x0lu)) >> (((9) * (((3) - 1) - (0))) + 12)) & ((1ul << (9))-1ul))] =
+    kernel_root_pageTable[((((0x80000000 + 0x4000000ul) + (0xFFFFFFC000000000ul - 0x0ul)) >> (((9) * (((3) - 1) - (0))) + 12)) & ((1ul << (9))-1ul))] =
         pte_next(kpptr_to_paddr(kernel_image_level2_pt), false);
     kernel_root_pageTable[(((pptr) >> (((9) * (((3) - 1) - (0))) + 12)) & ((1ul << (9))-1ul))] =
         pte_next(kpptr_to_paddr(kernel_image_level2_pt), false);
-    while (pptr < 0xFFFFFFFF80000000lu + (1ul << ((((9) * (((3) - 1) - ((0)))) + 12)))) {
+    while (pptr < 0xFFFFFFFF80000000ul + (1ul << ((((9) * (((3) - 1) - ((0)))) + 12)))) {
         kernel_image_level2_pt[index] = pte_next(paddr, true);
         index++;
         pptr += (1ul << ((((9) * (((3) - 1) - ((1)))) + 12)));
@@ -7991,7 +8054,7 @@ void copyGlobalMappings(pte_t *newLvl1pt)
     unsigned long i;
     pte_t *global_kernel_vspace = kernel_root_pageTable;
 
-    for (i = (((0xFFFFFFC000000000lu) >> (((9) * (((3) - 1) - (0))) + 12)) & ((1ul << (9))-1ul)); i < (1ul << (9)); i++) {
+    for (i = (((0xFFFFFFC000000000ul) >> (((9) * (((3) - 1) - (0))) + 12)) & ((1ul << (9))-1ul)); i < (1ul << (9)); i++) {
         newLvl1pt[i] = global_kernel_vspace[i];
     }
 }
@@ -8788,19 +8851,19 @@ exception_t performPageInvocationUnmap(cap_t cap, cte_t *ctSlot)
 
     return EXCEPTION_NONE;
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/machine/capdl.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/machine/capdl.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/machine/fpu.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/machine/fpu.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/machine/hardware.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/machine/hardware.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -8811,7 +8874,7 @@ exception_t performPageInvocationUnmap(cap_t cap, cte_t *ctSlot)
 
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/machine/timer.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/machine/timer.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -8821,7 +8884,7 @@ exception_t performPageInvocationUnmap(cap_t cap, cte_t *ctSlot)
        
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/machine/timer.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/machine/timer.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -8829,11 +8892,11 @@ exception_t performPageInvocationUnmap(cap_t cap, cte_t *ctSlot)
  */
 
        
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/include/machine/timer.h" 2
-# 32 "/home/zoltan/Documents/BINVER-nil/seL4/include/machine/timer.h"
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/include/machine/timer.h" 2
+# 32 "/home/zoltan/Documents/BINVER-exp/seL4/include/machine/timer.h"
 static inline void resetTimer(void);
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/machine/hardware.c" 2
-# 31 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/machine/hardware.c"
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/machine/hardware.c" 2
+# 31 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/machine/hardware.c"
 word_t __attribute__((__pure__)) getRestartPC(tcb_t *thread)
 {
     return getRegister(thread, FaultIP);
@@ -8861,7 +8924,7 @@ __attribute__((__section__(".boot.text"))) void map_kernel_devices(void)
     }
 
     for (int i = 0; i < (sizeof(kernel_devices) / sizeof(kernel_frame_t)); i++) {
-        map_kernel_frame(kernel_devices[i].paddr, 0xFFFFFFFFC0000000lu,
+        map_kernel_frame(kernel_devices[i].paddr, 0xFFFFFFFFC0000000ul,
                          VMKernelOnly);
         if (!kernel_devices[i].userAvailable) {
             p_region_t reg = {
@@ -9113,14 +9176,14 @@ static inline void handleSpuriousIRQ(void)
     /* Do nothing */
     ((void)(0));
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/machine/io.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/machine/io.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/machine/registerset.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/machine/registerset.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -9157,7 +9220,7 @@ typedef int __assert_failed_consistent_gp_registers[(sizeof(gpRegisters) / sizeo
 
 
  ;
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/model/statedata.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/model/statedata.c"
 /*
  * Copyright 2020, DornerWorks
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
@@ -9165,7 +9228,7 @@ typedef int __assert_failed_consistent_gp_registers[(sizeof(gpRegisters) / sizeo
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 17 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/model/statedata.c"
+# 17 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/model/statedata.c"
 /* The top level asid mapping table */
 asid_pool_t *riscvKSASIDTable[(1ul << (asidHighBits))];
 
@@ -9177,7 +9240,7 @@ pte_t kernel_image_level2_pt[(1ul << (9))] __attribute__((__aligned__((1ul << (1
 
 
 ;
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/object/interrupt.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/object/interrupt.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
@@ -9267,14 +9330,14 @@ exception_t Arch_decodeIRQControlInvocation(word_t invLabel, word_t length,
         return EXCEPTION_SYSCALL_ERROR;
     }
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/object/objecttype.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/object/objecttype.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 16 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/object/objecttype.c"
+# 16 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/object/objecttype.c"
 deriveCap_ret_t Arch_deriveCap(cte_t *slot, cap_t cap)
 {
     deriveCap_ret_t ret;
@@ -9586,14 +9649,14 @@ bool_t Arch_isFrameType(word_t type)
         return false;
     }
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/object/tcb.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/object/tcb.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 15 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/object/tcb.c"
+# 15 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/object/tcb.c"
 word_t __attribute__((__const__)) Arch_decodeTransfer(word_t flags)
 {
     return 0;
@@ -9603,7 +9666,7 @@ exception_t __attribute__((__const__)) Arch_performTransfer(word_t arch, tcb_t *
 {
     return EXCEPTION_NONE;
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/smp/ipi.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/smp/ipi.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -9611,7 +9674,7 @@ exception_t __attribute__((__const__)) Arch_performTransfer(word_t arch, tcb_t *
  */
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/arch/riscv/arch/64/mode/smp/ipi.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/arch/riscv/arch/64/mode/smp/ipi.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -9619,26 +9682,26 @@ exception_t __attribute__((__const__)) Arch_performTransfer(word_t arch, tcb_t *
  */
 
        
-# 9 "/home/zoltan/Documents/BINVER-nil/seL4/src/arch/riscv/smp/ipi.c" 2
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/assert.c"
+# 9 "/home/zoltan/Documents/BINVER-exp/seL4/src/arch/riscv/smp/ipi.c" 2
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/assert.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/benchmark/benchmark_track.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/benchmark/benchmark_track.c"
 /*
  * Copyright 2016, General Dynamics C4 Systems
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/benchmark/benchmark_utilisation.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/benchmark/benchmark_utilisation.c"
 /*
  * Copyright 2016, General Dynamics C4 Systems
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/fastpath/fastpath.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/fastpath/fastpath.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9646,7 +9709,7 @@ exception_t __attribute__((__const__)) Arch_performTransfer(word_t arch, tcb_t *
  */
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/fastpath/fastpath.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/fastpath/fastpath.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -9738,8 +9801,8 @@ static inline void endpoint_ptr_set_epQueue_head_np(endpoint_t *ep_ptr, word_t e
 {
     ep_ptr->words[1] = epQueue_head;
 }
-# 9 "/home/zoltan/Documents/BINVER-nil/seL4/src/fastpath/fastpath.c" 2
-# 24 "/home/zoltan/Documents/BINVER-nil/seL4/src/fastpath/fastpath.c"
+# 9 "/home/zoltan/Documents/BINVER-exp/seL4/src/fastpath/fastpath.c" 2
+# 24 "/home/zoltan/Documents/BINVER-exp/seL4/src/fastpath/fastpath.c"
 void __attribute__((__noreturn__)) fastpath_call(word_t cptr, word_t msgInfo)
 {
     seL4_MessageInfo_t info;
@@ -9804,7 +9867,7 @@ void __attribute__((__noreturn__)) fastpath_call(word_t cptr, word_t msgInfo)
     if (__builtin_expect(!!(! isValidVTableRoot_fp(newVTable)), 0)) {
         slowpath(SysCall);
     }
-# 108 "/home/zoltan/Documents/BINVER-nil/seL4/src/fastpath/fastpath.c"
+# 108 "/home/zoltan/Documents/BINVER-exp/seL4/src/fastpath/fastpath.c"
     /* Get HW ASID */
     stored_hw_asid.words[0] = cap_page_table_cap_get_capPTMappedASID(newVTable);
 
@@ -9834,7 +9897,7 @@ void __attribute__((__noreturn__)) fastpath_call(word_t cptr, word_t msgInfo)
     if (__builtin_expect(!!(dest->tcbDomain != ksCurDomain && maxDom), 0)) {
         slowpath(SysCall);
     }
-# 156 "/home/zoltan/Documents/BINVER-nil/seL4/src/fastpath/fastpath.c"
+# 156 "/home/zoltan/Documents/BINVER-exp/seL4/src/fastpath/fastpath.c"
     /*
      * --- POINT OF NO RETURN ---
      *
@@ -9858,7 +9921,7 @@ void __attribute__((__noreturn__)) fastpath_call(word_t cptr, word_t msgInfo)
     /* Unlink dest <-> reply, link src (cur thread) <-> reply */
     thread_state_ptr_set_tsType_np(&ksCurThread->tcbState,
                                    ThreadState_BlockedOnReply);
-# 197 "/home/zoltan/Documents/BINVER-nil/seL4/src/fastpath/fastpath.c"
+# 197 "/home/zoltan/Documents/BINVER-exp/seL4/src/fastpath/fastpath.c"
     /* Get sender reply slot */
     cte_t *replySlot = (((cte_t *)((word_t)(ksCurThread)&~((1ul << (10))-1ul)))+(tcbReply));
 
@@ -9885,7 +9948,7 @@ void __attribute__((__noreturn__)) fastpath_call(word_t cptr, word_t msgInfo)
 
     fastpath_restore(badge, msgInfo, ksCurThread);
 }
-# 233 "/home/zoltan/Documents/BINVER-nil/seL4/src/fastpath/fastpath.c"
+# 233 "/home/zoltan/Documents/BINVER-exp/seL4/src/fastpath/fastpath.c"
 void __attribute__((__noreturn__)) fastpath_reply_recv(word_t cptr, word_t msgInfo)
 
 {
@@ -9924,7 +9987,7 @@ void __attribute__((__noreturn__)) fastpath_reply_recv(word_t cptr, word_t msgIn
                                                              ) {
         slowpath(SysReplyRecv);
     }
-# 282 "/home/zoltan/Documents/BINVER-nil/seL4/src/fastpath/fastpath.c"
+# 282 "/home/zoltan/Documents/BINVER-exp/seL4/src/fastpath/fastpath.c"
     /* Check there is nothing waiting on the notification */
     if (__builtin_expect(!!(ksCurThread->tcbBoundNotification && notification_ptr_get_state(ksCurThread->tcbBoundNotification) == NtfnState_Active), 0)
                                                                                                                ) {
@@ -9938,7 +10001,7 @@ void __attribute__((__noreturn__)) fastpath_reply_recv(word_t cptr, word_t msgIn
     if (__builtin_expect(!!(endpoint_ptr_get_state(ep_ptr) == EPState_Send), 0)) {
         slowpath(SysReplyRecv);
     }
-# 308 "/home/zoltan/Documents/BINVER-nil/seL4/src/fastpath/fastpath.c"
+# 308 "/home/zoltan/Documents/BINVER-exp/seL4/src/fastpath/fastpath.c"
     /* Only reply if the reply cap is valid. */
     cte_t *callerSlot = (((cte_t *)((word_t)(ksCurThread)&~((1ul << (10))-1ul)))+(tcbCaller));
     cap_t callerCap = callerSlot->cap;
@@ -9974,7 +10037,7 @@ void __attribute__((__noreturn__)) fastpath_reply_recv(word_t cptr, word_t msgIn
     if (__builtin_expect(!!(! isValidVTableRoot_fp(newVTable)), 0)) {
         slowpath(SysReplyRecv);
     }
-# 361 "/home/zoltan/Documents/BINVER-nil/seL4/src/fastpath/fastpath.c"
+# 361 "/home/zoltan/Documents/BINVER-exp/seL4/src/fastpath/fastpath.c"
     stored_hw_asid.words[0] = cap_page_table_cap_get_capPTMappedASID(newVTable);
 
 
@@ -9983,12 +10046,12 @@ void __attribute__((__noreturn__)) fastpath_reply_recv(word_t cptr, word_t msgIn
     if (__builtin_expect(!!(!isHighestPrio(dom, caller->tcbPriority)), 0)) {
         slowpath(SysReplyRecv);
     }
-# 377 "/home/zoltan/Documents/BINVER-nil/seL4/src/fastpath/fastpath.c"
+# 377 "/home/zoltan/Documents/BINVER-exp/seL4/src/fastpath/fastpath.c"
     /* Ensure the original caller is in the current domain and can be scheduled directly. */
     if (__builtin_expect(!!(caller->tcbDomain != ksCurDomain && maxDom), 0)) {
         slowpath(SysReplyRecv);
     }
-# 400 "/home/zoltan/Documents/BINVER-nil/seL4/src/fastpath/fastpath.c"
+# 400 "/home/zoltan/Documents/BINVER-exp/seL4/src/fastpath/fastpath.c"
     /*
      * --- POINT OF NO RETURN ---
      *
@@ -10040,7 +10103,7 @@ void __attribute__((__noreturn__)) fastpath_reply_recv(word_t cptr, word_t msgIn
                                              EPState_Recv);
 
     }
-# 469 "/home/zoltan/Documents/BINVER-nil/seL4/src/fastpath/fastpath.c"
+# 469 "/home/zoltan/Documents/BINVER-exp/seL4/src/fastpath/fastpath.c"
     /* Delete the reply cap. */
     mdb_node_ptr_mset_mdbNext_mdbRevocable_mdbFirstBadged(
         &((cte_t *)(mdb_node_get_mdbPrev(callerSlot->cteMDBNode)))->cteMDBNode,
@@ -10065,7 +10128,7 @@ void __attribute__((__noreturn__)) fastpath_reply_recv(word_t cptr, word_t msgIn
 
     fastpath_restore(badge, msgInfo, ksCurThread);
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/inlines.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/inlines.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -10078,13 +10141,13 @@ void __attribute__((__noreturn__)) fastpath_reply_recv(word_t cptr, word_t msgIn
 lookup_fault_t current_lookup_fault;
 seL4_Fault_t current_fault;
 syscall_error_t current_syscall_error;
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/boot.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/boot.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 20 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/boot.c"
+# 20 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/boot.c"
 /* (node-local) state accessed only during bootstrapping */
 ndks_boot_t ndks_boot __attribute__((__section__(".boot.data")));
 
@@ -10177,7 +10240,7 @@ __attribute__((__section__(".boot.text"))) bool_t insert_region(region_t reg)
             return true;
         }
     }
-# 122 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/boot.c"
+# 122 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/boot.c"
     ((void)(0))
                                                         ;
 
@@ -10447,7 +10510,7 @@ __attribute__((__section__(".boot.text"))) cap_t create_it_asid_pool(cap_t root_
 
     return ap_cap;
 }
-# 425 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/boot.c"
+# 425 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/boot.c"
 __attribute__((__section__(".boot.text"))) bool_t create_idle_thread(void)
 {
     pptr_t pptr;
@@ -10462,7 +10525,7 @@ __attribute__((__section__(".boot.text"))) bool_t create_idle_thread(void)
 
 
         ;
-# 451 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/boot.c"
+# 451 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/boot.c"
     return true;
 }
 
@@ -10533,13 +10596,13 @@ __attribute__((__section__(".boot.text"))) tcb_t *create_initial_thread(cap_t ro
     /* create initial thread's TCB cap */
     cap_t cap = cap_thread_cap_new(((word_t)(tcb)));
     write_slot((((slot_ptr_t)((pptr_t)cap_get_capPtr(root_cnode_cap))) + (seL4_CapInitThreadTCB)), cap);
-# 530 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/boot.c"
+# 530 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/boot.c"
     return tcb;
 }
 
 __attribute__((__section__(".boot.text"))) void init_core_state(tcb_t *scheduler_action)
 {
-# 547 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/boot.c"
+# 547 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/boot.c"
     ksSchedulerAction = scheduler_action;
     ksCurThread = ksIdleThread;
 
@@ -10638,8 +10701,8 @@ __attribute__((__section__(".boot.text"))) bool_t create_device_untypeds(cap_t r
          * The auto-generated bitfield code will get upset if the
          * end pptr is larger than the maximum pointer size for this architecture.
          */
-        if (reg.end > 0xFFFFFFFF80000000lu) {
-            reg.end = 0xFFFFFFFF80000000lu;
+        if (reg.end > 0xFFFFFFFF80000000ul) {
+            reg.end = 0xFFFFFFFF80000000ul;
         }
         if (!create_untypeds_for_region(root_cnode_cap, true, reg, slot_pos_before)) {
             return false;
@@ -10685,8 +10748,8 @@ static inline pptr_t ceiling_kernel_window(pptr_t p)
     /* Adjust address if it exceeds the kernel window
      * Note that we compare physical address in case of overflow.
      */
-    if (addrFromPPtr((void *)p) > (0xFFFFFFFF80000000lu - 0xFFFFFFC000000000lu + 0x0lu)) {
-        p = 0xFFFFFFFF80000000lu;
+    if (addrFromPPtr((void *)p) > (0xFFFFFFFF80000000ul - (0xFFFFFFC000000000ul - 0x0ul))) {
+        p = 0xFFFFFFFF80000000ul;
     }
     return p;
 }
@@ -10812,13 +10875,13 @@ __attribute__((__section__(".boot.text"))) void init_freemem(word_t n_available,
         }
     }
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/cspace.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/cspace.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 15 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/cspace.c"
+# 15 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/cspace.c"
 lookupCap_ret_t lookupCap(tcb_t *thread, cptr_t cPtr)
 {
     lookupSlot_raw_ret_t lu_ret;
@@ -11001,13 +11064,13 @@ resolveAddressBits_ret_t resolveAddressBits(cap_t nodeCap, cptr_t capptr, word_t
     ret.status = EXCEPTION_NONE;
     return ret;
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/faulthandler.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/faulthandler.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 53 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/faulthandler.c"
+# 53 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/faulthandler.c"
 void handleFault(tcb_t *tptr)
 {
     exception_t status;
@@ -11057,15 +11120,15 @@ exception_t sendFaultIPC(tcb_t *tptr)
         return EXCEPTION_FAULT;
     }
 }
-# 146 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/faulthandler.c"
+# 146 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/faulthandler.c"
 /* The second fault, ex2, is stored in the global current_fault */
 void handleDoubleFault(tcb_t *tptr, seL4_Fault_t ex1)
 
 {
-# 170 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/faulthandler.c"
+# 170 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/faulthandler.c"
     setThreadState(tptr, ThreadState_Inactive);
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/stack.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/stack.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -11076,13 +11139,13 @@ void handleDoubleFault(tcb_t *tptr, seL4_Fault_t ex1)
 
 __attribute__((externally_visible)) __attribute__((__aligned__(8)))
 char kernel_stack_alloc[1][(1ul << (12))];
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/thread.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/thread.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 24 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/thread.c"
+# 24 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/thread.c"
 static seL4_MessageInfo_t
 transferCaps(seL4_MessageInfo_t info,
              endpoint_t *endpoint, tcb_t *receiver,
@@ -11188,7 +11251,7 @@ void doIPCTransfer(tcb_t *sender, endpoint_t *endpoint, word_t badge,
 void doReplyTransfer(tcb_t *sender, tcb_t *receiver, cte_t *slot, bool_t grant)
 
 {
-# 141 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/thread.c"
+# 141 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/thread.c"
    
                                       ;
 
@@ -11220,7 +11283,7 @@ void doReplyTransfer(tcb_t *sender, tcb_t *receiver, cte_t *slot, bool_t grant)
             setThreadState(receiver, ThreadState_Inactive);
         }
     }
-# 187 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/thread.c"
+# 187 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/thread.c"
 }
 
 void doNormalTransfer(tcb_t *sender, word_t *sendBuffer, endpoint_t *endpoint,
@@ -11344,7 +11407,7 @@ static void nextDomain(void)
     ksDomainTime = ksDomSchedule[ksDomScheduleIdx].length;
 
 }
-# 332 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/thread.c"
+# 332 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/thread.c"
 static void scheduleChooseNewThread(void)
 {
     if (ksDomainTime == 0) {
@@ -11400,7 +11463,7 @@ void schedule(void)
         }
     }
     ksSchedulerAction = ((tcb_t*)0);
-# 400 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/thread.c"
+# 400 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/thread.c"
 }
 
 void chooseThread(void)
@@ -11432,7 +11495,7 @@ void chooseThread(void)
 
 void switchToThread(tcb_t *thread)
 {
-# 441 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/thread.c"
+# 441 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/thread.c"
     Arch_switchToThread(thread);
     tcbSchedDequeue(thread);
     ksCurThread = thread;
@@ -11463,7 +11526,7 @@ void setMCPriority(tcb_t *tptr, prio_t mcp)
 {
     tptr->tcbMCP = mcp;
 }
-# 501 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/thread.c"
+# 501 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/thread.c"
 void setPriority(tcb_t *tptr, prio_t prio)
 {
     tcbSchedDequeue(tptr);
@@ -11517,7 +11580,7 @@ void scheduleTCB(tcb_t *tptr)
         rescheduleRequired();
     }
 }
-# 618 "/home/zoltan/Documents/BINVER-nil/seL4/src/kernel/thread.c"
+# 618 "/home/zoltan/Documents/BINVER-exp/seL4/src/kernel/thread.c"
 void timerTick(void)
 {
     if (__builtin_expect(!!(thread_state_get_tsType(ksCurThread->tcbState) == ThreadState_Running), 1)
@@ -11561,13 +11624,13 @@ void rescheduleRequired(void)
     }
     ksSchedulerAction = ((tcb_t*) 1);
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/machine/fpu.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/machine/fpu.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/machine/io.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/machine/io.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11579,7 +11642,7 @@ void rescheduleRequired(void)
  *
  * SPDX-License-Identifier: MIT
  */
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/machine/registerset.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/machine/registerset.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -11595,7 +11658,7 @@ const register_t fault_messages[][(((n_syscallMessage)>(n_exceptionMessage))?(n_
 
 
 };
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/model/preemption.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/model/preemption.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11640,13 +11703,13 @@ exception_t preemptionPoint(void)
 
     return EXCEPTION_NONE;
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/model/smp.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/model/smp.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/model/statedata.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/model/statedata.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11654,15 +11717,15 @@ exception_t preemptionPoint(void)
  */
 
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/api/debug.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/api/debug.h" 1
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 9 "/home/zoltan/Documents/BINVER-nil/seL4/src/model/statedata.c" 2
+# 9 "/home/zoltan/Documents/BINVER-exp/seL4/src/model/statedata.c" 2
 
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/include/plat/default/plat/machine.h" 1
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/include/plat/default/plat/machine.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
@@ -11679,15 +11742,15 @@ exception_t preemptionPoint(void)
 /*
  * This file is autogenerated by kernel/tools/hardware_gen.py.
  */
-# 8 "/home/zoltan/Documents/BINVER-nil/seL4/include/plat/default/plat/machine.h" 2
+# 8 "/home/zoltan/Documents/BINVER-exp/seL4/include/plat/default/plat/machine.h" 2
 # 1 "gen_headers/plat/platform_gen.h" 1
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 8 "/home/zoltan/Documents/BINVER-nil/seL4/include/plat/default/plat/machine.h" 2
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/src/model/statedata.c" 2
+# 8 "/home/zoltan/Documents/BINVER-exp/seL4/include/plat/default/plat/machine.h" 2
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/src/model/statedata.c" 2
 
 
 
@@ -11720,7 +11783,7 @@ tcb_t * ksIdleThread;
  * respectively; other values encode SwitchToThread and must be valid
  * tcb pointers */
 tcb_t * ksSchedulerAction;
-# 65 "/home/zoltan/Documents/BINVER-nil/seL4/src/model/statedata.c"
+# 65 "/home/zoltan/Documents/BINVER-exp/seL4/src/model/statedata.c"
 /* Units of work we have completed since the last time we checked for
  * pending interrupts */
 word_t ksWorkUnitsCompleted;
@@ -11749,7 +11812,7 @@ word_t tlbLockCount = 0;
 
 /* Idle thread. */
 __attribute__((__section__("._idle_thread"))) char ksIdleThreadTCB[1][(1ul << (10))] __attribute__((__aligned__((1ul << ((10 - 1))))));
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/cnode.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/cnode.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -11771,8 +11834,8 @@ __attribute__((__section__("._idle_thread"))) char ksIdleThreadTCB[1][(1ul << (1
  * To add an invocation call number, edit libsel4/include/interfaces/sel4.xml.
  *
  */
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/cnode.c" 2
-# 25 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/cnode.c"
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/cnode.c" 2
+# 25 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/cnode.c"
 struct finaliseSlot_ret {
     exception_t status;
     bool_t success;
@@ -12677,13 +12740,13 @@ cap_transfer_t __attribute__((__pure__)) loadCapTransfer(word_t *buffer)
     const int offset = seL4_MsgMaxLength + ((1ul<<(seL4_MsgExtraCapBits))-1) + 2;
     return capTransferFromWords(buffer + offset);
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/endpoint.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/endpoint.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 19 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/endpoint.c"
+# 19 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/endpoint.c"
 static inline void ep_ptr_set_queue(endpoint_t *epptr, tcb_queue_t queue)
 {
     endpoint_ptr_set_epQueue_head(epptr, (word_t)queue.head);
@@ -12749,7 +12812,7 @@ void sendIPC(bool_t blocking, bool_t do_call, word_t badge,
 
         /* Do the transfer */
         doIPCTransfer(thread, epptr, badge, canGrant, dest);
-# 108 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/endpoint.c"
+# 108 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/endpoint.c"
         bool_t replyCanGrant = thread_state_ptr_get_blockingIPCCanGrant(&dest->tcbState);;
 
         setThreadState(dest, ThreadState_Running);
@@ -12781,7 +12844,7 @@ void receiveIPC(tcb_t *thread, cap_t cap, bool_t isBlocking)
     ;
 
     epptr = ((endpoint_t *)(cap_endpoint_cap_get_capEPPtr(cap)));
-# 151 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/endpoint.c"
+# 151 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/endpoint.c"
     /* Check for anything waiting in the notification */
     ntfnPtr = thread->tcbBoundNotification;
     if (ntfnPtr && notification_ptr_get_state(ntfnPtr) == NtfnState_Active) {
@@ -12855,7 +12918,7 @@ void receiveIPC(tcb_t *thread, cap_t cap, bool_t isBlocking)
                           canGrant, thread);
 
             do_call = thread_state_ptr_get_blockingIPCIsCall(&sender->tcbState);
-# 239 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/endpoint.c"
+# 239 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/endpoint.c"
             if (do_call) {
                 if (canGrant || canGrantReply) {
                     setupCallerCap(sender, thread, cap_endpoint_cap_get_capCanGrant(cap));
@@ -12881,7 +12944,7 @@ void replyFromKernel_error(tcb_t *thread)
     ipcBuffer = lookupIPCBuffer(true, thread);
     setRegister(thread, badgeRegister, 0);
     len = setMRs_syscall_error(thread, ipcBuffer);
-# 273 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/endpoint.c"
+# 273 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/endpoint.c"
     setRegister(thread, msgInfoRegister, wordFromMessageInfo(
                     seL4_MessageInfo_new(current_syscall_error.type, 0, 0, len)));
 }
@@ -12978,7 +13041,7 @@ void cancelAllIPC(endpoint_t *epptr)
 
         /* Set all blocked threads to restart */
         for (; thread; thread = thread->tcbEPNext) {
-# 381 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/endpoint.c"
+# 381 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/endpoint.c"
             setThreadState(thread, ThreadState_Restart);
             tcbSchedEnqueue(thread);
 
@@ -13012,7 +13075,7 @@ void cancelBadgedSends(endpoint_t *epptr, word_t badge)
             word_t b = thread_state_ptr_get_blockingIPCBadge(
                            &thread->tcbState);
             next = thread->tcbEPNext;
-# 428 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/endpoint.c"
+# 428 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/endpoint.c"
             if (b == badge) {
                 setThreadState(thread, ThreadState_Restart);
                 tcbSchedEnqueue(thread);
@@ -13035,7 +13098,7 @@ void cancelBadgedSends(endpoint_t *epptr, word_t badge)
         halt();
     }
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/interrupt.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/interrupt.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -13057,8 +13120,8 @@ void cancelBadgedSends(endpoint_t *epptr, word_t badge)
  * To add an invocation call number, edit libsel4/include/interfaces/sel4.xml.
  *
  */
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/interrupt.c" 2
-# 23 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/interrupt.c"
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/interrupt.c" 2
+# 23 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/interrupt.c"
 exception_t decodeIRQControlInvocation(word_t invLabel, word_t length,
                                        cte_t *srcSlot, word_t *buffer)
 {
@@ -13174,7 +13237,7 @@ void invokeIRQHandler_AckIRQ(irq_t irq)
 {
 
     plic_complete_claim(irq);
-# 147 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/interrupt.c"
+# 147 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/interrupt.c"
 }
 
 void invokeIRQHandler_SetIRQHandler(irq_t irq, cap_t cap, cte_t *slot)
@@ -13299,13 +13362,13 @@ void setIRQState(irq_state_t irqState, irq_t irq)
 
     maskInterrupt(irqState == IRQInactive, irq);
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/notification.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/notification.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 19 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/notification.c"
+# 19 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/notification.c"
 static inline tcb_queue_t __attribute__((__pure__)) ntfn_ptr_get_queue(notification_t *ntfnPtr)
 {
     tcb_queue_t ntfn_queue;
@@ -13327,7 +13390,7 @@ static inline void ntfn_set_active(notification_t *ntfnPtr, word_t badge)
     notification_ptr_set_state(ntfnPtr, NtfnState_Active);
     notification_ptr_set_ntfnMsgIdentifier(ntfnPtr, badge);
 }
-# 78 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/notification.c"
+# 78 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/notification.c"
 void sendSignal(notification_t *ntfnPtr, word_t badge)
 {
     switch (notification_ptr_get_state(ntfnPtr)) {
@@ -13341,7 +13404,7 @@ void sendSignal(notification_t *ntfnPtr, word_t badge)
                 setThreadState(tcb, ThreadState_Running);
                 setRegister(tcb, badgeRegister, badge);
                 { { possibleSwitchTo(tcb); } }
-# 110 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/notification.c"
+# 110 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/notification.c"
             } else {
                 /* In particular, this path is taken when a thread
                  * is waiting on a reply cap since BlockedOnReply
@@ -13530,13 +13593,13 @@ void bindNotification(tcb_t *tcb, notification_t *ntfnPtr)
     notification_ptr_set_ntfnBoundTCB(ntfnPtr, (word_t)tcb);
     tcb->tcbBoundNotification = ntfnPtr;
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/objecttype.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/objecttype.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 33 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/objecttype.c"
+# 33 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/objecttype.c"
 word_t getObjectSize(word_t t, word_t userObjSize)
 {
     if (t >= seL4_NonArchObjectTypeCount) {
@@ -13640,7 +13703,7 @@ finaliseCap_ret_t finaliseCap(cap_t cap, bool_t final, bool_t exposed)
         return fc_ret;
 
     case cap_reply_cap:
-# 156 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/objecttype.c"
+# 156 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/objecttype.c"
     case cap_null_cap:
     case cap_domain_cap:
         fc_ret.remainder = cap_null_cap_new();
@@ -13698,7 +13761,7 @@ finaliseCap_ret_t finaliseCap(cap_t cap, bool_t final, bool_t exposed)
         }
         break;
     }
-# 237 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/objecttype.c"
+# 237 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/objecttype.c"
     case cap_zombie_cap:
         fc_ret.remainder = cap;
         fc_ret.cleanupInfo = cap_null_cap_new();
@@ -13814,7 +13877,7 @@ bool_t __attribute__((__const__)) sameRegionAs(cap_t cap_a, cap_t cap_b)
                    (word_t)cap_irq_handler_cap_get_capIRQ(cap_b);
         }
         break;
-# 366 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/objecttype.c"
+# 366 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/objecttype.c"
     default:
         if (isArchCap(cap_a) &&
             isArchCap(cap_b)) {
@@ -13980,7 +14043,7 @@ cap_t createObject(object_t t, void *regionBase, word_t userSize, bool_t deviceM
 
         /* Initialize the new TCB to the current core */
         ;
-# 539 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/objecttype.c"
+# 539 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/objecttype.c"
         return cap_thread_cap_new(((word_t)(tcb)));
     }
 
@@ -14010,7 +14073,7 @@ cap_t createObject(object_t t, void *regionBase, word_t userSize, bool_t deviceM
          * the destination slots.
          */
         return cap_untyped_cap_new(0, !!deviceMemory, userSize, ((word_t)(regionBase)));
-# 579 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/objecttype.c"
+# 579 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/objecttype.c"
     default:
         halt();
     }
@@ -14113,7 +14176,7 @@ exception_t decodeInvocation(word_t invLabel, word_t length,
                    ((notification_t *)(cap_notification_cap_get_capNtfnPtr(cap))),
                    cap_notification_cap_get_capNtfnBadge(cap));
     }
-# 690 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/objecttype.c"
+# 690 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/objecttype.c"
     case cap_reply_cap:
         if (__builtin_expect(!!(cap_reply_cap_get_capReplyMaster(cap)), 0)) {
            
@@ -14131,14 +14194,14 @@ exception_t decodeInvocation(word_t invLabel, word_t length,
 
 
     case cap_thread_cap:
-# 715 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/objecttype.c"
+# 715 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/objecttype.c"
         return decodeTCBInvocation(invLabel, length, cap, slot, call, buffer);
 
     case cap_domain_cap:
         return decodeDomainInvocation(invLabel, length, buffer);
 
     case cap_cnode_cap:
-# 729 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/objecttype.c"
+# 729 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/objecttype.c"
         return decodeCNodeInvocation(invLabel, length, cap, buffer);
 
     case cap_untyped_cap:
@@ -14150,12 +14213,12 @@ exception_t decodeInvocation(word_t invLabel, word_t length,
     case cap_irq_handler_cap:
         return decodeIRQHandlerInvocation(invLabel,
                                           (cap_irq_handler_cap_get_capIRQ(cap)));
-# 754 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/objecttype.c"
+# 754 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/objecttype.c"
     default:
         halt();
     }
 }
-# 769 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/objecttype.c"
+# 769 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/objecttype.c"
 exception_t performInvocation_Endpoint(endpoint_t *ep, word_t badge,
                                        bool_t canGrant, bool_t canGrantReply,
                                        bool_t block, bool_t call)
@@ -14172,13 +14235,13 @@ exception_t performInvocation_Notification(notification_t *ntfn, word_t badge)
 
     return EXCEPTION_NONE;
 }
-# 793 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/objecttype.c"
+# 793 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/objecttype.c"
 exception_t performInvocation_Reply(tcb_t *thread, cte_t *slot, bool_t canGrant)
 {
     doReplyTransfer(ksCurThread, thread, slot, canGrant);
     return EXCEPTION_NONE;
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -14200,8 +14263,8 @@ exception_t performInvocation_Reply(tcb_t *thread, cte_t *slot, bool_t canGrant)
  * To add an invocation call number, edit libsel4/include/interfaces/sel4.xml.
  *
  */
-# 11 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c" 2
-# 32 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 11 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c" 2
+# 32 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
 static exception_t checkPrio(prio_t prio, tcb_t *auth)
 {
     prio_t mcp;
@@ -14355,7 +14418,7 @@ void tcbSchedDequeue(tcb_t *tcb)
         thread_state_ptr_set_tcbQueued(&tcb->tcbState, false);
     }
 }
-# 221 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 221 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
 /* Add TCB to the end of an endpoint queue */
 tcb_queue_t tcbEPAppend(tcb_t *tcb, tcb_queue_t queue)
 {
@@ -14389,7 +14452,7 @@ tcb_queue_t tcbEPDequeue(tcb_t *tcb, tcb_queue_t queue)
 
     return queue;
 }
-# 335 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 335 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
 cptr_t __attribute__((__pure__)) getExtraCPtr(word_t *bufferPtr, word_t i)
 {
     return (cptr_t)bufferPtr[seL4_MsgMaxLength + 2 + i];
@@ -14489,7 +14552,7 @@ word_t copyMRs(tcb_t *sender, word_t *sendBuf, tcb_t *receiver,
 
     return i;
 }
-# 742 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 742 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
 static exception_t invokeSetTLSBase(tcb_t *thread, word_t tls_base)
 {
     setRegister(thread, TLS_BASE, tls_base);
@@ -14577,9 +14640,9 @@ exception_t decodeTCBInvocation(word_t invLabel, word_t length, cap_t cap,
 
     case TCBUnbindNotification:
         return decodeUnbindNotification(cap);
-# 840 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 840 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
         /* There is no notion of arch specific TCB invocations so this needs to go here */
-# 860 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 860 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
     case TCBSetTLSBase:
         return decodeSetTLSBase(cap, length, buffer);
 
@@ -14722,7 +14785,7 @@ exception_t decodeWriteRegisters(cap_t cap, word_t length, word_t *buffer)
                                     flags & (1ul << (WriteRegisters_resume)),
                                     w, transferArch, buffer);
 }
-# 1026 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 1026 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
 /* TCBConfigure batches SetIPCBuffer and parts of SetSpace. */
 exception_t decodeTCBConfigure(cap_t cap, word_t length, cte_t *slot, word_t *buffer)
 {
@@ -14818,7 +14881,7 @@ exception_t decodeTCBConfigure(cap_t cap, word_t length, cte_t *slot, word_t *bu
     }
 
     setThreadState(ksCurThread, ThreadState_Restart);
-# 1132 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 1132 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
     return invokeTCB_ThreadControl(
                ((tcb_t *)(cap_thread_cap_get_capTCBPtr(cap))), slot,
                faultEP, 0, 0,
@@ -14917,7 +14980,7 @@ exception_t decodeSetMCPriority(cap_t cap, word_t length, word_t *buffer)
                ((void *)0), thread_control_update_mcp);
 
 }
-# 1264 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 1264 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
 exception_t decodeSetSchedParams(cap_t cap, word_t length, word_t *buffer)
 
 {
@@ -14961,9 +15024,9 @@ exception_t decodeSetSchedParams(cap_t cap, word_t length, word_t *buffer)
                                                                           ;
         return status;
     }
-# 1346 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 1346 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
     setThreadState(ksCurThread, ThreadState_Restart);
-# 1358 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 1358 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
     return invokeTCB_ThreadControl(
                ((tcb_t *)(cap_thread_cap_get_capTCBPtr(cap))), ((void *)0),
                0, newMcp, newPrio,
@@ -15010,7 +15073,7 @@ exception_t decodeSetIPCBuffer(cap_t cap, word_t length, cte_t *slot, word_t *bu
     }
 
     setThreadState(ksCurThread, ThreadState_Restart);
-# 1414 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 1414 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
     return invokeTCB_ThreadControl(
                ((tcb_t *)(cap_thread_cap_get_capTCBPtr(cap))), slot,
                0, 0, 0,
@@ -15044,7 +15107,7 @@ exception_t decodeSetSpace(cap_t cap, word_t length, cte_t *slot, word_t *buffer
         current_syscall_error.type = seL4_TruncatedMessage;
         return EXCEPTION_SYSCALL_ERROR;
     }
-# 1459 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 1459 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
     cptr_t faultEP = getSyscallArg(0, buffer);
     cRootData = getSyscallArg(1, buffer);
     vRootData = getSyscallArg(2, buffer);
@@ -15095,9 +15158,9 @@ exception_t decodeSetSpace(cap_t cap, word_t length, cte_t *slot, word_t *buffer
         current_syscall_error.type = seL4_IllegalOperation;
         return EXCEPTION_SYSCALL_ERROR;
     }
-# 1519 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 1519 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
     setThreadState(ksCurThread, ThreadState_Restart);
-# 1529 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 1529 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
     return invokeTCB_ThreadControl(
                ((tcb_t *)(cap_thread_cap_get_capTCBPtr(cap))), slot,
                faultEP,
@@ -15229,7 +15292,7 @@ exception_t invokeTCB_Resume(tcb_t *thread)
     restart(thread);
     return EXCEPTION_NONE;
 }
-# 1743 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 1743 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
 exception_t invokeTCB_ThreadControl(tcb_t *target, cte_t *slot,
                                     cptr_t faultep, prio_t mcp, prio_t priority,
                                     cap_t cRoot_newCap, cte_t *cRoot_srcSlot,
@@ -15303,7 +15366,7 @@ exception_t invokeTCB_ThreadControl(tcb_t *target, cte_t *slot,
 
     return EXCEPTION_NONE;
 }
-# 1853 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 1853 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
 exception_t invokeTCB_CopyRegisters(tcb_t *dest, tcb_t *tcb_src,
                                     bool_t suspendSource, bool_t resumeTarget,
                                     bool_t transferFrame, bool_t transferInteger,
@@ -15479,7 +15542,7 @@ exception_t invokeTCB_NotificationControl(tcb_t *tcb, notification_t *ntfnPtr)
 
     return EXCEPTION_NONE;
 }
-# 2036 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/tcb.c"
+# 2036 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/tcb.c"
 word_t setMRs_syscall_error(tcb_t *thread, word_t *receiveIPCBuffer)
 {
     switch (current_syscall_error.type) {
@@ -15520,7 +15583,7 @@ word_t setMRs_syscall_error(tcb_t *thread, word_t *receiveIPCBuffer)
         halt();
     }
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/untyped.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/untyped.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15543,8 +15606,8 @@ word_t setMRs_syscall_error(tcb_t *thread, word_t *receiveIPCBuffer)
  * To add an invocation call number, edit libsel4/include/interfaces/sel4.xml.
  *
  */
-# 12 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/untyped.c" 2
-# 21 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/untyped.c"
+# 12 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/untyped.c" 2
+# 21 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/untyped.c"
 static word_t alignUp(word_t baseValue, word_t alignment)
 {
     return (baseValue + ((1ul << (alignment)) - 1)) & ~((1ul << (alignment))-1ul);
@@ -15627,7 +15690,7 @@ exception_t decodeUntypedInvocation(word_t invLabel, word_t length, cte_t *slot,
         current_syscall_error.invalidArgumentNumber = 1;
         return EXCEPTION_SYSCALL_ERROR;
     }
-# 113 "/home/zoltan/Documents/BINVER-nil/seL4/src/object/untyped.c"
+# 113 "/home/zoltan/Documents/BINVER-exp/seL4/src/object/untyped.c"
     /* Lookup the destination CNode (where our caps will be placed in). */
     if (nodeDepth == 0) {
         nodeCap = current_extra_caps.excaprefs[0]->cap;
@@ -15824,19 +15887,19 @@ exception_t invokeUntyped_Retype(cte_t *srcSlot,
 
     return EXCEPTION_NONE;
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/smp/ipi.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/smp/ipi.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/smp/lock.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/smp/lock.c"
 /*
  * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
  *
  * SPDX-License-Identifier: GPL-2.0-only
  */
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/string.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/string.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -15879,7 +15942,7 @@ word_t strlcat(char *dest, const char *src, word_t size)
     }
     return len;
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/seL4/src/util.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/seL4/src/util.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
@@ -16054,7 +16117,7 @@ uint32_t __ctzdi2(uint64_t x)
     }
     return count;
 }
-# 1 "/home/zoltan/Documents/BINVER-nil/l4v/spec/cspec/c/config_sched.c"
+# 1 "/home/zoltan/Documents/BINVER-exp/l4v/spec/cspec/c/config_sched.c"
 /*
  * Copyright 2014, General Dynamics C4 Systems
  *
