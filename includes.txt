@@ -101,7 +101,6 @@ cancelIPC
 sendSignal
 activateThread 
 cteRevoke
-deleteASID
 lookupPivotSlot
 lookupTargetSlot
 lookupSourceSlot  
