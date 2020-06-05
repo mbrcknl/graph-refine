@@ -143,3 +143,12 @@ maybe_alloc_extra_bi
 tcbSchedDequeue
 sendIPC
 lookupCap
+create_bi_frame_cap
+create_domain_cap
+create_it_asid_pool
+map_it_frame_cap
+provide_cap
+write_it_asid_pool
+create_mapped_it_frame_cap
+lookupPTSlot
+scheduleChooseNewThread
