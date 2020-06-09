@@ -170,3 +170,10 @@ tcbSchedAppend
 replyFromKernel_success_empty
 replyFromKernel_error
 handleUserLevelFault
+create_ipcbuf_frame_cap
+tcbEPAppend
+Arch_decodeInvocation
+map_it_pt_cap
+strlcat
+restore_user_context
+receiveSignal
