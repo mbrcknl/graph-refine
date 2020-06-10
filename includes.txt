@@ -177,3 +177,11 @@ map_it_pt_cap
 strlcat
 restore_user_context
 receiveSignal
+populate_bi_frame
+reserve_region
+cteSwap
+cancelBadgedSends
+invokeTCB_CopyRegisters
+create_frames_of_region
+invokeUntyped_Retype
+findVSpaceForASID
