@@ -185,3 +185,9 @@ invokeTCB_CopyRegisters
 create_frames_of_region
 invokeUntyped_Retype
 findVSpaceForASID
+decodeBindNotification
+lookupSlot
+handleRecv
+lookupSlotForCNodeOp
+deriveCap
+getReceiveSlots
