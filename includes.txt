@@ -191,3 +191,10 @@ handleRecv
 lookupSlotForCNodeOp
 deriveCap
 getReceiveSlots
+c_handle_exception
+c_handle_interrupt
+create_it_address_space
+create_untypeds_for_region
+handleVMFault
+init_kernel
+merge_regions
