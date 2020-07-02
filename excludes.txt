@@ -1,5 +1,6 @@
 Arch_decodeIRQControlInvocation
 Arch_setMRs_fault
+cap_get_capPtr
 chooseThread
 copyMRs
 createObject
