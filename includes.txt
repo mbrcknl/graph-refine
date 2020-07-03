@@ -53,12 +53,15 @@ create_root_cnode
 create_rootserver_objects
 create_unmapped_it_frame_cap
 create_untypeds_for_region
+cteDeleteOne
 cteInsert
 cteMove
 cteRevoke
 cteSwap
 decodeBindNotification
+decodeIRQHandlerInvocation
 decodeUnbindNotification
+deleteASID
 deleteASIDPool
 deleteCallerCap
 deletedIRQHandler
@@ -81,6 +84,7 @@ halt
 handleDoubleFault
 handleFault
 handleInterruptEntry
+handleInvocation
 handleRecv
 handleReply
 handleUnknownSyscall
@@ -163,6 +167,7 @@ restore_user_context
 sameObjectAs
 scheduleChooseNewThread
 scheduleTCB
+sendFaultIPC
 sendIPC
 sendSignal
 setDomain

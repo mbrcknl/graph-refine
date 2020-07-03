@@ -6,12 +6,10 @@ copyMRs
 createObject
 create_initial_thread
 cteDelete
-cteDeleteOne
 decodeCNodeInvocation
 decodeCopyRegisters
 decodeDomainInvocation
 decodeIRQControlInvocation
-decodeIRQHandlerInvocation
 decodeInvocation
 decodeRISCVMMUInvocation
 decodeReadRegisters
@@ -24,14 +22,12 @@ decodeTCBConfigure
 decodeTCBInvocation
 decodeUntypedInvocation
 decodeWriteRegisters
-deleteASID
 doNormalTransfer
 finaliseCap
 getNewActiveIRQ
 getObjectSize
 handleFaultReply
 handleInterrupt
-handleInvocation
 handleSyscall
 init_freemem
 invokeTCB_ReadRegisters
@@ -43,7 +39,6 @@ preemptionPoint
 resolveAddressBits
 sameRegionAs
 schedule
-sendFaultIPC
 setMRs_fault
 setMRs_syscall_error
 strncmp
