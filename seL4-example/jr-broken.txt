@@ -1,0 +1,12 @@
+cap_get_capPtr
+c_handle_exception
+createObject
+decodeInvocation
+decodeTCBInvocation
+finaliseCap
+getObjectSize
+handleSyscall
+handleVMFault
+maskCapRights
+sameRegionAs
+setMRs_syscall_error
