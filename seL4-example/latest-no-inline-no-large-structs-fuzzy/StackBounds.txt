@@ -1,4 +1,3 @@
-FunctionHash 6639600409772230625
 StackBound create_ipcbuf_frame_cap Num 288 Word 64
 StackBound create_rootserver_objects Num 112 Word 64
 StackBound capSwapForDelete Num 80 Word 64

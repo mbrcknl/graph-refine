@@ -1,4 +1,3 @@
-FunctionHash 6639600409772230625
 StackBound create_it_address_space Num 240 Word 64
 StackBound avail_p_regs Num 0 Word 64
 StackBound ndks_boot Num 0 Word 64
