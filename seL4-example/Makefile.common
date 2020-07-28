@@ -131,7 +131,7 @@ clean:
 
 H4PATH=$(realpath ${HOL4_ROOT}/bin):${PATH}
 
-IGNORES= fastpath_restore,slowpath,fastpath_call,fastpath_reply_recv,restore_user_context,lockTLBEntry,lockTLBEntryCritical,create_it_address_space
+IGNORES= fastpath_restore,slowpath,fastpath_call,fastpath_reply_recv,restore_user_context,lockTLBEntry,lockTLBEntryCritical,create_it_address_space,strncmp
 
 ASMFunctions.txt: kernel.elf.txt kernel.sigs
 	PATH=${H4PATH} ${DECOMP_SCRIPT} --fast ./kernel --ignore=${IGNORES}
