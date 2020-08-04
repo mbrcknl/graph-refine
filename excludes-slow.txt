@@ -1,0 +1,9 @@
+copyMRs
+decodeCNodeInvocation
+decodeTCBConfigure 
+decodeTCBInvocation
+doNormalTransfer
+handleFaultReply
+init_freemem
+resolveAddressBits
+setMRs_fault
