@@ -1,6 +1,5 @@
 Arch_decodeIRQControlInvocation
 Arch_setMRs_fault
-chooseThread
 copyMRs
 create_initial_thread
 cteDelete
@@ -20,7 +19,6 @@ decodeTCBInvocation
 decodeUntypedInvocation
 decodeWriteRegisters
 doNormalTransfer
-getNewActiveIRQ
 handleFaultReply
 handleInterrupt
 init_freemem
@@ -28,8 +26,6 @@ invokeTCB_ReadRegisters
 invokeTCB_ThreadControl
 invokeTCB_WriteRegisters
 map_kernel_devices
-preemptionPoint
 resolveAddressBits
 schedule
 setMRs_fault
-strncmp
