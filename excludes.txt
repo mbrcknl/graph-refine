@@ -1,7 +1,6 @@
 Arch_decodeIRQControlInvocation
 Arch_setMRs_fault
 copyMRs
-create_initial_thread
 cteDelete
 decodeCNodeInvocation
 decodeCopyRegisters
@@ -26,6 +25,4 @@ invokeTCB_ReadRegisters
 invokeTCB_ThreadControl
 invokeTCB_WriteRegisters
 map_kernel_devices
-resolveAddressBits
-schedule
 setMRs_fault

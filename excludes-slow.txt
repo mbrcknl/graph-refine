@@ -1,9 +1,4 @@
-copyMRs
-decodeCNodeInvocation
-decodeTCBConfigure 
-decodeTCBInvocation
+cteDelete
 doNormalTransfer
-handleFaultReply
 init_freemem
-resolveAddressBits
-setMRs_fault
+invokeTCB_ThreadControl
