@@ -3480,7 +3480,7 @@ Function Kernel_C.read_sbadaddr 4 Mem Mem HTD HTD PMS PMS GhostAssertions WordAr
 1 Basic Ret 0
 2 Cond 1 Err Op False Bool 0
 3 Basic 1 1 ret__unsigned_long#v Word 64 Var temp___unsigned_long#v Word 64
-4 Call 3 asm_instruction'csrr_%0,_sbadaddr 2 Var Mem Mem Var PMS PMS 3 temp___unsigned_long#v Word 64 Mem Mem PMS PMS
+4 Call 3 asm_instruction'csrr_%0,_stval 2 Var Mem Mem Var PMS PMS 3 temp___unsigned_long#v Word 64 Mem Mem PMS PMS
 EntryPoint 4
 
 Function Kernel_C.receiveSignal 8 thread___ptr_to_struct_tcb_C#v Word 64 cap___struct_cap_C#v.words_C.0 Word 64 cap___struct_cap_C#v.words_C.1 Word 64 isBlocking___unsigned_long#v Word 64 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64 4 Mem Mem HTD HTD PMS PMS GhostAssertions WordArray 50 64
@@ -12053,7 +12053,7 @@ Function asm_instruction'csrw_stvec,_%0 3 arg1 Word 64 Mem Mem PMS PMS 2 Mem Mem
 Function asm_instruction'csrr_%0,_scause 2 Mem Mem PMS PMS 3 ret1 Word 64 Mem Mem PMS PMS
 Function asm_instruction'csrc_sstatus,_%0 3 arg1 Word 64 Mem Mem PMS PMS 2 Mem Mem PMS PMS
 Function asm_instruction'csrr_%0,_sstatus 2 Mem Mem PMS PMS 3 ret1 Word 64 Mem Mem PMS PMS
-Function asm_instruction'csrr_%0,_sbadaddr 2 Mem Mem PMS PMS 3 ret1 Word 64 Mem Mem PMS PMS
+Function asm_instruction'csrr_%0,_stval 2 Mem Mem PMS PMS 3 ret1 Word 64 Mem Mem PMS PMS
 Function asm_instruction'csrrc_%0,_sie,_%1 3 arg1 Word 64 Mem Mem PMS PMS 3 ret1 Word 64 Mem Mem PMS PMS
 Function asm_instruction'csrrs_%0,_sie,_%1 3 arg1 Word 64 Mem Mem PMS PMS 3 ret1 Word 64 Mem Mem PMS PMS
 Function asm_instruction'sfence.vma_x0,_%0 3 arg1 Word 64 Mem Mem PMS PMS 2 Mem Mem PMS PMS
