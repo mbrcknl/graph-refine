@@ -1,0 +1,6 @@
+invokeTCB_Suspend
+loadCapTransfer
+setExtraBadge
+tcbEPDequeue
+tcbReleaseEnqueue
+validFaultHandler
