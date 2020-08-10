@@ -33,6 +33,7 @@ cancelBadgedSends
 cancelIPC
 cancelSignal
 capSwapForDelete
+chargeBudget
 checkValidIPCBuffer
 chooseThread
 completeSignal
@@ -42,7 +43,10 @@ createNewObjects
 cteDeleteOne
 doReplyTransfer
 endTimeslice
+getNBSendRecvDest
 handleTimeout
+invokeCNodeCancelBadgedSends
+invokeTCB_NotificationControl
 invokeTCB_Suspend
 isFinalCapability
 isHighestPrio
@@ -70,7 +74,12 @@ performPageTableInvocationUnmap
 plat_cleanInvalidateL2Range
 plat_cleanL2Range
 plat_invalidateL2Range
+refill_new
+refill_unblock_check
+refill_update
 setExtraBadge
 tcbEPDequeue
+tcbReleaseDequeue
 tcbReleaseEnqueue
+tcbReleaseRemove
 validFaultHandler

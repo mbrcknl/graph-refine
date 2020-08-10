@@ -2,7 +2,6 @@ cancelAllIPC
 c_handle_exception
 c_handle_interrupt
 c_handle_syscall
-chargeBudget
 char_to_long
 clzl
 create_bi_frame_cap
@@ -65,7 +64,6 @@ finaliseCap
 findVSpaceForASID
 get_avail_p_regs
 getExtraCPtr
-getNBSendRecvDest
 getNewActiveIRQ
 get_num_avail_p_regs
 getObjectSize
@@ -96,7 +94,6 @@ initLocalIRQController
 init_sched_control
 insertNewCap
 insert_region
-invokeCNodeCancelBadgedSends
 invokeCNodeDelete
 invokeCNodeInsert
 invokeCNodeMove
@@ -107,7 +104,6 @@ invokeIRQHandler_AckIRQ
 invokeIRQHandler_ClearIRQHandler
 invokeIRQHandler_SetIRQHandler
 invokeTCB_CopyRegisters
-invokeTCB_NotificationControl
 invokeTCB_ReadRegisters
 invokeTCB_Resume
 invokeTCB_ThreadControlCaps
@@ -135,10 +131,7 @@ pte_next
 receiveIPC
 receiveSignal
 refill_budget_check
-refill_new
 refill_split_check
-refill_unblock_check
-refill_update
 reorderEP
 reorderNTFN
 replyFromKernel_error
@@ -192,8 +185,6 @@ str_to_long
 suspend
 switchToIdleThread
 switchToThread
-tcbReleaseDequeue
-tcbReleaseRemove
 tcbSchedAppend
 tcbSchedDequeue
 tcbSchedEnqueue
