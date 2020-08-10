@@ -1,1 +1,3 @@
+cap_get_capPtr
+copyMRs
 createObject
