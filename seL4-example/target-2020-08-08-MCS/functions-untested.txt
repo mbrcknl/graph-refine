@@ -120,10 +120,7 @@ receiveIPC
 receiveSignal
 refill_budget_check
 refill_split_check
-reorderEP
-reorderNTFN
 rescheduleRequired
-reserve_region
 resolveAddressBits
 restart
 restore_user_context

@@ -33,15 +33,12 @@ cancelBadgedSends
 cancelIPC
 cancelSignal
 capSwapForDelete
-cap_get_capPtr
 checkValidIPCBuffer
 chooseThread
 completeSignal
 configureIdleThread
 copyGlobalMappings
-copyMRs
 createNewObjects
-createObject
 cteDeleteOne
 doReplyTransfer
 endTimeslice
@@ -74,7 +71,6 @@ mcsIRQ
 memcpy
 memset
 memzero
-merge_regions
 performInvocation_Endpoint
 performInvocation_Notification
 performInvocation_Reply
@@ -90,13 +86,14 @@ postpone
 provide_cap
 pte_next
 refill_new
+reorderEP
+reorderNTFN
 replyFromKernel_error
 replyFromKernel_success_empty
 reply_pop
 reply_push
 reply_remove
 reply_remove_tcb
-sameRegionAs
 schedContext_bindNtfn
 schedContext_bindTCB
 schedContext_cancelYieldTo
@@ -115,7 +112,6 @@ setIRQState
 setIRQTrigger
 setMCPriority
 setMR
-setNextInterrupt
 setNextPC
 setPriority
 setThreadState
