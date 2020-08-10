@@ -74,9 +74,17 @@ performPageTableInvocationUnmap
 plat_cleanInvalidateL2Range
 plat_cleanL2Range
 plat_invalidateL2Range
+possibleSwitchTo
 refill_new
 refill_unblock_check
 refill_update
+schedContext_bindTCB
+schedContext_completeYieldTo
+schedContext_resume
+schedContext_unbindAllTCBs
+schedContext_updateConsumed
+scheduleChooseNewThread
+scheduleTCB
 setExtraBadge
 tcbEPDequeue
 tcbReleaseDequeue
