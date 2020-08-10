@@ -123,11 +123,6 @@ refill_budget_check
 refill_split_check
 reorderEP
 reorderNTFN
-replyFromKernel_error
-replyFromKernel_success_empty
-reply_push
-reply_remove
-reply_remove_tcb
 rescheduleRequired
 reserve_region
 resolveAddressBits
