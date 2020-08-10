@@ -68,6 +68,7 @@ map_it_frame_cap
 map_it_pt_cap
 maskVMRights
 maybe_alloc_extra_bi
+mcsIRQ
 memcpy
 memset
 memzero

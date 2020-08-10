@@ -115,7 +115,6 @@ map_kernel_frame
 map_kernel_window
 maskCapRights
 maybe_alloc_extra_bi
-mcsIRQ
 populate_bi_frame
 preemptionPoint
 receiveIPC
