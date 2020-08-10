@@ -118,7 +118,6 @@ maybe_alloc_extra_bi
 mcsIRQ
 populate_bi_frame
 preemptionPoint
-provide_cap
 receiveIPC
 receiveSignal
 refill_budget_check
@@ -136,11 +135,6 @@ resolveAddressBits
 restart
 restore_user_context
 sameObjectAs
-schedContext_bindNtfn
-schedContext_cancelYieldTo
-schedContext_donate
-schedContext_unbindNtfn
-schedContext_unbindTCB
 schedule
 sendFaultIPC
 sendIPC

@@ -67,6 +67,7 @@ lookupTargetSlot
 map_it_frame_cap
 map_it_pt_cap
 maskVMRights
+maybe_alloc_extra_bi
 memcpy
 memset
 memzero
@@ -82,6 +83,7 @@ plat_cleanL2Range
 plat_invalidateL2Range
 possibleSwitchTo
 postpone
+provide_cap
 pte_next
 refill_new
 refill_unblock_check
@@ -91,6 +93,7 @@ schedContext_bindTCB
 schedContext_completeYieldTo
 schedContext_resume
 schedContext_unbindAllTCBs
+schedContext_unbindTCB
 schedContext_updateConsumed
 scheduleChooseNewThread
 scheduleTCB
