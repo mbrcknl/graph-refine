@@ -90,10 +90,14 @@ refill_new
 refill_unblock_check
 refill_update
 reply_pop
+schedContext_bindNtfn
 schedContext_bindTCB
+schedContext_cancelYieldTo
 schedContext_completeYieldTo
+schedContext_donate
 schedContext_resume
 schedContext_unbindAllTCBs
+schedContext_unbindNtfn
 schedContext_unbindTCB
 schedContext_updateConsumed
 scheduleChooseNewThread
@@ -109,6 +113,9 @@ setNextPC
 setPriority
 setThreadState
 setVMRoot
+suspend
+switchToIdleThread
+switchToThread
 tcbEPDequeue
 tcbReleaseDequeue
 tcbReleaseEnqueue
@@ -116,4 +123,11 @@ tcbReleaseRemove
 tcbSchedAppend
 tcbSchedDequeue
 tcbSchedEnqueue
+unbindMaybeNotification
+unbindNotification
+unmapPage
+unmapPageTable
+updateCapData
 validFaultHandler
+write_it_asid_pool
+write_slot

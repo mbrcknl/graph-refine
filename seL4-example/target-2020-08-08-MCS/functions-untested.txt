@@ -147,13 +147,3 @@ strlcpy
 strncmp
 strnlen
 str_to_long
-suspend
-switchToIdleThread
-switchToThread
-unbindMaybeNotification
-unbindNotification
-unmapPage
-unmapPageTable
-updateCapData
-write_it_asid_pool
-write_slot
