@@ -1,3 +1,4 @@
+c_handle_syscall
 cap_get_capPtr
 copyMRs
 createObject
