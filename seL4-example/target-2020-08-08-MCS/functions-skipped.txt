@@ -1,1 +1,2 @@
 merge_regions
+restore_user_context

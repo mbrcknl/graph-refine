@@ -81,8 +81,10 @@ performPageTableInvocationUnmap
 plat_cleanInvalidateL2Range
 plat_cleanL2Range
 plat_invalidateL2Range
+populate_bi_frame
 possibleSwitchTo
 postpone
+preemptionPoint
 provide_cap
 pte_next
 refill_new
@@ -94,6 +96,7 @@ reply_pop
 reply_push
 reply_remove
 reply_remove_tcb
+restart
 schedContext_bindNtfn
 schedContext_bindTCB
 schedContext_cancelYieldTo
@@ -106,6 +109,8 @@ schedContext_unbindTCB
 schedContext_updateConsumed
 scheduleChooseNewThread
 scheduleTCB
+sendIPC
+sendSignal
 setDomain
 setExtraBadge
 setIRQState

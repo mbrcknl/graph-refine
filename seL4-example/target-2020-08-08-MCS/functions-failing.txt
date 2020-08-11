@@ -2,6 +2,8 @@ cap_get_capPtr
 copyMRs
 createObject
 merge_regions
+receiveIPC
+receiveSignal
 reserve_region
 sameRegionAs
 setNextInterrupt
