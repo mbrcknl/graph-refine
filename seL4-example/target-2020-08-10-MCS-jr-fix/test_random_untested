@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# Assumes the following environment variables are set:
+# - BV_SPREADSHEET_URL
+# - BV_SPREADSHEET_KEY
+
+mkdir -p logs/tmp
+
+functions_tested () {
+  curl "$BV_SPREADSHEET_URL/plain_pass.php"
+  curl "$BV_SPREADSHEET_URL/plain_fail.php"
+}
+
+function_to_test () {
+  functions_tested | sort -u | comm -23 functions-all.txt - | shuf -n1
+}
+
+FUN=$(function_to_test)
+REPORT="report-$FUN.txt"
+script -c "python ../../graph-refine.py . trace-to:$REPORT $FUN" log-$FUN.txt
+curl -s -S \
+  -F "reporttxt=@$REPORT" \
+  -F "apikey=$BV_SPREADSHEET_KEY" \
+  -F "submit=Submit Query" \
+  "$BV_SPREADSHEET_URL/upload.php"
