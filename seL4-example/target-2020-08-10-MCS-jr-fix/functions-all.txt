@@ -64,7 +64,6 @@ create_root_cnode
 create_rootserver_objects
 create_unmapped_it_frame_cap
 create_untypeds_for_region
-cteDelete
 cteDeleteOne
 cteInsert
 cteMove
@@ -136,7 +135,6 @@ handleVMFaultEvent
 hasCancelSendRights
 idle_thread
 init_core_state
-init_freemem
 initIRQController
 init_kernel
 initL2Cache
