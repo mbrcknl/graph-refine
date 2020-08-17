@@ -37,7 +37,7 @@ assert not aconst_globals
 f = open ('%s/kernel.elf.rodata' % target_dir)
 objdump.install_rodata (f,
         [
-            #('Section', '.rodata'),
+            ('Section', '.rodata'),
             #('Symbol', 'kernel_devices'),
 	    #('Symbol', 'avail_p_regs'),
             #('Symbol', 'dev_p_regs')
