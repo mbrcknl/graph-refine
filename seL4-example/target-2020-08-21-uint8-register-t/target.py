@@ -37,7 +37,26 @@ assert not aconst_globals
 f = open ('%s/kernel.elf.rodata' % target_dir)
 objdump.install_rodata (f,
         [
-            ('Section', '.rodata'),
+            # These are the relevant sections for RISC-V.
+            # However, due to the slow-down caused by rodata,
+            # we probably want to target exactly the structures
+            # we need. See below for those.
+            #('Section', '.rodata'),
+            #('Section', '.srodata'),
+
+            # These are all the specific read-only symbols on RISC-V.
+            # Uncomment as needed.
+            #('Symbol', 'fault_messages'),
+            #('Symbol', 'frameRegisters'),
+            #('Symbol', 'gpRegisters'),
+            ('Symbol', 'msgRegisters'),
+
+            # Also present on RISC-V, but I'm fairly certain they're not needed.
+            #('Symbol', 'ksDomSchedule'),
+            #('Symbol', 'ksDomScheduleLength'),
+
+            # These are the symbols from ARM, that seem to be
+            # optimised away on RISC-V.
             #('Symbol', 'kernel_devices'),
 	    #('Symbol', 'avail_p_regs'),
             #('Symbol', 'dev_p_regs')
