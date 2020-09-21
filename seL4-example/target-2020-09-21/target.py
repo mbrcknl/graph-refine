@@ -71,13 +71,15 @@ pseudo_compile.compile_funcs (functions)
 print 'Doing stack/inst logic.'
 
 def make_pairings ():
-	pairs = [(s, 'Kernel_C.' + s) for s in functions
-		if ('Kernel_C.' + s) in functions]
-	target_objects.use_hooks.add ('stack_logic')
-	import stack_logic
-	stack_bounds = '%s/StackBounds.txt' % target_dir
-	new_pairings = stack_logic.mk_stack_pairings (pairs, stack_bounds)
-	pairings.update (new_pairings)
+    pairs = [(s, c_prefix + s)
+             for s in functions
+             for c_prefix in ['Kernel_C.', "Kernel_C.StrictC'"]
+             if (c_prefix + s) in functions]
+    target_objects.use_hooks.add ('stack_logic')
+    import stack_logic
+    stack_bounds = '%s/StackBounds.txt' % target_dir
+    new_pairings = stack_logic.mk_stack_pairings (pairs, stack_bounds)
+    pairings.update (new_pairings)
 
 make_pairings ()
 
@@ -86,5 +88,3 @@ inst_logic.add_inst_specs ()
 
 print 'Checking.'
 syntax.check_funs (functions)
-
-
