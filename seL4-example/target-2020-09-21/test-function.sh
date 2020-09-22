@@ -13,20 +13,27 @@ if [ -z "$FUN" ]; then
   exit 1
 fi
 
+LOCK_DIR="logs/lock/$FUN"
 REPORT_DIR="logs/fun/$FUN"
 REPORT="$REPORT_DIR/report.txt"
 LOG="$REPORT_DIR/log.txt"
 
-mkdir -p logs/tmp logs/fun
+mkdir -p logs/tmp "$REPORT_DIR" logs/lock
 
-if [ ! -d logs/fun -o ! -d logs/tmp ]; then
-    exit 1
+if [ ! -d logs/tmp -o ! -d "$REPORT_DIR" -o ! -d logs/lock ]; then
+  exit 1
 fi
 
-if ! mkdir "$REPORT_DIR"; then
-    # Presumably we lost the race to start testing this function.
-    exit 0
+rmlock() {
+  rmdir "$LOCK_DIR"
+}
+
+if ! mkdir "$LOCK_DIR"; then
+  # Presumably we lost the race to start testing this function.
+  exit 0
 fi
+
+trap rmlock EXIT TERM INT
 
 script -c "python ../../graph-refine.py . trace-to:$REPORT $FUN" "$LOG"
 
