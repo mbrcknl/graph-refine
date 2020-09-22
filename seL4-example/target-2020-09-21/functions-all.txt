@@ -35,9 +35,6 @@ cancelIPC
 cancelSignal
 cap_get_capPtr
 capSwapForDelete
-c_handle_exception
-c_handle_interrupt
-c_handle_syscall
 chargeBudget
 char_to_long
 checkValidIPCBuffer
@@ -108,8 +105,6 @@ emptySlot
 endTimeslice
 ensureEmptySlot
 ensureNoChildren
-fastpath_call
-fastpath_reply_recv
 finaliseCap
 findVSpaceForASID
 get_avail_p_regs
@@ -227,7 +222,6 @@ rescheduleRequired
 reserve_region
 resolveAddressBits
 restart
-restore_user_context
 sameObjectAs
 sameRegionAs
 schedContext_bindNtfn
@@ -260,7 +254,6 @@ setPriority
 setThreadState
 setVMRoot
 slotCapLongRunningDelete
-slowpath
 strlcat
 strlcpy
 strncmp
