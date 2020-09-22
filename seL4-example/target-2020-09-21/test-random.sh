@@ -6,4 +6,4 @@
 
 set -euo pipefail
 
-./test-function.sh $(./functions-untested.sh | shuf -n1)
+./test-function.sh $(./functions-candidates.sh | shuf -n1)

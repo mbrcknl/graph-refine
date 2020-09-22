@@ -5,4 +5,4 @@
 
 set -euo pipefail
 
-./functions-tested.sh | comm -23 functions-all.txt -
+./functions-testing.sh | comm -23 functions-all.txt -
