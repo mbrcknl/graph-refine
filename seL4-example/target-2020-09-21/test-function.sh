@@ -13,11 +13,22 @@ if [ -z "$FUN" ]; then
   exit 1
 fi
 
-REPORT="report-$FUN.txt"
+REPORT_DIR="logs/fun/$FUN"
+REPORT="$REPORT_DIR/report.txt"
+LOG="$REPORT_DIR/log.txt"
 
-mkdir -p logs/tmp
+mkdir -p logs/tmp logs/fun
 
-script -c "python ../../graph-refine.py . trace-to:$REPORT $FUN" log-$FUN.txt
+if [ ! -d logs/fun -o ! -d logs/tmp ]; then
+    exit 1
+fi
+
+if ! mkdir "$REPORT_DIR"; then
+    # Presumably we lost the race to start testing this function.
+    exit 0
+fi
+
+script -c "python ../../graph-refine.py . trace-to:$REPORT $FUN" "$LOG"
 
 curl -s -S \
   -F "reporttxt=@$REPORT" \
