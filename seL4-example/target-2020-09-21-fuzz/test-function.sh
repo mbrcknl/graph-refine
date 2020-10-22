@@ -35,7 +35,7 @@ fi
 
 trap rmlock EXIT TERM INT
 
-script -c "python ../../graph-refine.py . trace-to:$REPORT $FUN" "$LOG"
+script -c "python2 ../../graph-refine.py . trace-to:$REPORT $FUN" "$LOG"
 
 curl -s -S \
   -F "reporttxt=@$REPORT" \
