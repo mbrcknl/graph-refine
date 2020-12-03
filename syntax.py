@@ -258,9 +258,6 @@ and FloatingPointCast (FP to FP) represent the variants of to_fp in the SMTLIB2
 standard.
 """
 
-arch = 'rv64'
-
-is_64bit = True  # type: bool
 
 
 class Type:
@@ -343,10 +340,7 @@ class Type:
             assert sz % 8 == 0, self
             return sz / 8
         elif self.kind == 'Ptr':
-            if is_64bit:
-                return 8
-            else:
-                return 4
+            return arch.ptr_size
         else:
             assert not 'type has size'
 
@@ -358,10 +352,7 @@ class Type:
         elif self.kind in ('Word', 'FloatingPoint'):
             return self.size ()
         elif self.kind == 'Ptr':
-            if is_64bit:
-                return 8
-            else:
-                return 4
+            return arch.ptr_size
         else:
             assert not 'type has alignment'
 
@@ -907,10 +898,7 @@ phantom_types = set ([builtinTs[t] for t
 
 def concrete_type (typ):
     if typ.kind == 'Ptr':
-        if is_64bit:
-            return word64T
-        else:
-            return word32T
+        return arch.word_type
     else:
         return typ
 
@@ -955,10 +943,7 @@ def parse_typ(bits, n, symbolic_types = False):
         if symbolic_types:
             return (n, Type ('Ptr', '', typ))
         else:
-            if is_64bit:
-                return (n, word64T)
-            else:
-                return (n, word32T)
+            return (n, arch.word_type)
     else:
         assert not 'type encoded', (n, bits[n:], bits)
 
@@ -1114,15 +1099,6 @@ def parse_node (bits, n):
     else:
         assert bits[n] == 'Call'
         cont = node_name(bits[n + 1])
-        # hack for Call RV64, not sure Ret is used
-        # instead of the address of next instruction
-        # after the call is used in the decompiled file
-        if arch == 'rv64' and cont == 'Ret':
-            try:
-                cont = parse_int(bits[n + 13])
-            except:
-               cont = 'Ret'
-
         name = bits[n + 2]
         (n, args) = parse_list (parse_expr, bits, n + 3)
         (n, saves) = parse_list (parse_lval, bits, n)
@@ -1232,7 +1208,7 @@ def visit_rval (vs):
             vs[v] = expr.typ
         if expr.is_op ('MemAcc'):
             [m, p] = expr.vals
-            if is_64bit:
+            if arch.is_64bit:
                 #rv64_hack
                 assert p.typ == word64T or p.typ == word32T, expr
             else:
@@ -1484,24 +1460,47 @@ def mk_word32_maybe(x):
         assert x.typ == word32T
         return x
 
-def mk_cast(x, typ, signed=False):
+def mk_cast_generic(x, typ):
     if x.typ == typ:
         return x
     else:
-        cast_op = 'WordCastSigned' if signed else 'WordCast'
         context_trace(mk_pairing=('asm_f', 'c_fun'))
         assert x.typ.kind == 'Word', x.typ
         assert typ.kind == 'Word', typ
-        return Expr ('Op', typ, name=cast_op, vals=[x])
+        return Expr ('Op', typ, name='WordCast', vals=[x])
+
+# The RISC-V calling convention requires some special handling for
+# 32-bit values stored in 64-bit registers. These are presumed to
+# be stored in sign-extended form, even if the C type is unsigned.
+# We solve this problem by making cast_pair arch-specific.
+def mk_cast_pair_rv64(x, typ):
+    if x.typ == typ:
+        return x
+    context_trace(mk_pairing=('asm_f', 'c_fun'))
+    assert x.typ.kind == 'Word', x.typ
+    assert typ.kind == 'Word', typ
+    signed = x.typ.num == 32 and typ.num == 64
+    cast_op = 'WordCastSigned' if signed else 'WordCast'
+    return Expr ('Op', typ, name=cast_op, vals=[x])
+
+def cast_pair_rv64(pair):
+    (a, a_addr), (c, c_addr) = pair
+    return ((a, a_addr), (mk_cast_pair_rv64(c, a.typ), c_addr))
+
+def cast_pair_armv7(pair):
+    (a, a_addr), (c, c_addr) = pair
+    if a.typ != c.typ and c.typ == boolT:
+        c = mk_if(c, mk_word32 (1), mk_word32 (0))
+    return ((a, a_addr), (mk_cast_generic(c, a.typ), c_addr))
 
 def mk_memacc(m, p, typ):
     assert m.typ == builtinTs['Mem']
-    assert is_64bit or p.typ == word32T
+    assert arch.is_64bit or p.typ == word32T
     return Expr ('Op', typ, name = 'MemAcc', vals = [m, p])
 
 def mk_memupd(m, p, v):
     assert m.typ == builtinTs['Mem']
-    if is_64bit:
+    if arch.is_64bit:
         assert p.typ == word64T
     else:
         assert p.typ == word32T
@@ -1543,11 +1542,6 @@ def mk_rel_wrapper (nm, vals):
 def adjust_op_vals (expr, vals):
     assert expr.kind == 'Op'
     return Expr ('Op', expr.typ, expr.name, vals = vals)
-
-mks = (mk_var, mk_plus, mk_uminus, mk_minus, mk_times, mk_modulus, mk_bwand,
-mk_eq, mk_less_eq, mk_less, mk_implies, mk_and, mk_or, mk_not, mk_word64, mk_word32,
-mk_word8, mk_word32_maybe, mk_cast, mk_memacc, mk_memupd, mk_arr_index,
-mk_arroffs, mk_if, mk_meta_typ, mk_pvalid)
 
 # ====================================================================
 # pretty printing code for the syntax - only used for printing reports
@@ -1596,6 +1590,392 @@ def pretty_expr (expr, print_type = False):
     else:
         assert not 'expr pretty-printable', expr
 
+# ========================
+# Architecture definitions
+
+class Arch:
+    def __init__(self, name = 'armv7'):
+        if name == 'armv7':
+            self.name = 'armv7'
+            self.ptr_size = 4
+            self.stack_alignment_bits = 2
+            self.ptr_alignment_bits = 2
+            self.ret_addr_alignment_bits = 2
+            self.is_64bit = False
+            self.ghost_assertion_type = Type('WordArray', 50, 32)
+            self.mk_word = mk_word32
+            self.mk_cast = mk_cast_generic
+            self.cast_pair = cast_pair_armv7
+            self.word_type = word32T
+            self.word_size = 32
+            self.rodata_chunk_type = word32T
+            self.rodata_chunk_size = 32
+            self.sp_register = 'r13'
+            self.ra_register = 'r14'
+            self.large_return_ptr_register = 'r0'
+            self.argument_registers = ['r0','r1','r2','r3']
+            self.return_registers = ['r0']
+            self.register_aliases = {'r11': ['fp'],'r13': ['sp'],'r14': ['lr']}
+            self.callee_saved_registers = ['r4','r5','r6','r7',
+            	'r8','r9','r10','r11','r13']
+            self.zero_wired_registers = []
+            self.smt_alignment_pattern = '#xfffffffd'
+            self.smt_native_zero = '#x00000000'
+            self.smt_stackeq_mask = '#x00000003'
+            self.smt_rodata_mask = '#x00000003'
+            self.smt_word8_preamble = armv7_word8_preamble
+            self.smt_native_preamble = armv7_native_preamble
+            self.smt_word8_conversions = armv7_word8_conversions
+            self.smt_native_conversions = armv7_native_conversions
+        elif name == 'rv64':
+            self.name = 'rv64'
+            self.ptr_size = 8
+            self.stack_alignment_bits = 4
+            self.ptr_alignment_bits = 3
+            self.ret_addr_alignment_bits = 1
+            self.is_64bit = True
+            self.ghost_assertion_type = Type('WordArray', 50, 64)
+            self.mk_word = mk_word64
+            self.mk_cast = mk_cast_generic
+            self.cast_pair = cast_pair_rv64
+            self.word_type = word64T
+            self.word_size = 64
+            self.rodata_chunk_type = word16T
+            self.rodata_chunk_size = 16
+            self.sp_register = 'r2'
+            self.ra_register = 'r1'
+            self.large_return_ptr_register = 'r10'
+            self.argument_registers = ['r10','r11','r12','r13',
+                'r14','r15','r16','r17']
+            self.return_registers = ['r10','r11']
+            self.register_aliases = {'r1': ['ra'],'r2': ['sp'],'r8': ['fp']}
+            self.callee_saved_registers = ['r2','r3','r4','r8','r9','r18',
+            	'r19','r20','r21','r22','r23','r24','r25','r26','r27']
+            self.zero_wired_registers = ['r0']
+            self.smt_alignment_pattern = "#xfffffffffffffffd"
+            self.smt_native_zero = '#x0000000000000000'
+            self.smt_stackeq_mask = '#x0000000000000007'
+            self.smt_rodata_mask =  '#x0000000000000001'
+            self.smt_word8_preamble = rv64_word8_preamble
+            self.smt_native_preamble = rv64_native_preamble
+            self.smt_word8_conversions = rv64_word8_conversions
+            self.smt_native_conversions = rv64_native_conversions
+        else:
+            raise ValueError('unsupported architecture: %r' % name)
+    def __repr__ (self):
+        return 'Arch (%r)' % self.name
+arch = None
+def set_arch(name = 'armv7'):
+    global arch
+    arch = Arch(name)
+
+armv7_word8_preamble = [
+'''(define-fun load-word32 ((m {MemSort}) (p (_ BitVec 32)))
+	(_ BitVec 32)
+(concat
+	(concat (select m (bvadd p #x00000003))
+	        (select m (bvadd p #x00000002)))
+    (concat (select m (bvadd p #x00000001))
+            (select m p)))
+)
+''',
+'''(define-fun load-word64 ((m {MemSort}) (p (_ BitVec 32)))
+	(_ BitVec 64)
+(bvor ((_ zero_extend 32) (load-word32 m p))
+	(bvshl ((_ zero_extend 32)
+		(load-word32 m (bvadd p #x00000004))) #x0000000000000020)))''',
+'''(define-fun store-word32 ((m {MemSort}) (p (_ BitVec 32))
+	(v (_ BitVec 32))) {MemSort}
+(store (store (store (store m p ((_ extract 7 0) v))
+	(bvadd p #x00000001) ((_ extract 15 8) v))
+	(bvadd p #x00000002) ((_ extract 23 16) v))
+	(bvadd p #x00000003) ((_ extract 31 24) v))
+) ''',
+'''(define-fun store-word64 ((m {MemSort}) (p (_ BitVec 32)) (v (_ BitVec 64)))
+        {MemSort}
+(store-word32 (store-word32 m p ((_ extract 31 0) v))
+	(bvadd p #x00000004) ((_ extract 63 32) v)))''',
+'''(define-fun load-word8 ((m {MemSort}) (p (_ BitVec 32))) (_ BitVec 8)
+(select m p))''',
+'''(define-fun store-word8 ((m {MemSort}) (p (_ BitVec 32)) (v (_ BitVec 8)))
+	{MemSort}
+(store m p v))''',
+'''(define-fun mem-dom ((p (_ BitVec 32)) (d {MemDomSort})) Bool
+(not (= (select d p) #b0)))''',
+'''(define-fun mem-eq ((x {MemSort}) (y {MemSort})) Bool (= x y))''',
+'''(define-fun word32-eq ((x (_ BitVec 32)) (y (_ BitVec 32)))
+    Bool (= x y))''',
+'''(define-fun word64-eq ((x (_ BitVec 64)) (y (_ BitVec 64)))
+	Bool (= x y))''',
+'''(define-fun word2-xor-scramble ((a (_ BitVec 2)) (x (_ BitVec 2))
+   (b (_ BitVec 2)) (c (_ BitVec 2)) (y (_ BitVec 2)) (d (_ BitVec 2))) Bool
+(bvult (bvadd (bvxor a x) b) (bvadd (bvxor c y) d)))''',
+'''(declare-fun unspecified-precond () Bool)''',
+]
+
+armv7_native_preamble = [
+'''(define-fun load-word32 ((m {MemSort}) (p (_ BitVec 32)))
+	(_ BitVec 32)
+(select m ((_ extract 31 2) p)))''',
+'''(define-fun store-word32 ((m {MemSort}) (p (_ BitVec 32)) (v (_ BitVec 32)))
+	{MemSort}
+(store m ((_ extract 31 2) p) v))''',
+'''(define-fun load-word64 ((m {MemSort}) (p (_ BitVec 32)))
+	(_ BitVec 64)
+(bvor ((_ zero_extend 32) (load-word32 m p))
+	(bvshl ((_ zero_extend 32)
+		(load-word32 m (bvadd p #x00000004))) #x0000000000000020)))''',
+'''(define-fun store-word64 ((m {MemSort}) (p (_ BitVec 32)) (v (_ BitVec 64)))
+        {MemSort}
+(store-word32 (store-word32 m p ((_ extract 31 0) v))
+	(bvadd p #x00000004) ((_ extract 63 32) v)))''',
+'''(define-fun word8-shift ((p (_ BitVec 32))) (_ BitVec 32)
+(bvshl ((_ zero_extend 30) ((_ extract 1 0) p)) #x00000003))''',
+'''(define-fun word8-get ((p (_ BitVec 32)) (x (_ BitVec 32))) (_ BitVec 8)
+((_ extract 7 0) (bvlshr x (word8-shift p))))''',
+'''(define-fun load-word8 ((m {MemSort}) (p (_ BitVec 32))) (_ BitVec 8)
+(word8-get p (load-word32 m p)))''',
+'''(define-fun word8-put ((p (_ BitVec 32)) (x (_ BitVec 32)) (y (_ BitVec 8)))
+  (_ BitVec 32) (bvor (bvshl ((_ zero_extend 24) y) (word8-shift p))
+	(bvand x (bvnot (bvshl #x000000FF (word8-shift p))))))''',
+'''(define-fun store-word8 ((m {MemSort}) (p (_ BitVec 32)) (v (_ BitVec 8)))
+	{MemSort}
+(store-word32 m p (word8-put p (load-word32 m p) v)))''',
+'''(define-fun mem-dom ((p (_ BitVec 32)) (d {MemDomSort})) Bool
+(not (= (select d p) #b0)))''',
+'''(define-fun mem-eq ((x {MemSort}) (y {MemSort})) Bool (= x y))''',
+'''(define-fun word32-eq ((x (_ BitVec 32)) (y (_ BitVec 32)))
+    Bool (= x y))''',
+'''(define-fun word64-eq ((x (_ BitVec 64)) (y (_ BitVec 64)))
+	Bool (= x y))''',
+'''(define-fun word2-xor-scramble ((a (_ BitVec 2)) (x (_ BitVec 2))
+   (b (_ BitVec 2)) (c (_ BitVec 2)) (y (_ BitVec 2)) (d (_ BitVec 2))) Bool
+(bvult (bvadd (bvxor a x) b) (bvadd (bvxor c y) d)))''',
+'''(declare-fun unspecified-precond () Bool)'''
+]
+
+'''
+For RV64, memory addresses are 64-bit, but loads and stores can be
+performed in bytes, half-words, words, and double-words. Therefore,
+we model the memory as byte-addressable. This requires shifting and adding
+when we need to read and write half-words, words, and double words.
+'''
+
+rv64_word8_preamble = [
+'''
+(define-fun load-word8 ((m {MemSort}) (p (_ BitVec 64)))
+	(_ BitVec 8)
+	(select m p)
+)
+''',
+'''
+(define-fun load-word16 ((m {MemSort}) (p (_ BitVec 64)))
+	(_ BitVec 16)
+	(concat (select m (bvadd p #x0000000000000001))
+		(select m p)
+	)
+)
+''',
+'''
+(define-fun load-word32 ((m {MemSort}) (p (_ BitVec 64)))
+	(_ BitVec 32)
+	(concat
+		(concat (select m (bvadd p #x0000000000000003))
+				(select m (bvadd p #x0000000000000002)))
+		(concat (select m (bvadd p #x0000000000000001))
+				(select m p))
+	)
+)
+''',
+'''
+(define-fun load-word64 ((m {MemSort}) (p (_ BitVec 64)))
+	(_ BitVec 64)
+	(concat (load-word32 m (bvadd p #x0000000000000004))
+			(load-word32 m p)
+	)
+)
+''',
+'''
+(define-fun store-word8 ((m {MemSort}) (p (_ BitVec 64)) (v (_ BitVec 8)))
+	{MemSort}
+	(store m p v)
+)
+''',
+'''
+(define-fun store-word16 ((m {MemSort}) (p (_ BitVec 64)) (v (_ BitVec 16)))
+	{MemSort}
+	(store-word8
+		(store-word8 m p ((_ extract 7 0) v))
+		(bvadd p #x0000000000000001)
+		((_ extract 15 8) v)
+	)
+)
+''',
+'''
+(define-fun store-word32 ((m {MemSort}) (p (_ BitVec 64)) (v (_ BitVec 32)))
+	{MemSort}
+	(store-word16
+		(store-word16 m p ((_ extract 15 0) v))
+		(bvadd p #x0000000000000002)
+		((_ extract 31 16) v)
+	)
+)
+''',
+'''
+(define-fun store-word64 ((m {MemSort}) (p (_ BitVec 64)) (v (_ BitVec 64)))
+	{MemSort}
+	(store-word32
+		(store-word32 m p ((_ extract 31 0) v))
+		(bvadd p #x0000000000000004)
+		((_ extract 63 32) v)
+	)
+)
+''',
+'''
+(define-fun mem-dom ((p (_ BitVec 64)) (d {MemDomSort}))
+	Bool
+	(not (= (select d p) #b0)))
+''',
+'''
+(define-fun mem-eq ((x {MemSort}) (y {MemSort}))
+	Bool
+	(= x y))
+''',
+'''
+(define-fun word32-eq ((x (_ BitVec 32)) (y (_ BitVec 32)))
+	Bool
+	(= x y))
+''',
+'''
+(define-fun word64-eq ((x (_ BitVec 64)) (y (_ BitVec 64)))
+    Bool
+    (= x y))
+''',
+'''
+(define-fun word2-xor-scramble ((a (_ BitVec 2)) (x (_ BitVec 2))
+	(b (_ BitVec 2)) (c (_ BitVec 2)) (y (_ BitVec 2)) (d (_ BitVec 2)))
+	Bool
+	(bvult (bvadd (bvxor a x) b) (bvadd (bvxor c y) d)))
+''',
+'''(declare-fun unspecified-precond () Bool)'''
+]
+
+rv64_native_preamble = [
+'''
+(define-fun load-word64 ((m {MemSort}) (p (_ BitVec 64)))
+	(_ BitVec 64)
+	(select m ((_ extract 63 3) p)))
+''',
+'''
+(define-fun store-word64 ((m {MemSort}) (p (_ BitVec 64)) (v (_ BitVec 64)))
+	{MemSort}
+	(store m ((_ extract 63 3) p) v))
+''',
+'''
+(define-fun word8-shift ((p (_ BitVec 64)))
+	(_ BitVec 64)
+	(bvshl ((_ zero_extend 61) ((_ extract 2 0) p)) #x0000000000000003))
+''',
+'''
+(define-fun word8-get ((p (_ BitVec 64)) (x (_ BitVec 64)))
+	(_ BitVec 8)
+	((_ extract 7 0) (bvlshr x (word8-shift p))))
+''',
+'''
+(define-fun word8-put ((p (_ BitVec 64)) (orig (_ BitVec 64)) (w (_ BitVec 8)))
+	(_ BitVec 64)
+	(bvor
+		(bvand (bvnot (bvshl #x00000000000000FF (word8-shift p))) orig)
+		(bvshl ((_ zero_extend 56) w) (word8-shift p))))
+''',
+'''
+(define-fun load-word8 ((m {MemSort}) (p (_ BitVec 64)))
+	(_ BitVec 8)
+	(word8-get p (load-word64 m p)))
+''',
+'''
+(define-fun store-word8 ((m {MemSort}) (p (_ BitVec 64)) (w (_ BitVec 8)))
+	{MemSort}
+	(store-word64 m p (word8-put p (load-word64 m p) w)))
+''',
+'''
+(define-fun word16-shift ((p (_ BitVec 64)))
+	(_ BitVec 64)
+	(bvshl ((_ zero_extend 61) (concat ((_ extract 2 1) p) #b0)) #x0000000000000003))
+''',
+'''
+(define-fun word16-get ((p (_ BitVec 64)) (x (_ BitVec 64)))
+	(_ BitVec 16)
+	((_ extract 15 0) (bvlshr x (word16-shift p))))
+''',
+'''
+(define-fun word16-put ((p (_ BitVec 64)) (orig (_ BitVec 64)) (ww (_ BitVec 16)))
+	(_ BitVec 64)
+	(bvor
+		(bvand (bvnot (bvshl #x000000000000FFFF (word16-shift p))) orig)
+		(bvshl ((_ zero_extend 48) ww) (word16-shift p))))
+''',
+'''
+(define-fun load-word16 ((m {MemSort}) (p (_ BitVec 64)))
+	(_ BitVec 16)
+	(word16-get p (load-word64 m p)))
+''',
+'''
+(define-fun store-word16 ((m {MemSort}) (p (_ BitVec 64)) (ww (_ BitVec 16)))
+	{MemSort}
+	(store-word64 m p (word16-put p (load-word64 m p) ww)))
+''',
+'''
+(define-fun mem-dom ((p (_ BitVec 64)) (d {MemDomSort}))
+	Bool
+	(not (= (select d p) #b0)))
+''',
+'''
+(define-fun mem-eq ((x {MemSort}) (y {MemSort}))
+	Bool
+	(= x y))
+''',
+'''
+(define-fun word32-eq ((x (_ BitVec 32)) (y (_ BitVec 32)))
+	Bool
+	(= x y))
+''',
+'''
+(define-fun word64-eq ((x (_ BitVec 64)) (y (_ BitVec 64)))
+	Bool
+	(= x y))
+''',
+'''
+(define-fun word2-xor-scramble ((a (_ BitVec 2)) (x (_ BitVec 2))
+	(b (_ BitVec 2)) (c (_ BitVec 2)) (y (_ BitVec 2)) (d (_ BitVec 2)))
+	Bool
+	(bvult (bvadd (bvxor a x) b) (bvadd (bvxor c y) d)))
+''',
+'''(declare-fun unspecified-precond () Bool)'''
+]
+
+armv7_native_conversions = {
+	'MemSort': '(Array (_ BitVec 30) (_ BitVec 32))',
+	'MemDomSort': '(Array (_ BitVec 32) (_ BitVec 1))'
+}
+armv7_word8_conversions = {
+	'MemSort': '(Array (_ BitVec 32) (_ BitVec 8))',
+	'MemDomSort': '(Array (_ BitVec 32) (_ BitVec 1))'
+}
+rv64_native_conversions = {
+	'MemSort': '(Array (_ BitVec 61) (_ BitVec 64))',
+	'MemDomSort': '(Array (_ BitVec 64) (_ BitVec 1))'
+}
+rv64_word8_conversions = {
+	'MemSort': '(Array (_ BitVec 64) (_ BitVec 8))',
+	'MemDomSort': '(Array (_ BitVec 64) (_ BitVec 1))'
+}
+
+
+
+
+
+
 
 # =================================================
 # some helper code that's needed all over the place
@@ -1630,14 +2010,6 @@ def fresh_node (ns, hint = 1):
         n += 16
     return n
 
-def set_arch(a = 'armv7'):
-    global arch
-    global is_64bit
-    arch = a
-    if arch == 'rv64':
-        is_64bit = True
-    else:
-        is_64bit = False
 
 
 def context_trace(*local_vars, **fun_vars):

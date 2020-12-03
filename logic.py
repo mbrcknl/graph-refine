@@ -11,10 +11,10 @@ from syntax import word64T, word32T, word8T, boolT, builtinTs, Expr, Node
 from syntax import true_term, false_term, mk_num
 from syntax import foldr1
 
-(mk_var, mk_plus, mk_uminus, mk_minus, mk_times, mk_modulus, mk_bwand, mk_eq,
+from syntax import (mk_var, mk_plus, mk_uminus, mk_minus, mk_times, mk_modulus, mk_bwand, mk_eq,
 mk_less_eq, mk_less, mk_implies, mk_and, mk_or, mk_not, mk_word64, mk_word32, mk_word8,
-mk_word32_maybe, mk_cast, mk_memacc, mk_memupd, mk_arr_index, mk_arroffs,
-mk_if, mk_meta_typ, mk_pvalid) = syntax.mks
+mk_word32_maybe, mk_memacc, mk_memupd, mk_arr_index, mk_arroffs,
+mk_if, mk_meta_typ, mk_pvalid)
 
 from syntax import structs
 from target_objects import trace, printout
@@ -23,31 +23,11 @@ def is_int (n):
 	return hasattr (n, '__int__')
 
 def mk_eq_with_cast (a, c):
-	return mk_eq (a, mk_cast (c, a.typ))
+	return mk_eq (a, syntax.arch.mk_cast (c, a.typ))
 
 def mk_rodata (m):
 	assert m.typ == builtinTs['Mem']
 	return Expr ('Op', boolT, name = 'ROData', vals = [m])
-
-def cast_pair (pair, mk_cast=mk_cast):
-        (a, a_addr), (c, c_addr) = pair
-	if a.typ != c.typ and c.typ == boolT:
-		assert False
-		c = mk_if (c, mk_word32 (1), mk_word32 (0))
-	return ((a, a_addr), (mk_cast(c, a.typ), c_addr))
-
-# The RISC-V calling convention requires some special handling for
-# 32-bit values stored in 64-bit registers. These are presumed to
-# be stored in sign-extended form, even if the C type is unsigned.
-def mk_cast_rv64(x, typ):
-    signed = x.typ.num == 32 and typ.num == 64
-    return mk_cast(x, typ, signed=signed)
-
-def cast_pair_rv64(pair):
-    return cast_pair(pair, mk_cast_rv64)
-
-ghost_assertion_armv7_type = syntax.Type ('WordArray', 50, 32)
-ghost_assertion_rv64_type = syntax.Type('WordArray', 50, 64)
 
 def split_scalar_globals (vs):
 	for i in range (len (vs)):
@@ -57,17 +37,11 @@ def split_scalar_globals (vs):
 		i = len (vs)
 	scalars = vs[:i]
 	global_vars = vs[i:]
-	if syntax.arch == 'armv7':
-		ghost_assertion_type = ghost_assertion_armv7_type
-	elif syntax.arch == 'rv64':
-		ghost_assertion_type = ghost_assertion_rv64_type
-	else:
-		assert False
 
 	for v in global_vars:
 		if v.typ not in [builtinTs['Mem'], builtinTs['Dom'],
 				builtinTs['HTD'], builtinTs['PMS'],
-				ghost_assertion_type]:
+				syntax.arch.ghost_assertion_type]:
 			assert not "scalar_global split expected", vs
 
 	memT = builtinTs['Mem']
@@ -106,29 +80,6 @@ def mk_mem_eqs (a_imem, c_imem, a_omem, c_omem, tags):
 
 	return (ieqs, oeqs)
 
-def mk_fun_eqs (as_f, c_f, prunes = None):
-	assert not 'used'
-
-	(var_a_args, a_imem, glob_a_args) = split_scalar_pairs (as_f.inputs)
-	(var_c_args, c_imem, glob_c_args) = split_scalar_pairs (c_f.inputs)
-	(var_a_rets, a_omem, glob_a_rets) = split_scalar_pairs (as_f.outputs)
-	(var_c_rets, c_omem, glob_c_rets) = split_scalar_pairs (c_f.outputs)
-
-	(mem_ieqs, mem_oeqs) = mk_mem_eqs (a_imem, c_imem, a_omem, c_omem, ['ASM', 'C'])
-
-	if not prunes:
-		prunes = (var_a_args, var_a_args)
-	assert len (prunes[0]) == len (var_c_args), (params, var_a_args,
-		var_c_args, prunes)
-	a_map = dict (azip (prunes[1], var_a_args))
-	ivar_pairs = [((a_map[p], 'ASM_IN'), (c, 'C_IN')) for (p, c)
-		in azip (prunes[0], var_c_args) if p in a_map]
-
-	ovar_pairs = [((a_ret, 'ASM_OUT'), (c_ret, 'C_OUT')) for (a_ret, c_ret)
-		in azip (var_a_rets, var_c_rets)]
-	return (map (cast_pair, mem_ieqs + ivar_pairs),
-		map (cast_pair, mem_oeqs + ovar_pairs))
-
 def mk_var_list (vs, typ):
 	return [syntax.mk_var (v, typ) for v in vs]
 
@@ -149,135 +100,65 @@ def mk_aligned (w, n):
 	mask = Expr ('Num', w.typ, val = ((1 << n) - 1))
 	return mk_eq (mk_bwand (w, mask), mk_num (0, w.typ))
 
-def mk_eqs_arm_none_eabi_gnu (var_c_args, var_c_rets, c_imem, c_omem,
-		min_stack_size):
-	arg_regs = mk_var_list (['r0', 'r1', 'r2', 'r3'], word32T)
-	r0 = arg_regs[0]
-	sp = mk_var ('r13', word32T)
-	st = mk_var ('stack', builtinTs['Mem'])
-	r0_input = mk_var ('ret_addr_input', word32T)
-	sregs = mk_stack_sequence (sp, 4, st, word32T, len (var_c_args) + 1)
-
-	ret = mk_var ('ret', word32T)
-	preconds = [mk_aligned (sp, 2),
-	            mk_eq (ret, mk_var ('r14', word32T)),
-				mk_aligned (ret, 2),
-				mk_eq (r0_input, r0),
-				mk_less_eq (min_stack_size, sp)]
-
-	post_eqs = [(x, x) for x in mk_var_list (['r4', 'r5', 'r6', 'r7', 'r8',
-			'r9', 'r10', 'r11', 'r13'], word32T)]
-
-	arg_seq = [(r, None) for r in arg_regs] + sregs
-	if len (var_c_rets) > 1:
-		# the 'return-too-much' issue.
-		# instead r0 is a save-returns-here pointer
-		arg_seq.pop (0)
-		preconds += [mk_aligned (r0, 2), mk_less_eq (sp, r0)]
-		save_seq = mk_stack_sequence (r0_input, 4, st, word32T,
-			len (var_c_rets))
-		save_addrs = [addr for (_, addr) in save_seq]
-		post_eqs += [(r0_input, r0_input)]
-		out_eqs = zip (var_c_rets, [x for (x, _) in save_seq])
-		out_eqs = [(c, mk_cast (a, c.typ)) for (c, a) in out_eqs]
-		init_save_seq = mk_stack_sequence (r0, 4, st, word32T,
-			len (var_c_rets))
-		(_, last_arg_addr) = arg_seq[len (var_c_args) - 1]
-		preconds += [mk_less_eq (sp, addr)
-			for (_, addr) in init_save_seq[-1:]]
-		if last_arg_addr:
-			preconds += [mk_less (last_arg_addr, addr)
-				for (_, addr) in init_save_seq[:1]]
-	else:
-		out_eqs = zip (var_c_rets, [r0])
-		save_addrs = []
-	arg_seq_addrs = [addr for ((_, addr), _) in zip (arg_seq, var_c_args)
-		if addr != None]
-	swrap = mk_stack_wrapper (sp, st, arg_seq_addrs)
-	swrap2 = mk_stack_wrapper (sp, st, save_addrs)
-	post_eqs += [(swrap, swrap2)]
-
-	mem = mk_var ('mem', builtinTs['Mem'])
-	(mem_ieqs, mem_oeqs) = mk_mem_eqs ([mem], c_imem, [mem], c_omem,
-		['ASM', 'C'])
-
-	addr = None
-	arg_eqs = [cast_pair (((a_x, 'ASM_IN'), (c_x, 'C_IN')))
-		for (c_x, (a_x, addr)) in zip (var_c_args, arg_seq)]
-	if addr:
-		preconds += [mk_less_eq (sp, addr)]
-	ret_eqs = [cast_pair (((a_x, 'ASM_OUT'), (c_x, 'C_OUT')))
-		for (c_x, a_x) in out_eqs]
-	preconds = [((a_x, 'ASM_IN'), (true_term, 'ASM_IN')) for a_x in preconds]
-	asm_invs = [((vin, 'ASM_IN'), (vout, 'ASM_OUT')) for (vin, vout) in post_eqs]
-
-	return (arg_eqs + mem_ieqs + preconds,
-		ret_eqs + mem_oeqs + asm_invs)
-
-
-def mk_eqs_riscv64_unknown_linux_gnu(var_c_args, var_c_rets, c_imem, c_omem, min_stack_size):
+def mk_eqs(var_c_args, var_c_rets, c_imem, c_omem, min_stack_size):
         syntax.context_trace()
 
-	arg_regs = mk_var_list(['r10', 'r11', 'r12', 'r13', 'r14', 'r15', 'r16', 'r17'], word64T)
+	arg_regs = mk_var_list(syntax.arch.argument_registers, syntax.arch.word_type)
+	ar0 = arg_regs[0]
 
-	r10 = arg_regs[0]
-	r11 = arg_regs[1]
-
-	sp = mk_var('r2', word64T)
+	sp = mk_var(syntax.arch.sp_register, syntax.arch.word_type)
 	st = mk_var('stack', builtinTs['Mem'])
-	r10_input = mk_var('ret_addr_input', word64T)
-	sregs = mk_stack_sequence(sp, 8, st, word64T, len(var_c_args) + 1)
-	ret = mk_var('ret', word64T)
+	ra_input = mk_var('ret_addr_input', syntax.arch.word_type)
+	sregs = mk_stack_sequence(sp, syntax.arch.ptr_size, st, syntax.arch.word_type, len(var_c_args) + 1)
+	ret = mk_var('ret', syntax.arch.word_type)
 
 	preconds = [
-		#for RV64, assume the stack is 16-byte aligned
-		mk_aligned(sp, 4),
-		mk_eq(ret, mk_var('r1', word64T)),
-
-		# precondition; ret address is 2-byte aligned for
-		# compress insturction or 4-byte aligned for
-		# normal instruction
-		# note that the assembly decompiler addes a check to
-		# assert that the return address in r1 is 2-byte aligend.
-	    mk_aligned(ret, 1),
-		mk_eq(r10_input, r10),
-	    mk_less_eq(min_stack_size, sp)
+		mk_aligned(sp, syntax.arch.stack_alignment_bits),
+		mk_eq(ret, mk_var(syntax.arch.ra_register, syntax.arch.word_type)),
+		mk_aligned(ret, syntax.arch.ret_addr_alignment_bits),
+		mk_eq(ra_input, ar0),
+		mk_less_eq(min_stack_size, sp)
 	]
 
 	post_eqs = [
 		(x, x) for x in mk_var_list(
-			['r2', 'r3', 'r4', 'r8', 'r9', 'r18', 'r19', 'r20', 'r21',
-			 'r22', 'r23', 'r24', 'r25', 'r26', 'r27'],
-			word64T)
+			syntax.arch.callee_saved_registers,
+			syntax.arch.word_type)
 	]
 
 	arg_seq = [(r, None) for r in arg_regs] + sregs
 
-	if len (var_c_rets) > 2:
-		# the 'return-too-much' issue.
-		# instead r0 is a save-returns-here pointer
-		arg_seq.pop (0)
-		preconds += [mk_aligned (r10, 3), mk_less_eq (sp, r10)]
-		save_seq = mk_stack_sequence (r10_input, 8, st, word64T,
-			len (var_c_rets))
+	if len(var_c_rets) > len(syntax.arch.return_registers):
+		# Our return value exceeds the capacity of the return
+		# registers. In this case, the caller will pass us a
+		# memory address where we can save our return value
+		# as an implicit first argument (passed in the first
+		# argument register).
+		arg_seq.pop(0)
+		preconds += [
+			mk_aligned(ar0, syntax.arch.ptr_alignment_bits),
+			mk_less_eq(sp, ar0)
+		]
+		save_seq = mk_stack_sequence(
+			ra_input, syntax.arch.ptr_size, st,
+			syntax.arch.word_type, len(var_c_rets)
+		)
 		save_addrs = [addr for (_, addr) in save_seq]
-		post_eqs += [(r10_input, r10_input)]
-		out_eqs = zip (var_c_rets, [x for (x, _) in save_seq])
-		out_eqs = [(c, mk_cast_rv64(a, c.typ)) for (c, a) in out_eqs]
-		init_save_seq = mk_stack_sequence (r10, 8, st, word64T,
-			 len(var_c_rets))
-		(_, last_arg_addr) = arg_seq[len (var_c_args) - 1]
+		post_eqs += [(ra_input, ra_input)]
+		out_eqs = zip(var_c_rets, [x for (x, _) in save_seq])
+		out_eqs = [(c, syntax.arch.mk_cast(a, c.typ)) for (c, a) in out_eqs]
+		init_save_seq = mk_stack_sequence(
+			ar0, syntax.arch.ptr_size, st,
+			syntax.arch.word_type, len(var_c_rets)
+		)
+		(_, last_arg_addr) = arg_seq[len(var_c_args) - 1]
 		preconds += [mk_less_eq (sp, addr)
 			for (_, addr) in init_save_seq[-1:]]
 		if last_arg_addr:
 			preconds += [mk_less (last_arg_addr, addr)
 				for (_, addr) in init_save_seq[:1]]
-
-	elif len(var_c_rets) == 2:
-		out_eqs = zip(var_c_rets, [r10, r11])
-		save_addrs = []
 	else:
-		out_eqs = zip (var_c_rets, [r10])
+		out_eqs = zip(var_c_rets, arg_regs[:len(syntax.arch.argument_registers)])
 		save_addrs = []
 
 	arg_seq_addrs = [addr for ((_, addr), _) in zip (arg_seq, var_c_args)
@@ -292,13 +173,13 @@ def mk_eqs_riscv64_unknown_linux_gnu(var_c_args, var_c_rets, c_imem, c_omem, min
 		['ASM', 'C'])
 
 	addr = None
-	arg_eqs = [cast_pair_rv64(((a_x, 'ASM_IN'), (c_x, 'C_IN')))
+	arg_eqs = [syntax.arch.cast_pair(((a_x, 'ASM_IN'), (c_x, 'C_IN')))
 		for (c_x, (a_x, addr)) in zip (var_c_args, arg_seq)]
 
 	if addr:
 		preconds += [mk_less_eq (sp, addr)]
 
-	ret_eqs = [cast_pair_rv64(((a_x, 'ASM_OUT'), (c_x, 'C_OUT')))
+	ret_eqs = [syntax.arch.cast_pair(((a_x, 'ASM_OUT'), (c_x, 'C_OUT')))
 		for (c_x, a_x) in out_eqs]
 
 	preconds = [((a_x, 'ASM_IN'), (true_term, 'ASM_IN')) for a_x in preconds]
@@ -306,19 +187,6 @@ def mk_eqs_riscv64_unknown_linux_gnu(var_c_args, var_c_rets, c_imem, c_omem, min
 
 	return (arg_eqs + mem_ieqs + preconds, ret_eqs + mem_oeqs + asm_invs)
 
-known_CPUs = {
-	'arm-none-eabi-gnu': mk_eqs_arm_none_eabi_gnu,
-	'riscv64-unknown-linux-gnu': mk_eqs_riscv64_unknown_linux_gnu,
-}
-
-def mk_fun_eqs_CPU (cpu_f, c_f, cpu_name, funcall_depth = 1):
-        assert not 'used'
-	cpu = known_CPUs[cpu_name]
-	(var_c_args, c_imem, glob_c_args) = split_scalar_pairs (c_f.inputs)
-	(var_c_rets, c_omem, glob_c_rets) = split_scalar_pairs (c_f.outputs)
-
-	return cpu (var_c_args, var_c_rets, c_imem, c_omem,
-		(funcall_depth * 256) + 256)
 
 class Pairing:
 	def __init__ (self, tags, funs, eqs, notes = None):
@@ -348,15 +216,6 @@ class Pairing:
 
 	def __ne__ (self, other):
 		return not other or not self == other
-
-def mk_pairing (functions, c_f, as_f, prunes = None, cpu = None):
-	fs = (functions[as_f], functions[c_f])
-	if cpu:
-		eqs = mk_fun_eqs_CPU (fs[0], fs[1], cpu,
-			funcall_depth = funcall_depth (functions, c_f))
-	else:
-		eqs = mk_fun_eqs (fs[0], fs[1], prunes = prunes)
-	return Pairing (['ASM', 'C'], {'C': c_f, 'ASM': as_f}, eqs)
 
 def inst_eqs_pattern (pattern, params):
 	(pat_params, inp_eqs, out_eqs) = pattern
@@ -500,7 +359,7 @@ def split_out_cast (expr, target_typ, bits):
 		if x.typ.num >= bits and expr.typ.num >= bits:
 			return split_out_cast (x, target_typ, bits)
 		else:
-			return mk_cast (expr, target_typ)
+			return syntax.arch.mk_cast (expr, target_typ)
 	elif expr.is_op ('BWAnd'):
 		[x, y] = expr.vals
 		if y.kind == 'Num':
@@ -511,7 +370,7 @@ def split_out_cast (expr, target_typ, bits):
 		if val & full_mask == full_mask:
 			return split_out_cast (x, target_typ, bits)
 		else:
-			return mk_cast (expr, target_typ)
+			return syntax.arch.mk_cast(expr, target_typ)
 	elif expr.is_op (['Plus', 'Minus']):
 		# rounding issues will appear if this arithmetic is done
 		# at a smaller number of bits than we'll eventually report
@@ -523,9 +382,9 @@ def split_out_cast (expr, target_typ, bits):
 			else:
 				return mk_minus (vals[0], vals[1])
 		else:
-			return mk_cast (expr, target_typ)
+			return syntax.arch.mk_cast(expr, target_typ)
 	else:
-		return mk_cast (expr, target_typ)
+		return syntax.arch.mk_cast(expr, target_typ)
 
 def toplevel_split_out_cast (expr):
 	bits = None
@@ -560,19 +419,14 @@ def mk_bwand_mask (expr, n):
 	return mk_bwand (expr, mk_num (((1 << n) - 1), expr.typ))
 
 def end_addr (p, typ):
-	if syntax.is_64bit:
-		mk_word = syntax.mk_word64
-	else:
-		mk_word = syntax.mk_word32
-
 	if typ[0] == 'Array':
 		(_, typ, n) = typ
-		sz = mk_times (mk_word(typ.size ()), n)
+		sz = mk_times (syntax.arch.mk_word(typ.size ()), n)
 	else:
 		assert typ[0] == 'Type', typ
 		(_, typ) = typ
-		sz = mk_word(typ.size ())
-	return mk_plus (p, mk_minus (sz, mk_word(1)))
+		sz = syntax.arch.mk_word(typ.size ())
+	return mk_plus (p, mk_minus (sz, syntax.arch.mk_word(1)))
 
 def pvalid_assertion1 ((typ, k, p, pv), (typ2, k2, p2, pv2)):
 	"""first pointer validity assertion: incompatibility.
@@ -606,24 +460,14 @@ def pvalid_assertion2 ((typ, k, p, pv), (typ2, k2, p2, pv2)):
 	return mk_and (imp1, imp2)
 
 def sym_distinct_assertion ((typ, p, pv), (start, end)):
-	if syntax.is_64bit:
-		mk_word = syntax.mk_word64
-	else:
-		mk_word = syntax.mk_word32
-
-	out1 = mk_less (mk_plus (p, mk_word(typ.size () - 1)), mk_word(start))
-	out2 = mk_less (mk_word(end), p)
+	out1 = mk_less (mk_plus (p, syntax.arch.mk_word(typ.size () - 1)), syntax.arch.mk_word(start))
+	out2 = mk_less (syntax.arch.mk_word(end), p)
 	return mk_implies (pv, mk_or (out1, out2))
 
 def norm_array_type (t):
-	if syntax.is_64bit:
-		mk_word = syntax.mk_word64
-	else:
-		mk_word = syntax.mk_word32
-
 	if t[0] == 'Type' and t[1].kind == 'Array':
 		(_, atyp) = t
-		return ('Array', atyp.el_typ_symb, mk_word(atyp.num), 'Strong')
+		return ('Array', atyp.el_typ_symb, syntax.arch.mk_word(atyp.num), 'Strong')
 	elif t[0] == 'Array' and len (t) == 3:
 		(_, typ, l) = t
 		# these derive from PArrayValid assertions. we know the array is
@@ -652,21 +496,10 @@ def get_styp_condition_inner1 (inner_typ, outer_typ):
 	return r
 
 def array_typ_size ((kind, el_typ, num, _)):
-	if syntax.is_64bit:
-		mk_word = syntax.mk_word64
-	else:
-		mk_word = syntax.mk_word32
-	el_size = mk_word(el_typ.size ())
+	el_size = syntax.arch.mk_word(el_typ.size ())
 	return mk_times (num, el_size)
 
 def get_styp_condition_inner2 (inner_typ, outer_typ):
-	if syntax.is_64bit:
-		wordT = syntax.word64T
-		mk_word = syntax.mk_word64
-	else:
-		wordT = syntax.word32T
-		mk_word = syntax.mk_word32
-
 	if inner_typ[0] == 'Array' and outer_typ[0] == 'Array':
 		(_, ityp, inum, _) = inner_typ
 		(_, otyp, onum, outer_bound) = outer_typ
@@ -682,10 +515,10 @@ def get_styp_condition_inner2 (inner_typ, outer_typ):
 		else:
 			return cond
 	elif inner_typ == outer_typ:
-		return lambda offs: mk_eq (offs, mk_word(0))
+		return lambda offs: mk_eq (offs, syntax.arch.mk_word(0))
 	elif outer_typ[0] == 'Type' and outer_typ[1].kind == 'Struct':
 		conds = [(get_styp_condition_inner1 (inner_typ,
-				('Type', sf_typ)), mk_word(offs2))
+				('Type', sf_typ)), syntax.arch.mk_word(offs2))
 			for (_, offs2, sf_typ)
 			in structs[outer_typ[1].name].fields.itervalues()]
 		conds = [cond for cond in conds if cond[0]]
@@ -698,7 +531,7 @@ def get_styp_condition_inner2 (inner_typ, outer_typ):
 	elif outer_typ[0] == 'Array':
 		(_, el_typ, n, bound) = outer_typ
 		cond = get_styp_condition_inner1 (inner_typ, ('Type', el_typ))
-		el_size = mk_word(el_typ.size ())
+		el_size = syntax.arch.mk_word(el_typ.size ())
 		size = mk_times (n, el_size)
 		if bound == 'Strong' and cond:
 			return lambda offs: mk_and (mk_less (offs, size),
@@ -733,41 +566,27 @@ def var_not_in_expr (var, expr):
 	return all_vars_have_prop (expr, lambda v: v != v2)
 
 def mk_array_size_ineq (typ, num, p):
-	if syntax.is_64bit:
-		mk_word = syntax.mk_word64
-		size_lim = ((2 ** 64) - 8) / typ.size()
-	else:
-		mk_word = syntax.mk_word32
-		size_lim = ((2 ** 32) - 4) / typ.size ()
-
 	align = typ.align ()
-	size = mk_times (mk_word(typ.size ()), num)
-	size_lim = ((2 ** 32) - 4) / typ.size ()
-	return mk_less_eq (num, mk_word(size_lim))
+	size = mk_times (syntax.arch.mk_word(typ.size ()), num)
+	size_lim = ((2 ** syntax.arch.word_size) - syntax.arch.ptr_size) / typ.size()
+	return mk_less_eq (num, syntax.arch.mk_word(size_lim))
 
 def mk_align_valid_ineq (typ, p):
-	if syntax.is_64bit:
-		mk_word = syntax.mk_word64
-		wordT = syntax.word64T
-	else:
-		mk_word = syntax.mk_word32
-		wordT = syntax.word32T
-
 	if typ[0] == 'Type':
 		(_, typ) = typ
 		align = typ.align ()
-		size = mk_word(typ.size ())
+		size = syntax.arch.mk_word(typ.size ())
 		size_req = []
 	else:
 		assert typ[0] == 'Array', typ
 		(kind, typ, num) = typ
 		align = typ.align ()
-		size = mk_times (mk_word(typ.size ()), num)
+		size = mk_times (syntax.arch.mk_word(typ.size ()), num)
 		size_req = [mk_array_size_ineq (typ, num, p)]
 	assert align in [1, 4, 8]
-	w0 = mk_word(0)
+	w0 = syntax.arch.mk_word(0)
 	if align > 1:
-		align_req = [mk_eq (mk_bwand (p, mk_word(align - 1)), w0)]
+		align_req = [mk_eq (mk_bwand (p, syntax.arch.mk_word(align - 1)), w0)]
 	else:
 		align_req = []
 	return foldr1 (mk_and, align_req + size_req + [mk_not (mk_eq (p, w0)),
@@ -1667,42 +1486,21 @@ def mk_mem_acc_wrapper (addr, v):
 def mk_mem_wrapper (m):
 	return syntax.mk_rel_wrapper ('MemWrapper', [m])
 
-def tm_with_word32_list (xs):
-	if xs:
-		return foldr1 (mk_plus, map (mk_word32, xs))
-	else:
-		return mk_uminus (mk_word32 (0))
-
-def word32_list_from_tm (t):
+def list_from_tm (t):
 	xs = []
 	while t.is_op ('Plus'):
 		[x, t] = t.vals
-		assert x.kind == 'Num' and x.typ == word32T
-		xs.append (x.val)
-	if t.kind == 'Num':
-		xs.append (t.val)
-	return xs
-
-def word64_list_from_tm (t):
-	xs = []
-	while t.is_op ('Plus'):
-		[x, t] = t.vals
-		assert x.kind == 'Num' and x.typ == word64T
+		assert x.kind == 'Num' and x.typ == syntax.arch.word_type
 		xs.append (x.val)
 	if t.kind == 'Num':
 		xs.append (t.val)
 	return xs
 
 def tm_with_word_list(xs):
-	if syntax.is_64bit:
-		mk_word = syntax.mk_word64
-	else:
-		mk_word = syntax.mk_word32
-
 	if xs:
-		return foldr1(mk_plus, map(mk_word, xs))
+		return foldr1(mk_plus, map(syntax.arch.mk_word, xs))
 	else:
-		return mk_uminus(mk_word(0))
+		return mk_uminus(syntax.arch.mk_word(0))
 
 def mk_eq_selective_wrapper (v, (xs, ys)):
 	# this is a huge hack, but we need to put these lists somewhere
@@ -1712,12 +1510,6 @@ def mk_eq_selective_wrapper (v, (xs, ys)):
 
 def apply_rel_wrapper (lhs, rhs):
         syntax.context_trace()
-	if syntax.is_64bit:
-		mk_word = syntax.mk_word64
-		wordT = syntax.word64T
-	else:
-		mk_word = syntax.mk_word32
-		wordT = syntax.word32T
 
 	assert lhs.typ == syntax.builtinTs['RelWrapper']
 	assert rhs.typ == syntax.builtinTs['RelWrapper']
@@ -1729,15 +1521,15 @@ def apply_rel_wrapper (lhs, rhs):
 		[sp2, st2] = rhs.vals[:2]
 		excepts = list (set (lhs.vals[2:] + rhs.vals[2:]))
 		for p in excepts:
-			st1 = syntax.mk_memupd (st1, p, mk_word(0))
-			st2 = syntax.mk_memupd (st2, p, mk_word(0))
+			st1 = syntax.mk_memupd (st1, p, syntax.arch.mk_word(0))
+			st2 = syntax.mk_memupd (st2, p, syntax.arch.mk_word(0))
 
 		return syntax.Expr ('Op', boolT, name = 'StackEquals',
 			vals = [sp1, st1, sp2, st2])
 	elif ops == set (['MemAccWrapper', 'MemWrapper']):
 		[acc] = [v for v in [lhs, rhs] if v.is_op ('MemAccWrapper')]
 		[addr, val] = acc.vals
-		assert addr.typ == wordT
+		assert addr.typ == syntax.arch.wordT
 		[m] = [v for v in [lhs, rhs] if v.is_op ('MemWrapper')]
 		[m] = m.vals
 		assert m.typ == builtinTs['Mem']
@@ -1757,8 +1549,8 @@ def inst_eq_at_visit (exp, vis):
 	if not exp.is_op ('EqSelectiveWrapper'):
 		return True
 	[_, xs, ys] = exp.vals
-	xs = word64_list_from_tm(xs)
-	ys = word64_list_from_tm(ys)
+	xs = list_from_tm(xs)
+	ys = list_from_tm(ys)
 	if vis.kind == 'Number':
 		return vis.n in xs
 	elif vis.kind == 'Offset':

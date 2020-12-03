@@ -115,12 +115,10 @@ def simplify_expr_whyps (sexpr, rep, hyps, cache = None, extra_defs = {},
 
 last_10_non_const = []
 
-def offs_expr_const (addr_expr, sp_expr, rep, hyps, extra_defs = {},
-		cache = None, typ = syntax.word32T):
+def offs_expr_const (addr_expr, sp_expr, rep, hyps, typ,
+		extra_defs = {}, cache = None):
 	"""if the offset between a stack addr and the initial stack pointer
 	is a constant offset, try to compute it."""
-	if syntax.is_64bit:
-		typ = syntax.word64T
 	addr_x = solver.parse_s_expression (addr_expr)
 	sp_x = solver.parse_s_expression (sp_expr)
 	vs = [(addr_x, 1), (sp_x, -1)]
@@ -221,9 +219,8 @@ def get_ptr_offsets (p, n_ptrs, bases, hyps = [], cache = None,
 	for (v, ptr, hyp) in smt_ptrs:
 		off = None
 		for (ptr2, k) in smt_bases:
-			off = offs_expr_const (ptr, ptr2, rep, [hyp] + hyps,
-				cache = cache, extra_defs = ex_defs,
-				typ = ptr_typ)
+			off = offs_expr_const (ptr, ptr2, rep, [hyp] + hyps, ptr_typ,
+				cache = cache, extra_defs = ex_defs)
 			if off != None:
 				offs.append ((v, off, k))
 				break
@@ -274,17 +271,8 @@ def preserves_sp (fname):
 def get_extra_sp_defs (rep, tag):
 	"""add extra defs/equalities about stack pointer for the
 	purposes of stack depth analysis."""
-	# FIXME how to parametrise this?
-	if syntax.arch == 'armv7':
-		sp = mk_var ('r13', syntax.word32T)
-	elif syntax.arch == 'rv64':
-		sp = mk_var('r2', syntax.word64T)
-	else:
-		assert not 'arch supported', syntax.arch
-
-
+	sp = mk_var(syntax.arch.sp_register, syntax.arch.word_type)
 	defs = {}
-
 	fcalls = [n_vc for n_vc in rep.funcs
 		if logic.is_int (n_vc[0])
 		if rep.p.node_tags[n_vc[0]][0] == tag
@@ -306,14 +294,9 @@ def get_stack_sp (p, tag):
 	entry = p.get_entry (tag)
 	renames = p.entry_exit_renames (tags = [tag])
 	r = renames[tag + '_IN']
-
-	if syntax.arch == 'armv7':
-		sp = syntax.rename_expr (mk_var ('r13', syntax.word32T), r)
-	elif syntax.arch == 'rv64':
-		sp = syntax.rename_expr(mk_var('r2', syntax.word64T), r)
-	else:
-		assert not 'arch supported', syntax.arch
-
+	sp = syntax.rename_expr(
+		mk_var (syntax.arch.sp_register, syntax.arch.word_type), r
+	)
 	stack = syntax.rename_expr (mk_var ('stack',
 		syntax.builtinTs['Mem']), r)
 	return (stack, sp)
@@ -385,30 +368,20 @@ def stack_virtualise_expr (expr, sp_offs):
 	if expr.is_op ('MemAcc') and is_stack (expr.vals[0]):
 		[m, p] = expr.vals
 
-		mod = 4
-		if syntax.is_64bit:
-			mk_word = syntax.mk_word64
-			mod = 8
-		else:
-			mk_word = syntax.mk_word32
-
 		if expr.typ == syntax.word8T:
-			ps = [(syntax.mk_minus (p, mk_word(n)), n)
+			ps = [(syntax.mk_minus (p, syntax.arch.mk_word(n)), n)
 				for n in [0, 1, 2, 3]]
-		elif expr.typ == syntax.word32T:
-			ps = [(p, 0)]
-			assert False
-		elif expr.typ == syntax.word64T:
+		elif expr.typ == syntax.arch.word_type:
 			ps = [(p, 0)]
 		else:
-			assert expr.typ == syntax.word32T, expr
+			assert expr.typ == syntax.arch.word_type, expr
 		ptrs = [(p, 'MemAcc') for (p, _) in ps]
 		if sp_offs == None:
 			return (ptrs, None)
 		# FIXME: very 32-bit specific
 
 		ps = [(p, n) for (p, n) in ps if p in sp_offs
-			if sp_offs[p][1] % mod == 0]
+			if sp_offs[p][1] % syntax.arch.ptr_size == 0]
 		if not ps:
 			return (ptrs, expr)
 		[(p, n)] = ps
@@ -416,14 +389,11 @@ def stack_virtualise_expr (expr, sp_offs):
 			raise StackOffsMissing ()
 		(k, offs) = sp_offs[p]
 
-		if syntax.arch == 'rv64':
-			v = mk_var(('Fake', k, offs), syntax.word64T)
-		else:
-			v = mk_var (('Fake', k, offs), syntax.word32T)
+		v = mk_var(('Fake', k, offs), syntax.arch.word_type)
 
 		if n != 0:
 			v = syntax.mk_shiftr (v, n * 8)
-		v = syntax.mk_cast (v, expr.typ)
+		v = syntax.arch.mk_cast(v, expr.typ)
 		return (ptrs, v)
 	elif expr.kind == 'Op':
 		vs = [stack_virtualise_expr (v, sp_offs) for v in expr.vals]
@@ -445,9 +415,8 @@ def stack_virtualise_upd (((nm, typ), expr), sp_offs):
 				if p not in sp_offs:
 					raise StackOffsMissing ()
 				(k, offs) = sp_offs[p]
-				#rv64_hack
 				upds.append (((('Fake', k, offs),
-					syntax.word64T), v2))
+					syntax.arch.word_type), v2))
 			expr = m
 		assert is_stack (expr), expr
 		return (ptrs, upds)
@@ -465,8 +434,7 @@ def stack_virtualise_ret (expr, sp_offs):
 		assert is_stack (m), expr
 		if sp_offs != None:
 			(k, offs) = sp_offs[p]
-			#rv64_hack
-			r = (('Fake', k, offs), syntax.word64T)
+			r = (('Fake', k, offs), syntax.arch.word_type)
 		else:
 			r = None
 		return ([(p, 'MemUpdate')], r)
@@ -507,8 +475,7 @@ def stack_virtualise_node (node, sp_offs):
 		if sp_offs == None:
 			return (ptrs, None)
 		else:
-			#rv64_hack
-			ptr_upds = [(('unused#ptr#name%d' % i, syntax.word64T),
+			ptr_upds = [(('unused#ptr#name%d' % i, syntax.arch.word_type),
 				ptr) for (i, (ptr, _)) in enumerate (ptrs)]
 			return (ptrs, syntax.Node ('Basic', node.cont,
 				[upd for (_, us) in upds for upd in us]
@@ -517,21 +484,14 @@ def stack_virtualise_node (node, sp_offs):
 		assert not "node kind understood", node.kind
 
 def mk_get_local_offs (p, tag, sp_reps):
-	if syntax.is_64bit:
-		mk_word = syntax.mk_word64
-		wordT = syntax.word64T
-	else:
-		mk_word = syntax.mk_word32
-		wordT = syntax.word32T
-
 	(stack, _) = get_stack_sp (p, tag)
 	def mk_local (n, kind, off, k):
 		(v, off2) = sp_reps[n][k]
-		ptr = syntax.mk_plus (v, mk_word(off + off2))
+		ptr = syntax.mk_plus (v, syntax.arch.mk_word(off + off2))
 		if kind == 'Ptr':
 			return ptr
 		elif kind == 'MemAcc':
-			return syntax.mk_memacc (stack, ptr, wordT)
+			return syntax.mk_memacc (stack, ptr, syntax.arch.word_type)
 	return mk_local
 
 def adjust_ret_ptr (ptr):
@@ -541,14 +501,13 @@ def adjust_ret_ptr (ptr):
 	which is handy, but we really want to be talking about r0, which will
 	produce meaningful offsets against the pointers actually used in the
 	program."""
-	if syntax.is_64bit:
-		return logic.var_subst(ptr,
-		    {('ret_addr_input', syntax.word64T):
-			syntax.mk_var('r10', syntax.word64T)},
-		    must_subst = False)
-	else:
-		return logic.var_subst (ptr, {('ret_addr_input', syntax.word32T):
-			syntax.mk_var ('r0', syntax.word32T)}, must_subst = False)
+	# FIXME: test w/ ret_addr_input
+	return logic.var_subst(ptr,
+		{('ret_addr_input', syntax.arch.word_type):
+			syntax.mk_var(syntax.arch.large_return_ptr_register,
+				syntax.arch.word_type)},
+		must_subst = False
+	)
 
 def get_loop_virtual_stack_analysis (p, tag):
 	"""computes variable liveness etc analyses with stack slots treated
@@ -631,12 +590,6 @@ def norm_int (n, radix):
 def loop_var_analysis (p, split):
 	"""computes the same loop dataflow analysis as in the 'logic' module
 	but with stack slots treated as virtual variables."""
-
-	if syntax.is_64bit:
-		mk_word = syntax.mk_word64
-	else:
-		mk_word = syntax.mk_word32
-
 	if not is_asm_node (p, split):
 		return None
 	head = p.loop_id (split)
@@ -674,7 +627,7 @@ def loop_var_analysis (p, split):
 	for (k, off) in uoffs:
 		stack_const = syntax.mk_memupd (stack_const,
 			loc_offs (split, 'Ptr', off, k),
-			mk_word(0))
+			syntax.arch.mk_word(0))
 	sp = asm_stack_rep_hook (p, (stack.name, stack.typ), 'Loop', split)
 	assert sp and sp[0] == 'SplitMem', (split, sp)
 	(_, st_split) = sp
@@ -880,21 +833,14 @@ def compute_recursive_stack_bounds (immed):
 
 def stack_bounds_to_closed_form (bounds, names, idents):
 	closed = {}
-	if syntax.is_64bit:
-		mk_word = syntax.mk_word64
-	else:
-		mk_word = syntax.mk_word32
-
 	for fname in names:
-		#res = syntax.mk_word32 (bounds[(fname, syntax.true_term)])
-		res = mk_word(bounds[(fname, syntax.true_term)])
+		res = syntax.arch.mk_word(bounds[(fname, syntax.true_term)])
 		extras = []
 		if fname in idents:
 			assert idents[fname][-1] == syntax.true_term
 			extras = reversed (idents[fname][:-1])
 		for ident in extras:
-			#alt = syntax.mk_word32 (bounds[(fname, ident)])
-			alt = mk_word(bounds[(fname, ident)])
+			alt = syntax.arch.mk_word(bounds[(fname, ident)])
 			res = syntax.mk_if (ident, alt, res)
 		closed[fname] = res
 	return closed
@@ -1078,68 +1024,40 @@ def get_asm_calling_convention_inner (num_c_args, num_c_rets, const_mem):
 	from logic import mk_var_list, mk_stack_sequence
 	from syntax import mk_var, word32T, word64T, builtinTs
 
-	if syntax.arch == 'armv7':
-		arg_regs = mk_var_list (['r0', 'r1', 'r2', 'r3'], word32T)
-		r0 = arg_regs[0]
-		sp = mk_var ('r13', word32T)
-		st = mk_var ('stack', builtinTs['Mem'])
-		r0_input = mk_var ('ret_addr_input', word32T)
-	elif syntax.arch == 'rv64':
-		arg_regs = mk_var_list(['r10', 'r11', 'r12', 'r13', 'r14',
-		                        'r15', 'r16', 'r17'], word64T)
-		r0 = arg_regs[0]
-		r1 = arg_regs[1]
-		sp = mk_var('r2', word64T)
-		st = mk_var('stack', builtinTs['Mem'])
-		r10_input = mk_var('ret_addr_input', word64T)
-	else:
-		print 'Unsupported arch %s' % syntax.arch
-		assert False
+	arg_regs = mk_var_list(syntax.arch.argument_registers, syntax.arch.word_type)
+	ar0 = arg_regs[0]
+	sp = mk_var(syntax.arch.sp_register, syntax.arch.word_type)
+	st = mk_var('stack', builtinTs['Mem'])
+	ra_input = mk_var('ret_addr_input', syntax.arch.word_type)
 
 	mem = mk_var ('mem', builtinTs['Mem'])
 	dom = mk_var ('dom', builtinTs['Dom'])
 	dom_stack = mk_var ('dom_stack', builtinTs['Dom'])
-	if syntax.arch == 'armv7':
-		global_args = [mem, dom, st, dom_stack, sp, mk_var ('ret', word32T)]
-		sregs = mk_stack_sequence (sp, 4, st, word32T, num_c_args + 1)
-	elif syntax.arch == 'rv64':
-		global_args = [mem, dom, st, dom_stack, sp, mk_var('ret', word64T)]
-		sregs = mk_stack_sequence(sp, 8, st, word64T, num_c_args + 1)
-	else:
-		assert False
+	
+	global_args = [mem, dom, st, dom_stack, sp, mk_var('ret', syntax.arch.word_type)]
+	sregs = mk_stack_sequence(
+		sp, syntax.arch.ptr_size, st, syntax.arch.word_type, num_c_args + 1
+	)
 
 	arg_seq = [r for r in arg_regs] + [s for (s, _) in sregs]
-	if num_c_rets > 2:
-		# the 'return-too-much' issue.
-		# instead r0 is a save-returns-here pointer
+	if num_c_rets > len(syntax.arch.return_registers):
+    		# Our return value(s) exceed(s) the capacity of the return
+		# registers. (see also corresponding section in logic module)
 		arg_seq.pop (0)
-		#rv64_hack
-		if syntax.arch == 'rv64':
-			rets = mk_stack_sequence (r10_input, 8, st, word64T, num_c_rets)
-		elif syntax.arch == 'armv7':
-			rets = mk_stack_sequence(r0_input, 4, st, word32T, num_c_rets)
-		else:
-			print 'unsupported arch %s' % syntax.arch
-			assert False
-
+		rets = mk_stack_sequence(
+			ra_input, syntax.arch.ptr_size,
+			st, syntax.arch.word_type, num_c_rets
+		)
 		rets = [r for (r, _) in rets]
                 # FIXME: need to handle multiple return value case
-	elif num_c_rets == 2:
-		rets = [r0, r1]
+        elif num_c_rets <= 1:
+        	rets = [ar0]
 	else:
-		rets = [r0]
+		rets = arg_regs[:len(syntax.arch.argument_registers)]
 
-	if syntax.arch == 'armv7':
-		callee_saved_vars = ([mk_var (v, word32T)
-				for v in 'r4 r5 r6 r7 r8 r9 r10 r11 r13'.split ()]
-			+ [dom, dom_stack])
-	elif syntax.arch == 'rv64':
-		callee_saved_vars = ([mk_var(v, word64T)
-			for v in 'r2 r3 r4 r8 r9 r18 r19 r20 r21 r22 r23 r24 r25 r26 r27'.split()]
-			+ [dom, dom_stack])
-		print callee_saved_vars
-	else:
-		assert False
+	callee_saved_vars = ([mk_var (v, syntax.arch.word_type)
+			for v in syntax.arch.callee_saved_registers]
+		+ [dom, dom_stack])
 
 	if const_mem:
 		callee_saved_vars += [mem]
@@ -1241,15 +1159,7 @@ def mk_pairing (pre_pair, stack_bounds):
 	(var_c_args, c_imem, glob_c_args) = split_scalar_pairs (c_fun.inputs)
 	(var_c_rets, c_omem, glob_c_rets) = split_scalar_pairs (c_fun.outputs)
 
-	if syntax.arch == 'armv7':
-		eqs = logic.mk_eqs_arm_none_eabi_gnu (var_c_args, var_c_rets,
-			c_imem, c_omem, sz)
-	elif syntax.arch == 'rv64':
-		eqs = logic.mk_eqs_riscv64_unknown_linux_gnu(var_c_args, var_c_rets,
-		                                             c_imem, c_omem, sz)
-	else:
-		assert False
-
+	eqs = logic.mk_eqs(var_c_args, var_c_rets, c_imem, c_omem, sz)
 	return logic.Pairing (['ASM', 'C'], {'ASM': asm_f, 'C': c_fun.name}, eqs)
 
 def mk_pairings (stack_bounds):
@@ -1410,22 +1320,16 @@ reg_aliases_rv64 = {
 
 def inst_const_rets (node):
 	assert "instruction'" in node.fname
-	if syntax.arch == 'armv7':
-		reg_aliases = reg_aliases_armv7
-	elif syntax.arch == 'rv64':
-		reg_aliases = reg_aliases_rv64
-	else:
-		print 'Unsupported arch %s' % syntax.arch
-		assert False
 
 	bits = set ([s.lower () for s in node.fname.split ('_')])
 	fun = functions[node.fname]
 	def is_const (nm, typ):
 		if typ in [builtinTs['Mem'], builtinTs['Dom']]:
 			return True
-		if typ != word32T or typ != word64T:
+		if typ != syntax.arch.word_type:
 			return False
-		return not (nm in bits or [al for al in reg_aliases.get (nm, [])
+		return not (nm in bits or [al for al
+				in syntax.arch.register_aliases.get (nm, [])
 				if al in bits])
 	is_consts = [is_const (nm, typ) for (nm, typ) in fun.outputs]
 	input_set = set ([v for arg in node.args
@@ -1451,16 +1355,9 @@ def node_const_rets (node):
 		if node.fname not in get_functions_with_tag ('ASM'):
 			return None
 		f_outs = functions[node.fname].outputs
-
-		#rv64_hack
-		sp_reg = 'r13'
-		if syntax.arch == 'rv64':
-			sp_reg = 'r2'
-
+		sp_reg = syntax.arch.sp_register
 		print f_outs
 		assert False
-
-
 		return [mk_var (nm, typ)
 			for ((nm, typ), (nm2, _)) in azip (node.rets, f_outs)
 			if nm2 == sp_reg]
@@ -1496,18 +1393,10 @@ def problematic_synthetic ():
 		% synth_calls)
 	if not synth_calls:
 		return
-	if syntax.arch == 'armv7':
-		synth_stack = set ([f for f in synth_calls
-			if [node for node in functions[f].nodes.itervalues ()
-				if node.kind == 'Basic'
-				if ('r13', word32T) in node.get_lvals ()]])
-	elif syntax.arch == 'rv64':
-		synth_stack = set([f for f in synth_calls
-			if [node for node in functions[f].nodes.itervalues()
-			    if node.kind == 'Basic'
-			    if ('r2', syntax.word64T) in node.get_lvals()]])
-	else:
-		assert False
+	synth_stack = set ([f for f in synth_calls
+		if [node for node in functions[f].nodes.itervalues ()
+			if node.kind == 'Basic'
+			if (synax.arch.sp_register, syntax.arch.word_type) in node.get_lvals ()]])
 
 	printout ('Synthetic symbols which call and move sp: %s'
 		% synth_stack)

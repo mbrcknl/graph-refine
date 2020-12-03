@@ -13,7 +13,7 @@ from check import restr_others, loops_to_split, ProofNode
 from rep_graph import (mk_graph_slice, vc_num, vc_offs, vc_upto,
 	vc_double_range, VisitCount, vc_offset_upto)
 import rep_graph
-from syntax import (mk_and, mk_cast, mk_implies, mk_not, mk_uminus, mk_var,
+from syntax import (mk_and, mk_implies, mk_not, mk_uminus, mk_var,
 	foldr1, boolT, word64T, word32T, word8T, builtinTs, true_term, false_term,
 	mk_word64, mk_word32, mk_word8, mk_times, Expr, Type, mk_or, mk_eq, mk_memacc,
 	mk_num, mk_minus, mk_plus, mk_less)
@@ -48,13 +48,8 @@ def get_loop_var_analysis_at (p, n):
 	return res
 
 def get_loop_vars_at (p, n):
-	if syntax.is_64bit:
-		mk_word = mk_word64
-	else:
-		mk_word = mk_word32
-
 	vs = [var for (var, data) in get_loop_var_analysis_at (p, n)
-			if data == 'LoopVariable'] + [mk_word(0)]
+			if data == 'LoopVariable'] + [syntax.arch.mk_word(0)]
 	vs.sort ()
 	return vs
 
@@ -365,10 +360,7 @@ def update_v_ids_for_model (knowledge, pairs, vs, m):
 			k_counter += 1
 	# then figure out which pairings are still viable
 	needed_ks = set ()
-	if syntax.is_64bit:
-		zero = syntax.mk_word64(0)
-	else:
-		zero = syntax.mk_word32 (0)
+	zero = syntax.arch.mk_word(0)
 	for (pair, data) in pairs.items ():
 		if data[0] == 'Failed':
 			continue
@@ -658,10 +650,7 @@ def split_group (knowledge, m, group):
 def mk_pairing_v_eqs (knowledge, pair, endorsed = True):
 	v_eqs = []
 	(lvs, rvs) = knowledge.pairs[pair]
-	if syntax.is_64bit:
-		zero = mk_word64(0)
-	else:
-		zero = mk_word32 (0)
+	zero = syntax.arch.mk_word(0)
 	for v_i in lvs:
 		(k, const) = knowledge.v_ids[v_i]
 		if const and v_i[0] != zero:
@@ -1362,13 +1351,11 @@ def mk_seq_eqs (p, split, step, with_rodata):
 
 	# the variable 'loop' will be converted to the point in
 	# the sequence - note this should be multiplied by the step size
-	# hack rv64
-	loop = mk_var ('%i', word64T)
+	loop = mk_var ('%i', syntax.arch.word_type)
 	if step == 1:
 		minus_loop_step = mk_uminus (loop)
 	else:
-		# hack rv64
-		minus_loop_step = mk_times (loop, mk_word64 (- step))
+		minus_loop_step = mk_times (loop, synatx.arch.mk_word(- step))
 
 	for (var, data) in get_loop_var_analysis_at (p, split):
 		if data == 'LoopVariable':
@@ -1382,7 +1369,7 @@ def mk_seq_eqs (p, split, step, with_rodata):
 		elif data[0] == 'LoopLinearSeries':
 			(_, form, _) = data
 			eqs.append (form (var,
-				mk_cast (minus_loop_step, var.typ)))
+				syntax.arch.mk_cast(minus_loop_step, var.typ)))
 		else:
 			assert not 'var_deps type understood'
 
@@ -1415,14 +1402,11 @@ def v_eqs_to_split (p, pair, v_eqs, restrs, hyps, tags = None):
 	r_details = (r_n, (r_init, r_step), mk_seq_eqs (p, r_n, r_step, False)
 		+ c_memory_loop_invariant (p, r_n, l_n))
 
-	if syntax.is_64bit:
-		mk_word = syntax.mk_word64
-	else:
-		mk_word = syntax.mk_word32
+	zero = syntax.arch.mk_word(0)
 
-	eqs = [(v_i[0], mk_cast (v_j[0], v_i[0].typ))
+	eqs = [(v_i[0], syntax.arch.mk_cast(v_j[0], v_i[0].typ))
 		for (v_i, v_j) in v_eqs if v_j != 'Const'
-		if v_i[0] != mk_word(0)]
+		if v_i[0] != zero]
 
 	n = 2
 	split = (l_details, r_details, eqs, n, (n * r_step) - 1)

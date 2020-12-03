@@ -148,11 +148,8 @@ def parse_config_change (config, solver):
 		lhs = lhs.strip ().lower ()
 		rhs = rhs.strip ().lower ()
 		if lhs == 'mem_mode':
-			assert rhs in ['8', '32']
+			assert rhs in ['8', '32', '64']
 			solver.mem_mode = rhs
-			# hack set the mem_mode to 64
-			if syntax.arch == 'rv64':
-				solver.mem_mode = '64'
 		else:
 			assert not 'config understood', assign
 
@@ -209,6 +206,9 @@ count = [0]
 
 save_solv_example_time = [-1]
 
+# the token_smt_typ is uniformly 64-bit across all architectures
+token_smt_typ = syntax.word64T
+
 def save_solv_example (solv, last_msgs, comments = []):
 	count[0] += 1
 	name = 'ex_%d_%d' % (random_name, count[0])
@@ -249,7 +249,7 @@ def run_time (elapsed, proc):
 	else:
 		return '(%s)' % ', '.join (times)
 
-def smt_typ (typ):
+def smt_typ(typ):
 	if typ.kind == 'Word':
 		return '(_ BitVec %d)' % typ.num
 	elif typ.kind == 'WordArray':
@@ -257,14 +257,14 @@ def smt_typ (typ):
 	elif typ.kind == 'TokenWords':
 		return '(Array (_ BitVec %d) (_ BitVec %d))' % (
 			token_smt_typ.num, typ.num)
+	smt_typ_builtins = get_smt_typ_builtins()
 	return smt_typ_builtins[typ.name]
-
-# HACK HERE
-token_smt_typ = syntax.word64T
-#token_smt_typ = syntax.word32T
-
-smt_typ_builtins = {'Bool':'Bool', 'Mem':'{MemSort}', 'Dom':'{MemDomSort}',
-	'Token': smt_typ (token_smt_typ)}
+def get_smt_typ_builtins():
+	return {
+		'Bool':'Bool',
+		'Mem':'{MemSort}', 'Dom':'{MemDomSort}',
+		'Token': smt_typ(token_smt_typ)
+	}
 
 smt_typs_omitted = set ([builtinTs['HTD'], builtinTs['PMS']])
 
@@ -493,13 +493,8 @@ def smt_expr (expr, env, solv):
 		assert not 'handled expr', expr
 
 def smt_expr_memacc (m, p, typ, solv):
-	if syntax.is_64bit:
-		wordT = syntax.word64T
-	else:
-		wordT = syntax.word32T
-
 	if m[0] == 'SplitMem':
-		p = solv.cache_large_expr (p, 'memacc_pointer', wordT)
+		p = solv.cache_large_expr (p, 'memacc_pointer', syntax.arch.word_type)
 		(_, split, top, bot) = m
 		top_acc = smt_expr_memacc (top, p, typ, solv)
 		bot_acc = smt_expr_memacc (bot, p, typ, solv)
@@ -508,18 +503,13 @@ def smt_expr_memacc (m, p, typ, solv):
 		sexp = '(load-word%d %s %s)' % (typ.num, m, p)
 	else:
 		assert not 'word load type supported', typ
-	solv.note_model_expr (p, wordT)
+	solv.note_model_expr (p, syntax.arch.word_type)
 	solv.note_model_expr (sexp, typ)
 	return sexp
 
 def smt_expr_memupd (m, p, v, typ, solv):
-	if syntax.is_64bit:
-		wordT = syntax.word64T
-	else:
-		wordT = syntax.word32T
-
 	if m[0] == 'SplitMem':
-		p = solv.cache_large_expr (p, 'memupd_pointer', wordT)
+		p = solv.cache_large_expr (p, 'memupd_pointer', syntax.arch.word_type)
 		v = solv.cache_large_expr (v, 'memupd_val', typ)
 		(_, split, top, bot) = m
 		memT = syntax.builtinTs['Mem']
@@ -531,37 +521,20 @@ def smt_expr_memupd (m, p, v, typ, solv):
 		bot = '(ite (bvule %s %s) %s %s)' % (split, p, bot, bot_upd)
 		return ('SplitMem', split, top, bot)
 	elif typ.num == 8:
-		#assert False
-		p = solv.cache_large_expr (p, 'memupd_pointer', wordT)
-
-		# Note hack for RV64
-		if syntax.is_64bit:
-			p_align = '(bvand %s #xfffffffffffffffd)' % p
-		else:
-			p_align = '(bvand %s #xfffffffd)' % p
-
-		solv.note_model_expr (p_align, wordT)
-		# note hack for rv64
-
-		if syntax.is_64bit:
-			solv.note_model_expr('(load-word64 %s %s)' % (m, p_align),
-                                 syntax.word64T)
-		else:
-			solv.note_model_expr ('(load-word32 %s %s)' % (m, p_align),
-                                 syntax.word32T)
-		#print 'bla\n'
-		#print m
-		#print '\n'
-		#print p
-		#print '\n'
-		#print v
-		#assert False
+		p = solv.cache_large_expr (p, 'memupd_pointer', syntax.arch.word_type)
+		p_align = '(bvand %s %s)' % (p, syntax.arch.smt_alignment_pattern)
+		solv.note_model_expr (p_align, syntax.arch.word_type)
+		solv.note_model_expr(
+			'(load-word%d %s %s)' % (syntax.arch.word_size, m, p_align),
+			syntax.arch.word_type
+		)
 		return '(store-word8 %s %s %s)' % (m, p, v)
 	elif typ.num in [32, 64]:
-		solv.note_model_expr ('(load-word%d %s %s)' % (typ.num, m, p),
-			typ)
-		#solv.note_model_expr (p, syntax.word32T)
-		solv.note_model_expr(p, wordT)
+		solv.note_model_expr(
+			'(load-word%d %s %s)' % (typ.num, m, p),
+			typ
+		)
+		solv.note_model_expr(p, syntax.arch.word_type)
 		return '(store-word%d %s %s %s)' % (typ.num, m, p, v)
 	else:
 		assert not 'MemUpdate word width supported', typ
@@ -569,16 +542,12 @@ def smt_expr_memupd (m, p, v, typ, solv):
 def smt_ifthenelse (sw, x, y, solv):
 	if x[0] != 'SplitMem' and y[0] != 'SplitMem':
 		return '(ite %s %s %s)' % (sw, x, y)
-	if syntax.is_64bit:
-		zero = '#x0000000000000000'
-	else:
-		zero = '#x00000000'
 	if x[0] != 'SplitMem':
-		(x_split, x_top, x_bot) = (zero, x, x)
+		(x_split, x_top, x_bot) = (syntax.arch.smt_native_zero, x, x)
 	else:
 		(_, x_split, x_top, x_bot) = x
 	if y[0] != 'SplitMem':
-		(y_split, y_top, y_bot) = (zero, y, y)
+		(y_split, y_top, y_bot) = (syntax.arch.smt_native_zero, y, y)
 	else:
 		(_, y_split, y_top, y_bot) = y
 	if x_split != y_split:
@@ -647,226 +616,6 @@ def split_hyp (hyp):
 	else:
 		return [hyp]
 
-mem_word8_preamble = [
-'''(define-fun load-word32 ((m {MemSort}) (p (_ BitVec 32)))
-	(_ BitVec 32)
-(concat
-	(concat (select m (bvadd p #x00000003))
-	        (select m (bvadd p #x00000002)))
-    (concat (select m (bvadd p #x00000001))
-            (select m p)))
-)
-''',
-'''(define-fun load-word64 ((m {MemSort}) (p (_ BitVec 32)))
-	(_ BitVec 64)
-(bvor ((_ zero_extend 32) (load-word32 m p))
-	(bvshl ((_ zero_extend 32)
-		(load-word32 m (bvadd p #x00000004))) #x0000000000000020)))''',
-'''(define-fun store-word32 ((m {MemSort}) (p (_ BitVec 32))
-	(v (_ BitVec 32))) {MemSort}
-(store (store (store (store m p ((_ extract 7 0) v))
-	(bvadd p #x00000001) ((_ extract 15 8) v))
-	(bvadd p #x00000002) ((_ extract 23 16) v))
-	(bvadd p #x00000003) ((_ extract 31 24) v))
-) ''',
-'''(define-fun store-word64 ((m {MemSort}) (p (_ BitVec 32)) (v (_ BitVec 64)))
-        {MemSort}
-(store-word32 (store-word32 m p ((_ extract 31 0) v))
-	(bvadd p #x00000004) ((_ extract 63 32) v)))''',
-'''(define-fun load-word8 ((m {MemSort}) (p (_ BitVec 32))) (_ BitVec 8)
-(select m p))''',
-'''(define-fun store-word8 ((m {MemSort}) (p (_ BitVec 32)) (v (_ BitVec 8)))
-	{MemSort}
-(store m p v))''',
-'''(define-fun mem-dom ((p (_ BitVec 32)) (d {MemDomSort})) Bool
-(not (= (select d p) #b0)))''',
-'''(define-fun mem-eq ((x {MemSort}) (y {MemSort})) Bool (= x y))''',
-'''(define-fun word32-eq ((x (_ BitVec 32)) (y (_ BitVec 32)))
-    Bool (= x y))''',
-'''(define-fun word64-eq ((x (_ BitVec 64)) (y (_ BitVec 64)))
-	Bool (= x y))''',
-'''(define-fun word2-xor-scramble ((a (_ BitVec 2)) (x (_ BitVec 2))
-   (b (_ BitVec 2)) (c (_ BitVec 2)) (y (_ BitVec 2)) (d (_ BitVec 2))) Bool
-(bvult (bvadd (bvxor a x) b) (bvadd (bvxor c y) d)))''',
-'''(declare-fun unspecified-precond () Bool)''',
-]
-
-mem_word32_preamble = [
-'''(define-fun load-word32 ((m {MemSort}) (p (_ BitVec 32)))
-	(_ BitVec 32)
-(select m ((_ extract 31 2) p)))''',
-'''(define-fun store-word32 ((m {MemSort}) (p (_ BitVec 32)) (v (_ BitVec 32)))
-	{MemSort}
-(store m ((_ extract 31 2) p) v))''',
-'''(define-fun load-word64 ((m {MemSort}) (p (_ BitVec 32)))
-	(_ BitVec 64)
-(bvor ((_ zero_extend 32) (load-word32 m p))
-	(bvshl ((_ zero_extend 32)
-		(load-word32 m (bvadd p #x00000004))) #x0000000000000020)))''',
-'''(define-fun store-word64 ((m {MemSort}) (p (_ BitVec 32)) (v (_ BitVec 64)))
-        {MemSort}
-(store-word32 (store-word32 m p ((_ extract 31 0) v))
-	(bvadd p #x00000004) ((_ extract 63 32) v)))''',
-'''(define-fun word8-shift ((p (_ BitVec 32))) (_ BitVec 32)
-(bvshl ((_ zero_extend 30) ((_ extract 1 0) p)) #x00000003))''',
-'''(define-fun word8-get ((p (_ BitVec 32)) (x (_ BitVec 32))) (_ BitVec 8)
-((_ extract 7 0) (bvlshr x (word8-shift p))))''',
-'''(define-fun load-word8 ((m {MemSort}) (p (_ BitVec 32))) (_ BitVec 8)
-(word8-get p (load-word32 m p)))''',
-'''(define-fun word8-put ((p (_ BitVec 32)) (x (_ BitVec 32)) (y (_ BitVec 8)))
-  (_ BitVec 32) (bvor (bvshl ((_ zero_extend 24) y) (word8-shift p))
-	(bvand x (bvnot (bvshl #x000000FF (word8-shift p))))))''',
-'''(define-fun store-word8 ((m {MemSort}) (p (_ BitVec 32)) (v (_ BitVec 8)))
-	{MemSort}
-(store-word32 m p (word8-put p (load-word32 m p) v)))''',
-'''(define-fun mem-dom ((p (_ BitVec 32)) (d {MemDomSort})) Bool
-(not (= (select d p) #b0)))''',
-'''(define-fun mem-eq ((x {MemSort}) (y {MemSort})) Bool (= x y))''',
-'''(define-fun word32-eq ((x (_ BitVec 32)) (y (_ BitVec 32)))
-    Bool (= x y))''',
-'''(define-fun word64-eq ((x (_ BitVec 64)) (y (_ BitVec 64)))
-	Bool (= x y))''',
-'''(define-fun word2-xor-scramble ((a (_ BitVec 2)) (x (_ BitVec 2))
-   (b (_ BitVec 2)) (c (_ BitVec 2)) (y (_ BitVec 2)) (d (_ BitVec 2))) Bool
-(bvult (bvadd (bvxor a x) b) (bvadd (bvxor c y) d)))''',
-'''(declare-fun unspecified-precond () Bool)'''
-]
-
-'''
-For RV64, memory addresses are 64-bit, but loads and stores can be
-performed in bytes, half-words, words, and double-words. Therefore,
-we model the memory as byte-addressable. This requires shifting and adding
-when we need to read and write half-words, words, and double words.
-'''
-
-mem_word64_preamble = [
-'''
-(define-fun load-word8 ((m {MemSort}) (p (_ BitVec 64)))
-	(_ BitVec 8)
-	(select m p)
-)
-''',
-
-'''
-(define-fun load-word16 ((m {MemSort}) (p (_ BitVec 64)))
-	(_ BitVec 16)
-	(concat (select m (bvadd p #x0000000000000001))
-	        (select m p)
-	)
-)
-''',
-
-'''
-(define-fun load-word32 ((m {MemSort}) (p (_ BitVec 64)))
-	(_ BitVec 32)
-	(concat
-		(concat (select m (bvadd p #x0000000000000003))
-				(select m (bvadd p #x0000000000000002)))
-		(concat (select m (bvadd p #x0000000000000001))
-				(select m p))
-	)
-)
-''',
-
-'''
-(define-fun load-word64 ((m {MemSort}) (p (_ BitVec 64)))
-	(_ BitVec 64)
-	(concat (load-word32 m (bvadd p #x0000000000000004))
-			(load-word32 m p)
-	)
-)
-'''
-,
-
-'''
-(define-fun store-word8 ((m {MemSort}) (p (_ BitVec 64)) (v (_ BitVec 8)))
-	{MemSort}
-	(store m p v)
-)
-'''
-,
-
-'''
-(define-fun store-word16 ((m {MemSort}) (p (_ BitVec 64)) (v (_ BitVec 16)))
-	{MemSort}
-	(store-word8
-		(store-word8 m p ((_ extract 7 0) v))
-		(bvadd p #x0000000000000001)
-		((_ extract 15 8) v)
-	)
-)
-'''
-,
-
-
-'''
-(define-fun store-word32 ((m {MemSort}) (p (_ BitVec 64)) (v (_ BitVec 32)))
-	{MemSort}
-	(store-word16
-		(store-word16 m p ((_ extract 15 0) v))
-		(bvadd p #x0000000000000002)
-		((_ extract 31 16) v)
-	)
-)
-''',
-
-'''
-(define-fun store-word64 ((m {MemSort}) (p (_ BitVec 64)) (v (_ BitVec 64)))
-	{MemSort}
-	(store-word32
-		(store-word32 m p ((_ extract 31 0) v))
-		(bvadd p #x0000000000000004)
-		((_ extract 63 32) v)
-	)
-)
-''',
-
-
-'''
-(define-fun mem-dom ((p (_ BitVec 64)) (d {MemDomSort}))
-	Bool
-	(not (= (select d p) #b0)))
-''',
-
-'''
-(define-fun mem-eq ((x {MemSort}) (y {MemSort}))
-	Bool
-	(= x y))
-''',
-
-
-'''
-(define-fun word32-eq ((x (_ BitVec 32)) (y (_ BitVec 32)))
-	Bool
-	(= x y))
-''',
-
-
-'''
-(define-fun word64-eq ((x (_ BitVec 64)) (y (_ BitVec 64)))
-    Bool
-    (= x y))
-''',
-
-
-'''
-(define-fun word2-xor-scramble ((a (_ BitVec 2)) (x (_ BitVec 2))
-	(b (_ BitVec 2)) (c (_ BitVec 2)) (y (_ BitVec 2)) (d (_ BitVec 2)))
-	Bool
-	(bvult (bvadd (bvxor a x) b) (bvadd (bvxor c y) d)))
-''',
-
-'''(declare-fun unspecified-precond () Bool)'''
-]
-
-
-word32_smt_convs = {'MemSort': '(Array (_ BitVec 30) (_ BitVec 32))',
-	'MemDomSort': '(Array (_ BitVec 32) (_ BitVec 1))'}
-word8_smt_convs = {'MemSort': '(Array (_ BitVec 32) (_ BitVec 8))',
-	'MemDomSort': '(Array (_ BitVec 32) (_ BitVec 1))'}
-word64_smt_convs = {'MemSort': '(Array (_ BitVec 64) (_ BitVec 8))',
-	'MemDomSort': '(Array (_ BitVec 64) (_ BitVec 1))'}
-
 def preexec (timeout):
 	def ret ():
 		# setting the session ID on a fork allows us to clean up
@@ -924,6 +673,7 @@ class Solver:
 	def __init__ (self, produce_unsat_cores = False):
 		self.replayable = []
 		self.unsat_cores = produce_unsat_cores
+		self.mem_mode = None
 		self.online_solver = None
 		self.parallel_solvers = {}
 		self.parallel_model_states = {}
@@ -968,15 +718,11 @@ class Solver:
 			'(set-logic QF_AUFBV)', ]
 		if self.unsat_cores:
 			preamble += ['(set-option :produce-unsat-cores true)']
-
 		if solver_impl.mem_mode == '8':
-			preamble.extend (mem_word8_preamble)
+    			preamble.extend(syntax.arch.smt_word8_preamble)
 		else:
-			if syntax.is_64bit:
-				preamble.extend(mem_word64_preamble)
-				print preamble
-			else:
-				preamble.extend (mem_word32_preamble)
+    			preamble.extend(syntax.arch.smt_native_preamble)
+		print preamble
 		return preamble
 
 	def startup_solver (self, use_this_solver = None):
@@ -991,6 +737,7 @@ class Solver:
 		else:
 			solver = self.fast_solver
 		devnull = open (os.devnull, 'w')
+		self.mem_mode = solver.mem_mode
 		self.online_solver = subprocess.Popen (solver.args,
 			stdin = subprocess.PIPE, stdout = subprocess.PIPE,
 			stderr = devnull, preexec_fn = preexec (solver.timeout))
@@ -1034,11 +781,10 @@ class Solver:
 		if self.online_solver == None:
 			self.startup_solver ()
 
-		if syntax.is_64bit:
-			msg = msg.format(** word64_smt_convs)
-		else:
-			msg = msg.format (** word32_smt_convs)
-
+		if self.mem_mode == '8':
+    			msg = msg.format(** syntax.arch.smt_word8_conversions)
+    		else:
+    			msg = msg.format(** syntax.arch.smt_native_conversions)
 		try:
 			self.write (msg)
 			response = self.online_solver.stdout.readline().strip()
@@ -1060,6 +806,7 @@ class Solver:
 				trace ('I sent %s' % repr (e.prompt))
 				trace ('I got %s' % repr (e.response))
 				trace ('restarting solver')
+				sys.exit(1) # FIXME:REMOVE
 				self.online_solver = None
 				err = (e.prompt, e.response)
 		trace ('Repeated SMT failure, giving up.')
@@ -1125,9 +872,14 @@ class Solver:
 			return name
 		name = self.smt_name (name, kind = (kind, typ),
 			ignore_external_names = ignore_external_names)
-		# r0 or x0 for riscv is always 0. writes to the reg do not have effects
-		if syntax.arch == 'rv64' and name.startswith('r0'):
-			self.send('(define-fun %s () %s #x0000000000000000)' % (name, smt_typ(typ)))
+		# writes to zero-wired registers (e.g. RISC-V x0) have no effect
+		if any([ name.startswith(rz + '_')
+			for rz in syntax.arch.zero_wired_registers]):
+			self.send(
+				'(define-fun %s () %s %s)' % (
+					name, smt_typ(typ), syntax.arch.smt_native_zero
+				)
+			)
 		else:
 			self.send ('(declare-fun %s () %s)' % (name, smt_typ(typ)))
 		if typ_representable (typ) and kind != 'Aux':
@@ -1158,10 +910,7 @@ class Solver:
 				val = mk_smt_expr (smt, typ)
 				return self.add_def (name + '_' + nm, val, {},
 					ignore_external_names = ignore_external_names)
-			if syntax.is_64bit:
-				split = add('split', syntax.word64T, split)
-			else:
-				split = add ('split', syntax.word32T, split)
+			split = add('split', syntax.arch.word_type, split)
 			top = add ('top', val.typ, top)
 			bot = add ('bot', val.typ, bot)
 			return ('SplitMem', split, top, bot)
@@ -1194,68 +943,37 @@ class Solver:
 		assert imp_ro_name == 'implies-rodata', repr (imp_ro_name)
 		[rodata_data, rodata_ranges, rodata_ptrs] = rodata
 
-		if syntax.is_64bit:
-			#bits = 64
-			#wordT = word64T
-			#and_mask = '#x0000000000000003'
-			#cmp_val = '#x0000000000000000'
-
-			pbits = 64
-			vbits = 16
-			pwordT = word64T
-			vwordT = word16T
-			#wordT = word16T
-			and_mask = '#x0000000000000003'
-			cmp_val = '#x0000000000000000'
-		else:
-			bits = 32
-			wordT = word32T
-			and_mask = '#x00000003'
-			cmp_val = '#x00000000'
-
 		if not rodata_ptrs:
 			assert not rodata_data
 			ro_def = 'true'
 			imp_ro_def = 'true'
 		else:
-			ro_witness = self.add_var ('rodata-witness', pwordT)
-			ro_witness_val = self.add_var ('rodata-witness-val', vwordT)
+			ro_witness = self.add_var ('rodata-witness', syntax.arch.word_type)
+			ro_witness_val = self.add_var ('rodata-witness-val', syntax.arch.rodata_chunk_type)
 			assert ro_witness == 'rodata-witness'
 			assert ro_witness_val == 'rodata-witness-val'
-			eq_vs = [(smt_num (p, pbits), smt_num (v, vbits))
+			eq_vs = [(smt_num (p, syntax.arch.word_size), smt_num (v, syntax.arch.rodata_chunk_size))
 				for (p, v) in rodata_data.iteritems ()]
 			eq_vs.append ((ro_witness, ro_witness_val))
-			print ro_witness
-			print ro_witness_val
-			print eq_vs
-			if syntax.is_64bit:
-				eqs = ['(= (load-word16 m %s) %s)' % v for v in eq_vs]
-			else:
-				eqs = ['(= (load-word32 m %s) %s)' % v for v in eq_vs]
-			print eqs
+			load_word_m = ('(= (load-word%d m' % syntax.arch.rodata_chunk_size) + ' %s) %s)'
+			eqs = [load_word_m % v for v in eq_vs]
 			ro_def = '(and %s)' % ' \n  '.join (eqs)
 			ro_ineqs = ['(and (bvule %s %s) (bvule %s %s))'
-				% (smt_num (start, pbits), ro_witness,
-					ro_witness, smt_num (end, pbits))
+				% (smt_num (start, syntax.arch.word_size), ro_witness,
+					ro_witness, smt_num (end, syntax.arch.word_size))
 				for (start, end) in rodata_ranges]
 			assns = ['(or %s)' % ' '.join (ro_ineqs),
-				'(= (bvand rodata-witness %s) %s)' % (and_mask, cmp_val)]
+				'(= (bvand rodata-witness %s) %s)' % (syntax.arch.smt_rodata_mask, syntax.arch.smt_native_zero)]
 			for assn in assns:
 				self.assert_fact_smt (assn)
 			imp_ro_def = eqs[-1]
-
-		print ro_def
-		print imp_ro_def
-		#assert False
 		self.send ('(define-fun rodata ((m %s)) Bool %s)' % (
 			smt_typ (builtinTs['Mem']), ro_def))
 		self.send ('(define-fun implies-rodata ((m %s)) Bool %s)' % (
 			smt_typ (builtinTs['Mem']), imp_ro_def))
 
 	def get_eq_rodata_witness (self, v):
-		# depends on assertion above, should probably fix this
-		#rv64 hack: word32T -> word64T
-		ro_witness = mk_smt_expr ('rodata-witness', word64T)
+		ro_witness = mk_smt_expr ('rodata-witness', syntax.arch.word_size)
 		return syntax.mk_eq (ro_witness, v)
 
 	def check_hyp_raw (self, hyp, model = None, force_solv = False,
@@ -1365,13 +1083,9 @@ class Solver:
 	def write_solv_script (self, f, input_msgs, solver = slow_solver,
 			only_if_is_model = False):
 		if solver.mem_mode == '8':
-			assert False
-			smt_convs = word8_smt_convs
+			smt_convs = syntax.arch.smt_word8_conversions
 		else:
-			if syntax.is_64bit:
-				smt_convs = word64_smt_convs
-			else:
-				smt_convs = word32_smt_convs
+    			smt_convs = syntax.arch.smt_native_conversions
 		for msg in self.preamble (solver):
 			msg = msg.format (** smt_convs)
 			f.write (msg + '\n')
@@ -1971,19 +1685,10 @@ class Solver:
 		return name2
 
 	def note_ptr (self, p_s):
-		#print 'note_ptr:'
-		#print p_s
 		if p_s in self.ptrs:
 			p = self.ptrs[p_s]
 		else:
-			if syntax.is_64bit:
-				wordT = syntax.word64T
-			else:
-				wordT = syntax.word32T
-
-			print 'here:'
-			print p_s
-			p = self.add_def ('ptr', mk_smt_expr (p_s, wordT), {})
+			p = self.add_def ('ptr', mk_smt_expr (p_s, syntax.arch.word_type), {})
 			self.ptrs[p_s] = p
 		return p
 
@@ -2003,8 +1708,9 @@ class Solver:
 			if not rodata_ptrs:
 				rodata_ptrs = []
 			for (r_addr, r_typ) in rodata_ptrs:
-				#rv64_hack
-				r_addr.typ = syntax.word64T
+				# rv64_changed to word64T, should it
+				# be rodata_chunk_type instead? 
+				r_addr.typ = syntax.arch.word_type
 				r_addr_s = smt_expr (r_addr, {}, None)
 				print 'raddr:'
 				print type(r_addr)
@@ -2036,11 +1742,7 @@ class Solver:
 			pvalids[htd_s][(typ, p, kind)] = var
 
 			def smtify (((typ, p, kind), var)):
-				if syntax.is_64bit:
-					wordT = syntax.word64T
-				else:
-					wordT = syntax.word32T
-				return (typ, kind, mk_smt_expr (p, wordT),
+				return (typ, kind, mk_smt_expr (p, syntax.arch.word_type),
 					mk_smt_expr (var, boolT))
 			pdata = smtify (((typ, p, kind), var))
 			(_, _, p, pv) = pdata
@@ -2113,32 +1815,20 @@ class Solver:
 		k = ('ImpliesStackEq', sp, s1, s2)
 		if k in self.stack_eqs:
 			return self.stack_eqs[k]
-
-		if syntax.is_64bit:
-			wordT = word64T
-		else:
-			wordT = word32T
-
-		addr = self.add_var ('stack-eq-witness', wordT)
-		if syntax.is_64bit:
-			#print addr
-			self.assert_fact_smt('(= (bvand %s #x0000000000000007) #x0000000000000000)' % addr)
-		else:
-			self.assert_fact_smt ('(= (bvand %s #x00000003) #x00000000)' % addr)
+		addr = self.add_var ('stack-eq-witness', syntax.arch.word_type)
+		self.assert_fact_smt(
+			'(= (bvand %s %s) %s)' % (
+				addr,
+				syntax.arch.smt_stackeq_mask,
+				syntax.arch.smt_native_zero
+			)
+		)
 		sp_smt = smt_expr (sp, env, self)
 		self.assert_fact_smt ('(bvule %s %s)' % (sp_smt, addr))
-		ptr = mk_smt_expr (addr, wordT)
-		print "stackeq:"
-		print sp
-		print s1
-		print s2
-		print ptr
-		eq = syntax.mk_eq (syntax.mk_memacc (s1, ptr, wordT),
-			syntax.mk_memacc (s2, ptr, wordT))
-		print 'eq:'
-		print eq
+		ptr = mk_smt_expr (addr, syntax.arch.word_type)
+		eq = syntax.mk_eq (syntax.mk_memacc (s1, ptr, syntax.arch.word_type),
+			syntax.mk_memacc (s2, ptr, syntax.arch.word_type))
 		stack_eq = self.add_def ('stack-eq', eq, env)
-		print stack_eq
 		self.stack_eqs[k] = stack_eq
 		return stack_eq
 
@@ -2184,15 +1874,11 @@ class Solver:
 			self.model_exprs[psexpr] = (v, typ)
 
 	def add_pvalid_dom_assertions (self):
-		if syntax.is_64bit:
-			bits = 64
-		else:
-			bits = 32
-
 		if not self.doms:
 			return
 		if cheat_mem_doms:
 			return
+		bits = syntax.arch.word_size
 		dom = iter (self.doms).next ()[1]
 
 		pvs = [(var, (p, typ.size ()))
