@@ -35,7 +35,7 @@ fi
 
 trap rmlock EXIT TERM INT
 
-exec < /dev/null > >(tee "$LOG")
+exec < /dev/null > >(tee "$LOG") 2>&1
 date
 
 python2 ../../graph-refine.py . trace-to:"$REPORT" "$FUN"
