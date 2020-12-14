@@ -35,10 +35,15 @@ fi
 
 trap rmlock EXIT TERM INT
 
-script -c "python2 ../../graph-refine.py . trace-to:$REPORT $FUN" "$LOG"
+exec < /dev/null > >(tee "$LOG")
+date
+
+python2 ../../graph-refine.py . trace-to:"$REPORT" "$FUN"
 
 curl -s -S \
   -F "reporttxt=@$REPORT" \
   -F "apikey=$BV_SPREADSHEET_KEY" \
   -F "submit=Submit Query" \
   "$BV_SPREADSHEET_URL/upload.php"
+
+date
