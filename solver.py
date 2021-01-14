@@ -1041,9 +1041,9 @@ class Solver:
 			trace ('running %s' % slow_solver.name)
 			self.close_online_solver ()
 			solvs_used.append (slow_solver.name)
-			response = self.use_slow_solver (raw_hyps,
-				model = model, unsat_core = unsat_core,
-				use_this_solver = slow_solver)
+			response = self.use_slow_solver(raw_hyps,
+				model=model, unsat_core=unsat_core,
+				solver=slow_solver)
 		elif not succ:
 			pass
 		elif m:
@@ -1119,14 +1119,8 @@ class Solver:
 		os.rename(tmpfilename, filename)
 		return filename
 
-	def exec_slow_solver (self, input_msgs, timeout = None,
-			use_this_solver = None):
-		solver = self.slow_solver
-		if use_this_solver:
-			solver = use_this_solver
-		if not solver:
-			return 'no-slow-solver'
-		filename = self.write_solv_script(input_msgs, solver = solver)
+	def exec_slow_solver(self, input_msgs, timeout, solver):
+		filename = self.write_solv_script(input_msgs, solver=solver)
 		print ('\nsending input to %s, dump: %s\n--- [' % (solver.origname, filename))
 		if len(input_msgs) < 30:
 			for line in input_msgs:
@@ -1143,8 +1137,7 @@ class Solver:
 		fd.close()
 		return (proc, proc.stdout, filename)
 
-	def use_slow_solver (self, hyps, model = None, unsat_core = None,
-			use_this_solver = None):
+	def use_slow_solver(self, hyps, model, unsat_core, solver):
 		start = time.time ()
 
 		cmds = ['(assert %s)' % hyp for (hyp, _) in hyps
@@ -1153,13 +1146,8 @@ class Solver:
 		if model != None:
 			cmds.append (self.fetch_model_request ())
 
-		if use_this_solver:
-			solver = use_this_solver
-		else:
-			solver = self.slow_solver
-
-		(proc, output, filename) = self.exec_slow_solver (cmds,
-			timeout = solver.timeout, use_this_solver = solver)
+		(proc, output, filename) = self.exec_slow_solver(cmds,
+			timeout=solver.timeout, solver=solver)
 
 		response = output.readline ().strip ()
 		if model != None and response == 'sat':
@@ -1194,8 +1182,8 @@ class Solver:
 		solver = self.slow_solver
 		if use_this_solver:
 			solver = use_this_solver
-		(proc, output, filename) = self.exec_slow_solver (cmds,
-			timeout = solver.timeout, use_this_solver = solver)
+		(proc, output, filename) = self.exec_slow_solver(cmds,
+			timeout=solver.timeout, solver=solver)
 		self.parallel_solvers[k] = (hyps, proc, output, filename, solver, model)
 
 	def wait_parallel_solver_step (self):
