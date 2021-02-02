@@ -38,7 +38,7 @@ trap rmlock EXIT TERM INT
 exec < /dev/null > >(tee "$LOG") 2>&1
 date
 
-python2 ../../graph-refine.py . trace-to:"$REPORT" "$FUN"
+python2 ../../graph-refine.py . trace-to:"$REPORT" "$FUN" || true
 
 curl -s -S \
   -F "reporttxt=@$REPORT" \
