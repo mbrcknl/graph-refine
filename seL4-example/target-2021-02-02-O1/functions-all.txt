@@ -39,7 +39,6 @@ cap_get_capSizeBits
 capSwapForDelete
 c_handle_exception
 c_handle_interrupt
-c_handle_syscall
 chargeBudget
 char_to_long
 checkValidIPCBuffer
@@ -109,8 +108,6 @@ emptySlot
 endTimeslice
 ensureEmptySlot
 ensureNoChildren
-fastpath_call
-fastpath_reply_recv
 finaliseCap
 findVSpaceForASID
 get_avail_p_regs
@@ -138,7 +135,6 @@ handleVMFaultEvent
 hasCancelSendRights
 idle_thread
 init_core_state
-init_freemem
 initIRQController
 init_kernel
 initL2Cache
