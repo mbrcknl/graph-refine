@@ -1,0 +1,1 @@
+regen /home/koc034/Documents/newver/graph-refine/seL4-example/target/RISCV64-MCS-O1/build/kernel.dtb /home/koc034/Documents/newver/seL4/tools/dts/hifive.dts;/home/koc034/Documents/newver/seL4/src/plat/hifive/overlay-hifive.dts

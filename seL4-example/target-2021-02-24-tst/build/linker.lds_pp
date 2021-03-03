@@ -1,0 +1,259 @@
+/*
+ * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
+ * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-2.0-only
+ */
+OUTPUT_ARCH(riscv)
+ENTRY(_start)
+/*
+ * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
+ *
+ * SPDX-License-Identifier: GPL-2.0-only
+ */
+       
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * SPDX-License-Identifier: BSD-2-Clause
+ */
+       
+/* Compile-time configuration parameters. Might be set by the build system. */
+/* size of the initial thread's root CNode (2^x slots, x >= 4) */
+/* number of timer ticks until a thread is preempted  */
+/* the number of scheduler domains */
+/* number of priorities per domain */
+/* maximum number of caps that can be created in one retype invocation */
+/* chunk size for memory clears during retype, in bits. */
+/* maximum number of iterations until we preempt a delete/revoke invocation */
+/* address range to flush per preemption work unit */
+/* maximum number of untyped caps in bootinfo */
+/* WARNING: must match value in libsel4! */
+/* CONSTRAINT: (16 * CONFIG_MAX_NUM_BOOTINFO_DEVICE_REGIONS) + (5 * CONFIG_MAX_NUM_BOOTINFO_UNTYPED_CAPS) <= 4036 */
+/* maximum number of different tracepoints which can be placed in the kernel */
+/* maximum number of IOMMU RMRR entries we can record while ACPI parsing */
+/* maximum number of IOAPIC supported */
+/* Alias CONFIG_MAX_NUM_NODES > 1 to ENABLE_SMP_SUPPORT */
+/* Configurations requring the kernel log buffer */
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * SPDX-License-Identifier: GPL-2.0-only
+ */
+       
+/* Each architecture defines a set of constants in #defines. These
+ * constants describe the memory regions of the kernel's portion of the
+ * address space including the physical memory window, the kernel ELF
+ * region, and the device region.
+ *
+ *  - USER_TOP: The first address after the end of user memory
+ *
+ *  - PADDR_BASE: The first physical address mapped in the kernel's
+ *    physical memory window.
+ *  - PPTR_BASE: The first virtual address of the kernel's physical
+ *    memory window.
+ *  - PPTR_TOP: The first virtual address after the end of the kernel's
+ *    physical memory window.
+ *
+ *  - KERNEL_ELF_PADDR_BASE: The first physical address used to map the
+ *    initial kernel image. The kernel ELF is mapped contiguously
+ *    starting at this address.
+ *  - KERNEL_ELF_BASE: The first virtual address used to map the initial
+ *    kernel image.
+ *
+ *  - KDEV_BASE: The first virtual address used to map devices.
+ */
+/* The offset from a physical address to a virtual address in the
+ * physical memory window. */
+/* The last address in the physical memory region mapped into the
+ * physical memory window */
+/* The kernel base offset is a way to translate the kernel image segment
+ * from virtual to physical. This translation must be a single offset
+ * for for the entire segment (i.e. the kernel image must be contiguous
+ * both virtually and physically) */
+/*
+ * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
+ *
+ * SPDX-License-Identifier: GPL-2.0-only
+ */
+       
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * SPDX-License-Identifier: GPL-2.0-only
+ */
+       
+/* time constants */
+/* Some assemblers don't recognise ul (unsigned long) suffix */
+/*
+ * The top half of the address space is reserved for the kernel. This means that 256 top level
+ * entries are for the user, and 256 are for the kernel. This will be further split into the
+ * 'regular' kernel window, which contains mappings to physical memory, a small (1GiB) higher
+ * kernel image window that we use for running the actual kernel from and a top 1GiB window for
+ * kernel device mappings. This means that between PPTR_BASE and
+ * KERNEL_ELF_BASE there are 254 entries remaining, which represents how much physical memory
+ * can be used.
+ *
+ * Almost all of the top 256 kernel entries will contain 1GiB page mappings. The only 2 entries
+ * that contain a 2nd level PageTable consisting of 2MiB page entries is the entry
+ * for the 1GiB Kernel ELF region and the 1GiB region corresponding to the physical memory
+ * of the kernel ELF in the kernel window.  The same 2nd level PageTable is used and so both
+ * entries refer to the same 1GiB of physical memory.
+ * This means that the 1GiB kernel ELF mapping will correspond to physical memory with a 1GiB
+ * alignment.
+ *
+ *                   +-----------------------------+ 2^64
+ *                   |        Kernel Devices       |
+ *                -> +-------------------KDEV_BASE-+ 2^64 - 1GiB
+ *                |  |         Kernel ELF          |
+ *            ----|  +-------------KERNEL_ELF_BASE-+ --+ 2^64 - 2GiB + (KERNEL_ELF_PADDR_BASE % 1GiB)
+ *            |   |  |                             |
+ *            |   -> +-----------------------------+ --+ 2^64 - 2GiB = (KERNEL_ELF_BASE % 1GiB)
+ * Shared 1GiB|      |                             |   |
+ * table entry|      |           PSpace            |   |
+ *            |      |  (direct kernel mappings)   |   +----+
+ *            ------>|                             |   |    |
+ *                   |                             |   |    |
+ *                   +-------------------PPTR_BASE-+ --+ 2^64 - 2^b
+ *                   |                             |        |         +-------------------------+
+ *                   |                             |        |         |                         |
+ *                   |                             |        |         |                         |
+ *                   |          Invalid            |        |         |                         |
+ *                   |                             |        |         |           not           |
+ *                   |                             |        |         |         kernel          |
+ *                   |                             |        |         |       addressable       |
+ *                   +--------------------USER_TOP-+  2^c   |         |                         |
+ *                   |                             |        |         |                         |
+ *                   |                             |        |         |                         |
+ *                   |                             |        |      +- --------------------------+  PADDR_TOP =
+ *                   |                             |        |      |  |                         |    PPTR_TOP - PPTR_BASE
+ *                   |                             |        |      |  |                         |
+ *                   |                             |        |      |  |                         |
+ *                   |            User             |        |      |  |                         |
+ *                   |                             |        |      |  |                         |
+ *                   |                             |        +------+  +-------------------------+  KDEV_BASE - KERNEL_ELF_BASE + PADDR_LOAD
+ *                   |                             |     kernel    |  |        Kernel ELF       |
+ *                   |                             |   addressable |  +-------------------------+  KERNEL_ELF_PADDR_BASE
+ *                   |                             |               |  |                         |
+ *                   |                             |               |  |                         |
+ *                   +-----------------------------+  0            +- +-------------------------+  0 PADDR_BASE
+ *
+ *                      virtual address space                          physical address space
+ *
+ *
+ *  c = one less than number of bits the page tables can translate
+ *    = sign extension bit for canonical addresses
+ *    (= 47 on x64, 38 on RISCV64 sv39, 47 on RISCV64 sv48)
+ *  b = The number of bits used by kernel mapping.
+ *    = 38 (half of the 1 level page table) on RISCV64 sc39
+ *    = 39 (entire second level page table) on aarch64 / X64 / sv48
+ */
+/* last accessible virtual address in user space */
+/* The first physical address to map into the kernel's physical memory
+ * window */
+/* The base address in virtual memory to use for the 1:1 physical memory
+ * mapping */
+/* Top of the physical memory window */
+/* The physical memory address to use for mapping the kernel ELF */
+/* This represents the physical address that the kernel image will be linked to. This needs to
+ * be on a 1gb boundary as we currently require being able to creating a mapping to this address
+ * as the largest frame size */
+/* The base address in virtual memory to use for the kernel ELF mapping */
+/* The base address in virtual memory to use for the kernel device
+ * mapping region. These are mapped in the kernel page table. */
+/* Place the kernel log buffer at the end of the kernel device page table */
+/*
+ * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
+ *
+ * SPDX-License-Identifier: BSD-2-Clause
+ */
+       
+/*
+ * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
+ *
+ * SPDX-License-Identifier: GPL-2.0-only
+ */
+/*
+ * This file is autogenerated by kernel/tools/hardware_gen.py.
+ */
+/*
+ * Copyright 2014, General Dynamics C4 Systems
+ *
+ * SPDX-License-Identifier: GPL-2.0-only
+ */
+       
+/*
+ * Copyright 2020, Data61, CSIRO (ABN 41 687 119 230)
+ * Copyright 2015, 2016 Hesham Almatary <heshamelmatary@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-2.0-only
+ */
+       
+/* code that is only used during kernel bootstrapping */
+/* read-only data only used during kernel bootstrapping */
+/* read/write data only used during kernel bootstrapping */
+/* node-local bss data that is only used during kernel bootstrapping */
+/* data will be aligned to n bytes in a special BSS section */
+/* data that will be mapped into and permitted to be used in the restricted SKIM
+ * address space */
+/* bss data that is permitted to be used in the restricted SKIM address space */
+/* INTERRUPTS */
+/* KERNEL DEVICES */
+KERNEL_OFFSET = (0xFFFFFFFF80000000 + ((0x80000000 + 0x4000000) & ((1 << (30))-1))) - (0x80000000 + 0x4000000);
+SECTIONS
+{
+    . = (0xFFFFFFFF80000000 + ((0x80000000 + 0x4000000) & ((1 << (30))-1)));
+    .boot.text . : AT(ADDR(.boot.text) - KERNEL_OFFSET)
+    {
+        *(.boot.text)
+    }
+    .boot.rodata . : AT(ADDR(.boot.rodata) - KERNEL_OFFSET)
+    {
+        *(.boot.rodata)
+    }
+    .boot.data . : AT(ADDR(.boot.data) - KERNEL_OFFSET)
+    {
+        *(.boot.data)
+    }
+    . = ALIGN(4K);
+    ki_boot_end = .;
+    .text . : AT(ADDR(.text) - KERNEL_OFFSET)
+    {
+        /* Sit inside a large frame */
+        . = ALIGN(4K);
+        /* Standard kernel */
+        *(.text)
+    }
+    /* Start of data section */
+    _sdata = .;
+    .sdata : {
+        __global_pointer$ = . + 0x800;
+        *(.sdata*)
+    }
+    .srodata : {
+        *(.srodata*)
+    }
+    .rodata . : AT(ADDR(.rodata) - KERNEL_OFFSET)
+    {
+        *(.rodata)
+        *(.rodata.*)
+    }
+    .data . : AT(ADDR(.data) - KERNEL_OFFSET)
+    {
+        *(.data)
+    }
+    .bss . : AT(ADDR(.bss) - KERNEL_OFFSET)
+    {
+        *(.bss)
+        *(.sbss)
+        /* 4k breakpoint stack */
+        _breakpoint_stack_bottom = .;
+        . = . + 4K;
+        _breakpoint_stack_top = .;
+        /* large data such as the globals frame and global PD */
+        *(.bss.aligned)
+        . = . + 8;
+    }
+    . = ALIGN(4K);
+    ki_end = .;
+}
