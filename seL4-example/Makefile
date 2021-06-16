@@ -15,7 +15,7 @@ L4V_ARCH?=RISCV64
 L4V_FEATURES?=MCS
 
 ifndef CONFIG_OPTIMISATION_LEVEL
-  CONFIG_OPTIMISATION_LEVEL := -O1
+  CONFIG_OPTIMISATION_LEVEL := O1
 endif
 
 # FIXME: solver self-test is currently broken
@@ -30,13 +30,13 @@ ifndef HOL4_ROOT
 endif
 
 L4V_CONFIG := ${L4V_ARCH}$(if ${L4V_FEATURES},-${L4V_FEATURES},)
-TARGET_NAME := ${L4V_CONFIG}${CONFIG_OPTIMISATION_LEVEL}
+TARGET_NAME := ${L4V_CONFIG}-${CONFIG_OPTIMISATION_LEVEL}
 TARGET_DIR := target/${TARGET_NAME}
 
 # We build our own kernel locally, so we can store builds
 # according to their optimisation levels.
 KERNEL_BUILD_ROOT := ${TARGET_DIR}/build
-KERNEL_CMAKE_EXTRA_OPTIONS := -DKernelOptimisation=${CONFIG_OPTIMISATION_LEVEL}
+KERNEL_CMAKE_EXTRA_OPTIONS := -DKernelOptimisation=-${CONFIG_OPTIMISATION_LEVEL}
 include ${GREF_ROOT}/../l4v/spec/cspec/c/kernel.mk
 
 # However, CFunctions.txt depends on l4v's kernel build.
@@ -151,7 +151,11 @@ GRAPH_REFINE := python2 ${GREF_ROOT}/graph-refine.py
 
 ${TARGET_DIR}/StackBounds.txt: ${GRAPH_REFINE_INPUTS}
 	# FIXME: this script is arch-specific (RISCV64)
-	python3 ${GREF_ROOT}/tools/stack_bounds.py --asm-functions ${TARGET_DIR}/ASMFunctions.txt --elf-txt ${TARGET_DIR}/kernel.elf.txt > $@
+	python3 ${GREF_ROOT}/tools/stack_bounds.py \
+		--asm-functions ${TARGET_DIR}/ASMFunctions.txt \
+		--elf-txt ${TARGET_DIR}/kernel.elf.txt \
+		--optimisation ${CONFIG_OPTIMISATION_LEVEL} \
+		> $@
 
 ${TARGET_DIR}/demo-report.txt: ${TARGET_DIR}/StackBounds.txt ${GRAPH_REFINE_INPUTS}
 	${GRAPH_REFINE} ${TARGET_DIR} trace-to:$@.partial deps:Kernel_C.cancelAllIPC
