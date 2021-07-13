@@ -1,0 +1,59 @@
+#!/bin/bash
+
+set -euo pipefail
+
+BV_TARGET_HASH=$(sha256sum "$BV_TARGET_DIR/ASMFunctions.txt" | awk '{print $1}')
+
+mkdir -p "$BV_TARGET_DIR/logs/lock"
+
+list_functions() {
+  local src
+  src="$1"
+  perl -n \
+    -e "if (/^Function (?:Kernel_C\\.(?:StrictC')?)?(\\S+)\\s/) { print \"\$1\\n\" }" \
+    "${BV_TARGET_DIR}${src}Functions.txt" | sort -u
+}
+
+functions_all() {
+  comm -12 <(list_functions ASM) <(list_functions C)
+}
+
+functions_passing() {
+  curl -s -S "$BV_SPREADSHEET_URL/plain_pass.php?hash=$BV_TARGET_HASH" | sort -u
+}
+
+functions_failing() {
+  curl -s -S "$BV_SPREADSHEET_URL/plain_fail.php?hash=$BV_TARGET_HASH" | sort -u
+}
+
+functions_failing_only() {
+  comm -23 <(functions_failing) <(functions_passing)
+}
+
+functions_passing_only() {
+  comm -23 <(functions_passing) <(functions_failing)
+}
+
+functions_tested() {
+  sort -um <(functions_passing) <(functions_failing)
+}
+
+functions_testing() {
+  ls "$BV_TARGET_DIR/logs/lock"
+}
+
+functions_tested_or_testing() {
+  sort -um <(functions_tested) <(functions_testing)
+}
+
+functions_untested() {
+  comm -23 <(functions_all) <(functions_tested)
+}
+
+functions_test_candidates() {
+  comm -23 <(functions_all) <(functions_testing)
+}
+
+cmd="$1"
+
+
